@@ -1,0 +1,65 @@
+{
+	"name": "@newtil/ui",
+	"version": "0.1.0",
+	"description": "newtil UI 컴포넌트 라이브러리 — 변수 기반의 일관된 컴포넌트 (버튼, 카드, 다이얼로그, 아이콘 등)",
+	"publishConfig": {
+		"access": "public"
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"style": "./dist/index.css",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js",
+			"default": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./index.css": {
+			"default": "./dist/index.css"
+		},
+		"./package.json": "./package.json"
+	},
+	"keywords": [
+		"css",
+		"ui components",
+		"design system",
+		"material 3"
+	],
+	"author": "lectureteam",
+	"license": "MIT",
+	"scripts": {
+		"build": "rm -rf ./dist && rollup -c",
+		"deploy": "npm run build && npm publish",
+		"prepublishOnly": "npm run build"
+	},
+	"dependencies": {
+		"@newtil/design-tokens": "^0.1.0"
+	},
+	"devDependencies": {
+		"@rollup/plugin-terser": "^0.4.4",
+		"postcss": "^8.4.33",
+		"postcss-import": "^16.1.0",
+		"postcss-url": "^10.1.3",
+		"rollup": "^4.52.5",
+		"rollup-plugin-copy": "^3.5.0",
+		"rollup-plugin-postcss": "^4.0.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/newlecture-corp/newtil-ui.git"
+	},
+	"bugs": {
+		"url": "https://github.com/newlecture-corp/newtil-ui/issues"
+	},
+	"homepage": "https://github.com/newlecture-corp/newtil-ui#readme",
+	"files": [
+		"dist",
+		"index.js",
+		"index.d.ts",
+		"README.md",
+		"LICENSE"
+	]
+}
