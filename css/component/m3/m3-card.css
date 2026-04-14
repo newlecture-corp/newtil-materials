@@ -8,54 +8,54 @@
 
     /* ========== 카드의 변수 선언(기본값) ========== */
     /* boxing */
-    --card-background: var(--color-base-1);
+    --card-background: var(--color-surface);
     --card-width: auto;
     --card-height: auto;
-    --card-padding: var(--space-10);
+    --card-padding: var(--space-5);
     --card-border: none;
-    /* --card-border: var(--border-width-2) solid var(--color-base-2); */
-    --card-border-radius: var(--radius-xl);
-    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, var(--opacity-40)),
-        0 var(--space-1) var(--space-2) rgba(0, 0, 0, var(--opacity-50));
+    /* --card-border: var(--border-width-2) solid var(--color-surface-subtle); */
+    --card-border-radius: var(--radius-4);
+    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, var(--opacity-40)),
+        0 var(--space-1) var(--space-1) rgba(0, 0, 0, var(--opacity-50));
     --card-opacity: var(--opacity-100);
     --card-outline: none;
     --card-outline-offset: 0;
     --card-transform: none;
     
     /* font */
-    --card-font-color: var(--color-base-10);
+    --card-font-color: var(--color-text);
     
     /* 상태별 변수 */
-    --card-focused-outline-color: var(--color-base-10);
-    --card-border-outline-color: var(--color-base-10);
-    --card-outlined-color: var(--color-base-10);
+    --card-focused-outline-color: var(--color-text);
+    --card-border-outline-color: var(--color-text);
+    --card-outlined-color: var(--color-text);
     /* overlay */
     --card-overflow: var(--overflow-hidden);
 
     /* effect */
     --card-cursor: var(--cursor-pointer);
-    --card-transition: box-shadow var(--duration-5) var(--ease-out),
-        transform var(--duration-5) var(--ease-out),
-        opacity var(--duration-5) var(--ease-out);
+    --card-transition: box-shadow var(--duration-normal) var(--ease-out),
+        transform var(--duration-normal) var(--ease-out),
+        opacity var(--duration-normal) var(--ease-out);
 }
 /* ====== 다크 모드 ====== */
 
 @media (prefers-color-scheme: dark) {
     .m3-card {
         /* 다크모드에서 변경되는 변수들만 재정의 */
-        --card-background: var(--color-base-2);
-        --card-font-color: var(--color-base-10);
+        --card-background: var(--color-surface-subtle);
+        --card-font-color: var(--color-text);
     }
 
     .card\:elevated.card-state\:focused{
-        --card-focused-outline-color: var(--color-base-10);
+        --card-focused-outline-color: var(--color-text);
     }
     .card\:filled.card-state\:focused{
-        --card-focused-outline-color: var(--color-base-10);
+        --card-focused-outline-color: var(--color-text);
     }
     .card\:outlined.card-state\:focused {
         --card-border: 1px solid var(--card-border-outline-color);
-        --card-outlined-color: var(--color-base-10);
+        --card-outlined-color: var(--color-text);
         --card-outline: 3px solid var(--card-outlined-color);
     }
 }
@@ -89,33 +89,33 @@
 
 .card\:elevated.card-state\:enabled {
     --card-opacity: var(--opacity-100);
-    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.14);
+    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
+        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
 }
 
 .card\:elevated.card-state\:disabled {
     --card-opacity: 0.38;
-    --card-box-shadow: 0 var(--space-2) var(--space-4) rgba(0, 0, 0, 0.14);
+    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.14);
     --card-cursor: var(--cursor-not-allowed);
 }
 
 .card\:elevated.card-state\:hovered {
-    --card-box-shadow: 0 var(--space-2) var(--space-4) rgba(0, 0, 0, 0.14),
-        0 var(--space-3) var(--space-4) rgba(0, 0, 0, 0.12);
+    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.14),
+        0 var(--space-2) var(--space-3) rgba(0, 0, 0, 0.12);
     filter: brightness(0.92);
 }
 
 .card\:elevated.card-state\:focused {
-    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.14);
+    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
+        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
     --card-outline: 2px solid var(--card-focused-outline-color);
-    --card-outline-offset: var(--space-2);
+    --card-outline-offset: var(--space-1);
     filter: brightness(0.90);
 }
 
 .card\:elevated.card-state\:dragged {
-    --card-box-shadow: 0 var(--space-6) var(--space-10) rgba(0, 0, 0, 0.14),
-        0 var(--space-4) var(--space-5) rgba(0, 0, 0, 0.12);
+    --card-box-shadow: 0 var(--space-4) var(--space-5) rgba(0, 0, 0, 0.14),
+        0 var(--space-3) var(--space-3) rgba(0, 0, 0, 0.12);
     --card-transform: scale(1.02);
     --card-cursor: var(--cursor-grab);
     filter: brightness(0.84);
@@ -135,21 +135,21 @@
 }
 
 .card\:filled.card-state\:hovered {
-    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.14);
+    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
+        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
     filter: brightness(0.92);
 }
 
 .card\:filled.card-state\:focused {
     --card-box-shadow: none;
     --card-outline: 2px solid var(--card-focused-outline-color);
-    --card-outline-offset: var(--space-2);
+    --card-outline-offset: var(--space-1);
     filter: brightness(0.90);
 }
 
 .card\:filled.card-state\:dragged {
-    --card-box-shadow: 0 var(--space-4) var(--space-8) rgba(0, 0, 0, 0.14),
-        0 var(--space-3) var(--space-4) rgba(0, 0, 0, 0.12);
+    --card-box-shadow: 0 var(--space-3) var(--space-5) rgba(0, 0, 0, 0.14),
+        0 var(--space-2) var(--space-3) rgba(0, 0, 0, 0.12);
     --card-transform: scale(1.02);
     --card-cursor: var(--cursor-grab);
     filter: brightness(0.84);
@@ -171,8 +171,8 @@
 }
 
 .card\:outlined.card-state\:hovered {
-    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.14);
+    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
+        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
     --card-border: 1px solid var(--card-border-outline-color);
     filter: brightness(0.92);
 }
@@ -181,14 +181,14 @@
     --card-box-shadow: none;
     --card-border: 1px solid var(--card-focused-outline-color);
     --card-outline: 2px solid var(--card-focused-outline-color);
-    --card-outline-offset: var(--space-2);
+    --card-outline-offset: var(--space-1);
     filter: brightness(0.90);
 }
 
 
 .card\:outlined.card-state\:dragged {
-    --card-box-shadow: 0 var(--space-6) var(--space-10) rgba(0, 0, 0, 0.14),
-        0 var(--space-4) var(--space-5) rgba(0, 0, 0, 0.12);
+    --card-box-shadow: 0 var(--space-4) var(--space-5) rgba(0, 0, 0, 0.14),
+        0 var(--space-3) var(--space-3) rgba(0, 0, 0, 0.12);
     --card-border: 1px solid var(--card-border-outline-color);
     --card-transform: scale(1.02);
     --card-cursor: var(--cursor-grab);

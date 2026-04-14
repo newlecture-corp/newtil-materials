@@ -1,67 +1,67 @@
 .m3-dialog {
     /* =====공통 상수 variables.css에서 정의 어떤값 사용했는지 주석으로 표시 ===== */
     /* color */
-    /* --color-base-10: #000000;
-    --color-base-9: #191919;
-    --color-base-8: #585858;
-    --color-sub-2: #2570b6;
-    --color-sub-1: #2983d7;
-    --color-base-4: #b3b3b3;
-    --color-base-2: #d7d7d7;
-    --color-base-3: #e5e7eb; */
+    /* --color-text: #000000;
+    --color-text: #191919;
+    --color-text-muted: #585858;
+    --color-secondary-hover: #2570b6;
+    --color-secondary: #2983d7;
+    --color-border-subtle: #b3b3b3;
+    --color-surface-subtle: #d7d7d7;
+    --color-surface-muted: #e5e7eb; */
 
     /* font size */
-    /* --space-15: 24px;
-    --space-8: 14px;
+    /* --space-7: 24px;
+    --space-5: 14px;
      */
 
     /* radius */
-    /* --space-17: 28px; */
+    /* --space-8: 28px; */
 
     /* opacity */
     /* --opacity-10: 0.1; */
 
     /* padding */
-    /* --space-15: 24px;
-    --space-14: 22px;
-    --space-13: 20px;
-    --space-12: 18px;
-    --space-10: 16px;
-    --space-8: 14px;
-    --space-6: 12px;
-    --space-5: 10px;
-    --space-4: 8px;
-    --space-3: 4px;
-    --space-2: 2px;
+    /* --space-7: 24px;
+    --space-7: 22px;
+    --space-6: 20px;
+    --space-6: 18px;
+    --space-5: 16px;
+    --space-5: 14px;
+    --space-4: 12px;
+    --space-3: 10px;
+    --space-3: 8px;
+    --space-2: 4px;
+    --space-1: 2px;
     --space-1: 1px; */
 
 
     /* margin */
-    /* --space-15: 24px;
-    --space-14: 22px;
-    --space-13: 20px;
-    --space-12: 18px;
-    --space-10: 16px;
-    --space-8: 14px;
-    --space-6: 12px;
-    --space-5: 10px;
-    --space-4: 8px;
-    --space-3: 4px;
-    --space-2: 2px;
+    /* --space-7: 24px;
+    --space-7: 22px;
+    --space-6: 20px;
+    --space-6: 18px;
+    --space-5: 16px;
+    --space-5: 14px;
+    --space-4: 12px;
+    --space-3: 10px;
+    --space-3: 8px;
+    --space-2: 4px;
+    --space-1: 2px;
     --space-1: 1px; */
 
     /* gap */
-    /* --space-4: 8px;
-    --space-3: 4px;
-    --space-2: 2px;
+    /* --space-3: 8px;
+    --space-2: 4px;
+    --space-1: 2px;
     --space-1: 1px; */
 
     /* line height */
-    /* --space-13: 20px;
-    --space-10: 16px;
-    --space-6: 12px;
-    --space-4: 8px;
-    --space-3: 4px; */
+    /* --space-6: 20px;
+    --space-5: 16px;
+    --space-4: 12px;
+    --space-3: 8px;
+    --space-2: 4px; */
 
     /* width, height */
     /* 문서에는 최소, 최대 넓이로 나와있어서 수정하였음 */
@@ -70,28 +70,28 @@
 
     /*======================= 변수 =======================*/
     /* 여기서만 수정한다 */
-    --dialog-bg-color: var(--color-base-3);
-    --dialog-radius: var(--space-17);
-    --dialog-padding: var(--space-15);
+    --dialog-bg-color: var(--color-surface-muted);
+    --dialog-radius: var(--space-8);
+    --dialog-padding: var(--space-7);
     --dialog-min-width: var(--dialog-spec-min-width);
     --dialog-max-width: var(--dialog-spec-max-width);
 
-    --dialog-color: var(--color-base-8);
+    --dialog-color: var(--color-text-muted);
 
-    --dialog-headline-font-color: var(--color-base-10);
-    --dialog-headline-font-size: var(--space-15);
-    --dialog-headline-font-weight: var(--font-weight-4);
-    --dialog-headline-margin-bottom: var(--space-14);
+    --dialog-headline-font-color: var(--color-text);
+    --dialog-headline-font-size: var(--space-7);
+    --dialog-headline-font-weight: var(--font-weight-regular);
+    --dialog-headline-margin-bottom: var(--space-7);
 
-    --dialog-content-font-color: var(--color-base-8);
-    --dialog-content-font-size: var(--space-8);
-    --dialog-content-margin-bottom: var(--space-15);
-    --dialog-content-line-height: var(--space-13);
+    --dialog-content-font-color: var(--color-text-muted);
+    --dialog-content-font-size: var(--space-5);
+    --dialog-content-margin-bottom: var(--space-7);
+    --dialog-content-line-height: var(--space-6);
 
-    --dialog-actions-gap: var(--space-4);
+    --dialog-actions-gap: var(--space-3);
 
-    --dialog-btn-color: var(--color-sub-2);
-    --dialog-btn-padding: var(--space-12) var(--space-10);
+    --dialog-btn-color: var(--color-secondary-hover);
+    --dialog-btn-padding: var(--space-6) var(--space-5);
 
     /* Text Button specific */
     /* --dialog-opacity-1: 0.08 -> 8% */
@@ -103,10 +103,10 @@
 /* ====다크모드 테마==== */
 @media (prefers-color-scheme: dark) {
     .m3-dialog {
-        --dialog-bg-color: var(--color-base-3);
-        --dialog-headline-font-color: var(--color-base-10);
-        --dialog-content-font-color: var(--color-base-8);
-        --dialog-btn-color: var(--color-sub-2);
+        --dialog-bg-color: var(--color-surface-muted);
+        --dialog-headline-font-color: var(--color-text);
+        --dialog-content-font-color: var(--color-text-muted);
+        --dialog-btn-color: var(--color-secondary-hover);
     }
 }
 
