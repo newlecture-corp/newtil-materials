@@ -6,10 +6,6 @@ import fs from "fs";
 import path from "path";
 import terser from "@rollup/plugin-terser";
 
-const designTokensPath = path.resolve(
-	"./node_modules/@newtil/design-tokens/css/variables.css"
-);
-
 export default [
 	// JavaScript files
 	{
@@ -52,14 +48,11 @@ export default [
 			postcss({
 				plugins: [
 					postcssImport({
-						// 외부 URL은 그대로 유지하고, @newtil/design-tokens는 node_modules에서 해석
-						filter: (id) => !id.startsWith("http://") && !id.startsWith("https://"),
-						resolve: (id, basedir) => {
-							if (id === "@newtil/design-tokens/variables.css") {
-								return designTokensPath;
-							}
-							return null;
-						},
+						// node_modules 경로 추가 — @newtil/design-tokens 같은 패키지 import 해석용
+						path: ["node_modules"],
+						// 외부 URL은 그대로 유지
+						filter: (id) =>
+							!id.startsWith("http://") && !id.startsWith("https://"),
 					}),
 					url({
 						url: (asset) => asset.url.replace(/\.\.\//g, ""),

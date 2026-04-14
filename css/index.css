@@ -4,7 +4,7 @@
 @layer reset, tokens, base, components;
 
 /* Design Tokens (변수 계층) — @newtil/design-tokens 패키지에서 끌어옴 */
-@import "@newtil/design-tokens/variables.css";
+@import "@newtil/design-tokens";
 
 /* Reset & Base */
 @import "./reset.css";
