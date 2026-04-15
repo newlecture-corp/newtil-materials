@@ -1,7 +1,7 @@
 .m3-deco,
 .m3-btn,
 .m3-icon {
-	--icon-size: 24px;
+	--icon-size: var(--space-7);
 	--icon-family: "Material Symbols Outlined";
 	--icon-color: var(--color-text);
 	--icon-fill: 0;
@@ -128,10 +128,10 @@
 
 
 	/* ---- icon-size ------------------------------------------------- */
-	&.icon-size\:1 { --icon-size: 20px; }
-	&.icon-size\:2 { --icon-size: 24px; }
-	&.icon-size\:3 { --icon-size: 40px; }
-	&.icon-size\:4 { --icon-size: 48px; }
+	&.icon-size\:1 { --icon-size: var(--space-6); }
+	&.icon-size\:2 { --icon-size: var(--space-7); }
+	&.icon-size\:3 { --icon-size: var(--space-9); }
+	&.icon-size\:4 { --icon-size: var(--space-10); }
 
 }
 
@@ -222,10 +222,10 @@
 
 
 		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: 20px; }
-		&.icon-size\:2 { --icon-size: 24px; }
-		&.icon-size\:3 { --icon-size: 40px; }
-		&.icon-size\:4 { --icon-size: 48px; }
+		&.icon-size\:1 { --icon-size: var(--space-6); }
+		&.icon-size\:2 { --icon-size: var(--space-7); }
+		&.icon-size\:3 { --icon-size: var(--space-9); }
+		&.icon-size\:4 { --icon-size: var(--space-10); }
 	}
 }
 
@@ -291,10 +291,10 @@
 
 
 		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: 20px; }
-		&.icon-size\:2 { --icon-size: 24px; }
-		&.icon-size\:3 { --icon-size: 40px; }
-		&.icon-size\:4 { --icon-size: 48px; }
+		&.icon-size\:1 { --icon-size: var(--space-6); }
+		&.icon-size\:2 { --icon-size: var(--space-7); }
+		&.icon-size\:3 { --icon-size: var(--space-9); }
+		&.icon-size\:4 { --icon-size: var(--space-10); }
 	}
 }
 
@@ -360,10 +360,10 @@
 
 
 		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: 20px; }
-		&.icon-size\:2 { --icon-size: 24px; }
-		&.icon-size\:3 { --icon-size: 40px; }
-		&.icon-size\:4 { --icon-size: 48px; }
+		&.icon-size\:1 { --icon-size: var(--space-6); }
+		&.icon-size\:2 { --icon-size: var(--space-7); }
+		&.icon-size\:3 { --icon-size: var(--space-9); }
+		&.icon-size\:4 { --icon-size: var(--space-10); }
 	}
 }
 
@@ -429,9 +429,9 @@
 
 
 		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: 20px; }
-		&.icon-size\:2 { --icon-size: 24px; }
-		&.icon-size\:3 { --icon-size: 40px; }
-		&.icon-size\:4 { --icon-size: 48px; }
+		&.icon-size\:1 { --icon-size: var(--space-6); }
+		&.icon-size\:2 { --icon-size: var(--space-7); }
+		&.icon-size\:3 { --icon-size: var(--space-9); }
+		&.icon-size\:4 { --icon-size: var(--space-10); }
 	}
 }

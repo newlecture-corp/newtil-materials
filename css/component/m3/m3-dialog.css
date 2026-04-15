@@ -11,62 +11,62 @@
     --color-surface-muted: #e5e7eb; */
 
     /* font size */
-    /* --space-7: 24px;
-    --space-5: 14px;
+    /* --space-7: var(--space-7);
+    --space-5: 0.875rem;
      */
 
     /* radius */
-    /* --space-8: 28px; */
+    /* --space-8: 1.75rem; */
 
     /* opacity */
     /* --opacity-10: 0.1; */
 
     /* padding */
-    /* --space-7: 24px;
-    --space-7: 22px;
-    --space-6: 20px;
-    --space-6: 18px;
-    --space-5: 16px;
-    --space-5: 14px;
-    --space-4: 12px;
-    --space-3: 10px;
-    --space-3: 8px;
-    --space-2: 4px;
-    --space-1: 2px;
-    --space-1: 1px; */
+    /* --space-7: var(--space-7);
+    --space-7: 1.375rem;
+    --space-6: var(--space-6);
+    --space-6: 1.125rem;
+    --space-5: var(--space-5);
+    --space-5: 0.875rem;
+    --space-4: var(--space-4);
+    --space-3: 0.625rem;
+    --space-3: var(--space-3);
+    --space-2: var(--space-2);
+    --space-1: var(--space-1);
+    --space-1: 0.0625rem; */
 
 
     /* margin */
-    /* --space-7: 24px;
-    --space-7: 22px;
-    --space-6: 20px;
-    --space-6: 18px;
-    --space-5: 16px;
-    --space-5: 14px;
-    --space-4: 12px;
-    --space-3: 10px;
-    --space-3: 8px;
-    --space-2: 4px;
-    --space-1: 2px;
-    --space-1: 1px; */
+    /* --space-7: var(--space-7);
+    --space-7: 1.375rem;
+    --space-6: var(--space-6);
+    --space-6: 1.125rem;
+    --space-5: var(--space-5);
+    --space-5: 0.875rem;
+    --space-4: var(--space-4);
+    --space-3: 0.625rem;
+    --space-3: var(--space-3);
+    --space-2: var(--space-2);
+    --space-1: var(--space-1);
+    --space-1: 0.0625rem; */
 
     /* gap */
-    /* --space-3: 8px;
-    --space-2: 4px;
-    --space-1: 2px;
-    --space-1: 1px; */
+    /* --space-3: var(--space-3);
+    --space-2: var(--space-2);
+    --space-1: var(--space-1);
+    --space-1: 0.0625rem; */
 
     /* line height */
-    /* --space-6: 20px;
-    --space-5: 16px;
-    --space-4: 12px;
-    --space-3: 8px;
-    --space-2: 4px; */
+    /* --space-6: var(--space-6);
+    --space-5: var(--space-5);
+    --space-4: var(--space-4);
+    --space-3: var(--space-3);
+    --space-2: var(--space-2); */
 
     /* width, height */
     /* 문서에는 최소, 최대 넓이로 나와있어서 수정하였음 */
-    --dialog-spec-min-width: 280px;
-    --dialog-spec-max-width: 560px;
+    --dialog-spec-min-width: 17.5rem;
+    --dialog-spec-max-width: 35rem;
 
     /*======================= 변수 =======================*/
     /* 여기서만 수정한다 */

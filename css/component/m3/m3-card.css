@@ -54,9 +54,9 @@
         --card-focused-outline-color: var(--color-text);
     }
     .card\:outlined.card-state\:focused {
-        --card-border: 1px solid var(--card-border-outline-color);
+        --card-border: var(--border-width-1) solid var(--card-border-outline-color);
         --card-outlined-color: var(--color-text);
-        --card-outline: 3px solid var(--card-outlined-color);
+        --card-outline: 0.1875rem solid var(--card-outlined-color);
     }
 }
 
@@ -108,7 +108,7 @@
 .card\:elevated.card-state\:focused {
     --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
         0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
-    --card-outline: 2px solid var(--card-focused-outline-color);
+    --card-outline: var(--border-width-2) solid var(--card-focused-outline-color);
     --card-outline-offset: var(--space-1);
     filter: brightness(0.90);
 }
@@ -142,7 +142,7 @@
 
 .card\:filled.card-state\:focused {
     --card-box-shadow: none;
-    --card-outline: 2px solid var(--card-focused-outline-color);
+    --card-outline: var(--border-width-2) solid var(--card-focused-outline-color);
     --card-outline-offset: var(--space-1);
     filter: brightness(0.90);
 }
@@ -160,27 +160,27 @@
 .card\:outlined.card-state\:enabled {
     --card-opacity: var(--opacity-100);
     --card-box-shadow: none;
-    --card-border: 1px solid var(--card-border-outline-color);
+    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
 }
 
 .card\:outlined.card-state\:disabled {
     --card-opacity: 0.38;
     --card-box-shadow: none;
-    --card-border: 1px solid var(--card-border-outline-color);
+    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
     --card-cursor: var(--cursor-not-allowed);
 }
 
 .card\:outlined.card-state\:hovered {
     --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
         0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
-    --card-border: 1px solid var(--card-border-outline-color);
+    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
     filter: brightness(0.92);
 }
 
 .card\:outlined.card-state\:focused {
     --card-box-shadow: none;
-    --card-border: 1px solid var(--card-focused-outline-color);
-    --card-outline: 2px solid var(--card-focused-outline-color);
+    --card-border: var(--border-width-1) solid var(--card-focused-outline-color);
+    --card-outline: var(--border-width-2) solid var(--card-focused-outline-color);
     --card-outline-offset: var(--space-1);
     filter: brightness(0.90);
 }
@@ -189,7 +189,7 @@
 .card\:outlined.card-state\:dragged {
     --card-box-shadow: 0 var(--space-4) var(--space-5) rgba(0, 0, 0, 0.14),
         0 var(--space-3) var(--space-3) rgba(0, 0, 0, 0.12);
-    --card-border: 1px solid var(--card-border-outline-color);
+    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
     --card-transform: scale(1.02);
     --card-cursor: var(--cursor-grab);
     filter: brightness(0.84);

@@ -31,22 +31,22 @@
 .m3-checkbox {
     display: inline-flex;
     align-items: center;
-    padding: 15px;
+    padding: 0.9375rem;
     cursor: pointer;
     user-select: none;
-    font-size: 16px;
+    font-size: var(--space-5);
     color: var(--checkbox-text-color);
 }
 
 .m3-checkbox input[type="checkbox"] {
     appearance: none;
     position: relative;
-    margin-right: 20px;
+    margin-right: var(--space-6);
     /* 크기/모양 */
-    width: 18px;
-    height: 18px;
-    border-radius: 2px;
-    border: 2px solid var(--checkbox-border-color);
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: var(--radius-1);
+    border: var(--border-width-2) solid var(--checkbox-border-color);
     box-sizing: border-box;
 }
 
@@ -59,15 +59,15 @@
     width: inherit;
     height: inherit;
     position: absolute;
-    top: -2px;
-    left: -2px;
+    top: -var(--space-1);
+    left: -var(--space-1);
     background-color: var(--checkbox-main-color);
     border-color: var(--checkbox-main-color);
-    border-radius: 2px;
+    border-radius: var(--radius-1);
     /* 컨텐츠 */
     content: var(--checkbox-icon-content);
     font-family: "Material Symbols Outlined";
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: var(--font-weight-medium);
     color: var(--checkbox-icon-color);
     opacity: var(--checkbox-opacity);
@@ -77,14 +77,14 @@
     display: inline-flex;
     /* 크기/모양 */
     content: "";
-    width: 40px;
-    height: 40px;
+    width: var(--space-9);
+    height: var(--space-9);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    outline: 3px solid var(--checkbox-outline-color);
+    outline: 0.1875rem solid var(--checkbox-outline-color);
     background: var(--checkbox-main-color);
     opacity: var(--checkbox-opacity);
 }
