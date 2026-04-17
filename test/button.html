@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>m3-btn 테스트</title>
+	<link rel="stylesheet" href="../dist/index.css" />
+</head>
+<body style="padding: 2rem; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface);">
+
+	<!-- Theme Toggle -->
+	<div style="position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem;">
+		<button class="m3-btn btn-size:xs" onclick="setTheme('light')">Light</button>
+		<button class="m3-btn btn-size:xs" onclick="setTheme('dark')">Dark</button>
+		<button class="m3-btn btn:outlined btn-size:xs" onclick="setTheme('auto')">Auto</button>
+	</div>
+
+	<h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">m3-btn 컴포넌트 테스트</h1>
+
+	<!-- ===== 1. Type Variants ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">1. Type Variants (filled / elevated / tonal / outlined / text)</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn">Filled (default)</button>
+			<button class="m3-btn btn:elevated">Elevated</button>
+			<button class="m3-btn btn:tonal">Tonal</button>
+			<button class="m3-btn btn:outlined">Outlined</button>
+			<button class="m3-btn btn:text">Text</button>
+		</div>
+	</section>
+
+	<!-- ===== 2. States ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">2. States (hover / active / focus / disabled)</h2>
+		<p style="font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem;">마우스 오버·클릭·탭 키 포커스로 상태 변화 확인. disabled는 클릭 불가.</p>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">Interactive (실제 pseudo)</h3>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn">Hover me</button>
+			<button class="m3-btn btn:elevated">Hover me</button>
+			<button class="m3-btn btn:tonal">Hover me</button>
+			<button class="m3-btn btn:outlined">Hover me</button>
+			<button class="m3-btn btn:text">Hover me</button>
+			<button class="m3-btn" disabled>Disabled</button>
+			<button class="m3-btn btn:outlined" disabled>Disabled</button>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">Static (btn-state: 클래스로 고정)</h3>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn btn-state:hover">Hover</button>
+			<button class="m3-btn btn-state:active">Active</button>
+			<button class="m3-btn btn-state:focus">Focus</button>
+			<button class="m3-btn btn-state:disabled">Disabled</button>
+		</div>
+	</section>
+
+	<!-- ===== 3. Sizes ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">3. Sizes (xs / sm / md / lg / xl)</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn btn-size:xs">XS</button>
+			<button class="m3-btn btn-size:sm">Small (default)</button>
+			<button class="m3-btn btn-size:md">Medium</button>
+			<button class="m3-btn btn-size:lg">Large</button>
+			<button class="m3-btn btn-size:xl">XL</button>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">숫자 인덱스 (btn-size:1~5)</h3>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn btn-size:1">Size 1</button>
+			<button class="m3-btn btn-size:2">Size 2</button>
+			<button class="m3-btn btn-size:3">Size 3</button>
+			<button class="m3-btn btn-size:4">Size 4</button>
+			<button class="m3-btn btn-size:5">Size 5</button>
+		</div>
+	</section>
+
+	<!-- ===== 4. Shape ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">4. Shape (round vs square)</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn">Round (default)</button>
+			<button class="m3-btn btn-shape:square">Square</button>
+			<button class="m3-btn btn-shape:square btn-size:md">Square MD</button>
+			<button class="m3-btn btn-shape:square btn-size:lg">Square LG</button>
+			<button class="m3-btn btn:outlined btn-shape:square">Outlined Square</button>
+		</div>
+	</section>
+
+	<!-- ===== 5. Color Variants ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">5. Color Variants</h2>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1rem 0 0.75rem; color: var(--color-text-muted);">Brand</h3>
+		<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+			<button class="m3-btn btn-color:primary">Primary</button>
+			<button class="m3-btn btn-color:primary-hover">Primary Hover</button>
+			<button class="m3-btn btn-color:primary-active">Primary Active</button>
+			<button class="m3-btn btn-color:secondary">Secondary</button>
+			<button class="m3-btn btn-color:secondary-hover">Secondary Hover</button>
+			<button class="m3-btn btn-color:tertiary">Tertiary</button>
+			<button class="m3-btn btn-color:tertiary-hover">Tertiary Hover</button>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1rem 0 0.75rem; color: var(--color-text-muted);">Surface</h3>
+		<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+			<button class="m3-btn btn-color:surface">Surface</button>
+			<button class="m3-btn btn-color:surface-subtle">Surface Subtle</button>
+			<button class="m3-btn btn-color:surface-muted">Surface Muted</button>
+			<button class="m3-btn btn-color:surface-inverse">Surface Inverse</button>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1rem 0 0.75rem; color: var(--color-text-muted);">Status</h3>
+		<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+			<button class="m3-btn btn-color:success">Success</button>
+			<button class="m3-btn btn-color:warning">Warning</button>
+			<button class="m3-btn btn-color:danger">Danger</button>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1rem 0 0.75rem; color: var(--color-text-muted);">Color × Type 조합</h3>
+		<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+			<button class="m3-btn btn-color:danger">Filled Danger</button>
+			<button class="m3-btn btn:elevated btn-color:danger">Elevated Danger</button>
+			<button class="m3-btn btn:tonal btn-color:danger">Tonal Danger</button>
+			<button class="m3-btn btn:outlined btn-color:danger">Outlined Danger</button>
+			<button class="m3-btn btn:text btn-color:danger">Text Danger</button>
+		</div>
+	</section>
+
+	<!-- ===== 6. Size × Type 조합 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">6. Size × Type 조합</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end;">
+			<div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+				<span style="font-size: 0.75rem; color: var(--color-text-subtle);">XS</span>
+				<button class="m3-btn btn-size:xs">Filled</button>
+				<button class="m3-btn btn:elevated btn-size:xs">Elevated</button>
+				<button class="m3-btn btn:tonal btn-size:xs">Tonal</button>
+				<button class="m3-btn btn:outlined btn-size:xs">Outlined</button>
+			</div>
+			<div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+				<span style="font-size: 0.75rem; color: var(--color-text-subtle);">SM</span>
+				<button class="m3-btn btn-size:sm">Filled</button>
+				<button class="m3-btn btn:elevated btn-size:sm">Elevated</button>
+				<button class="m3-btn btn:tonal btn-size:sm">Tonal</button>
+				<button class="m3-btn btn:outlined btn-size:sm">Outlined</button>
+			</div>
+			<div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+				<span style="font-size: 0.75rem; color: var(--color-text-subtle);">MD</span>
+				<button class="m3-btn btn-size:md">Filled</button>
+				<button class="m3-btn btn:elevated btn-size:md">Elevated</button>
+				<button class="m3-btn btn:tonal btn-size:md">Tonal</button>
+				<button class="m3-btn btn:outlined btn-size:md">Outlined</button>
+			</div>
+			<div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+				<span style="font-size: 0.75rem; color: var(--color-text-subtle);">LG</span>
+				<button class="m3-btn btn-size:lg">Filled</button>
+				<button class="m3-btn btn:elevated btn-size:lg">Elevated</button>
+				<button class="m3-btn btn:tonal btn-size:lg">Tonal</button>
+				<button class="m3-btn btn:outlined btn-size:lg">Outlined</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===== 7. Responsive Size ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text-muted);">7. Responsive Size</h2>
+		<p style="font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem;">브라우저 너비 조절: 모바일=XS, 640px+=SM, 768px+=MD, 1024px+=LG</p>
+		<button class="m3-btn btn-size:xs sm:btn-size:sm md:btn-size:md lg:btn-size:lg">Responsive Button</button>
+		<button class="m3-btn btn:outlined btn-size:xs sm:btn-size:sm md:btn-size:md lg:btn-size:lg">Responsive Outlined</button>
+	</section>
+
+	<!-- ===== 8. Token Override ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text-muted);">8. 변수 오버라이드 (커스텀 버튼)</h2>
+		<p style="font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem;">같은 m3-btn 클래스. --btn-* 변수를 inline style로 재정의.</p>
+
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn">기본 버튼</button>
+
+			<button class="m3-btn" style="--btn-border-radius: var(--radius-2); --btn-height: var(--space-11);">
+				Radius 변경 + 높이 확대
+			</button>
+
+			<button class="m3-btn" style="--btn-background-color: #e91e63; --btn-color: #fff; --btn-border-radius: 0;">
+				완전 커스텀 (Pink, 직각)
+			</button>
+
+			<button class="m3-btn" style="--btn-background-color: transparent; --btn-color: var(--color-primary); --btn-border-width: var(--border-width-2); --btn-border-color: var(--color-primary); --btn-border-radius: var(--radius-full);">
+				변수로 만든 Outlined
+			</button>
+
+			<button class="m3-btn" style="--btn-background-color: var(--color-surface-inverse); --btn-color: var(--color-on-surface-inverse); --btn-height: var(--space-13); --btn-font-size: var(--font-size-xl); --btn-padding: 0 var(--space-10);">
+				대형 Inverse 버튼
+			</button>
+		</div>
+	</section>
+
+	<!-- ===== 9. Token Override (컨테이너 단위) ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text-muted);">9. 브랜드 전환 (컨테이너 단위)</h2>
+		<p style="font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem;">같은 버튼 코드. 컨테이너에서 --color-primary만 변경하면 안의 모든 filled 버튼이 따라 변함.</p>
+
+		<div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+			<div style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-3);">
+				<p style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">기본 (green)</p>
+				<div style="display: flex; gap: 0.5rem;">
+					<button class="m3-btn">Filled</button>
+					<button class="m3-btn btn:elevated">Elevated</button>
+					<button class="m3-btn btn:outlined">Outlined</button>
+				</div>
+			</div>
+
+			<div style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-3); --color-primary: #2196f3; --color-primary-hover: #1976d2; --color-primary-active: #1565c0; --color-on-primary: #fff; --color-primary-subtle: #e3f2fd;">
+				<p style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">Blue 브랜드</p>
+				<div style="display: flex; gap: 0.5rem;">
+					<button class="m3-btn">Filled</button>
+					<button class="m3-btn btn:elevated">Elevated</button>
+					<button class="m3-btn btn:outlined">Outlined</button>
+				</div>
+			</div>
+
+			<div style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-3); --color-primary: #ff5722; --color-primary-hover: #e64a19; --color-primary-active: #d84315; --color-on-primary: #fff; --color-primary-subtle: #fbe9e7;">
+				<p style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">Orange 브랜드</p>
+				<div style="display: flex; gap: 0.5rem;">
+					<button class="m3-btn">Filled</button>
+					<button class="m3-btn btn:elevated">Elevated</button>
+					<button class="m3-btn btn:outlined">Outlined</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===== 10. 실제 사용 예시 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">10. 실제 사용 예시</h2>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1rem 0 0.75rem; color: var(--color-text-muted);">Form 제출</h3>
+		<div style="display: flex; gap: 0.75rem;">
+			<button class="m3-btn btn-color:danger">삭제</button>
+			<button class="m3-btn btn:outlined">취소</button>
+			<button class="m3-btn">저장</button>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">Navigation</h3>
+		<nav style="display: flex; gap: 0.5rem;">
+			<button class="m3-btn btn:text">홈</button>
+			<button class="m3-btn btn:text">소개</button>
+			<button class="m3-btn btn:text">서비스</button>
+			<button class="m3-btn btn:text">문의</button>
+		</nav>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">Toolbar</h3>
+		<div style="display: flex; gap: 0.5rem; background: var(--color-surface-subtle); padding: 0.75rem; border-radius: var(--radius-3);">
+			<button class="m3-btn btn:tonal btn-size:xs">복사</button>
+			<button class="m3-btn btn:tonal btn-size:xs">붙여넣기</button>
+			<button class="m3-btn btn:tonal btn-size:xs">잘라내기</button>
+			<span style="flex: 1;"></span>
+			<button class="m3-btn btn-color:danger btn-size:xs">삭제</button>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">Card Actions</h3>
+		<div style="max-width: 24rem; border: 1px solid var(--color-border); border-radius: var(--radius-4); overflow: hidden;">
+			<div style="padding: 1.5rem;">
+				<h4 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">카드 제목</h4>
+				<p style="color: var(--color-text-muted); font-size: 0.875rem;">카드 내용 설명. 여러 줄이 될 수 있는 텍스트입니다.</p>
+			</div>
+			<div style="padding: 0 1.5rem 1.5rem; display: flex; gap: 0.5rem; justify-content: flex-end;">
+				<button class="m3-btn btn:text btn-size:xs">더 보기</button>
+				<button class="m3-btn btn-size:xs">확인</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- ===== 11. Dark Mode ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text-muted);">11. 다크모드</h2>
+		<p style="font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem;">상단 Light/Dark 버튼으로 전환. 모든 버튼이 자동으로 다크 팔레트로 변환됩니다.</p>
+		<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+			<button class="m3-btn">Filled</button>
+			<button class="m3-btn btn:elevated">Elevated</button>
+			<button class="m3-btn btn:tonal">Tonal</button>
+			<button class="m3-btn btn:outlined">Outlined</button>
+			<button class="m3-btn btn:text">Text</button>
+			<button class="m3-btn btn-color:success">Success</button>
+			<button class="m3-btn btn-color:warning">Warning</button>
+			<button class="m3-btn btn-color:danger">Danger</button>
+		</div>
+	</section>
+
+	<script>
+		function setTheme(mode) {
+			if (mode === 'auto') {
+				document.documentElement.removeAttribute('data-theme');
+			} else {
+				document.documentElement.setAttribute('data-theme', mode);
+			}
+		}
+	</script>
+</body>
+</html>
