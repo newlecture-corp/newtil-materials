@@ -100,16 +100,23 @@
 /* ================== Active State (pill background) =================== */
 /* M3 Navigation: active indicator = pill shape behind icon */
 
+/* 공통: active 시 텍스트 색을 브랜드 컬러로 변경 (선택됨 표시) */
+.m3-deco.deco-active {
+	color: var(--deco-color);
+}
+
+/* top/bottom: pill은 아이콘 뒤에만. 아이콘은 pill 위에서 흰색. */
 .m3-deco.deco-active.deco-pos\:top,
 .m3-deco.deco-active.deco-pos\:bottom {
 	&::before {
-		height: 2rem;                  /* M3: 32dp pill height */
-		width: calc(var(--icon-size) + 2rem); /* icon + padding */
+		height: 2rem;
+		width: calc(var(--icon-size) + 2rem);
 		background-color: var(--deco-color);
-		border-radius: 1rem;           /* fully rounded pill */
+		border-radius: 1rem;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		color: var(--color-on-primary);     /* 아이콘은 pill 위에서 흰색 */
 	}
 
 	&:hover::before {
@@ -121,16 +128,17 @@
 	}
 }
 
+/* left/right: pill이 전체 요소 감쌈. 아이콘+텍스트 모두 흰색. */
 .m3-deco.deco-active.deco-pos\:left,
 .m3-deco.deco-active.deco-pos\:right {
-	--deco-height: 2.5rem;            /* 40dp */
-	--deco-padding: 0 0.75rem;        /* 12dp */
+	--deco-height: 2.5rem;
+	--deco-padding: 0 0.75rem;
 
 	height: var(--deco-height);
 	padding: var(--deco-padding);
 	border-radius: calc(var(--deco-height) / 2);
 	background-color: var(--deco-color);
-	color: var(--color-on-primary);
+	color: var(--color-on-primary);         /* 아이콘+텍스트 모두 흰색 */
 
 	&:hover {
 		background-color: color-mix(in srgb, var(--deco-color) 85%, transparent);
