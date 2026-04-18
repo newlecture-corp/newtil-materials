@@ -14,7 +14,7 @@
 	/* icon (inherited from m3-icon pattern) */
 	--icon-size: 1.5rem;                  /* 24dp */
 	--icon-family: "Material Symbols Outlined";
-	--icon-color: var(--color-text);
+	/* --icon-color 기본 미정의 — 부모 색 자연 상속 */
 	--icon-fill: 0;
 	--icon-weight: 400;
 	--icon-grade: 0;
@@ -37,7 +37,7 @@
 	font-size: var(--deco-font-size);
 	text-align: center;
 	text-decoration: none;
-	color: var(--icon-color);
+	color: var(--icon-color, inherit);  /* 기본 상속, --icon-color 지정 시 오버라이드 */
 	cursor: pointer;
 
 	display: inline-flex;
