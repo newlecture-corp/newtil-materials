@@ -1,4 +1,4 @@
-# @newtil/ui
+# @newtil/components
 
 newtil 디자인 시스템의 **UI 컴포넌트 라이브러리**.
 
@@ -13,7 +13,7 @@ newtil 디자인 시스템의 **UI 컴포넌트 라이브러리**.
 ## 설치
 
 ```bash
-npm install @newtil/ui
+npm install @newtil/components
 ```
 
 `@newtil/design-tokens`는 자동으로 함께 설치됩니다.
@@ -23,26 +23,26 @@ npm install @newtil/ui
 ### CSS만 사용
 
 ```html
-<link rel="stylesheet" href="node_modules/@newtil/ui/dist/index.css">
+<link rel="stylesheet" href="node_modules/@newtil/components/dist/index.css">
 ```
 
 또는 빌드 도구에서:
 
 ```js
-import "@newtil/ui";
+import "@newtil/components";
 ```
 
 ### 컴포넌트 동작 JS
 
 ```js
-import "@newtil/ui/dist/js/n-bar.js";
-import "@newtil/ui/dist/js/n-layout.js";
+import "@newtil/components/dist/js/n-bar.js";
+import "@newtil/components/dist/js/n-layout.js";
 ```
 
 ## 커스터마이징
 
 ```css
-@import "@newtil/ui";
+@import "@newtil/components";
 
 :root {
 	--color-main-1: #ff6b00;
