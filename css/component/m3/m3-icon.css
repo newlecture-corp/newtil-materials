@@ -32,23 +32,24 @@
 	vertical-align: middle;
 	color: var(--icon-color);
 	transition: color var(--duration-fast) var(--ease-in-out);
+}
 
-	&::before {
-		flex-shrink: 0;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: var(--icon-size);
-		height: var(--icon-size);
-		color: inherit;
-		font-family: var(--icon-family);
-		font-size: var(--icon-size);
-		font-variation-settings:
-			"FILL" var(--icon-fill),
-			"wght" var(--icon-weight),
-			"GRAD" var(--icon-grade),
-			"OPSZ" var(--icon-optical-size);
-	}
+/* Icon glyph rendering — SEPARATE rule to prevent PostCSS merge */
+.m3-icon::before {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--icon-size);
+	height: var(--icon-size);
+	color: inherit;
+	font-family: var(--icon-family);
+	font-size: var(--icon-size);
+	font-variation-settings:
+		"FILL" var(--icon-fill),
+		"wght" var(--icon-weight),
+		"GRAD" var(--icon-grade),
+		"OPSZ" var(--icon-optical-size);
 }
 
 /* ================== Icon Style (font family) ========================= */

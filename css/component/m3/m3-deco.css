@@ -48,26 +48,26 @@
 
 	transition: color var(--duration-fast) var(--ease-in-out),
 		background-color var(--duration-fast) var(--ease-in-out);
+}
 
-	/* icon rendering via ::before */
-	&::before {
-		flex-shrink: 0;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: var(--icon-size);
-		height: var(--icon-size);
-		overflow: hidden;
-		order: var(--deco-order, 0);
-		color: inherit;
-		font-family: var(--icon-family);
-		font-size: var(--icon-size);
-		font-variation-settings:
-			"FILL" var(--icon-fill),
-			"wght" var(--icon-weight),
-			"GRAD" var(--icon-grade),
-			"OPSZ" var(--icon-optical-size);
-	}
+/* Icon rendering — SEPARATE rule to prevent PostCSS from merging into .m3-deco */
+.m3-deco::before {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--icon-size);
+	height: var(--icon-size);
+	overflow: hidden;
+	order: var(--deco-order, 0);
+	color: inherit;
+	font-family: var(--icon-family);
+	font-size: var(--icon-size);
+	font-variation-settings:
+		"FILL" var(--icon-fill),
+		"wght" var(--icon-weight),
+		"GRAD" var(--icon-grade),
+		"OPSZ" var(--icon-optical-size);
 }
 
 /* ================== Position ========================================= */

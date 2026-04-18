@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>m3-icon / m3-deco 테스트</title>
+	<link rel="stylesheet" href="../dist/index.css" />
+</head>
+<body style="padding: 2rem; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface);">
+
+	<!-- Theme Toggle -->
+	<div style="position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem;">
+		<button class="m3-btn btn-size:xs" onclick="setTheme('light')">Light</button>
+		<button class="m3-btn btn-size:xs" onclick="setTheme('dark')">Dark</button>
+	</div>
+
+	<h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">m3-icon / m3-deco 테스트</h1>
+
+	<!-- ===== 1. 기본 아이콘 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">1. 기본 아이콘 (icon-essential)</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home"></i><br>home</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:search"></i><br>search</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:menu"></i><br>menu</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:close"></i><br>close</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:settings"></i><br>settings</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite"></i><br>favorite</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:delete"></i><br>delete</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:edit"></i><br>edit</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:check"></i><br>check</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:add"></i><br>add</span>
+		</div>
+	</section>
+
+	<!-- ===== 2. 아이콘 스타일 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">2. 아이콘 스타일 (Outlined / Rounded / Sharp)</h2>
+		<div style="display: flex; gap: 2rem; align-items: center;">
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:settings icon-style:outlined"></i><br>outlined</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:settings icon-style:rounded"></i><br>rounded</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:settings icon-style:sharp"></i><br>sharp</span>
+		</div>
+	</section>
+
+	<!-- ===== 3. Filled / Outlined ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">3. Filled vs Outlined</h2>
+		<div style="display: flex; gap: 2rem; align-items: center;">
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-filled:0"></i><br>outlined</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-filled:1"></i><br>filled</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-filled:0"></i><br>outlined</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-filled:1"></i><br>filled</span>
+		</div>
+	</section>
+
+	<!-- ===== 4. 크기 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">4. 크기 (xs / sm / md / lg / xl)</h2>
+		<div style="display: flex; gap: 2rem; align-items: flex-end;">
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-size:xs"></i><br>xs (16dp)</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-size:sm"></i><br>sm (20dp)</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-size:md"></i><br>md (24dp)</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-size:lg"></i><br>lg (40dp)</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-size:xl"></i><br>xl (48dp)</span>
+		</div>
+	</section>
+
+	<!-- ===== 5. 굵기 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">5. 굵기 (weight 100~700)</h2>
+		<div style="display: flex; gap: 2rem; align-items: center;">
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-weight:100 icon-size:lg"></i><br>100</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-weight:300 icon-size:lg"></i><br>300</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-weight:400 icon-size:lg"></i><br>400</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:home icon-weight:700 icon-size:lg"></i><br>700</span>
+		</div>
+	</section>
+
+	<!-- ===== 6. 색상 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">6. 색상</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-color:primary icon-size:lg"></i><br>primary</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-color:secondary icon-size:lg"></i><br>secondary</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-color:tertiary icon-size:lg"></i><br>tertiary</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-color:success icon-size:lg"></i><br>success</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-color:warning icon-size:lg"></i><br>warning</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-color:danger icon-size:lg"></i><br>danger</span>
+			<span style="text-align: center; font-size: 0.75rem; color: var(--color-text-subtle);"><i class="m3-icon icon:favorite icon-color:text-muted icon-size:lg"></i><br>text-muted</span>
+		</div>
+	</section>
+
+	<!-- ===== 7. Hover 효과 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">7. Hover 효과 (icon-hover)</h2>
+		<p style="font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem;">마우스를 올리면 확대됩니다.</p>
+		<div style="display: flex; gap: 2rem; align-items: center;">
+			<i class="m3-icon icon:favorite icon-hover icon-color:danger icon-size:lg"></i>
+			<i class="m3-icon icon:home icon-hover icon-color:primary icon-size:lg"></i>
+			<i class="m3-icon icon:settings icon-hover icon-color:text-muted icon-size:lg"></i>
+		</div>
+	</section>
+
+	<!-- ===== 8. 버튼 안 아이콘 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">8. 버튼 안 아이콘</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+			<button class="m3-btn btn-icon:leading"><i class="m3-icon icon:search"></i>검색</button>
+			<button class="m3-btn btn:outlined btn-icon:leading"><i class="m3-icon icon:add"></i>추가</button>
+			<button class="m3-btn btn:tonal btn-icon:trailing">다음<i class="m3-icon icon:arrow_forward"></i></button>
+			<button class="m3-btn btn-color:danger btn-icon:leading"><i class="m3-icon icon:delete"></i>삭제</button>
+		</div>
+	</section>
+
+	<hr style="border: none; border-top: 1px solid var(--color-border); margin: 3rem 0;">
+
+	<h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">m3-deco 테스트</h1>
+
+	<!-- ===== 9. Deco 기본 (위치별) ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">9. Deco 위치 (left / right / top / bottom)</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start;">
+			<span class="m3-deco icon:home deco-pos:left">왼쪽</span>
+			<span class="m3-deco icon:home deco-pos:right">오른쪽</span>
+			<span class="m3-deco icon:home deco-pos:top">위</span>
+			<span class="m3-deco icon:home deco-pos:bottom">아래</span>
+		</div>
+	</section>
+
+	<!-- ===== 10. Deco Active (pill 배경) ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text-muted);">10. Deco Active (Navigation pill)</h2>
+		<p style="font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem;">활성 상태 — 배경 pill 표시. hover/active 시 색 변화.</p>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">Tab Bar 스타일 (top)</h3>
+		<nav style="display: flex; gap: 0.5rem; padding: 0.5rem; background: var(--color-surface-subtle); border-radius: 0.75rem;">
+			<span class="m3-deco icon:home deco-pos:top deco-active">홈</span>
+			<span class="m3-deco icon:search deco-pos:top">검색</span>
+			<span class="m3-deco icon:favorite deco-pos:top">좋아요</span>
+			<span class="m3-deco icon:person deco-pos:top">프로필</span>
+		</nav>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted);">Sidebar 스타일 (left + active)</h3>
+		<nav style="display: flex; flex-direction: column; gap: 0.25rem; width: 12rem; padding: 0.5rem; background: var(--color-surface-subtle); border-radius: 0.75rem;">
+			<span class="m3-deco icon:home deco-pos:left deco-active">홈</span>
+			<span class="m3-deco icon:mail deco-pos:left">메일</span>
+			<span class="m3-deco icon:chat deco-pos:left">채팅</span>
+			<span class="m3-deco icon:settings deco-pos:left">설정</span>
+		</nav>
+	</section>
+
+	<!-- ===== 11. Deco 크기 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">11. Deco 크기 (1~5)</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-end;">
+			<span class="m3-deco icon:home deco-pos:left deco-size:1">Size 1</span>
+			<span class="m3-deco icon:home deco-pos:left deco-size:2">Size 2</span>
+			<span class="m3-deco icon:home deco-pos:left deco-size:3">Size 3</span>
+			<span class="m3-deco icon:home deco-pos:left deco-size:4">Size 4</span>
+			<span class="m3-deco icon:home deco-pos:left deco-size:5">Size 5</span>
+		</div>
+	</section>
+
+	<!-- ===== 12. Deco 색상 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">12. Deco 색상</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
+			<span class="m3-deco icon:favorite deco-pos:left deco-color:primary">primary</span>
+			<span class="m3-deco icon:favorite deco-pos:left deco-color:secondary">secondary</span>
+			<span class="m3-deco icon:favorite deco-pos:left deco-color:tertiary">tertiary</span>
+			<span class="m3-deco icon:favorite deco-pos:left deco-color:success">success</span>
+			<span class="m3-deco icon:favorite deco-pos:left deco-color:warning">warning</span>
+			<span class="m3-deco icon:favorite deco-pos:left deco-color:danger">danger</span>
+		</div>
+	</section>
+
+	<!-- ===== 13. Deco Filled 아이콘 ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">13. Deco + Filled 아이콘</h2>
+		<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+			<span class="m3-deco icon:home deco-pos:top icon-filled:0">outlined</span>
+			<span class="m3-deco icon:home deco-pos:top icon-filled:1">filled</span>
+			<span class="m3-deco icon:favorite deco-pos:top icon-filled:0 deco-color:danger">outlined</span>
+			<span class="m3-deco icon:favorite deco-pos:top icon-filled:1 deco-color:danger">filled</span>
+		</div>
+	</section>
+
+	<!-- ===== 14. 실제 사용 — Bottom Navigation ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">14. 실제 사용 — Bottom Navigation Bar</h2>
+		<nav style="display: flex; justify-content: space-around; padding: 0.75rem 0; background: var(--color-surface-subtle); border-radius: 1rem; max-width: 24rem;">
+			<span class="m3-deco icon:home deco-pos:top deco-active icon-filled:1 deco-size:1">홈</span>
+			<span class="m3-deco icon:search deco-pos:top deco-size:1">검색</span>
+			<span class="m3-deco icon:notifications deco-pos:top deco-size:1">알림</span>
+			<span class="m3-deco icon:person deco-pos:top deco-size:1">프로필</span>
+		</nav>
+	</section>
+
+	<!-- ===== 15. 실제 사용 — Navigation Rail ===== -->
+	<section style="margin-bottom: 3rem;">
+		<h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted);">15. 실제 사용 — Navigation Rail (세로)</h2>
+		<nav style="display: flex; flex-direction: column; gap: 0.5rem; width: 5rem; padding: 1rem 0; background: var(--color-surface-subtle); border-radius: 1rem; align-items: center;">
+			<span class="m3-deco icon:home deco-pos:top deco-active icon-filled:1 deco-size:1">홈</span>
+			<span class="m3-deco icon:mail deco-pos:top deco-size:1">메일</span>
+			<span class="m3-deco icon:chat deco-pos:top deco-size:1">채팅</span>
+			<span class="m3-deco icon:settings deco-pos:top deco-size:1">설정</span>
+		</nav>
+	</section>
+
+	<script>
+		function setTheme(mode) {
+			if (mode === 'auto') {
+				document.documentElement.removeAttribute('data-theme');
+			} else {
+				document.documentElement.setAttribute('data-theme', mode);
+			}
+		}
+	</script>
+</body>
+</html>
