@@ -14,7 +14,7 @@
 .m3-icon {
 	--icon-size: 1.5rem;                  /* M3: 24dp default */
 	--icon-family: "Material Symbols Outlined";
-	--icon-color: currentColor;
+	--icon-color: var(--color-text);
 	--icon-fill: 0;                       /* 0 = outlined, 1 = filled */
 	--icon-weight: 400;                   /* 100~700 */
 	--icon-grade: 0;                      /* -25, 0, 200 */
