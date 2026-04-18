@@ -1,437 +1,159 @@
-.m3-deco,
-.m3-btn,
+/* ====== M3 Icon (Material Symbols) ==================================
+ * Material Symbols 폰트 기반 아이콘 컴포넌트.
+ * 아이콘 코드포인트는 icon-essential.css (또는 사용자 정의)에서 ::before content로 제공.
+ *
+ * 사용법:
+ *   <i class="m3-icon icon:home"></i>
+ *   <i class="m3-icon icon:search icon-style:rounded icon-filled:1"></i>
+ *   <i class="m3-icon icon:settings icon-size:3 icon-color:primary"></i>
+ *
+ * Variable API: --icon-* 변수로 커스텀 가능.
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
 .m3-icon {
-	--icon-size: var(--space-7);
+	--icon-size: 1.5rem;                  /* M3: 24dp default */
 	--icon-family: "Material Symbols Outlined";
-	--icon-color: var(--color-text);
-	--icon-fill: 0;
-	--icon-weight: 400;
-	--icon-grade: 0;
-	--icon-optical-size: 24;
+	--icon-color: currentColor;
+	--icon-fill: 0;                       /* 0 = outlined, 1 = filled */
+	--icon-weight: 400;                   /* 100~700 */
+	--icon-grade: 0;                      /* -25, 0, 200 */
+	--icon-optical-size: 24;              /* 20, 24, 40, 48 */
 }
 
-@media (prefers-color-scheme: dark) {
-	.m3-deco,
-	.m3-btn,
-	.m3-icon {
-		--icon-color: var(--color-surface-subtle);
-	}
-}
-
-.m3-deco,
-.m3-btn,
+/* ================== Base Style ======================================= */
 .m3-icon {
 	width: var(--icon-size);
 	height: var(--icon-size);
 	overflow: hidden;
-	
-	visibility: visible;
-	
-	/* layout */
 	display: inline-flex;
 	align-items: center;
-	vertical-align: top;
-
-	transition: all 0.2s ease-in-out;
+	justify-content: center;
+	vertical-align: middle;
+	color: var(--icon-color);
+	transition: color var(--duration-fast) var(--ease-in-out);
 
 	&::before {
-
 		flex-shrink: 0;
-
 		display: inline-flex;
 		align-items: center;
-		vertical-align: top;
-
+		justify-content: center;
 		width: var(--icon-size);
 		height: var(--icon-size);
-		overflow: hidden;
-
-
 		color: inherit;
 		font-family: var(--icon-family);
 		font-size: var(--icon-size);
-		font-variation-settings: 
-			"FILL" var(--icon-fill, 0), 
-			"wght" var(--icon-weight, 400), 
-			"GRAD" var(--icon-grade, 0), 
-			"OPSZ" var(--icon-optical-size, 24);	
-
+		font-variation-settings:
+			"FILL" var(--icon-fill),
+			"wght" var(--icon-weight),
+			"GRAD" var(--icon-grade),
+			"OPSZ" var(--icon-optical-size);
 	}
-
-
-	&.icon-hover:not(.n-deco):hover {
-		border-radius: 50%;		
-		transform: scale(1.4);
-
-		&::before {
-			transform: scale(0.8);
-		}
-	}
-
-	
-	/* === style  =============================== */
-	&.icon-style\:outlined::before { --icon-family: "Material Symbols Outlined"; }
-	&.icon-style\:rounded::before { --icon-family: "Material Symbols Rounded"; }
-	&.icon-style\:sharp::before { --icon-family: "Material Symbols Sharp"; }
-
-	/* ==== variation/filled =============================== */
-	&.icon-filled\:0::before { --icon-fill: 0; }
-	&.icon-filled\:1::before { --icon-fill: 1; }
-
-	/* ==== variation/weight =============================== */
-	&.icon-weight\:100::before { --icon-weight: 100; }
-	&.icon-weight\:200::before { --icon-weight: 200; }
-	&.icon-weight\:300::before { --icon-weight: 300; }
-	&.icon-weight\:400::before { --icon-weight: 400; }
-	&.icon-weight\:500::before { --icon-weight: 500; }
-	&.icon-weight\:600::before { --icon-weight: 600; }
-	&.icon-weight\:700::before { --icon-weight: 700; }
-
-	/* ==== variation/grade =============================== */
-	&.icon-grade\:1::before { --icon-grade: -25; }
-	&.icon-grade\:2::before { --icon-grade: 0; }
-	&.icon-grade\:3::before { --icon-grade: 200; }
-
-	/* ==== variation/optical-size =============================== */
-	&.icon-optical-size\:1::before { --icon-optical-size: 20; }
-	&.icon-optical-size\:2::before { --icon-optical-size: 24; }
-	&.icon-optical-size\:3::before { --icon-optical-size: 40; }
-	&.icon-optical-size\:4::before { --icon-optical-size: 48; }
-
-
-    /* === color ======================================= */ 
-    &.icon-color\:main-1::before { color: var(--color-primary); }
-    &.icon-color\:main-2::before { color: var(--color-primary-hover); }
-    &.icon-color\:main-3::before { color: var(--color-primary-active); }
-    &.icon-color\:sub-1::before { color: var(--color-secondary); }
-    &.icon-color\:sub-2::before { color: var(--color-secondary-hover); }
-    &.icon-color\:sub-3::before { color: var(--color-secondary-active); }
-    &.icon-color\:accent-1::before { color: var(--color-tertiary); }
-    &.icon-color\:accent-2::before { color: var(--color-tertiary-hover); }
-    &.icon-color\:accent-3::before { color: var(--color-tertiary-active); }
-    &.icon-color\:base-1::before { color: var(--color-surface); }
-    &.icon-color\:base-2::before { color: var(--color-surface-subtle); }
-    &.icon-color\:base-3::before { color: var(--color-surface-muted); }
-    &.icon-color\:base-4::before { color: var(--color-border-subtle); }
-    &.icon-color\:base-5::before { color: var(--color-border); }
-    &.icon-color\:base-6::before { color: var(--color-border-strong); }
-    &.icon-color\:base-7::before { color: var(--color-text-subtle); }
-    &.icon-color\:base-8::before { color: var(--color-text-muted); }
-    &.icon-color\:base-9::before { color: var(--color-text); }
-    &.icon-color\:base-10::before { color: var(--color-text); }
-    &.icon-color\:warning-1::before { color: var(--color-warning); }
-    &.icon-color\:warning-2::before { color: var(--color-warning-hover); }
-    &.icon-color\:warning-3::before { color: var(--color-warning-active); }
-    &.icon-color\:danger-1::before { color: var(--color-danger); }
-    &.icon-color\:danger-2::before { color: var(--color-danger-hover); }
-    &.icon-color\:danger-3::before { color: var(--color-danger-active); }
-
-
-	/* ---- icon-size ------------------------------------------------- */
-	&.icon-size\:1 { --icon-size: var(--space-6); }
-	&.icon-size\:2 { --icon-size: var(--space-7); }
-	&.icon-size\:3 { --icon-size: var(--space-9); }
-	&.icon-size\:4 { --icon-size: var(--space-10); }
-
 }
 
-/* .m3-deco 지원을 위한 스타일 */
-/* .m3-deco::before {
+/* ================== Icon Style (font family) ========================= */
+.m3-icon.icon-style\:outlined { --icon-family: "Material Symbols Outlined"; }
+.m3-icon.icon-style\:rounded  { --icon-family: "Material Symbols Rounded"; }
+.m3-icon.icon-style\:sharp    { --icon-family: "Material Symbols Sharp"; }
 
-	flex-shrink: 0;
+/* ================== Fill ============================================= */
+.m3-icon.icon-filled\:0 { --icon-fill: 0; }
+.m3-icon.icon-filled\:1 { --icon-fill: 1; }
 
-	display: inline-flex;
-	align-items: center;
-	vertical-align: top;
+/* ================== Weight =========================================== */
+.m3-icon.icon-weight\:100 { --icon-weight: 100; }
+.m3-icon.icon-weight\:200 { --icon-weight: 200; }
+.m3-icon.icon-weight\:300 { --icon-weight: 300; }
+.m3-icon.icon-weight\:400 { --icon-weight: 400; }
+.m3-icon.icon-weight\:500 { --icon-weight: 500; }
+.m3-icon.icon-weight\:600 { --icon-weight: 600; }
+.m3-icon.icon-weight\:700 { --icon-weight: 700; }
 
-	width: var(--icon-size);
-	height: var(--icon-size);
-	overflow: hidden;
+/* ================== Grade ============================================ */
+.m3-icon.icon-grade\:low    { --icon-grade: -25; }
+.m3-icon.icon-grade\:normal { --icon-grade: 0; }
+.m3-icon.icon-grade\:high   { --icon-grade: 200; }
 
+/* ================== Optical Size ===================================== */
+.m3-icon.icon-optical\:20 { --icon-optical-size: 20; }
+.m3-icon.icon-optical\:24 { --icon-optical-size: 24; }
+.m3-icon.icon-optical\:40 { --icon-optical-size: 40; }
+.m3-icon.icon-optical\:48 { --icon-optical-size: 48; }
 
-	color: inherit;
-	font-family: var(--icon-family);
-	font-size: var(--icon-size);
-	font-variation-settings: 
-		"FILL" var(--icon-fill, 0), 
-		"wght" var(--icon-weight, 400), 
-		"GRAD" var(--icon-grade, 0), 
-		"OPSZ" var(--icon-optical-size, 24);	
+/* ================== Size ============================================= */
+/* M3 icon sizes: 20, 24(default), 40, 48 dp */
+.m3-icon.icon-size\:xs { --icon-size: 1rem;    --icon-optical-size: 20; } /* 16dp */
+.m3-icon.icon-size\:sm { --icon-size: 1.25rem; --icon-optical-size: 20; } /* 20dp */
+.m3-icon.icon-size\:md { --icon-size: 1.5rem;  --icon-optical-size: 24; } /* 24dp (default) */
+.m3-icon.icon-size\:lg { --icon-size: 2.5rem;  --icon-optical-size: 40; } /* 40dp */
+.m3-icon.icon-size\:xl { --icon-size: 3rem;    --icon-optical-size: 48; } /* 48dp */
 
-} */
+/* 숫자 별칭 */
+.m3-icon.icon-size\:1 { --icon-size: 1rem;    --icon-optical-size: 20; }
+.m3-icon.icon-size\:2 { --icon-size: 1.25rem; --icon-optical-size: 20; }
+.m3-icon.icon-size\:3 { --icon-size: 1.5rem;  --icon-optical-size: 24; }
+.m3-icon.icon-size\:4 { --icon-size: 2.5rem;  --icon-optical-size: 40; }
+.m3-icon.icon-size\:5 { --icon-size: 3rem;    --icon-optical-size: 48; }
 
+/* ================== Color ============================================ */
+/* Brand */
+.m3-icon.icon-color\:primary        { --icon-color: var(--color-primary); }
+.m3-icon.icon-color\:primary-hover   { --icon-color: var(--color-primary-hover); }
+.m3-icon.icon-color\:primary-active  { --icon-color: var(--color-primary-active); }
+.m3-icon.icon-color\:secondary       { --icon-color: var(--color-secondary); }
+.m3-icon.icon-color\:secondary-hover { --icon-color: var(--color-secondary-hover); }
+.m3-icon.icon-color\:tertiary        { --icon-color: var(--color-tertiary); }
+.m3-icon.icon-color\:tertiary-hover  { --icon-color: var(--color-tertiary-hover); }
 
-@media (min-width: 640px) {
-	.sm\:m3-icon {
-		/* === style  =============================== */
-		&.icon-style\:outlined::before { --icon-family: "Material Symbols Outlined"; }
-		&.icon-style\:rounded::before { --icon-family: "Material Symbols Rounded"; }
-		&.icon-style\:sharp::before { --icon-family: "Material Symbols Sharp"; }
+/* Surface / Text */
+.m3-icon.icon-color\:surface         { --icon-color: var(--color-surface); }
+.m3-icon.icon-color\:on-surface      { --icon-color: var(--color-on-surface); }
+.m3-icon.icon-color\:text            { --icon-color: var(--color-text); }
+.m3-icon.icon-color\:text-muted      { --icon-color: var(--color-text-muted); }
+.m3-icon.icon-color\:text-subtle     { --icon-color: var(--color-text-subtle); }
 
-		/* ==== variation/filled =============================== */
-		&.icon-filled\:0::before { --icon-fill: 0; }
-		&.icon-filled\:1::before { --icon-fill: 1; }
+/* Status */
+.m3-icon.icon-color\:success { --icon-color: var(--color-success); }
+.m3-icon.icon-color\:warning { --icon-color: var(--color-warning); }
+.m3-icon.icon-color\:danger  { --icon-color: var(--color-danger); }
 
-		/* ==== variation/weight =============================== */
-		&.icon-weight\:100::before { --icon-weight: 100; }
-		&.icon-weight\:200::before { --icon-weight: 200; }
-		&.icon-weight\:300::before { --icon-weight: 300; }
-		&.icon-weight\:400::before { --icon-weight: 400; }
-		&.icon-weight\:500::before { --icon-weight: 500; }
-		&.icon-weight\:600::before { --icon-weight: 600; }
-		&.icon-weight\:700::before { --icon-weight: 700; }
+/* Special */
+.m3-icon.icon-color\:inherit { --icon-color: inherit; }
+.m3-icon.icon-color\:current { --icon-color: currentColor; }
+.m3-icon.icon-color\:white   { --icon-color: #ffffff; }
+.m3-icon.icon-color\:black   { --icon-color: #000000; }
 
-		/* ==== variation/grade =============================== */
-		&.icon-grade\:1::before { --icon-grade: -25; }
-		&.icon-grade\:2::before { --icon-grade: 0; }
-		&.icon-grade\:3::before { --icon-grade: 200; }
+/* ================== Hover Effect ===================================== */
+.m3-icon.icon-hover:hover {
+	border-radius: 50%;
+	transform: scale(1.3);
 
-		/* ==== variation/optical-size =============================== */
-		&.icon-optical-size\:1::before { --icon-optical-size: 20; }
-		&.icon-optical-size\:2::before { --icon-optical-size: 24; }
-		&.icon-optical-size\:3::before { --icon-optical-size: 40; }
-		&.icon-optical-size\:4::before { --icon-optical-size: 48; }
-
-
-		/* === color ======================================= */ 
-		&.icon-color\:main-1::before { color: var(--color-primary); }
-		&.icon-color\:main-2::before { color: var(--color-primary-hover); }
-		&.icon-color\:main-3::before { color: var(--color-primary-active); }
-		&.icon-color\:sub-1::before { color: var(--color-secondary); }
-		&.icon-color\:sub-2::before { color: var(--color-secondary-hover); }
-		&.icon-color\:sub-3::before { color: var(--color-secondary-active); }
-		&.icon-color\:accent-1::before { color: var(--color-tertiary); }
-		&.icon-color\:accent-2::before { color: var(--color-tertiary-hover); }
-		&.icon-color\:accent-3::before { color: var(--color-tertiary-active); }
-		&.icon-color\:base-1::before { color: var(--color-surface); }
-		&.icon-color\:base-2::before { color: var(--color-surface-subtle); }
-		&.icon-color\:base-3::before { color: var(--color-surface-muted); }
-		&.icon-color\:base-4::before { color: var(--color-border-subtle); }
-		&.icon-color\:base-5::before { color: var(--color-border); }
-		&.icon-color\:base-6::before { color: var(--color-border-strong); }
-		&.icon-color\:base-7::before { color: var(--color-text-subtle); }
-		&.icon-color\:base-8::before { color: var(--color-text-muted); }
-		&.icon-color\:base-9::before { color: var(--color-text); }
-		&.icon-color\:base-10::before { color: var(--color-text); }
-		&.icon-color\:warning-1::before { color: var(--color-warning); }
-		&.icon-color\:warning-2::before { color: var(--color-warning-hover); }
-		&.icon-color\:warning-3::before { color: var(--color-warning-active); }
-		&.icon-color\:danger-1::before { color: var(--color-danger); }
-		&.icon-color\:danger-2::before { color: var(--color-danger-hover); }
-		&.icon-color\:danger-3::before { color: var(--color-danger-active); }
-
-
-		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: var(--space-6); }
-		&.icon-size\:2 { --icon-size: var(--space-7); }
-		&.icon-size\:3 { --icon-size: var(--space-9); }
-		&.icon-size\:4 { --icon-size: var(--space-10); }
+	&::before {
+		transform: scale(0.8);
 	}
+}
+
+/* ================== Responsive Size ================================== */
+@media (min-width: 640px) {
+	.m3-icon.sm\:icon-size\:xs { --icon-size: 1rem;    --icon-optical-size: 20; }
+	.m3-icon.sm\:icon-size\:sm { --icon-size: 1.25rem; --icon-optical-size: 20; }
+	.m3-icon.sm\:icon-size\:md { --icon-size: 1.5rem;  --icon-optical-size: 24; }
+	.m3-icon.sm\:icon-size\:lg { --icon-size: 2.5rem;  --icon-optical-size: 40; }
+	.m3-icon.sm\:icon-size\:xl { --icon-size: 3rem;    --icon-optical-size: 48; }
 }
 
 @media (min-width: 768px) {
-	
-	.md\:m3-icon {
-		/* === style  =============================== */
-		&.icon-style\:outlined::before { --icon-family: "Material Symbols Outlined"; }
-		&.icon-style\:rounded::before { --icon-family: "Material Symbols Rounded"; }
-		&.icon-style\:sharp::before { --icon-family: "Material Symbols Sharp"; }
-
-		/* ==== variation/filled =============================== */
-		&.icon-filled\:0::before { --icon-fill: 0; }
-		&.icon-filled\:1::before { --icon-fill: 1; }
-
-		/* ==== variation/weight =============================== */
-		&.icon-weight\:100::before { --icon-weight: 100; }
-		&.icon-weight\:200::before { --icon-weight: 200; }
-		&.icon-weight\:300::before { --icon-weight: 300; }
-		&.icon-weight\:400::before { --icon-weight: 400; }
-		&.icon-weight\:500::before { --icon-weight: 500; }
-		&.icon-weight\:600::before { --icon-weight: 600; }
-		&.icon-weight\:700::before { --icon-weight: 700; }
-
-		/* ==== variation/grade =============================== */
-		&.icon-grade\:1::before { --icon-grade: -25; }
-		&.icon-grade\:2::before { --icon-grade: 0; }
-		&.icon-grade\:3::before { --icon-grade: 200; }
-
-		/* ==== variation/optical-size =============================== */
-		&.icon-optical-size\:1::before { --icon-optical-size: 20; }
-		&.icon-optical-size\:2::before { --icon-optical-size: 24; }
-		&.icon-optical-size\:3::before { --icon-optical-size: 40; }
-		&.icon-optical-size\:4::before { --icon-optical-size: 48; }
-
-
-		/* === color ======================================= */ 
-		&.icon-color\:main-1::before { color: var(--color-primary); }
-		&.icon-color\:main-2::before { color: var(--color-primary-hover); }
-		&.icon-color\:main-3::before { color: var(--color-primary-active); }
-		&.icon-color\:sub-1::before { color: var(--color-secondary); }
-		&.icon-color\:sub-2::before { color: var(--color-secondary-hover); }
-		&.icon-color\:sub-3::before { color: var(--color-secondary-active); }
-		&.icon-color\:accent-1::before { color: var(--color-tertiary); }
-		&.icon-color\:accent-2::before { color: var(--color-tertiary-hover); }
-		&.icon-color\:accent-3::before { color: var(--color-tertiary-active); }
-		&.icon-color\:base-1::before { color: var(--color-surface); }
-		&.icon-color\:base-2::before { color: var(--color-surface-subtle); }
-		&.icon-color\:base-3::before { color: var(--color-surface-muted); }
-		&.icon-color\:base-4::before { color: var(--color-border-subtle); }
-		&.icon-color\:base-5::before { color: var(--color-border); }
-		&.icon-color\:base-6::before { color: var(--color-border-strong); }
-		&.icon-color\:base-7::before { color: var(--color-text-subtle); }
-		&.icon-color\:base-8::before { color: var(--color-text-muted); }
-		&.icon-color\:base-9::before { color: var(--color-text); }
-		&.icon-color\:base-10::before { color: var(--color-text); }
-		&.icon-color\:warning-1::before { color: var(--color-warning); }
-		&.icon-color\:warning-2::before { color: var(--color-warning-hover); }
-		&.icon-color\:warning-3::before { color: var(--color-warning-active); }
-		&.icon-color\:danger-1::before { color: var(--color-danger); }
-		&.icon-color\:danger-2::before { color: var(--color-danger-hover); }
-		&.icon-color\:danger-3::before { color: var(--color-danger-active); }
-
-
-		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: var(--space-6); }
-		&.icon-size\:2 { --icon-size: var(--space-7); }
-		&.icon-size\:3 { --icon-size: var(--space-9); }
-		&.icon-size\:4 { --icon-size: var(--space-10); }
-	}
+	.m3-icon.md\:icon-size\:xs { --icon-size: 1rem;    --icon-optical-size: 20; }
+	.m3-icon.md\:icon-size\:sm { --icon-size: 1.25rem; --icon-optical-size: 20; }
+	.m3-icon.md\:icon-size\:md { --icon-size: 1.5rem;  --icon-optical-size: 24; }
+	.m3-icon.md\:icon-size\:lg { --icon-size: 2.5rem;  --icon-optical-size: 40; }
+	.m3-icon.md\:icon-size\:xl { --icon-size: 3rem;    --icon-optical-size: 48; }
 }
 
 @media (min-width: 1024px) {
-
-	.lg\:m3-icon {
-		/* === style  =============================== */
-		&.icon-style\:outlined::before { --icon-family: "Material Symbols Outlined"; }
-		&.icon-style\:rounded::before { --icon-family: "Material Symbols Rounded"; }
-		&.icon-style\:sharp::before { --icon-family: "Material Symbols Sharp"; }
-
-		/* ==== variation/filled =============================== */
-		&.icon-filled\:0::before { --icon-fill: 0; }
-		&.icon-filled\:1::before { --icon-fill: 1; }
-
-		/* ==== variation/weight =============================== */
-		&.icon-weight\:100::before { --icon-weight: 100; }
-		&.icon-weight\:200::before { --icon-weight: 200; }
-		&.icon-weight\:300::before { --icon-weight: 300; }
-		&.icon-weight\:400::before { --icon-weight: 400; }
-		&.icon-weight\:500::before { --icon-weight: 500; }
-		&.icon-weight\:600::before { --icon-weight: 600; }
-		&.icon-weight\:700::before { --icon-weight: 700; }
-
-		/* ==== variation/grade =============================== */
-		&.icon-grade\:1::before { --icon-grade: -25; }
-		&.icon-grade\:2::before { --icon-grade: 0; }
-		&.icon-grade\:3::before { --icon-grade: 200; }
-
-		/* ==== variation/optical-size =============================== */
-		&.icon-optical-size\:1::before { --icon-optical-size: 20; }
-		&.icon-optical-size\:2::before { --icon-optical-size: 24; }
-		&.icon-optical-size\:3::before { --icon-optical-size: 40; }
-		&.icon-optical-size\:4::before { --icon-optical-size: 48; }
-
-
-		/* === color ======================================= */ 
-		&.icon-color\:main-1::before { color: var(--color-primary); }
-		&.icon-color\:main-2::before { color: var(--color-primary-hover); }
-		&.icon-color\:main-3::before { color: var(--color-primary-active); }
-		&.icon-color\:sub-1::before { color: var(--color-secondary); }
-		&.icon-color\:sub-2::before { color: var(--color-secondary-hover); }
-		&.icon-color\:sub-3::before { color: var(--color-secondary-active); }
-		&.icon-color\:accent-1::before { color: var(--color-tertiary); }
-		&.icon-color\:accent-2::before { color: var(--color-tertiary-hover); }
-		&.icon-color\:accent-3::before { color: var(--color-tertiary-active); }
-		&.icon-color\:base-1::before { color: var(--color-surface); }
-		&.icon-color\:base-2::before { color: var(--color-surface-subtle); }
-		&.icon-color\:base-3::before { color: var(--color-surface-muted); }
-		&.icon-color\:base-4::before { color: var(--color-border-subtle); }
-		&.icon-color\:base-5::before { color: var(--color-border); }
-		&.icon-color\:base-6::before { color: var(--color-border-strong); }
-		&.icon-color\:base-7::before { color: var(--color-text-subtle); }
-		&.icon-color\:base-8::before { color: var(--color-text-muted); }
-		&.icon-color\:base-9::before { color: var(--color-text); }
-		&.icon-color\:base-10::before { color: var(--color-text); }
-		&.icon-color\:warning-1::before { color: var(--color-warning); }
-		&.icon-color\:warning-2::before { color: var(--color-warning-hover); }
-		&.icon-color\:warning-3::before { color: var(--color-warning-active); }
-		&.icon-color\:danger-1::before { color: var(--color-danger); }
-		&.icon-color\:danger-2::before { color: var(--color-danger-hover); }
-		&.icon-color\:danger-3::before { color: var(--color-danger-active); }
-
-
-		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: var(--space-6); }
-		&.icon-size\:2 { --icon-size: var(--space-7); }
-		&.icon-size\:3 { --icon-size: var(--space-9); }
-		&.icon-size\:4 { --icon-size: var(--space-10); }
-	}
-}
-
-@media (min-width: 1280px) {
-
-	.xl\:m3-icon {
-		/* === style  =============================== */
-		&.icon-style\:outlined::before { --icon-family: "Material Symbols Outlined"; }
-		&.icon-style\:rounded::before { --icon-family: "Material Symbols Rounded"; }
-		&.icon-style\:sharp::before { --icon-family: "Material Symbols Sharp"; }
-
-		/* ==== variation/filled =============================== */
-		&.icon-filled\:0::before { --icon-fill: 0; }
-		&.icon-filled\:1::before { --icon-fill: 1; }
-
-		/* ==== variation/weight =============================== */
-		&.icon-weight\:100::before { --icon-weight: 100; }
-		&.icon-weight\:200::before { --icon-weight: 200; }
-		&.icon-weight\:300::before { --icon-weight: 300; }
-		&.icon-weight\:400::before { --icon-weight: 400; }
-		&.icon-weight\:500::before { --icon-weight: 500; }
-		&.icon-weight\:600::before { --icon-weight: 600; }
-		&.icon-weight\:700::before { --icon-weight: 700; }
-
-		/* ==== variation/grade =============================== */
-		&.icon-grade\:1::before { --icon-grade: -25; }
-		&.icon-grade\:2::before { --icon-grade: 0; }
-		&.icon-grade\:3::before { --icon-grade: 200; }
-
-		/* ==== variation/optical-size =============================== */
-		&.icon-optical-size\:1::before { --icon-optical-size: 20; }
-		&.icon-optical-size\:2::before { --icon-optical-size: 24; }
-		&.icon-optical-size\:3::before { --icon-optical-size: 40; }
-		&.icon-optical-size\:4::before { --icon-optical-size: 48; }
-
-
-		/* === color ======================================= */ 
-		&.icon-color\:main-1::before { color: var(--color-primary); }
-		&.icon-color\:main-2::before { color: var(--color-primary-hover); }
-		&.icon-color\:main-3::before { color: var(--color-primary-active); }
-		&.icon-color\:sub-1::before { color: var(--color-secondary); }
-		&.icon-color\:sub-2::before { color: var(--color-secondary-hover); }
-		&.icon-color\:sub-3::before { color: var(--color-secondary-active); }
-		&.icon-color\:accent-1::before { color: var(--color-tertiary); }
-		&.icon-color\:accent-2::before { color: var(--color-tertiary-hover); }
-		&.icon-color\:accent-3::before { color: var(--color-tertiary-active); }
-		&.icon-color\:base-1::before { color: var(--color-surface); }
-		&.icon-color\:base-2::before { color: var(--color-surface-subtle); }
-		&.icon-color\:base-3::before { color: var(--color-surface-muted); }
-		&.icon-color\:base-4::before { color: var(--color-border-subtle); }
-		&.icon-color\:base-5::before { color: var(--color-border); }
-		&.icon-color\:base-6::before { color: var(--color-border-strong); }
-		&.icon-color\:base-7::before { color: var(--color-text-subtle); }
-		&.icon-color\:base-8::before { color: var(--color-text-muted); }
-		&.icon-color\:base-9::before { color: var(--color-text); }
-		&.icon-color\:base-10::before { color: var(--color-text); }
-		&.icon-color\:warning-1::before { color: var(--color-warning); }
-		&.icon-color\:warning-2::before { color: var(--color-warning-hover); }
-		&.icon-color\:warning-3::before { color: var(--color-warning-active); }
-		&.icon-color\:danger-1::before { color: var(--color-danger); }
-		&.icon-color\:danger-2::before { color: var(--color-danger-hover); }
-		&.icon-color\:danger-3::before { color: var(--color-danger-active); }
-
-
-		/* ---- icon-size ------------------------------------------------- */
-		&.icon-size\:1 { --icon-size: var(--space-6); }
-		&.icon-size\:2 { --icon-size: var(--space-7); }
-		&.icon-size\:3 { --icon-size: var(--space-9); }
-		&.icon-size\:4 { --icon-size: var(--space-10); }
-	}
+	.m3-icon.lg\:icon-size\:xs { --icon-size: 1rem;    --icon-optical-size: 20; }
+	.m3-icon.lg\:icon-size\:sm { --icon-size: 1.25rem; --icon-optical-size: 20; }
+	.m3-icon.lg\:icon-size\:md { --icon-size: 1.5rem;  --icon-optical-size: 24; }
+	.m3-icon.lg\:icon-size\:lg { --icon-size: 2.5rem;  --icon-optical-size: 40; }
+	.m3-icon.lg\:icon-size\:xl { --icon-size: 3rem;    --icon-optical-size: 48; }
 }

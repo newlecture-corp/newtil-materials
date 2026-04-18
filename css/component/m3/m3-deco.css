@@ -1,598 +1,253 @@
-/* ───────────────────────────────────
+/* ====== M3 Deco (Icon + Text Decoration) =============================
+ * 아이콘과 텍스트를 방향에 따라 조합하는 장식 컴포넌트.
+ * Navigation Bar, Navigation Rail, Tab Bar, 사이드바 메뉴 항목 등에 사용.
+ *
+ * 사용법:
+ *   <span class="m3-deco icon:home deco-pos:left">홈</span>
+ *   <span class="m3-deco icon:home deco-pos:top deco-active">홈</span>
+ *
+ * Variable API: --deco-* 변수로 커스텀 가능. --icon-* 도 상속.
+ * ================================================================= */
 
-* ───────────────────────────────────    */
-
+/* ================== Variables ======================================== */
 .m3-deco {
-	/* n-deco 변수 선언 (라이트 모드 기본값) */
-	--deco-gap: var(--space-3); /* var(--space-2) */
+	/* icon (inherited from m3-icon pattern) */
+	--icon-size: 1.5rem;                  /* 24dp */
+	--icon-family: "Material Symbols Outlined";
+	--icon-color: var(--color-text);
+	--icon-fill: 0;
+	--icon-weight: 400;
+	--icon-grade: 0;
+	--icon-optical-size: 24;
+
+	/* deco layout */
+	--deco-gap: 0.5rem;                   /* 8dp */
 	--deco-flex-direction: row;
-	--deco-order: 0;
 	--deco-width: auto;
+	--deco-height: auto;
+	--deco-padding: 0;
 	--deco-color: var(--color-primary);
-	--deco-font-size: var(--font-size-sm); /* 0.875rem - 기본값 */
+	--deco-font-size: var(--font-size-sm);
 }
 
-/* 다크 모드 지원을 위한 미디어쿼리 스타일 추가 */
-@media (prefers-color-scheme: dark) {
-	.m3-deco {
-		/* n-deco 변수 (다크 모드) - 라이트 모드와 동일 */
-		--deco-gap: var(--space-3); /* var(--space-3) */
-		--deco-color: var(--color-primary);
-	}
-}
-
+/* ================== Base Style ======================================= */
 .m3-deco {
-	/* n-deco CSS 속성 설정 */
 	width: var(--deco-width);
 	height: auto;
-	text-indent: initial;
-	text-align: center;
 	font-size: var(--deco-font-size);
+	text-align: center;
+	text-decoration: none;
+	color: var(--icon-color);
+	cursor: pointer;
 
 	display: inline-flex;
 	flex-direction: var(--deco-flex-direction);
-		
 	align-items: center;
 	justify-content: center;
-
 	gap: var(--deco-gap);
 
+	transition: color var(--duration-fast) var(--ease-in-out),
+		background-color var(--duration-fast) var(--ease-in-out);
 
-	/* deco-position ------------------------------------------------- */
-	&.deco-pos\:top,
-	&.deco-pos\:bottom {
-		--deco-flex-direction: column;	
-		--deco-height: var(--space-8); /* 기본값 (deco-active에서 사용) */
-		--deco-gap: var(--space-2);
-		--deco-width: auto;
-
-		&.deco-active {		
-			&::before {
-				height: var(--deco-height, var(--space-8));
-				width: calc(var(--icon-size) + var(--space-5) * 2);
-				background-color: var(--deco-color);
-				border-radius: calc(var(--deco-height, 2rem) / 2);
-
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-			}
-		}
-
-		&.deco-active:hover {
-			&::before {
-				background-color: color-mix(in srgb, var(--deco-color) 80%, transparent);
-			}
-		}
-		&.deco-active:active {
-			&::before {
-				background-color: color-mix(in srgb, var(--deco-color) 70%, transparent);
-			}
-		}
-	}
-
-	/* :is(li, dt, dd, td, th, div):has(> .deco-pos\:top),
-	:is(li, dt, dd, td, th, div):has(> .deco-pos\:bottom) {
-		height: auto;
-		padding-top: 0.3125rem;
-		padding-bottom: 0.3125rem;
-	} */
-
-	&.deco-pos\:left::before,
-	&.deco-pos\:top::before {
-		--deco-order: unset;
-	}
-
-	&.deco-pos\:right::before,
-	&.deco-pos\:bottom::before {
-		--deco-order: 1;
-	}
-
-	&.deco-pos\:left,
-	&.deco-pos\:right {
-		--deco-height: var(--space-9); /* 기본값 (deco-active에서 사용) */
-		--deco-padding: 0 var(--space-6); /* 기본값 (deco-active에서 사용) */
-		
-		&.deco-active {		
-			height: var(--deco-height, var(--space-9));
-			/* width: calc(var(--icon-size) + var(--space-6) * 2); */
-			padding: var(--deco-padding, 0 var(--space-6));
-			border-radius: calc(var(--deco-height, 2.5rem) / 2);
-			/* gap: var(--space-2); */
-			background-color: var(--deco-color);
-			
-			&.deco-active:hover {
-				background-color: color-mix(in srgb, var(--deco-color) 80%, transparent);			
-			}
-			&.deco-active:active {
-				background-color: color-mix(in srgb, var(--deco-color) 70%, transparent);			
-			}
-		}
-	}
-
-	
-
-	/* ---- deco-gap ------------------------------------------------- */
-
-	&.deco-gap\:0 {
-		--deco-gap: 0;
-	}
-
-	&.deco-gap\:1 {
-		--deco-gap: var(--space-2);
-	}
-
-	&.deco-gap\:2 {
-		--deco-gap: var(--space-3);
-	}
-
-	&.deco-gap\:3 {
-		--deco-gap: var(--space-4); /* var(--space-4) */
-	}
-
-	&.deco-gap\:4 {
-		--deco-gap: var(--space-5); /* var(--space-5) */
-	}
-
-	&.deco-gap\:5 {
-		--deco-gap: var(--space-6); /* var(--space-6) */
-	}
-
-	/* ---- deco-color ------------------------------------------------- */
-	&.deco-color\:main-1 { --deco-color: var(--color-primary); }
-	&.deco-color\:main-2 { --deco-color: var(--color-primary-hover); }
-	&.deco-color\:main-3 { --deco-color: var(--color-primary-active); }
-	&.deco-color\:sub-1 { --deco-color: var(--color-secondary); }
-	&.deco-color\:sub-2 { --deco-color: var(--color-secondary-hover); }
-	&.deco-color\:sub-3 { --deco-color: var(--color-secondary-active); }
-	&.deco-color\:accent-1 { --deco-color: var(--color-tertiary); }
-	&.deco-color\:accent-2 { --deco-color: var(--color-tertiary-hover); }
-	&.deco-color\:accent-3 { --deco-color: var(--color-tertiary-active); }
-	&.deco-color\:base-1 { --deco-color: var(--color-surface); }
-	&.deco-color\:base-2 { --deco-color: var(--color-surface-subtle); }
-	&.deco-color\:base-3 { --deco-color: var(--color-surface-muted); }
-	&.deco-color\:base-4 { --deco-color: var(--color-border-subtle); }
-	&.deco-color\:base-5 { --deco-color: var(--color-border); }
-	&.deco-color\:base-6 { --deco-color: var(--color-border-strong); }
-	&.deco-color\:base-7 { --deco-color: var(--color-text-subtle); }
-	&.deco-color\:base-8 { --deco-color: var(--color-text-muted); }
-	&.deco-color\:base-9 { --deco-color: var(--color-text); }
-	&.deco-color\:base-10 { --deco-color: var(--color-text); }
-	&.deco-color\:warning-1 { --deco-color: var(--color-warning); }
-	&.deco-color\:warning-2 { --deco-color: var(--color-warning-hover); }
-	&.deco-color\:warning-3 { --deco-color: var(--color-warning-active); }
-	&.deco-color\:danger-1 { --deco-color: var(--color-danger); }
-	&.deco-color\:danger-2 { --deco-color: var(--color-danger-hover); }
-	&.deco-color\:danger-3 { --deco-color: var(--color-danger-active); }
-
-	/* ---- deco-size ------------------------------------------------- */
-	/* 크기 옵션: 아이콘 크기, gap, 텍스트 크기, 높이, padding을 함께 조절 */
-	&.deco-size\:1 {
-		--deco-height: var(--space-8); /* var(--space-8) (레퍼런스: Size 1) */
-		--deco-padding: 0 var(--space-4); /* var(--space-4) (레퍼런스: Size 1) */
-		--icon-size: var(--space-6);
-		--deco-gap: var(--space-2); /* var(--space-2) */
-		--deco-font-size: var(--font-size-sm); /* 0.875rem - btn-size:xs와 유사 */
-	}
-
-	&.deco-size\:2 {
-		--deco-height: var(--space-9); /* var(--space-9) (레퍼런스: Size 2) */
-		--deco-padding: 0 var(--space-5); /* var(--space-5) (레퍼런스: Size 2) */
-		--icon-size: var(--space-7);
-		--deco-gap: var(--space-3); /* var(--space-3) */
-		--deco-font-size: var(--font-size-sm); /* 0.875rem - btn-size:sm과 유사 */
-	}
-
-	&.deco-size\:3 {
-		--deco-height: var(--space-11); /* 3.5rem (레퍼런스: Size 3) */
-		--deco-padding: 0 var(--space-7); /* var(--space-7) (레퍼런스: Size 3) */
-		--icon-size: var(--space-9);
-		--deco-gap: var(--space-3); /* var(--space-3) */
-		--deco-font-size: var(--font-size-md); /* var(--space-5) - btn-size:md와 유사 */
-	}
-
-	&.deco-size\:4 {
-		--deco-height: var(--space-13); /* var(--space-11) (레퍼런스: Size 4) */
-		--deco-padding: 0 var(--space-10); /* var(--space-10) (레퍼런스: Size 4) */
-		--icon-size: var(--space-10);
-		--deco-gap: var(--space-4); /* var(--space-4) */
-		--deco-font-size: var(--font-size-2xl); /* var(--space-7) - btn-size:lg와 유사 */
-	}
-
-	&.deco-size\:5 {
-		--deco-height: var(--space-14); /* 4.375rem (레퍼런스: Size 5) */
-		--deco-padding: 0 var(--space-11); /* var(--space-11) (레퍼런스: Size 5) */
-		--icon-size: var(--space-10);
-		--deco-gap: var(--space-5); /* var(--space-5) */
-		--deco-font-size: var(--font-size-3xl); /* var(--space-8) - btn-size:xl과 유사 */
-	}
-
-	/* ==== variation/filled =============================== */
-	&.icon-filled\:0::before { --icon-fill: 0; }
-	&.icon-filled\:1::before { --icon-fill: 1; }
-
-}
-
-@media screen and (min-width: 576px) {
-	
-	.sm\:m3-deco {
-		/* ---- deco-position ------------------------------------------------- */
-		&.deco-pos\:top,
-		&.deco-pos\:bottom {
-			--deco-flex-direction: column;	
-			--deco-height: var(--space-8);
-			--deco-gap: var(--space-2);
-			--deco-width: auto;
-		}
-
-		&.deco-pos\:left,
-		&.deco-pos\:right {
-			--deco-height: var(--space-9);
-			--deco-padding: 0 var(--space-6);
-		}
-
-		/* ---- deco-gap ------------------------------------------------- */
-		&.deco-gap\:0 { --deco-gap: 0; }
-		&.deco-gap\:1 { --deco-gap: var(--space-2); }
-		&.deco-gap\:2 { --deco-gap: var(--space-3); }
-		&.deco-gap\:3 { --deco-gap: var(--space-4); /* var(--space-4) */ }
-		&.deco-gap\:4 { --deco-gap: var(--space-5); /* var(--space-5) */ }
-		&.deco-gap\:5 { --deco-gap: var(--space-6); /* var(--space-6) */ }
-
-		/* ---- deco-color ------------------------------------------------- */
-		&.deco-color\:main-1 { --deco-color: var(--color-primary); }
-		&.deco-color\:main-2 { --deco-color: var(--color-primary-hover); }
-		&.deco-color\:main-3 { --deco-color: var(--color-primary-active); }
-		&.deco-color\:sub-1 { --deco-color: var(--color-secondary); }
-		&.deco-color\:sub-2 { --deco-color: var(--color-secondary-hover); }
-		&.deco-color\:sub-3 { --deco-color: var(--color-secondary-active); }
-		&.deco-color\:accent-1 { --deco-color: var(--color-tertiary); }
-		&.deco-color\:accent-2 { --deco-color: var(--color-tertiary-hover); }
-		&.deco-color\:accent-3 { --deco-color: var(--color-tertiary-active); }
-		&.deco-color\:base-1 { --deco-color: var(--color-surface); }
-		&.deco-color\:base-2 { --deco-color: var(--color-surface-subtle); }
-		&.deco-color\:base-3 { --deco-color: var(--color-surface-muted); }
-		&.deco-color\:base-4 { --deco-color: var(--color-border-subtle); }
-		&.deco-color\:base-5 { --deco-color: var(--color-border); }
-		&.deco-color\:base-6 { --deco-color: var(--color-border-strong); }
-		&.deco-color\:base-7 { --deco-color: var(--color-text-subtle); }
-		&.deco-color\:base-8 { --deco-color: var(--color-text-muted); }
-		&.deco-color\:base-9 { --deco-color: var(--color-text); }
-		&.deco-color\:base-10 { --deco-color: var(--color-text); }
-		&.deco-color\:warning-1 { --deco-color: var(--color-warning); }
-		&.deco-color\:warning-2 { --deco-color: var(--color-warning-hover); }
-		&.deco-color\:warning-3 { --deco-color: var(--color-warning-active); }
-		&.deco-color\:danger-1 { --deco-color: var(--color-danger); }
-		&.deco-color\:danger-2 { --deco-color: var(--color-danger-hover); }
-		&.deco-color\:danger-3 { --deco-color: var(--color-danger-active); }
-
-		/* ---- deco-size ------------------------------------------------- */
-		&.deco-size\:1 {
-			--deco-height: var(--space-8); /* var(--space-8) */
-			--deco-padding: 0 var(--space-4); /* var(--space-4) */
-			--icon-size: var(--space-6);
-			--deco-gap: var(--space-2); /* var(--space-2) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
-
-		&.deco-size\:2 {
-			--deco-height: var(--space-9); /* var(--space-9) */
-			--deco-padding: 0 var(--space-5); /* var(--space-5) */
-			--icon-size: var(--space-7);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
-
-		&.deco-size\:3 {
-			--deco-height: var(--space-11); /* 3.5rem */
-			--deco-padding: 0 var(--space-7); /* var(--space-7) */
-			--icon-size: var(--space-9);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-md); /* var(--space-5) */
-		}
-
-		&.deco-size\:4 {
-			--deco-height: var(--space-13); /* var(--space-11) */
-			--deco-padding: 0 var(--space-10); /* var(--space-10) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-4); /* var(--space-4) */
-			--deco-font-size: var(--font-size-2xl); /* var(--space-7) */
-		}
-
-		&.deco-size\:5 {
-			--deco-height: var(--space-14); /* 4.375rem */
-			--deco-padding: 0 var(--space-11); /* var(--space-11) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-5); /* var(--space-5) */
-			--deco-font-size: var(--font-size-3xl); /* var(--space-8) */
-		}
+	/* icon rendering via ::before */
+	&::before {
+		flex-shrink: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--icon-size);
+		height: var(--icon-size);
+		overflow: hidden;
+		order: var(--deco-order, 0);
+		color: inherit;
+		font-family: var(--icon-family);
+		font-size: var(--icon-size);
+		font-variation-settings:
+			"FILL" var(--icon-fill),
+			"wght" var(--icon-weight),
+			"GRAD" var(--icon-grade),
+			"OPSZ" var(--icon-optical-size);
 	}
 }
 
-@media screen and (min-width: 768px) {
-	
-	.md\:m3-deco {
-		/* ---- deco-position ------------------------------------------------- */
-		&.deco-pos\:top,
-		&.deco-pos\:bottom {
-			--deco-flex-direction: column;	
-			--deco-height: var(--space-8);
-			--deco-gap: var(--space-2);
-			--deco-width: auto;
-		}
+/* ================== Position ========================================= */
 
-		&.deco-pos\:left,
-		&.deco-pos\:right {
-			--deco-height: var(--space-9);
-			--deco-padding: 0 var(--space-6);
-		}
+/* Icon order: left/top = before text (default), right/bottom = after text */
+.m3-deco.deco-pos\:left::before,
+.m3-deco.deco-pos\:top::before {
+	order: 0;
+}
 
-		/* ---- deco-gap ------------------------------------------------- */
-		&.deco-gap\:0 { --deco-gap: 0; }
-		&.deco-gap\:1 { --deco-gap: var(--space-2); }
-		&.deco-gap\:2 { --deco-gap: var(--space-3); }
-		&.deco-gap\:3 { --deco-gap: var(--space-4); /* var(--space-4) */ }
-		&.deco-gap\:4 { --deco-gap: var(--space-5); /* var(--space-5) */ }
-		&.deco-gap\:5 { --deco-gap: var(--space-6); /* var(--space-6) */ }
+.m3-deco.deco-pos\:right::before,
+.m3-deco.deco-pos\:bottom::before {
+	order: 1;
+}
 
-		/* ---- deco-color ------------------------------------------------- */
-		&.deco-color\:main-1 { --deco-color: var(--color-primary); }
-		&.deco-color\:main-2 { --deco-color: var(--color-primary-hover); }
-		&.deco-color\:main-3 { --deco-color: var(--color-primary-active); }
-		&.deco-color\:sub-1 { --deco-color: var(--color-secondary); }
-		&.deco-color\:sub-2 { --deco-color: var(--color-secondary-hover); }
-		&.deco-color\:sub-3 { --deco-color: var(--color-secondary-active); }
-		&.deco-color\:accent-1 { --deco-color: var(--color-tertiary); }
-		&.deco-color\:accent-2 { --deco-color: var(--color-tertiary-hover); }
-		&.deco-color\:accent-3 { --deco-color: var(--color-tertiary-active); }
-		&.deco-color\:base-1 { --deco-color: var(--color-surface); }
-		&.deco-color\:base-2 { --deco-color: var(--color-surface-subtle); }
-		&.deco-color\:base-3 { --deco-color: var(--color-surface-muted); }
-		&.deco-color\:base-4 { --deco-color: var(--color-border-subtle); }
-		&.deco-color\:base-5 { --deco-color: var(--color-border); }
-		&.deco-color\:base-6 { --deco-color: var(--color-border-strong); }
-		&.deco-color\:base-7 { --deco-color: var(--color-text-subtle); }
-		&.deco-color\:base-8 { --deco-color: var(--color-text-muted); }
-		&.deco-color\:base-9 { --deco-color: var(--color-text); }
-		&.deco-color\:base-10 { --deco-color: var(--color-text); }
-		&.deco-color\:warning-1 { --deco-color: var(--color-warning); }
-		&.deco-color\:warning-2 { --deco-color: var(--color-warning-hover); }
-		&.deco-color\:warning-3 { --deco-color: var(--color-warning-active); }
-		&.deco-color\:danger-1 { --deco-color: var(--color-danger); }
-		&.deco-color\:danger-2 { --deco-color: var(--color-danger-hover); }
-		&.deco-color\:danger-3 { --deco-color: var(--color-danger-active); }
+/* Vertical layout (top/bottom) */
+.m3-deco.deco-pos\:top,
+.m3-deco.deco-pos\:bottom {
+	--deco-flex-direction: column;
+	--deco-gap: 0.25rem;              /* 4dp — tighter in vertical */
+}
 
-		/* ---- deco-size ------------------------------------------------- */
-		&.deco-size\:1 {
-			--deco-height: var(--space-8); /* var(--space-8) */
-			--deco-padding: 0 var(--space-4); /* var(--space-4) */
-			--icon-size: var(--space-6);
-			--deco-gap: var(--space-2); /* var(--space-2) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
+/* Horizontal layout (left/right) — default row, wider gap */
+.m3-deco.deco-pos\:left,
+.m3-deco.deco-pos\:right {
+	--deco-flex-direction: row;
+	--deco-gap: 0.5rem;               /* 8dp */
+}
 
-		&.deco-size\:2 {
-			--deco-height: var(--space-9); /* var(--space-9) */
-			--deco-padding: 0 var(--space-5); /* var(--space-5) */
-			--icon-size: var(--space-7);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
+/* ================== Active State (pill background) =================== */
+/* M3 Navigation: active indicator = pill shape behind icon */
 
-		&.deco-size\:3 {
-			--deco-height: var(--space-11); /* 3.5rem */
-			--deco-padding: 0 var(--space-7); /* var(--space-7) */
-			--icon-size: var(--space-9);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-md); /* var(--space-5) */
-		}
+.m3-deco.deco-active.deco-pos\:top,
+.m3-deco.deco-active.deco-pos\:bottom {
+	&::before {
+		height: 2rem;                  /* M3: 32dp pill height */
+		width: calc(var(--icon-size) + 2rem); /* icon + padding */
+		background-color: var(--deco-color);
+		border-radius: 1rem;           /* fully rounded pill */
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-		&.deco-size\:4 {
-			--deco-height: var(--space-13); /* var(--space-11) */
-			--deco-padding: 0 var(--space-10); /* var(--space-10) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-4); /* var(--space-4) */
-			--deco-font-size: var(--font-size-2xl); /* var(--space-7) */
-		}
+	&:hover::before {
+		background-color: color-mix(in srgb, var(--deco-color) 85%, transparent);
+	}
 
-		&.deco-size\:5 {
-			--deco-height: var(--space-14); /* 4.375rem */
-			--deco-padding: 0 var(--space-11); /* var(--space-11) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-5); /* var(--space-5) */
-			--deco-font-size: var(--font-size-3xl); /* var(--space-8) */
-		}
+	&:active::before {
+		background-color: color-mix(in srgb, var(--deco-color) 75%, transparent);
 	}
 }
 
-@media screen and (min-width: 992px) {
-	
-	.lg\:m3-deco {
-		/* ---- deco-position ------------------------------------------------- */
-		&.deco-pos\:top,
-		&.deco-pos\:bottom {
-			--deco-flex-direction: column;	
-			--deco-height: var(--space-8);
-			--deco-gap: var(--space-2);
-			--deco-width: auto;
-		}
+.m3-deco.deco-active.deco-pos\:left,
+.m3-deco.deco-active.deco-pos\:right {
+	--deco-height: 2.5rem;            /* 40dp */
+	--deco-padding: 0 0.75rem;        /* 12dp */
 
-		&.deco-pos\:left,
-		&.deco-pos\:right {
-			--deco-height: var(--space-9);
-			--deco-padding: 0 var(--space-6);
-		}
+	height: var(--deco-height);
+	padding: var(--deco-padding);
+	border-radius: calc(var(--deco-height) / 2);
+	background-color: var(--deco-color);
+	color: var(--color-on-primary);
 
-		/* ---- deco-gap ------------------------------------------------- */
-		&.deco-gap\:0 { --deco-gap: 0; }
-		&.deco-gap\:1 { --deco-gap: var(--space-2); }
-		&.deco-gap\:2 { --deco-gap: var(--space-3); }
-		&.deco-gap\:3 { --deco-gap: var(--space-4); /* var(--space-4) */ }
-		&.deco-gap\:4 { --deco-gap: var(--space-5); /* var(--space-5) */ }
-		&.deco-gap\:5 { --deco-gap: var(--space-6); /* var(--space-6) */ }
+	&:hover {
+		background-color: color-mix(in srgb, var(--deco-color) 85%, transparent);
+	}
 
-		/* ---- deco-color ------------------------------------------------- */
-		&.deco-color\:main-1 { --deco-color: var(--color-primary); }
-		&.deco-color\:main-2 { --deco-color: var(--color-primary-hover); }
-		&.deco-color\:main-3 { --deco-color: var(--color-primary-active); }
-		&.deco-color\:sub-1 { --deco-color: var(--color-secondary); }
-		&.deco-color\:sub-2 { --deco-color: var(--color-secondary-hover); }
-		&.deco-color\:sub-3 { --deco-color: var(--color-secondary-active); }
-		&.deco-color\:accent-1 { --deco-color: var(--color-tertiary); }
-		&.deco-color\:accent-2 { --deco-color: var(--color-tertiary-hover); }
-		&.deco-color\:accent-3 { --deco-color: var(--color-tertiary-active); }
-		&.deco-color\:base-1 { --deco-color: var(--color-surface); }
-		&.deco-color\:base-2 { --deco-color: var(--color-surface-subtle); }
-		&.deco-color\:base-3 { --deco-color: var(--color-surface-muted); }
-		&.deco-color\:base-4 { --deco-color: var(--color-border-subtle); }
-		&.deco-color\:base-5 { --deco-color: var(--color-border); }
-		&.deco-color\:base-6 { --deco-color: var(--color-border-strong); }
-		&.deco-color\:base-7 { --deco-color: var(--color-text-subtle); }
-		&.deco-color\:base-8 { --deco-color: var(--color-text-muted); }
-		&.deco-color\:base-9 { --deco-color: var(--color-text); }
-		&.deco-color\:base-10 { --deco-color: var(--color-text); }
-		&.deco-color\:warning-1 { --deco-color: var(--color-warning); }
-		&.deco-color\:warning-2 { --deco-color: var(--color-warning-hover); }
-		&.deco-color\:warning-3 { --deco-color: var(--color-warning-active); }
-		&.deco-color\:danger-1 { --deco-color: var(--color-danger); }
-		&.deco-color\:danger-2 { --deco-color: var(--color-danger-hover); }
-		&.deco-color\:danger-3 { --deco-color: var(--color-danger-active); }
-
-		/* ---- deco-size ------------------------------------------------- */
-		&.deco-size\:1 {
-			--deco-height: var(--space-8); /* var(--space-8) */
-			--deco-padding: 0 var(--space-4); /* var(--space-4) */
-			--icon-size: var(--space-6);
-			--deco-gap: var(--space-2); /* var(--space-2) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
-
-		&.deco-size\:2 {
-			--deco-height: var(--space-9); /* var(--space-9) */
-			--deco-padding: 0 var(--space-5); /* var(--space-5) */
-			--icon-size: var(--space-7);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
-
-		&.deco-size\:3 {
-			--deco-height: var(--space-11); /* 3.5rem */
-			--deco-padding: 0 var(--space-7); /* var(--space-7) */
-			--icon-size: var(--space-9);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-md); /* var(--space-5) */
-		}
-
-		&.deco-size\:4 {
-			--deco-height: var(--space-13); /* var(--space-11) */
-			--deco-padding: 0 var(--space-10); /* var(--space-10) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-4); /* var(--space-4) */
-			--deco-font-size: var(--font-size-2xl); /* var(--space-7) */
-		}
-
-		&.deco-size\:5 {
-			--deco-height: var(--space-14); /* 4.375rem */
-			--deco-padding: 0 var(--space-11); /* var(--space-11) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-5); /* var(--space-5) */
-			--deco-font-size: var(--font-size-3xl); /* var(--space-8) */
-		}
+	&:active {
+		background-color: color-mix(in srgb, var(--deco-color) 75%, transparent);
 	}
 }
 
-@media screen and (min-width: 1200px) {
-	
-	.xl\:m3-deco {
-		/* ---- deco-position ------------------------------------------------- */
-		&.deco-pos\:top,
-		&.deco-pos\:bottom {
-			--deco-flex-direction: column;	
-			--deco-height: var(--space-8);
-			--deco-gap: var(--space-2);
-			--deco-width: auto;
-		}
+/* ================== Gap ============================================== */
+.m3-deco.deco-gap\:0 { --deco-gap: 0; }
+.m3-deco.deco-gap\:1 { --deco-gap: 0.25rem; }    /* 4dp */
+.m3-deco.deco-gap\:2 { --deco-gap: 0.5rem; }     /* 8dp */
+.m3-deco.deco-gap\:3 { --deco-gap: 0.75rem; }    /* 12dp */
+.m3-deco.deco-gap\:4 { --deco-gap: 1rem; }       /* 16dp */
+.m3-deco.deco-gap\:5 { --deco-gap: 1.25rem; }    /* 20dp */
 
-		&.deco-pos\:left,
-		&.deco-pos\:right {
-			--deco-height: var(--space-9);
-			--deco-padding: 0 var(--space-6);
-		}
+/* ================== Color ============================================ */
+/* Brand */
+.m3-deco.deco-color\:primary        { --deco-color: var(--color-primary); --icon-color: var(--color-primary); }
+.m3-deco.deco-color\:primary-hover  { --deco-color: var(--color-primary-hover); --icon-color: var(--color-primary-hover); }
+.m3-deco.deco-color\:secondary      { --deco-color: var(--color-secondary); --icon-color: var(--color-secondary); }
+.m3-deco.deco-color\:secondary-hover { --deco-color: var(--color-secondary-hover); --icon-color: var(--color-secondary-hover); }
+.m3-deco.deco-color\:tertiary       { --deco-color: var(--color-tertiary); --icon-color: var(--color-tertiary); }
 
-		/* ---- deco-gap ------------------------------------------------- */
-		&.deco-gap\:0 { --deco-gap: 0; }
-		&.deco-gap\:1 { --deco-gap: var(--space-2); }
-		&.deco-gap\:2 { --deco-gap: var(--space-3); }
-		&.deco-gap\:3 { --deco-gap: var(--space-4); /* var(--space-4) */ }
-		&.deco-gap\:4 { --deco-gap: var(--space-5); /* var(--space-5) */ }
-		&.deco-gap\:5 { --deco-gap: var(--space-6); /* var(--space-6) */ }
+/* Surface / Text */
+.m3-deco.deco-color\:surface        { --deco-color: var(--color-surface); --icon-color: var(--color-surface); }
+.m3-deco.deco-color\:on-surface     { --deco-color: var(--color-on-surface); --icon-color: var(--color-on-surface); }
+.m3-deco.deco-color\:text           { --deco-color: var(--color-text); --icon-color: var(--color-text); }
+.m3-deco.deco-color\:text-muted     { --deco-color: var(--color-text-muted); --icon-color: var(--color-text-muted); }
 
-		/* ---- deco-color ------------------------------------------------- */
-		&.deco-color\:main-1 { --deco-color: var(--color-primary); }
-		&.deco-color\:main-2 { --deco-color: var(--color-primary-hover); }
-		&.deco-color\:main-3 { --deco-color: var(--color-primary-active); }
-		&.deco-color\:sub-1 { --deco-color: var(--color-secondary); }
-		&.deco-color\:sub-2 { --deco-color: var(--color-secondary-hover); }
-		&.deco-color\:sub-3 { --deco-color: var(--color-secondary-active); }
-		&.deco-color\:accent-1 { --deco-color: var(--color-tertiary); }
-		&.deco-color\:accent-2 { --deco-color: var(--color-tertiary-hover); }
-		&.deco-color\:accent-3 { --deco-color: var(--color-tertiary-active); }
-		&.deco-color\:base-1 { --deco-color: var(--color-surface); }
-		&.deco-color\:base-2 { --deco-color: var(--color-surface-subtle); }
-		&.deco-color\:base-3 { --deco-color: var(--color-surface-muted); }
-		&.deco-color\:base-4 { --deco-color: var(--color-border-subtle); }
-		&.deco-color\:base-5 { --deco-color: var(--color-border); }
-		&.deco-color\:base-6 { --deco-color: var(--color-border-strong); }
-		&.deco-color\:base-7 { --deco-color: var(--color-text-subtle); }
-		&.deco-color\:base-8 { --deco-color: var(--color-text-muted); }
-		&.deco-color\:base-9 { --deco-color: var(--color-text); }
-		&.deco-color\:base-10 { --deco-color: var(--color-text); }
-		&.deco-color\:warning-1 { --deco-color: var(--color-warning); }
-		&.deco-color\:warning-2 { --deco-color: var(--color-warning-hover); }
-		&.deco-color\:warning-3 { --deco-color: var(--color-warning-active); }
-		&.deco-color\:danger-1 { --deco-color: var(--color-danger); }
-		&.deco-color\:danger-2 { --deco-color: var(--color-danger-hover); }
-		&.deco-color\:danger-3 { --deco-color: var(--color-danger-active); }
+/* Status */
+.m3-deco.deco-color\:success { --deco-color: var(--color-success); --icon-color: var(--color-success); }
+.m3-deco.deco-color\:warning { --deco-color: var(--color-warning); --icon-color: var(--color-warning); }
+.m3-deco.deco-color\:danger  { --deco-color: var(--color-danger); --icon-color: var(--color-danger); }
 
-		/* ---- deco-size ------------------------------------------------- */
-		&.deco-size\:1 {
-			--deco-height: var(--space-8); /* var(--space-8) */
-			--deco-padding: 0 var(--space-4); /* var(--space-4) */
-			--icon-size: var(--space-6);
-			--deco-gap: var(--space-2); /* var(--space-2) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
+/* ================== Size ============================================= */
+.m3-deco.deco-size\:1 {
+	--icon-size: 1rem;      /* 16dp */
+	--icon-optical-size: 20;
+	--deco-gap: 0.25rem;
+	--deco-font-size: 0.75rem;
+	--deco-height: 2rem;    /* 32dp */
+	--deco-padding: 0 0.5rem;
+}
 
-		&.deco-size\:2 {
-			--deco-height: var(--space-9); /* var(--space-9) */
-			--deco-padding: 0 var(--space-5); /* var(--space-5) */
-			--icon-size: var(--space-7);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-sm); /* 0.875rem */
-		}
+.m3-deco.deco-size\:2 {
+	--icon-size: 1.25rem;   /* 20dp */
+	--icon-optical-size: 20;
+	--deco-gap: 0.375rem;
+	--deco-font-size: 0.875rem;
+	--deco-height: 2.5rem;  /* 40dp */
+	--deco-padding: 0 0.75rem;
+}
 
-		&.deco-size\:3 {
-			--deco-height: var(--space-11); /* 3.5rem */
-			--deco-padding: 0 var(--space-7); /* var(--space-7) */
-			--icon-size: var(--space-9);
-			--deco-gap: var(--space-3); /* var(--space-3) */
-			--deco-font-size: var(--font-size-md); /* var(--space-5) */
-		}
+.m3-deco.deco-size\:3 {
+	--icon-size: 1.5rem;    /* 24dp (default) */
+	--icon-optical-size: 24;
+	--deco-gap: 0.5rem;
+	--deco-font-size: 1rem;
+	--deco-height: 3rem;    /* 48dp */
+	--deco-padding: 0 1rem;
+}
 
-		&.deco-size\:4 {
-			--deco-height: var(--space-13); /* var(--space-11) */
-			--deco-padding: 0 var(--space-10); /* var(--space-10) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-4); /* var(--space-4) */
-			--deco-font-size: var(--font-size-2xl); /* var(--space-7) */
-		}
+.m3-deco.deco-size\:4 {
+	--icon-size: 2.5rem;    /* 40dp */
+	--icon-optical-size: 40;
+	--deco-gap: 0.5rem;
+	--deco-font-size: 1.25rem;
+	--deco-height: 3.5rem;  /* 56dp */
+	--deco-padding: 0 1.25rem;
+}
 
-		&.deco-size\:5 {
-			--deco-height: var(--space-14); /* 4.375rem */
-			--deco-padding: 0 var(--space-11); /* var(--space-11) */
-			--icon-size: var(--space-10);
-			--deco-gap: var(--space-5); /* var(--space-5) */
-			--deco-font-size: var(--font-size-3xl); /* var(--space-8) */
-		}
-	}
+.m3-deco.deco-size\:5 {
+	--icon-size: 3rem;      /* 48dp */
+	--icon-optical-size: 48;
+	--deco-gap: 0.75rem;
+	--deco-font-size: 1.5rem;
+	--deco-height: 4rem;    /* 64dp */
+	--deco-padding: 0 1.5rem;
+}
+
+/* ================== Fill (shared with m3-icon) ======================= */
+.m3-deco.icon-filled\:0 { --icon-fill: 0; }
+.m3-deco.icon-filled\:1 { --icon-fill: 1; }
+
+/* ================== Responsive Size ================================== */
+@media (min-width: 640px) {
+	.m3-deco.sm\:deco-size\:1 { --icon-size: 1rem; --icon-optical-size: 20; --deco-gap: 0.25rem; --deco-font-size: 0.75rem; --deco-height: 2rem; --deco-padding: 0 0.5rem; }
+	.m3-deco.sm\:deco-size\:2 { --icon-size: 1.25rem; --icon-optical-size: 20; --deco-gap: 0.375rem; --deco-font-size: 0.875rem; --deco-height: 2.5rem; --deco-padding: 0 0.75rem; }
+	.m3-deco.sm\:deco-size\:3 { --icon-size: 1.5rem; --icon-optical-size: 24; --deco-gap: 0.5rem; --deco-font-size: 1rem; --deco-height: 3rem; --deco-padding: 0 1rem; }
+	.m3-deco.sm\:deco-size\:4 { --icon-size: 2.5rem; --icon-optical-size: 40; --deco-gap: 0.5rem; --deco-font-size: 1.25rem; --deco-height: 3.5rem; --deco-padding: 0 1.25rem; }
+	.m3-deco.sm\:deco-size\:5 { --icon-size: 3rem; --icon-optical-size: 48; --deco-gap: 0.75rem; --deco-font-size: 1.5rem; --deco-height: 4rem; --deco-padding: 0 1.5rem; }
+
+	.m3-deco.sm\:deco-pos\:top, .m3-deco.sm\:deco-pos\:bottom { --deco-flex-direction: column; --deco-gap: 0.25rem; }
+	.m3-deco.sm\:deco-pos\:left, .m3-deco.sm\:deco-pos\:right { --deco-flex-direction: row; --deco-gap: 0.5rem; }
+}
+
+@media (min-width: 768px) {
+	.m3-deco.md\:deco-size\:1 { --icon-size: 1rem; --icon-optical-size: 20; --deco-gap: 0.25rem; --deco-font-size: 0.75rem; --deco-height: 2rem; --deco-padding: 0 0.5rem; }
+	.m3-deco.md\:deco-size\:2 { --icon-size: 1.25rem; --icon-optical-size: 20; --deco-gap: 0.375rem; --deco-font-size: 0.875rem; --deco-height: 2.5rem; --deco-padding: 0 0.75rem; }
+	.m3-deco.md\:deco-size\:3 { --icon-size: 1.5rem; --icon-optical-size: 24; --deco-gap: 0.5rem; --deco-font-size: 1rem; --deco-height: 3rem; --deco-padding: 0 1rem; }
+	.m3-deco.md\:deco-size\:4 { --icon-size: 2.5rem; --icon-optical-size: 40; --deco-gap: 0.5rem; --deco-font-size: 1.25rem; --deco-height: 3.5rem; --deco-padding: 0 1.25rem; }
+	.m3-deco.md\:deco-size\:5 { --icon-size: 3rem; --icon-optical-size: 48; --deco-gap: 0.75rem; --deco-font-size: 1.5rem; --deco-height: 4rem; --deco-padding: 0 1.5rem; }
+
+	.m3-deco.md\:deco-pos\:top, .m3-deco.md\:deco-pos\:bottom { --deco-flex-direction: column; --deco-gap: 0.25rem; }
+	.m3-deco.md\:deco-pos\:left, .m3-deco.md\:deco-pos\:right { --deco-flex-direction: row; --deco-gap: 0.5rem; }
+}
+
+@media (min-width: 1024px) {
+	.m3-deco.lg\:deco-size\:1 { --icon-size: 1rem; --icon-optical-size: 20; --deco-gap: 0.25rem; --deco-font-size: 0.75rem; --deco-height: 2rem; --deco-padding: 0 0.5rem; }
+	.m3-deco.lg\:deco-size\:2 { --icon-size: 1.25rem; --icon-optical-size: 20; --deco-gap: 0.375rem; --deco-font-size: 0.875rem; --deco-height: 2.5rem; --deco-padding: 0 0.75rem; }
+	.m3-deco.lg\:deco-size\:3 { --icon-size: 1.5rem; --icon-optical-size: 24; --deco-gap: 0.5rem; --deco-font-size: 1rem; --deco-height: 3rem; --deco-padding: 0 1rem; }
+	.m3-deco.lg\:deco-size\:4 { --icon-size: 2.5rem; --icon-optical-size: 40; --deco-gap: 0.5rem; --deco-font-size: 1.25rem; --deco-height: 3.5rem; --deco-padding: 0 1.25rem; }
+	.m3-deco.lg\:deco-size\:5 { --icon-size: 3rem; --icon-optical-size: 48; --deco-gap: 0.75rem; --deco-font-size: 1.5rem; --deco-height: 4rem; --deco-padding: 0 1.5rem; }
+
+	.m3-deco.lg\:deco-pos\:top, .m3-deco.lg\:deco-pos\:bottom { --deco-flex-direction: column; --deco-gap: 0.25rem; }
+	.m3-deco.lg\:deco-pos\:left, .m3-deco.lg\:deco-pos\:right { --deco-flex-direction: row; --deco-gap: 0.5rem; }
 }
