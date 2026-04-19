@@ -2,47 +2,68 @@
  * Type :  elevated (default) | filled | outlined
  * State:  enabled (default) | disabled | hover | focus | active | dragged
  *
- * M3 카드 = 컨테이너 + 콘텐츠 구성 헬퍼
- * 컨테이너: M3 토큰 기반 (elevation, shape, color)
- * 콘텐츠: card-media, card-header, card-content, card-actions 조합
+ * 원칙: 모든 CSS 속성은 .m3-card 에서 변수로 적용.
+ *       옵션 클래스는 변수 값만 변경. CSS 속성 직접 사용 금지.
  *
- * Variable API: --card-* 변수로 커스텀 가능
+ * Variable API: --card-* 변수로 모든 시각 요소 커스텀 가능
  * ================================================================= */
 
 /* ================== Variables (Customization API) ==================== */
 .m3-card {
 	/* -- container -- */
-	--card-background: var(--color-surface-subtle);   /* M3: surface-container-low */
+	--card-background: var(--color-surface-subtle);
 	--card-width: auto;
 	--card-height: auto;
 	--card-border: none;
-	--card-border-radius: 0.75rem;                    /* M3: corner-medium = 12dp */
-	--card-box-shadow: var(--shadow-sm);               /* M3: elevation level1 */
+	--card-border-radius: 0.75rem;
+	--card-box-shadow: var(--shadow-sm);
 	--card-opacity: 1;
-
-	/* -- outline/focus -- */
+	--card-color: var(--color-on-surface);
+	--card-text-decoration: none;
 	--card-outline: none;
 	--card-outline-offset: 0;
-
-	/* -- text -- */
-	--card-color: var(--color-on-surface);
+	--card-transform: none;
+	--card-cursor: default;
+	--card-overflow: hidden;
+	--card-flex-direction: column;
 
 	/* -- content area spacing -- */
-	--card-padding-x: 1rem;                            /* M3: 16dp horizontal */
-	--card-padding-y: 1rem;                            /* M3: 16dp vertical */
-	--card-header-gap: 1rem;                           /* 아바타/제목 사이 */
-	--card-section-gap: 0;                             /* 영역 사이 간격 */
+	--card-padding-x: 1rem;
+	--card-padding-y: 1rem;
+	--card-header-gap: 1rem;
 
 	/* -- header typography -- */
-	--card-headline-size: 1.5rem;                      /* M3: title-large 22sp → 24px */
-	--card-headline-weight: 400;                       /* M3: regular */
-	--card-headline-line-height: 1.75rem;              /* M3: 28sp */
-	--card-subhead-size: 0.875rem;                     /* M3: body-medium 14sp */
+	--card-headline-size: 1.5rem;
+	--card-headline-weight: 400;
+	--card-headline-line-height: 1.75rem;
+	--card-headline-color: var(--color-on-surface);
+	--card-headline-margin: 0;
+	--card-subhead-size: 0.875rem;
 	--card-subhead-weight: 500;
 	--card-subhead-color: var(--color-text-muted);
-	--card-supporting-size: 0.875rem;                  /* M3: body-medium 14sp */
+	--card-subhead-margin: 0.25rem 0 0;
+
+	/* -- supporting text -- */
+	--card-supporting-size: 0.875rem;
 	--card-supporting-color: var(--color-text-muted);
-	--card-supporting-line-height: 1.25rem;            /* M3: 20sp */
+	--card-supporting-line-height: 1.25rem;
+
+	/* -- avatar -- */
+	--card-avatar-size: 2.5rem;
+	--card-avatar-radius: 50%;
+	--card-avatar-background: var(--color-primary-subtle);
+	--card-avatar-color: var(--color-primary);
+	--card-avatar-font-size: 1rem;
+	--card-avatar-font-weight: 600;
+
+	/* -- media -- */
+	--card-media-height: auto;
+	--card-media-object-fit: cover;
+	--card-media-width: auto;
+
+	/* -- actions -- */
+	--card-actions-gap: 0.5rem;
+	--card-actions-padding: 0 var(--card-padding-x) var(--card-padding-y);
 
 	/* -- state layer -- */
 	--card-state-layer-color: var(--color-on-surface);
@@ -52,16 +73,13 @@
 	--card-state-dragged-opacity: 0.16;
 
 	/* -- effects -- */
-	--card-elevation-hover: var(--shadow-md);           /* M3: level2 on hover */
-	--card-transform: none;
-	--card-cursor: default;
-	--card-overflow: hidden;
+	--card-elevation-hover: var(--shadow-md);
 }
 
 /* ================== Base Container =================================== */
 .m3-card {
 	display: flex;
-	flex-direction: column;
+	flex-direction: var(--card-flex-direction);
 	background-color: var(--card-background);
 	background-image: none;
 	width: var(--card-width);
@@ -71,13 +89,12 @@
 	box-shadow: var(--card-box-shadow);
 	opacity: var(--card-opacity);
 	color: var(--card-color);
-
+	text-decoration: var(--card-text-decoration);
 	outline: var(--card-outline);
 	outline-offset: var(--card-outline-offset);
 	transform: var(--card-transform);
 	overflow: var(--card-overflow);
 	cursor: var(--card-cursor);
-
 	position: relative;
 	box-sizing: border-box;
 	transition:
@@ -119,7 +136,6 @@
 	--card-opacity: 0.38;
 	--card-box-shadow: none;
 	--card-cursor: not-allowed;
-	pointer-events: none;
 }
 
 .m3-card.card-state\:dragged {
@@ -172,24 +188,22 @@
 .m3-card[onclick],
 a.m3-card {
 	--card-cursor: pointer;
-	text-decoration: none;
-	color: inherit;
+	--card-text-decoration: none;
+	--card-color: inherit;
 }
 
 /* ================== Content: Media =================================== */
-/* 카드 상단 이미지/비디오 — 카드 라운딩에 맞춤 */
 
 .m3-card .card-media {
-	overflow: hidden;
+	overflow: var(--card-overflow);
 	flex-shrink: 0;
+	width: var(--card-media-width);
 }
 
-/* 첫 번째 자식이 media일 때 상단 라운딩 */
 .m3-card .card-media:first-child {
 	border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
 }
 
-/* 마지막 자식이 media일 때 하단 라운딩 */
 .m3-card .card-media:last-child {
 	border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
 }
@@ -198,12 +212,11 @@ a.m3-card {
 .m3-card .card-media video {
 	display: block;
 	width: 100%;
-	height: auto;
-	object-fit: cover;
+	height: var(--card-media-height);
+	object-fit: var(--card-media-object-fit);
 }
 
 /* ================== Content: Header ================================== */
-/* M3 카드 헤더: 아바타(선택) + headline + subhead */
 
 .m3-card .card-header {
 	display: flex;
@@ -212,30 +225,28 @@ a.m3-card {
 	padding: var(--card-padding-y) var(--card-padding-x);
 }
 
-/* 아바타 영역 */
-.m3-card .card-header .card-avatar {
+.m3-card .card-avatar {
 	flex-shrink: 0;
-	width: 2.5rem;                                     /* M3: 40dp */
-	height: 2.5rem;
-	border-radius: 50%;
+	width: var(--card-avatar-size);
+	height: var(--card-avatar-size);
+	border-radius: var(--card-avatar-radius);
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--color-primary-subtle);
-	color: var(--color-primary);
-	font-weight: 600;
-	font-size: 1rem;
+	background-color: var(--card-avatar-background);
+	color: var(--card-avatar-color);
+	font-weight: var(--card-avatar-font-weight);
+	font-size: var(--card-avatar-font-size);
 }
 
-.m3-card .card-header .card-avatar img {
+.m3-card .card-avatar img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
-/* 제목 영역 */
-.m3-card .card-header .card-titles {
+.m3-card .card-titles {
 	flex: 1;
 	min-width: 0;
 }
@@ -244,21 +255,18 @@ a.m3-card {
 	font-size: var(--card-headline-size);
 	font-weight: var(--card-headline-weight);
 	line-height: var(--card-headline-line-height);
-	color: var(--card-color);
-	margin: 0;
+	color: var(--card-headline-color);
+	margin: var(--card-headline-margin);
 }
 
 .m3-card .card-subhead {
 	font-size: var(--card-subhead-size);
 	font-weight: var(--card-subhead-weight);
 	color: var(--card-subhead-color);
-	margin: 0.25rem 0 0;
+	margin: var(--card-subhead-margin);
 }
 
-/* 헤더에 아바타 없이 바로 제목만 쓸 경우 — card-titles 래퍼 없이도 동작 */
-
 /* ================== Content: Body ==================================== */
-/* 본문 텍스트 (supporting text) */
 
 .m3-card .card-content {
 	padding: var(--card-padding-y) var(--card-padding-x);
@@ -267,42 +275,30 @@ a.m3-card {
 	line-height: var(--card-supporting-line-height);
 }
 
-/* 연속된 콘텐츠 영역 간 중복 패딩 제거 */
 .m3-card .card-header + .card-content {
 	padding-top: 0;
 }
 
-.m3-card .card-header + .card-media {
-	margin-top: 0;
-}
-
 /* ================== Content: Actions ================================= */
-/* 카드 하단 버튼 영역 */
 
 .m3-card .card-actions {
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0 var(--card-padding-x) var(--card-padding-y);
+	gap: var(--card-actions-gap);
+	padding: var(--card-actions-padding);
 }
 
-/* 좌우 분리 (왼쪽 액션 + 오른쪽 액션) */
-.m3-card .card-actions .card-actions-end {
+.m3-card .card-actions-end {
 	margin-left: auto;
 	display: flex;
-	gap: 0.5rem;
+	gap: var(--card-actions-gap);
 }
 
-/* ================== Layout Variants ================================== */
+/* ================== Layout: Horizontal =============================== */
 
-/* 가로 레이아웃 카드 (이미지 옆 + 콘텐츠) */
 .m3-card.card-layout\:horizontal {
-	flex-direction: row;
-}
-
-.m3-card.card-layout\:horizontal .card-media {
-	width: 40%;
-	flex-shrink: 0;
+	--card-flex-direction: row;
+	--card-media-width: 40%;
 }
 
 .m3-card.card-layout\:horizontal .card-media:first-child {
@@ -321,6 +317,8 @@ a.m3-card {
 	--card-headline-size: 1rem;
 	--card-headline-line-height: 1.5rem;
 	--card-header-gap: 0.75rem;
+	--card-avatar-size: 2rem;
+	--card-avatar-font-size: 0.75rem;
 }
 
 .m3-card.card-size\:large {
@@ -329,6 +327,8 @@ a.m3-card {
 	--card-headline-size: 1.75rem;
 	--card-headline-line-height: 2.25rem;
 	--card-header-gap: 1.25rem;
+	--card-avatar-size: 3rem;
+	--card-avatar-font-size: 1.25rem;
 }
 
 /* ================== Responsive ======================================= */
@@ -337,7 +337,7 @@ a.m3-card {
 	.m3-card.sm\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
 	.m3-card.sm\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
 	.m3-card.sm\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
-	.m3-card.sm\:card-layout\:horizontal { flex-direction: row; }
+	.m3-card.sm\:card-layout\:horizontal { --card-flex-direction: row; --card-media-width: 40%; }
 	.m3-card.sm\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
 	.m3-card.sm\:card-size\:large { --card-padding-x: 1.5rem; --card-padding-y: 1.5rem; --card-headline-size: 1.75rem; }
 }
@@ -346,7 +346,7 @@ a.m3-card {
 	.m3-card.md\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
 	.m3-card.md\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
 	.m3-card.md\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
-	.m3-card.md\:card-layout\:horizontal { flex-direction: row; }
+	.m3-card.md\:card-layout\:horizontal { --card-flex-direction: row; --card-media-width: 40%; }
 	.m3-card.md\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
 	.m3-card.md\:card-size\:large { --card-padding-x: 1.5rem; --card-padding-y: 1.5rem; --card-headline-size: 1.75rem; }
 }
@@ -355,7 +355,7 @@ a.m3-card {
 	.m3-card.lg\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
 	.m3-card.lg\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
 	.m3-card.lg\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
-	.m3-card.lg\:card-layout\:horizontal { flex-direction: row; }
+	.m3-card.lg\:card-layout\:horizontal { --card-flex-direction: row; --card-media-width: 40%; }
 	.m3-card.lg\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
 	.m3-card.lg\:card-size\:large { --card-padding-x: 1.5rem; --card-padding-y: 1.5rem; --card-headline-size: 1.75rem; }
 }
