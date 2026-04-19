@@ -1,0 +1,167 @@
+/* ====== M3 Adaptive Page Layout =====================================
+ * M3 adaptive guidelines: page shell that arranges Top App Bar,
+ * Navigation, and Content area with automatic navigation switching.
+ *
+ * Breakpoints:
+ *   Compact  (< 600px)  — Top App Bar + Content + Bottom Nav Bar
+ *   Medium   (600–839px) — Nav Rail (left) + Top App Bar + Content
+ *   Expanded (≥ 840px)   — Nav Drawer (left) + Top App Bar + Content
+ *
+ * 사용법:
+ *   <div class="m3-layout">
+ *     <nav class="m3-nav-drawer layout-drawer">...</nav>
+ *     <nav class="m3-nav-rail layout-rail">...</nav>
+ *     <div class="layout-main">
+ *       <header class="m3-top-app-bar layout-header">...</header>
+ *       <main class="layout-content">...</main>
+ *     </div>
+ *     <nav class="m3-nav-bar layout-bar">...</nav>
+ *   </div>
+ *
+ * Option classes:
+ *   layout:fixed-drawer — drawer always visible regardless of breakpoint
+ *   layout:no-header    — hides the top app bar
+ *
+ * Variable API: --layout-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-layout {
+	/* -- dimensions -- */
+	--layout-drawer-width: 22.5rem;                  /* 360dp */
+	--layout-rail-width: 5rem;                       /* 80dp */
+	--layout-bar-height: 5rem;                       /* 80dp */
+	--layout-header-height: 4rem;                    /* 64dp */
+
+	/* -- colors -- */
+	--layout-background: var(--color-surface);
+
+	/* -- content -- */
+	--layout-content-padding: 1.5rem;
+
+	/* -- transition -- */
+	--layout-transition: all var(--duration-normal) var(--ease-out);
+
+	/* -- responsive visibility (controlled by media queries) -- */
+	--layout-drawer-display: none;
+	--layout-rail-display: none;
+	--layout-bar-display: flex;
+	--layout-main-margin-left: 0;
+	--layout-main-padding-bottom: var(--layout-bar-height);
+	--layout-header-display: flex;
+	--layout-header-menu-display: flex;
+}
+
+/* ================== Base ============================================= */
+.m3-layout {
+	background-color: var(--layout-background);
+
+	display: flex;
+	min-height: 100vh;
+	min-height: 100dvh;
+	box-sizing: border-box;
+	position: relative;
+}
+
+/* ================== Drawer (layout-drawer) =========================== */
+.m3-layout > .layout-drawer {
+	display: var(--layout-drawer-display);
+	width: var(--layout-drawer-width);
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	flex-direction: column;
+	z-index: var(--z-fixed);
+}
+
+/* ================== Rail (layout-rail) =============================== */
+.m3-layout > .layout-rail {
+	display: var(--layout-rail-display);
+	width: var(--layout-rail-width);
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	flex-direction: column;
+	align-items: center;
+	z-index: var(--z-fixed);
+}
+
+/* ================== Main (layout-main) =============================== */
+.m3-layout > .layout-main {
+	margin-left: var(--layout-main-margin-left);
+	padding-bottom: var(--layout-main-padding-bottom);
+	transition: var(--layout-transition);
+
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 100vh;
+	min-height: 100dvh;
+	min-width: 0;
+}
+
+/* ================== Header (layout-header) =========================== */
+.m3-layout .layout-header {
+	display: var(--layout-header-display);
+}
+
+.m3-layout .layout-header .bar-leading {
+	display: var(--layout-header-menu-display);
+}
+
+/* ================== Content (layout-content) ========================= */
+.m3-layout .layout-content {
+	padding: var(--layout-content-padding);
+
+	flex: 1;
+	overflow-y: auto;
+}
+
+/* ================== Bar (layout-bar) ================================= */
+.m3-layout > .layout-bar {
+	display: var(--layout-bar-display);
+}
+
+/* ================== Responsive: Medium (600px — 839px) =============== */
+@media (min-width: 600px) {
+	.m3-layout {
+		--layout-drawer-display: none;
+		--layout-rail-display: flex;
+		--layout-bar-display: none;
+		--layout-main-margin-left: var(--layout-rail-width);
+		--layout-main-padding-bottom: 0;
+	}
+}
+
+/* ================== Responsive: Expanded (≥ 840px) =================== */
+@media (min-width: 840px) {
+	.m3-layout {
+		--layout-drawer-display: flex;
+		--layout-rail-display: none;
+		--layout-bar-display: none;
+		--layout-main-margin-left: var(--layout-drawer-width);
+		--layout-main-padding-bottom: 0;
+		--layout-header-menu-display: none;
+	}
+}
+
+/* ================== Options ========================================== */
+
+/* layout:fixed-drawer — drawer always visible */
+.m3-layout.layout\:fixed-drawer {
+	--layout-drawer-display: flex;
+	--layout-rail-display: none;
+	--layout-bar-display: none;
+	--layout-main-margin-left: var(--layout-drawer-width);
+	--layout-main-padding-bottom: 0;
+	--layout-header-menu-display: none;
+}
+
+/* layout:no-header — hides the top app bar */
+.m3-layout.layout\:no-header {
+	--layout-header-display: none;
+}

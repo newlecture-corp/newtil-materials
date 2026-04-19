@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>m3-layout 테스트 — Adaptive Page Layout</title>
+	<link rel="stylesheet" href="../dist/index.css" />
+	<style>
+		/* fallback: dist가 최신이 아닐 경우 npm run build 후 새로고침 */
+		body { margin: 0; font-family: system-ui; }
+		pre.source { background: var(--color-surface-muted); color: var(--color-text); padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.8125rem; line-height: 1.5; overflow-x: auto; margin: 0.75rem 0 0; font-family: ui-monospace, monospace; }
+		.demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+		.info-banner { background: var(--color-primary-subtle); color: var(--color-primary); padding: 1rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; font-size: 0.875rem; line-height: 1.6; }
+	</style>
+</head>
+<body>
+
+<div class="m3-layout">
+
+	<!-- ===== Navigation Drawer (desktop ≥ 840px) ===== -->
+	<nav class="m3-nav-drawer layout-drawer">
+		<div class="drawer-header">
+			<h2 class="drawer-headline">newtil App</h2>
+		</div>
+		<div class="drawer-content">
+			<a href="#" class="drawer-item drawer-item-active">
+				<i class="m3-icon icon:home"></i>
+				<span class="drawer-label">홈</span>
+			</a>
+			<a href="#" class="drawer-item">
+				<i class="m3-icon icon:mail"></i>
+				<span class="drawer-label">메일</span>
+			</a>
+			<a href="#" class="drawer-item">
+				<i class="m3-icon icon:chat"></i>
+				<span class="drawer-label">메시지</span>
+			</a>
+			<hr class="m3-divider">
+			<span class="drawer-section-header">설정</span>
+			<a href="#" class="drawer-item">
+				<i class="m3-icon icon:settings"></i>
+				<span class="drawer-label">환경설정</span>
+			</a>
+			<a href="#" class="drawer-item">
+				<i class="m3-icon icon:info"></i>
+				<span class="drawer-label">정보</span>
+			</a>
+		</div>
+	</nav>
+
+	<!-- ===== Navigation Rail (tablet 600–839px) ===== -->
+	<nav class="m3-nav-rail layout-rail">
+		<div class="rail-items">
+			<a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+			<a href="#" class="m3-deco icon:mail deco-pos:top">메일</a>
+			<a href="#" class="m3-deco icon:chat deco-pos:top">메시지</a>
+			<a href="#" class="m3-deco icon:settings deco-pos:top">설정</a>
+		</div>
+	</nav>
+
+	<!-- ===== Main Area ===== -->
+	<div class="layout-main">
+		<header class="m3-top-app-bar bar:outlined layout-header">
+			<button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
+			<h1 class="bar-title">Adaptive Layout 테스트</h1>
+			<div class="bar-trailing">
+				<button onclick="toggleTheme()"><i class="m3-icon icon:dark_mode"></i></button>
+			</div>
+		</header>
+
+		<main class="layout-content">
+
+			<!-- 안내 배너 -->
+			<div class="info-banner">
+				이 페이지를 리사이즈하면 Navigation이 자동 전환됩니다.<br>
+				<strong>Compact (&lt; 600px)</strong>: 하단 Navigation Bar &nbsp;|&nbsp;
+				<strong>Medium (600–839px)</strong>: 좌측 Navigation Rail &nbsp;|&nbsp;
+				<strong>Expanded (&ge; 840px)</strong>: 좌측 Navigation Drawer
+			</div>
+
+			<!-- 컨텐츠: 카드 그리드 -->
+			<h2 style="font-size: 1.25rem; font-weight: 600; margin: 0 0 1rem; color: var(--color-text-muted);">카드 컴포넌트 예시</h2>
+			<div class="demo-grid">
+
+				<div class="m3-card">
+					<div class="card-header">
+						<div class="card-titles">
+							<h3 class="card-headline">Elevated 카드</h3>
+							<p class="card-subhead">기본 그림자 카드</p>
+						</div>
+					</div>
+					<div class="card-content">레이아웃 안에서 카드 컴포넌트가 정상 작동하는지 확인합니다.</div>
+				</div>
+
+				<div class="m3-card card:filled">
+					<div class="card-header">
+						<div class="card-titles">
+							<h3 class="card-headline">Filled 카드</h3>
+							<p class="card-subhead">배경색 카드</p>
+						</div>
+					</div>
+					<div class="card-content">Medium 이상에서는 좌측 Navigation이 보이고 카드가 오른쪽에 배치됩니다.</div>
+				</div>
+
+				<div class="m3-card card:outlined">
+					<div class="card-header">
+						<div class="card-titles">
+							<h3 class="card-headline">Outlined 카드</h3>
+							<p class="card-subhead">테두리 카드</p>
+						</div>
+					</div>
+					<div class="card-content">Compact에서는 하단 Navigation Bar가 보이며 전체 너비를 사용합니다.</div>
+				</div>
+
+			</div>
+
+			<!-- 리스트 예시 -->
+			<h2 style="font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--color-text-muted);">리스트 예시</h2>
+			<div class="m3-card card:outlined" style="max-width: 32rem;">
+				<ul class="m3-list">
+					<li class="list-item">
+						<i class="m3-icon icon:person list-leading"></i>
+						<div class="list-content">
+							<span class="list-headline">사용자 프로필</span>
+							<span class="list-supporting">계정 정보를 관리합니다</span>
+						</div>
+					</li>
+					<li class="list-item">
+						<i class="m3-icon icon:notifications list-leading"></i>
+						<div class="list-content">
+							<span class="list-headline">알림 설정</span>
+							<span class="list-supporting">알림 기본 설정을 변경합니다</span>
+						</div>
+					</li>
+					<li class="list-item">
+						<i class="m3-icon icon:security list-leading"></i>
+						<div class="list-content">
+							<span class="list-headline">보안</span>
+							<span class="list-supporting">비밀번호 및 인증 설정</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<!-- 소스 코드 -->
+			<h2 style="font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; color: var(--color-text-muted);">사용법 (소스 코드)</h2>
+<pre class="source">&lt;div class="m3-layout"&gt;
+
+  &lt;!-- Navigation Drawer (desktop &ge; 840px) --&gt;
+  &lt;nav class="m3-nav-drawer layout-drawer"&gt;
+    &lt;div class="drawer-header"&gt;&lt;h2 class="drawer-headline"&gt;newtil App&lt;/h2&gt;&lt;/div&gt;
+    &lt;div class="drawer-content"&gt;
+      &lt;a href="#" class="drawer-item drawer-item-active"&gt;
+        &lt;i class="m3-icon icon:home"&gt;&lt;/i&gt;
+        &lt;span class="drawer-label"&gt;홈&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href="#" class="drawer-item"&gt;
+        &lt;i class="m3-icon icon:mail"&gt;&lt;/i&gt;
+        &lt;span class="drawer-label"&gt;메일&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- Navigation Rail (tablet 600-839px) --&gt;
+  &lt;nav class="m3-nav-rail layout-rail"&gt;
+    &lt;div class="rail-items"&gt;
+      &lt;a href="#" class="m3-deco icon:home deco-pos:top deco-active"&gt;홈&lt;/a&gt;
+      &lt;a href="#" class="m3-deco icon:mail deco-pos:top"&gt;메일&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- Main Area --&gt;
+  &lt;div class="layout-main"&gt;
+    &lt;header class="m3-top-app-bar layout-header"&gt;
+      &lt;button class="bar-leading"&gt;&lt;i class="m3-icon icon:menu"&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;h1 class="bar-title"&gt;페이지 제목&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main class="layout-content"&gt;
+      &lt;!-- page content here --&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Navigation Bar (mobile &lt; 600px) --&gt;
+  &lt;nav class="m3-nav-bar layout-bar"&gt;
+    &lt;a href="#" class="m3-deco icon:home deco-pos:top deco-active"&gt;홈&lt;/a&gt;
+    &lt;a href="#" class="m3-deco icon:mail deco-pos:top"&gt;메일&lt;/a&gt;
+  &lt;/nav&gt;
+
+&lt;/div&gt;</pre>
+
+		</main>
+	</div>
+
+	<!-- ===== Navigation Bar (mobile < 600px) ===== -->
+	<nav class="m3-nav-bar layout-bar">
+		<a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+		<a href="#" class="m3-deco icon:mail deco-pos:top">메일</a>
+		<a href="#" class="m3-deco icon:chat deco-pos:top">메시지</a>
+		<a href="#" class="m3-deco icon:settings deco-pos:top">설정</a>
+	</nav>
+
+</div>
+
+<script>
+function toggleTheme() {
+	const html = document.documentElement;
+	const current = html.getAttribute('data-theme');
+	html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+}
+</script>
+
+</body>
+</html>
