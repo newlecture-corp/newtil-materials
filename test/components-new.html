@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>M3 New Components 테스트</title>
+	<link rel="stylesheet" href="../dist/index.css" />
+	<style>
+		body { padding: 0; margin: 0; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface); }
+		.page { padding: 2rem; max-width: 56rem; margin: 0 auto; }
+		h1 { font-size: 2rem; font-weight: 700; margin: 2rem 0 1rem; }
+		h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--color-text-muted); }
+		section { margin-bottom: 2rem; }
+		p.desc { font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem; }
+		pre.source { background: var(--color-surface-muted); color: var(--color-text); padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.8125rem; line-height: 1.5; overflow-x: auto; margin: 0.75rem 0 0; font-family: ui-monospace, monospace; }
+		.demo { margin-bottom: 0.75rem; }
+		.demo-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+		.demo-col { display: flex; flex-direction: column; gap: 0.5rem; }
+		hr.sep { border: none; border-top: 1px solid var(--color-border); margin: 3rem 0; }
+
+		/* Demo containers for navigation components */
+		.nav-demo-container {
+			border: 1px solid var(--color-border);
+			border-radius: 0.75rem;
+			overflow: hidden;
+			position: relative;
+			background: var(--color-surface);
+		}
+		/* Vertical divider demo helper */
+		.vertical-demo {
+			display: flex;
+			align-items: stretch;
+			height: 3rem;
+			gap: 1rem;
+		}
+		/* Menu anchor helper */
+		.menu-anchor {
+			position: relative;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- ===== TOP APP BAR ===== -->
+	<header class="m3-top-app-bar bar:outlined">
+		<button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
+		<h1 class="bar-title" style="font-size: 1.25rem;">M3 New Components</h1>
+		<div class="bar-trailing">
+			<button onclick="setTheme('light')"><i class="m3-icon icon:light_mode"></i></button>
+			<button onclick="setTheme('dark')"><i class="m3-icon icon:dark_mode"></i></button>
+		</div>
+	</header>
+
+	<div class="page">
+
+		<h1>M3 New Components (10)</h1>
+
+		<!-- ================================================================ -->
+		<!-- 1. DIVIDER -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>1. Divider</h2>
+			<p class="desc">구분선 - Full width, Inset, Middle Inset, Vertical</p>
+
+			<div class="demo demo-col" style="gap: 1.5rem;">
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Full width (default)</span>
+					<hr class="m3-divider">
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Inset</span>
+					<hr class="m3-divider divider:inset">
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Middle Inset</span>
+					<hr class="m3-divider divider:middle-inset">
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Vertical</span>
+					<div class="vertical-demo">
+						<span>왼쪽</span>
+						<hr class="m3-divider divider:vertical">
+						<span>오른쪽</span>
+					</div>
+				</div>
+			</div>
+
+			<pre class="source">&lt;!-- Full width --&gt;
+&lt;hr class="m3-divider"&gt;
+
+&lt;!-- Inset --&gt;
+&lt;hr class="m3-divider divider:inset"&gt;
+
+&lt;!-- Middle Inset --&gt;
+&lt;hr class="m3-divider divider:middle-inset"&gt;
+
+&lt;!-- Vertical --&gt;
+&lt;div style="display:flex; align-items:stretch; height:3rem; gap:1rem;"&gt;
+  &lt;span&gt;왼쪽&lt;/span&gt;
+  &lt;hr class="m3-divider divider:vertical"&gt;
+  &lt;span&gt;오른쪽&lt;/span&gt;
+&lt;/div&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 2. FAB -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>2. FAB (Floating Action Button)</h2>
+			<p class="desc">Size: default(56dp), small(40dp), large(96dp), extended / Color: surface, primary, secondary, tertiary</p>
+
+			<div class="demo demo-row">
+				<button class="m3-fab"><i class="m3-icon icon:add"></i></button>
+				<button class="m3-fab fab:small"><i class="m3-icon icon:edit"></i></button>
+				<button class="m3-fab fab:large"><i class="m3-icon icon:add"></i></button>
+				<button class="m3-fab fab:extended"><i class="m3-icon icon:edit"></i>새 글 작성</button>
+			</div>
+
+			<div class="demo demo-row" style="margin-top: 1rem;">
+				<button class="m3-fab fab-color:surface"><i class="m3-icon icon:add"></i></button>
+				<button class="m3-fab fab-color:primary"><i class="m3-icon icon:add"></i></button>
+				<button class="m3-fab fab-color:secondary"><i class="m3-icon icon:add"></i></button>
+				<button class="m3-fab fab-color:tertiary"><i class="m3-icon icon:add"></i></button>
+				<button class="m3-fab" disabled><i class="m3-icon icon:add"></i></button>
+			</div>
+
+			<pre class="source">&lt;!-- Sizes --&gt;
+&lt;button class="m3-fab"&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-fab fab:small"&gt;&lt;i class="m3-icon icon:edit"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-fab fab:large"&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-fab fab:extended"&gt;&lt;i class="m3-icon icon:edit"&gt;&lt;/i&gt;새 글 작성&lt;/button&gt;
+
+&lt;!-- Colors --&gt;
+&lt;button class="m3-fab fab-color:surface"&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-fab fab-color:primary"&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-fab fab-color:secondary"&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-fab fab-color:tertiary"&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-fab" disabled&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;&lt;/button&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 3. ICON BUTTON -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>3. Icon Button</h2>
+			<p class="desc">Type: standard, filled, tonal, outlined / Toggle: selected, unselected</p>
+
+			<div class="demo demo-row">
+				<button class="m3-icon-btn"><i class="m3-icon icon:settings"></i></button>
+				<button class="m3-icon-btn icon-btn:filled"><i class="m3-icon icon:favorite"></i></button>
+				<button class="m3-icon-btn icon-btn:tonal"><i class="m3-icon icon:bookmark"></i></button>
+				<button class="m3-icon-btn icon-btn:outlined"><i class="m3-icon icon:share"></i></button>
+				<button class="m3-icon-btn" disabled><i class="m3-icon icon:delete"></i></button>
+			</div>
+
+			<p class="desc" style="margin-top: 1rem;">Toggle States (Standard / Filled / Tonal / Outlined)</p>
+			<div class="demo demo-row">
+				<button class="m3-icon-btn icon-btn-toggle:unselected" onclick="toggleIconBtn(this)"><i class="m3-icon icon:favorite"></i></button>
+				<button class="m3-icon-btn icon-btn:filled icon-btn-toggle:unselected" onclick="toggleIconBtn(this)"><i class="m3-icon icon:favorite"></i></button>
+				<button class="m3-icon-btn icon-btn:tonal icon-btn-toggle:selected" onclick="toggleIconBtn(this)"><i class="m3-icon icon:bookmark"></i></button>
+				<button class="m3-icon-btn icon-btn:outlined icon-btn-toggle:unselected" onclick="toggleIconBtn(this)"><i class="m3-icon icon:star"></i></button>
+			</div>
+
+			<pre class="source">&lt;!-- Types --&gt;
+&lt;button class="m3-icon-btn"&gt;&lt;i class="m3-icon icon:settings"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-icon-btn icon-btn:filled"&gt;&lt;i class="m3-icon icon:favorite"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-icon-btn icon-btn:tonal"&gt;&lt;i class="m3-icon icon:bookmark"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-icon-btn icon-btn:outlined"&gt;&lt;i class="m3-icon icon:share"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-icon-btn" disabled&gt;&lt;i class="m3-icon icon:delete"&gt;&lt;/i&gt;&lt;/button&gt;
+
+&lt;!-- Toggle --&gt;
+&lt;button class="m3-icon-btn icon-btn-toggle:unselected"&gt;&lt;i class="m3-icon icon:favorite"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-icon-btn icon-btn:filled icon-btn-toggle:unselected"&gt;&lt;i class="m3-icon icon:favorite"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-icon-btn icon-btn:tonal icon-btn-toggle:selected"&gt;&lt;i class="m3-icon icon:bookmark"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button class="m3-icon-btn icon-btn:outlined icon-btn-toggle:unselected"&gt;&lt;i class="m3-icon icon:star"&gt;&lt;/i&gt;&lt;/button&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 4. MENU -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>4. Menu</h2>
+			<p class="desc">메뉴 열기/닫기, 아이템, 구분선, 비활성 상태</p>
+
+			<div class="demo">
+				<div class="menu-anchor">
+					<button class="m3-btn btn:outlined" onclick="toggleMenu('demo-menu')">메뉴 열기</button>
+					<div class="m3-menu" id="demo-menu">
+						<button class="menu-item">
+							<i class="m3-icon icon:edit"></i>
+							<span class="menu-label">수정</span>
+						</button>
+						<button class="menu-item">
+							<i class="m3-icon icon:content_copy"></i>
+							<span class="menu-label">복사</span>
+						</button>
+						<hr class="menu-divider">
+						<button class="menu-item">
+							<i class="m3-icon icon:share"></i>
+							<span class="menu-label">공유</span>
+						</button>
+						<button class="menu-item menu-item-disabled">
+							<i class="m3-icon icon:delete"></i>
+							<span class="menu-label">삭제 (비활성)</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<pre class="source">&lt;div style="position: relative; display: inline-block;"&gt;
+  &lt;button class="m3-btn btn:outlined" onclick="toggleMenu('demo-menu')"&gt;메뉴 열기&lt;/button&gt;
+  &lt;div class="m3-menu" id="demo-menu"&gt;
+    &lt;button class="menu-item"&gt;
+      &lt;i class="m3-icon icon:edit"&gt;&lt;/i&gt;
+      &lt;span class="menu-label"&gt;수정&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="menu-item"&gt;
+      &lt;i class="m3-icon icon:content_copy"&gt;&lt;/i&gt;
+      &lt;span class="menu-label"&gt;복사&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;hr class="menu-divider"&gt;
+    &lt;button class="menu-item"&gt;
+      &lt;i class="m3-icon icon:share"&gt;&lt;/i&gt;
+      &lt;span class="menu-label"&gt;공유&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="menu-item menu-item-disabled"&gt;
+      &lt;i class="m3-icon icon:delete"&gt;&lt;/i&gt;
+      &lt;span class="menu-label"&gt;삭제 (비활성)&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 5. TOOLTIP -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>5. Tooltip</h2>
+			<p class="desc">Plain tooltip, Rich tooltip (제목, 내용, 액션)</p>
+
+			<div class="demo demo-row" style="gap: 3rem; align-items: flex-start;">
+				<div style="position: relative; display: inline-block;">
+					<button class="m3-btn btn:outlined">Plain 툴팁 보기</button>
+					<div class="m3-tooltip" style="position: absolute; top: 100%; left: 0; margin-top: 0.5rem;">간단한 도움말입니다</div>
+				</div>
+
+				<div style="position: relative; display: inline-block;">
+					<button class="m3-btn btn:outlined">Rich 툴팁 보기</button>
+					<div class="m3-tooltip tooltip:rich" style="position: absolute; top: 100%; left: 0; margin-top: 0.5rem;">
+						<div class="tooltip-title">리치 툴팁 제목</div>
+						<div class="tooltip-content">리치 툴팁은 제목, 본문, 액션 버튼을 포함할 수 있습니다.</div>
+						<div class="tooltip-actions">
+							<button class="m3-btn btn:text btn-size:xs">자세히</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<pre class="source">&lt;!-- Plain --&gt;
+&lt;div class="m3-tooltip"&gt;간단한 도움말입니다&lt;/div&gt;
+
+&lt;!-- Rich --&gt;
+&lt;div class="m3-tooltip tooltip:rich"&gt;
+  &lt;div class="tooltip-title"&gt;리치 툴팁 제목&lt;/div&gt;
+  &lt;div class="tooltip-content"&gt;리치 툴팁은 제목, 본문, 액션 버튼을 포함할 수 있습니다.&lt;/div&gt;
+  &lt;div class="tooltip-actions"&gt;
+    &lt;button class="m3-btn btn:text btn-size:xs"&gt;자세히&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 6. SLIDER -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>6. Slider</h2>
+			<p class="desc">Continuous, Discrete, Color 변형 (primary, secondary, tertiary)</p>
+
+			<div class="demo demo-col" style="gap: 1.5rem; max-width: 24rem;">
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Continuous (default)</span>
+					<div class="m3-slider">
+						<input type="range" min="0" max="100" value="50">
+					</div>
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Discrete (step=10)</span>
+					<div class="m3-slider slider:discrete">
+						<input type="range" min="0" max="100" value="40" step="10">
+					</div>
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Primary</span>
+					<div class="m3-slider slider-color:primary">
+						<input type="range" min="0" max="100" value="60">
+					</div>
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Secondary</span>
+					<div class="m3-slider slider-color:secondary">
+						<input type="range" min="0" max="100" value="70">
+					</div>
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Tertiary</span>
+					<div class="m3-slider slider-color:tertiary">
+						<input type="range" min="0" max="100" value="30">
+					</div>
+				</div>
+				<div>
+					<span style="font-size: 0.75rem; color: var(--color-text-subtle);">Disabled</span>
+					<div class="m3-slider">
+						<input type="range" min="0" max="100" value="50" disabled>
+					</div>
+				</div>
+			</div>
+
+			<pre class="source">&lt;!-- Continuous --&gt;
+&lt;div class="m3-slider"&gt;
+  &lt;input type="range" min="0" max="100" value="50"&gt;
+&lt;/div&gt;
+
+&lt;!-- Discrete --&gt;
+&lt;div class="m3-slider slider:discrete"&gt;
+  &lt;input type="range" min="0" max="100" value="40" step="10"&gt;
+&lt;/div&gt;
+
+&lt;!-- Color variants --&gt;
+&lt;div class="m3-slider slider-color:primary"&gt;...&lt;/div&gt;
+&lt;div class="m3-slider slider-color:secondary"&gt;...&lt;/div&gt;
+&lt;div class="m3-slider slider-color:tertiary"&gt;...&lt;/div&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;div class="m3-slider"&gt;
+  &lt;input type="range" min="0" max="100" value="50" disabled&gt;
+&lt;/div&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 7. BOTTOM SHEET -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>7. Bottom Sheet</h2>
+			<p class="desc">Standard / Modal. 열기/닫기 토글.</p>
+
+			<div class="demo demo-row">
+				<button class="m3-btn btn:outlined" onclick="toggleBottomSheet('demo-sheet')">Bottom Sheet 열기</button>
+				<button class="m3-btn btn:outlined" onclick="toggleBottomSheet('demo-sheet-modal')">Modal Bottom Sheet 열기</button>
+			</div>
+
+			<div class="demo">
+				<div class="nav-demo-container" style="height: 16rem;">
+					<div class="m3-bottom-sheet sheet-open" id="demo-sheet" style="position: absolute;">
+						<div class="sheet-drag-handle"></div>
+						<div class="sheet-content">
+							<h3 class="sheet-headline">Bottom Sheet 제목</h3>
+							<p>여기에 시트 내용이 들어갑니다. 드래그 핸들을 통해 조작할 수 있습니다.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal bottom sheet (fixed position, toggled by JS) -->
+			<div class="m3-bottom-sheet sheet:modal" id="demo-sheet-modal">
+				<div class="sheet-drag-handle"></div>
+				<div class="sheet-content">
+					<h3 class="sheet-headline">Modal Bottom Sheet</h3>
+					<p>모달 배경(scrim) 위에 표시됩니다.</p>
+					<button class="m3-btn btn:tonal" onclick="toggleBottomSheet('demo-sheet-modal')" style="margin-top: 1rem;">닫기</button>
+				</div>
+			</div>
+
+			<pre class="source">&lt;!-- Standard --&gt;
+&lt;div class="m3-bottom-sheet sheet-open"&gt;
+  &lt;div class="sheet-drag-handle"&gt;&lt;/div&gt;
+  &lt;div class="sheet-content"&gt;
+    &lt;h3 class="sheet-headline"&gt;Bottom Sheet 제목&lt;/h3&gt;
+    &lt;p&gt;여기에 시트 내용이 들어갑니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="m3-bottom-sheet sheet:modal sheet-open"&gt;
+  &lt;div class="sheet-drag-handle"&gt;&lt;/div&gt;
+  &lt;div class="sheet-content"&gt;
+    &lt;h3 class="sheet-headline"&gt;Modal Bottom Sheet&lt;/h3&gt;
+    &lt;p&gt;모달 배경(scrim) 위에 표시됩니다.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 8. NAVIGATION BAR -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>8. Navigation Bar</h2>
+			<p class="desc">하단 내비게이션 바. 3~5개 목적지. m3-deco 아이템 사용.</p>
+
+			<div class="demo">
+				<div class="nav-demo-container" style="height: 5rem;">
+					<nav class="m3-nav-bar" style="position: absolute;">
+						<a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+						<a href="#" class="m3-deco icon:search deco-pos:top">검색</a>
+						<a href="#" class="m3-deco icon:favorite deco-pos:top">즐겨찾기</a>
+						<a href="#" class="m3-deco icon:person deco-pos:top">프로필</a>
+					</nav>
+				</div>
+			</div>
+
+			<pre class="source">&lt;nav class="m3-nav-bar"&gt;
+  &lt;a href="#" class="m3-deco icon:home deco-pos:top deco-active"&gt;홈&lt;/a&gt;
+  &lt;a href="#" class="m3-deco icon:search deco-pos:top"&gt;검색&lt;/a&gt;
+  &lt;a href="#" class="m3-deco icon:favorite deco-pos:top"&gt;즐겨찾기&lt;/a&gt;
+  &lt;a href="#" class="m3-deco icon:person deco-pos:top"&gt;프로필&lt;/a&gt;
+&lt;/nav&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 9. NAVIGATION RAIL -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>9. Navigation Rail</h2>
+			<p class="desc">좌측 수직 내비게이션. 상단 FAB 옵션. m3-deco 아이템 사용.</p>
+
+			<div class="demo">
+				<div class="nav-demo-container" style="height: 22rem; display: flex;">
+					<nav class="m3-nav-rail" style="position: relative;">
+						<div class="rail-header">
+							<button class="m3-fab fab:small fab-color:primary"><i class="m3-icon icon:edit"></i></button>
+						</div>
+						<div class="rail-items">
+							<a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+							<a href="#" class="m3-deco icon:search deco-pos:top">검색</a>
+							<a href="#" class="m3-deco icon:favorite deco-pos:top">즐겨찾기</a>
+							<a href="#" class="m3-deco icon:settings deco-pos:top">설정</a>
+						</div>
+					</nav>
+					<div style="flex: 1; padding: 1rem; color: var(--color-text-subtle); font-size: 0.875rem;">
+						컨텐츠 영역
+					</div>
+				</div>
+			</div>
+
+			<pre class="source">&lt;nav class="m3-nav-rail"&gt;
+  &lt;div class="rail-header"&gt;
+    &lt;button class="m3-fab fab:small fab-color:primary"&gt;&lt;i class="m3-icon icon:edit"&gt;&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="rail-items"&gt;
+    &lt;a href="#" class="m3-deco icon:home deco-pos:top deco-active"&gt;홈&lt;/a&gt;
+    &lt;a href="#" class="m3-deco icon:search deco-pos:top"&gt;검색&lt;/a&gt;
+    &lt;a href="#" class="m3-deco icon:favorite deco-pos:top"&gt;즐겨찾기&lt;/a&gt;
+    &lt;a href="#" class="m3-deco icon:settings deco-pos:top"&gt;설정&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</pre>
+		</section>
+
+		<hr class="sep">
+
+		<!-- ================================================================ -->
+		<!-- 10. NAVIGATION DRAWER -->
+		<!-- ================================================================ -->
+		<section>
+			<h2>10. Navigation Drawer</h2>
+			<p class="desc">사이드 내비게이션 드로어. Standard(인라인), Modal(오버레이). 아이템, 섹션, 구분선 포함.</p>
+
+			<div class="demo">
+				<div class="nav-demo-container" style="height: 24rem; display: flex;">
+					<nav class="m3-nav-drawer" style="height: 100%; max-width: 22.5rem;">
+						<div class="drawer-header">
+							<h2 class="drawer-headline">메뉴</h2>
+						</div>
+						<div class="drawer-content">
+							<a href="#" class="drawer-item drawer-item-active">
+								<i class="m3-icon icon:home"></i>
+								<span class="drawer-label">홈</span>
+							</a>
+							<a href="#" class="drawer-item">
+								<i class="m3-icon icon:mail"></i>
+								<span class="drawer-label">메일</span>
+							</a>
+							<a href="#" class="drawer-item">
+								<i class="m3-icon icon:chat"></i>
+								<span class="drawer-label">메시지</span>
+							</a>
+							<hr class="m3-divider">
+							<span class="drawer-section-header">설정</span>
+							<a href="#" class="drawer-item">
+								<i class="m3-icon icon:settings"></i>
+								<span class="drawer-label">환경설정</span>
+							</a>
+							<a href="#" class="drawer-item">
+								<i class="m3-icon icon:help"></i>
+								<span class="drawer-label">도움말</span>
+							</a>
+						</div>
+					</nav>
+					<div style="flex: 1; padding: 1rem; color: var(--color-text-subtle); font-size: 0.875rem;">
+						컨텐츠 영역
+					</div>
+				</div>
+			</div>
+
+			<div class="demo" style="margin-top: 1rem;">
+				<button class="m3-btn btn:outlined" onclick="toggleDrawer()">Modal Drawer 열기</button>
+			</div>
+
+			<!-- Modal drawer (fixed position, toggled by JS) -->
+			<nav class="m3-nav-drawer drawer:modal drawer-closed" id="demo-drawer-modal">
+				<div class="drawer-header">
+					<h2 class="drawer-headline">모달 메뉴</h2>
+				</div>
+				<div class="drawer-content">
+					<a href="#" class="drawer-item drawer-item-active">
+						<i class="m3-icon icon:home"></i>
+						<span class="drawer-label">홈</span>
+					</a>
+					<a href="#" class="drawer-item">
+						<i class="m3-icon icon:mail"></i>
+						<span class="drawer-label">메일</span>
+					</a>
+					<hr class="m3-divider">
+					<span class="drawer-section-header">기타</span>
+					<a href="#" class="drawer-item">
+						<i class="m3-icon icon:settings"></i>
+						<span class="drawer-label">환경설정</span>
+					</a>
+					<a href="#" class="drawer-item" onclick="toggleDrawer()">
+						<i class="m3-icon icon:close"></i>
+						<span class="drawer-label">닫기</span>
+					</a>
+				</div>
+			</nav>
+
+			<pre class="source">&lt;!-- Standard (inline) --&gt;
+&lt;nav class="m3-nav-drawer"&gt;
+  &lt;div class="drawer-header"&gt;
+    &lt;h2 class="drawer-headline"&gt;메뉴&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class="drawer-content"&gt;
+    &lt;a href="#" class="drawer-item drawer-item-active"&gt;
+      &lt;i class="m3-icon icon:home"&gt;&lt;/i&gt;
+      &lt;span class="drawer-label"&gt;홈&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="drawer-item"&gt;
+      &lt;i class="m3-icon icon:mail"&gt;&lt;/i&gt;
+      &lt;span class="drawer-label"&gt;메일&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;hr class="m3-divider"&gt;
+    &lt;span class="drawer-section-header"&gt;설정&lt;/span&gt;
+    &lt;a href="#" class="drawer-item"&gt;
+      &lt;i class="m3-icon icon:settings"&gt;&lt;/i&gt;
+      &lt;span class="drawer-label"&gt;환경설정&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;!-- Modal --&gt;
+&lt;nav class="m3-nav-drawer drawer:modal drawer-open"&gt;
+  ...
+&lt;/nav&gt;</pre>
+		</section>
+
+	</div><!-- .page -->
+
+	<script>
+		/* ====== Theme Toggle ====== */
+		function setTheme(theme) {
+			document.documentElement.setAttribute('data-theme', theme);
+		}
+
+		/* ====== Menu Toggle ====== */
+		function toggleMenu(id) {
+			const menu = document.getElementById(id);
+			menu.classList.toggle('menu-open');
+		}
+
+		// Close menu on outside click
+		document.addEventListener('click', function(e) {
+			document.querySelectorAll('.m3-menu.menu-open').forEach(function(menu) {
+				const anchor = menu.closest('.menu-anchor');
+				if (anchor && !anchor.contains(e.target)) {
+					menu.classList.remove('menu-open');
+				}
+			});
+		});
+
+		/* ====== Bottom Sheet Toggle ====== */
+		function toggleBottomSheet(id) {
+			const sheet = document.getElementById(id);
+			sheet.classList.toggle('sheet-open');
+		}
+
+		/* ====== Icon Button Toggle ====== */
+		function toggleIconBtn(btn) {
+			if (btn.classList.contains('icon-btn-toggle:selected')) {
+				btn.classList.remove('icon-btn-toggle:selected');
+				btn.classList.add('icon-btn-toggle:unselected');
+			} else {
+				btn.classList.remove('icon-btn-toggle:unselected');
+				btn.classList.add('icon-btn-toggle:selected');
+			}
+		}
+
+		/* ====== Modal Drawer Toggle ====== */
+		function toggleDrawer() {
+			const drawer = document.getElementById('demo-drawer-modal');
+			if (drawer.classList.contains('drawer-closed')) {
+				drawer.classList.remove('drawer-closed');
+				drawer.classList.add('drawer-open');
+			} else {
+				drawer.classList.remove('drawer-open');
+				drawer.classList.add('drawer-closed');
+			}
+		}
+	</script>
+</body>
+</html>
