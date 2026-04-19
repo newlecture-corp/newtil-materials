@@ -235,7 +235,7 @@
 
 .m3-text-field.field-state\:disabled input,
 .m3-text-field.field-state\:disabled textarea {
-	color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--field-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 }
 
 /* ================== Supporting Text ================================== */

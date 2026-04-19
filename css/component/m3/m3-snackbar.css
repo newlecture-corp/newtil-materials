@@ -36,6 +36,7 @@
 	--snackbar-action-font-weight: var(--font-weight-medium);
 	--snackbar-action-padding: 0.5rem;
 	--snackbar-action-border-radius: 0.25rem;
+	--snackbar-action-hover-opacity: 0.08;
 
 	/* close */
 	--snackbar-close-padding: 0.5rem;
@@ -94,8 +95,8 @@
 
 .m3-snackbar .snackbar-action:hover {
 	background-image: linear-gradient(
-		color-mix(in srgb, var(--snackbar-action-color) 8%, transparent),
-		color-mix(in srgb, var(--snackbar-action-color) 8%, transparent)
+		color-mix(in srgb, var(--snackbar-action-color) calc(var(--snackbar-action-hover-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--snackbar-action-color) calc(var(--snackbar-action-hover-opacity) * 100%), transparent)
 	);
 }
 

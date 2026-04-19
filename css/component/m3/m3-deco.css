@@ -31,6 +31,9 @@
 	--deco-color: var(--color-primary);
 	--deco-font-size: var(--font-size-sm);
 
+	/* active */
+	--deco-active-text-color: var(--color-on-primary);
+
 	/* active pill */
 	--deco-pill-height: 2rem;
 	--deco-pill-width: calc(var(--icon-size) + 2rem);
@@ -116,14 +119,14 @@
 
 /* 공통: active 시 텍스트 색을 브랜드 컬러로 변경 (선택됨 표시) */
 .m3-deco.deco-active {
-	color: var(--deco-color);
+	--icon-color: var(--deco-color);
 }
 
 /* top/bottom: pill은 아이콘 뒤에만. 아이콘은 pill 위에서 흰색. */
 .m3-deco.deco-active.deco-pos\:top,
 .m3-deco.deco-active.deco-pos\:bottom {
 	--deco-pill-background: var(--deco-color);
-	--deco-pill-color: var(--color-on-primary);
+	--deco-pill-color: var(--deco-active-text-color, var(--color-on-primary));
 }
 
 .m3-deco.deco-active.deco-pos\:top:hover,
@@ -143,7 +146,7 @@
 	--deco-padding: 0 0.75rem;
 	--deco-border-radius: calc(var(--deco-height) / 2);
 	--deco-background-color: var(--deco-color);
-	color: var(--color-on-primary);
+	--icon-color: var(--deco-active-text-color, var(--color-on-primary));
 	--deco-pill-background: transparent;
 	--deco-pill-color: inherit;
 }

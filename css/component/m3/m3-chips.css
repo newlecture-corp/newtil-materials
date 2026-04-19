@@ -27,8 +27,19 @@
 	--chip-font-size: 0.875rem;
 	--chip-font-weight: var(--font-weight-medium);
 
+	/* effects */
+	--chip-box-shadow: none;
+
 	/* icon */
 	--chip-icon-size: 1.125rem;
+
+	/* close */
+	--chip-close-radius: 50%;
+	--chip-close-background: transparent;
+
+	/* state layer */
+	--chip-state-hover-opacity: 0.08;
+	--chip-state-pressed-opacity: 0.12;
 
 	/* selected */
 	--chip-selected-background: var(--color-primary-subtle);
@@ -56,6 +67,7 @@
 	user-select: none;
 	white-space: nowrap;
 	text-decoration: none;
+	box-shadow: var(--chip-box-shadow);
 	transition: var(--chip-transition);
 	box-sizing: border-box;
 }
@@ -64,15 +76,15 @@
 
 .m3-chip:hover {
 	background-image: linear-gradient(
-		color-mix(in srgb, var(--chip-color) 8%, transparent),
-		color-mix(in srgb, var(--chip-color) 8%, transparent)
+		color-mix(in srgb, var(--chip-color) calc(var(--chip-state-hover-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--chip-color) calc(var(--chip-state-hover-opacity) * 100%), transparent)
 	);
 }
 
 .m3-chip:active {
 	background-image: linear-gradient(
-		color-mix(in srgb, var(--chip-color) 12%, transparent),
-		color-mix(in srgb, var(--chip-color) 12%, transparent)
+		color-mix(in srgb, var(--chip-color) calc(var(--chip-state-pressed-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--chip-color) calc(var(--chip-state-pressed-opacity) * 100%), transparent)
 	);
 }
 
@@ -96,7 +108,7 @@
 .m3-chip.chip\:elevated {
 	--chip-border: none;
 	--chip-background: var(--color-surface-subtle);
-	box-shadow: var(--shadow-sm);
+	--chip-box-shadow: var(--shadow-sm);
 }
 
 /* ================== With Icon ======================================== */
@@ -114,8 +126,8 @@
 	justify-content: center;
 	width: var(--chip-icon-size);
 	height: var(--chip-icon-size);
-	border-radius: 50%;
-	background: transparent;
+	border-radius: var(--chip-close-radius);
+	background: var(--chip-close-background);
 	border: none;
 	cursor: pointer;
 	color: inherit;
@@ -124,7 +136,7 @@
 }
 
 .m3-chip .chip-close:hover {
-	background-color: color-mix(in srgb, var(--chip-color) 12%, transparent);
+	background-color: color-mix(in srgb, var(--chip-color) calc(var(--chip-state-pressed-opacity) * 100%), transparent);
 }
 
 /* ================== Color Variants =================================== */

@@ -23,6 +23,9 @@
 	--radio-selected-color: var(--color-primary);
 
 	--radio-state-opacity: 0;
+	--radio-state-hover-opacity: 0.08;
+	--radio-state-pressed-opacity: 0.12;
+	--radio-state-size: 0.625rem;
 
 	--radio-label-size: 0.875rem;
 	--radio-label-color: var(--color-text);
@@ -91,11 +94,11 @@
 .m3-radio input[type="radio"]:checked::before { --radio-border-color: var(--radio-selected-color); }
 .m3-radio input[type="radio"]:checked::after { --radio-dot-opacity: 1; }
 
-.m3-radio input[type="radio"]:hover::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 8%, transparent); }
-.m3-radio input[type="radio"]:checked:hover::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-selected-color) 8%, transparent); }
+.m3-radio input[type="radio"]:hover::before { --radio-box-shadow: 0 0 0 var(--radio-state-size) color-mix(in srgb, var(--radio-border-color) calc(var(--radio-state-hover-opacity) * 100%), transparent); }
+.m3-radio input[type="radio"]:checked:hover::before { --radio-box-shadow: 0 0 0 var(--radio-state-size) color-mix(in srgb, var(--radio-selected-color) calc(var(--radio-state-hover-opacity) * 100%), transparent); }
 
-.m3-radio input[type="radio"]:active::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 12%, transparent); }
-.m3-radio input[type="radio"]:checked:active::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-selected-color) 12%, transparent); }
+.m3-radio input[type="radio"]:active::before { --radio-box-shadow: 0 0 0 var(--radio-state-size) color-mix(in srgb, var(--radio-border-color) calc(var(--radio-state-pressed-opacity) * 100%), transparent); }
+.m3-radio input[type="radio"]:checked:active::before { --radio-box-shadow: 0 0 0 var(--radio-state-size) color-mix(in srgb, var(--radio-selected-color) calc(var(--radio-state-pressed-opacity) * 100%), transparent); }
 
 .m3-radio input[type="radio"]:focus-visible::before { --radio-outline: var(--border-width-2) solid var(--color-focus-ring); --radio-outline-offset: 0.25rem; }
 
@@ -118,7 +121,7 @@
 
 /* ================== Static States ==================================== */
 
-.m3-radio.radio-state\:hover input[type="radio"]::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 8%, transparent); }
-.m3-radio.radio-state\:hover input[type="radio"]:checked::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-selected-color) 8%, transparent); }
-.m3-radio.radio-state\:active input[type="radio"]::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 12%, transparent); }
+.m3-radio.radio-state\:hover input[type="radio"]::before { --radio-box-shadow: 0 0 0 var(--radio-state-size) color-mix(in srgb, var(--radio-border-color) calc(var(--radio-state-hover-opacity) * 100%), transparent); }
+.m3-radio.radio-state\:hover input[type="radio"]:checked::before { --radio-box-shadow: 0 0 0 var(--radio-state-size) color-mix(in srgb, var(--radio-selected-color) calc(var(--radio-state-hover-opacity) * 100%), transparent); }
+.m3-radio.radio-state\:active input[type="radio"]::before { --radio-box-shadow: 0 0 0 var(--radio-state-size) color-mix(in srgb, var(--radio-border-color) calc(var(--radio-state-pressed-opacity) * 100%), transparent); }
 .m3-radio.radio-state\:focus input[type="radio"]::before { --radio-outline: var(--border-width-2) solid var(--color-focus-ring); --radio-outline-offset: 0.25rem; }
