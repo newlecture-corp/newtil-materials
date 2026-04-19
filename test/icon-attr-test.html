@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>data-icon attr() 테스트</title>
+	<link rel="stylesheet" href="../dist/index.css">
+	<style>
+		body { padding: 2rem; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface); }
+		.test-row { display: flex; gap: 2rem; align-items: center; margin: 1.5rem 0; }
+		.label { font-size: 0.875rem; color: var(--color-text-muted); min-width: 12rem; }
+	</style>
+</head>
+<body>
+	<h1>data-icon attr() 테스트</h1>
+
+	<h2>1. 기존 방식 (icon:name 클래스 — codepoint)</h2>
+	<div class="test-row">
+		<span class="label">icon:home (codepoint \e88a)</span>
+		<i class="m3-icon icon:home"></i>
+		<i class="m3-icon icon:search"></i>
+		<i class="m3-icon icon:settings"></i>
+		<i class="m3-icon icon:favorite"></i>
+	</div>
+
+	<h2>2. 새 방식 (data-icon 속성 — ligature)</h2>
+	<style>
+		/* 이 한 줄이 핵심 */
+		[data-icon]::before { content: attr(data-icon); }
+	</style>
+	<div class="test-row">
+		<span class="label">data-icon="home" (ligature)</span>
+		<i class="m3-icon" data-icon="home"></i>
+		<i class="m3-icon" data-icon="search"></i>
+		<i class="m3-icon" data-icon="settings"></i>
+		<i class="m3-icon" data-icon="favorite"></i>
+	</div>
+
+	<h2>3. essential에 없는 아이콘 (data-icon만 가능)</h2>
+	<div class="test-row">
+		<span class="label">essential에 없는 아이콘들</span>
+		<i class="m3-icon" data-icon="shopping_cart"></i>
+		<i class="m3-icon" data-icon="account_circle"></i>
+		<i class="m3-icon" data-icon="dark_mode"></i>
+		<i class="m3-icon" data-icon="light_mode"></i>
+		<i class="m3-icon" data-icon="language"></i>
+		<i class="m3-icon" data-icon="code"></i>
+		<i class="m3-icon" data-icon="terminal"></i>
+		<i class="m3-icon" data-icon="database"></i>
+	</div>
+
+	<h2>4. 크기/색상 옵션과 함께</h2>
+	<div class="test-row">
+		<span class="label">icon-size + icon-color</span>
+		<i class="m3-icon icon-size:xs" data-icon="rocket_launch"></i>
+		<i class="m3-icon icon-size:sm" data-icon="rocket_launch"></i>
+		<i class="m3-icon icon-size:md" data-icon="rocket_launch"></i>
+		<i class="m3-icon icon-size:lg icon-color:primary" data-icon="rocket_launch"></i>
+		<i class="m3-icon icon-size:xl icon-color:danger" data-icon="rocket_launch"></i>
+	</div>
+
+	<h2>5. filled 옵션과 함께</h2>
+	<div class="test-row">
+		<span class="label">icon-filled:1</span>
+		<i class="m3-icon" data-icon="favorite"></i>
+		<i class="m3-icon icon-filled:1" data-icon="favorite"></i>
+		<i class="m3-icon icon-filled:1 icon-color:danger" data-icon="favorite"></i>
+	</div>
+
+	<h2>6. m3-deco와 함께</h2>
+	<div class="test-row">
+		<span class="label">deco + data-icon</span>
+		<span class="m3-deco deco-pos:top" data-icon="shopping_cart">장바구니</span>
+		<span class="m3-deco deco-pos:left" data-icon="account_circle">프로필</span>
+		<span class="m3-deco deco-pos:top deco-active deco-color:primary" data-icon="dashboard">대시보드</span>
+	</div>
+
+	<h2>7. 버튼 안에서</h2>
+	<div class="test-row">
+		<span class="label">btn + data-icon</span>
+		<button class="m3-btn btn-icon:leading"><i class="m3-icon" data-icon="shopping_cart"></i>장바구니</button>
+		<button class="m3-fab"><i class="m3-icon" data-icon="rocket_launch"></i></button>
+		<button class="m3-icon-btn"><i class="m3-icon" data-icon="more_vert"></i></button>
+	</div>
+</body>
+</html>
