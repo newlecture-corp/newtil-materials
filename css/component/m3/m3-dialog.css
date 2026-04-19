@@ -1,160 +1,113 @@
+/* ====== M3 Dialog ===================================================
+ * M3 spec: surface-container-high, 28dp radius, 24dp padding
+ * Min 280dp, Max 560dp. Scrim overlay.
+ * Variable API: --dialog-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
 .m3-dialog {
-    /* =====공통 상수 variables.css에서 정의 어떤값 사용했는지 주석으로 표시 ===== */
-    /* color */
-    /* --color-text: #000000;
-    --color-text: #191919;
-    --color-text-muted: #585858;
-    --color-secondary-hover: #2570b6;
-    --color-secondary: #2983d7;
-    --color-border-subtle: #b3b3b3;
-    --color-surface-subtle: #d7d7d7;
-    --color-surface-muted: #e5e7eb; */
+	/* container */
+	--dialog-background: var(--color-surface-muted);
+	--dialog-border-radius: 1.75rem;
+	--dialog-padding: 1.5rem;
+	--dialog-min-width: 17.5rem;
+	--dialog-max-width: 35rem;
+	--dialog-color: var(--color-text-muted);
+	--dialog-border: none;
+	--dialog-box-shadow: var(--shadow-lg);
 
-    /* font size */
-    /* --space-7: var(--space-7);
-    --space-5: 0.875rem;
-     */
+	/* scrim (backdrop) */
+	--dialog-scrim-color: rgba(0, 0, 0, 0.32);
 
-    /* radius */
-    /* --space-8: 1.75rem; */
+	/* z-index */
+	--dialog-z-index: var(--z-modal);
 
-    /* opacity */
-    /* --opacity-10: 0.1; */
+	/* headline */
+	--dialog-headline-color: var(--color-text);
+	--dialog-headline-size: 1.5rem;
+	--dialog-headline-weight: var(--font-weight-regular);
+	--dialog-headline-line-height: 2rem;
+	--dialog-headline-margin: 0 0 1rem;
 
-    /* padding */
-    /* --space-7: var(--space-7);
-    --space-7: 1.375rem;
-    --space-6: var(--space-6);
-    --space-6: 1.125rem;
-    --space-5: var(--space-5);
-    --space-5: 0.875rem;
-    --space-4: var(--space-4);
-    --space-3: 0.625rem;
-    --space-3: var(--space-3);
-    --space-2: var(--space-2);
-    --space-1: var(--space-1);
-    --space-1: 0.0625rem; */
+	/* content */
+	--dialog-content-color: var(--color-text-muted);
+	--dialog-content-size: 0.875rem;
+	--dialog-content-line-height: 1.25rem;
+	--dialog-content-margin: 0 0 1.5rem;
 
-
-    /* margin */
-    /* --space-7: var(--space-7);
-    --space-7: 1.375rem;
-    --space-6: var(--space-6);
-    --space-6: 1.125rem;
-    --space-5: var(--space-5);
-    --space-5: 0.875rem;
-    --space-4: var(--space-4);
-    --space-3: 0.625rem;
-    --space-3: var(--space-3);
-    --space-2: var(--space-2);
-    --space-1: var(--space-1);
-    --space-1: 0.0625rem; */
-
-    /* gap */
-    /* --space-3: var(--space-3);
-    --space-2: var(--space-2);
-    --space-1: var(--space-1);
-    --space-1: 0.0625rem; */
-
-    /* line height */
-    /* --space-6: var(--space-6);
-    --space-5: var(--space-5);
-    --space-4: var(--space-4);
-    --space-3: var(--space-3);
-    --space-2: var(--space-2); */
-
-    /* width, height */
-    /* 문서에는 최소, 최대 넓이로 나와있어서 수정하였음 */
-    --dialog-spec-min-width: 17.5rem;
-    --dialog-spec-max-width: 35rem;
-
-    /*======================= 변수 =======================*/
-    /* 여기서만 수정한다 */
-    --dialog-bg-color: var(--color-surface-muted);
-    --dialog-radius: var(--space-8);
-    --dialog-padding: var(--space-7);
-    --dialog-min-width: var(--dialog-spec-min-width);
-    --dialog-max-width: var(--dialog-spec-max-width);
-
-    --dialog-color: var(--color-text-muted);
-
-    --dialog-headline-font-color: var(--color-text);
-    --dialog-headline-font-size: var(--space-7);
-    --dialog-headline-font-weight: var(--font-weight-regular);
-    --dialog-headline-margin-bottom: var(--space-7);
-
-    --dialog-content-font-color: var(--color-text-muted);
-    --dialog-content-font-size: var(--space-5);
-    --dialog-content-margin-bottom: var(--space-7);
-    --dialog-content-line-height: var(--space-6);
-
-    --dialog-actions-gap: var(--space-3);
-
-    --dialog-btn-color: var(--color-secondary-hover);
-    --dialog-btn-padding: var(--space-6) var(--space-5);
-
-    /* Text Button specific */
-    /* --dialog-opacity-1: 0.08 -> 8% */
-    --dialog-hovered-bg: color-mix(in srgb, var(--dialog-btn-color) 8%, transparent);
-    --dialog-focused-bg: color-mix(in srgb, var(--dialog-btn-color) 10%, transparent);
-    --dialog-pressed-bg: color-mix(in srgb, var(--dialog-btn-color) 10%, transparent);
+	/* actions */
+	--dialog-actions-gap: 0.5rem;
+	--dialog-actions-justify: flex-end;
 }
 
-/* ====다크모드 테마==== */
-@media (prefers-color-scheme: dark) {
-    .m3-dialog {
-        --dialog-bg-color: var(--color-surface-muted);
-        --dialog-headline-font-color: var(--color-text);
-        --dialog-content-font-color: var(--color-text-muted);
-        --dialog-btn-color: var(--color-secondary-hover);
-    }
+/* ================== Base ============================================= */
+.m3-dialog {
+	position: fixed;
+	inset: 0;
+	margin: auto;
+	width: fit-content;
+	height: fit-content;
+	z-index: var(--dialog-z-index);
+
+	background: var(--dialog-background);
+	border: var(--dialog-border);
+	border-radius: var(--dialog-border-radius);
+	padding: var(--dialog-padding);
+	min-width: var(--dialog-min-width);
+	max-width: var(--dialog-max-width);
+	box-sizing: border-box;
+	color: var(--dialog-color);
+	box-shadow: 0 0 0 100vmax var(--dialog-scrim-color), var(--dialog-box-shadow);
+
+	display: flex;
+	flex-direction: column;
 }
 
-/* ====기본 테마==== */
-.m3-dialog {
-    position: fixed;
-    /* top, right, bottom, left 값을 한 번에 지정하는 속성 */
-    inset: 0;
-    margin: auto;
-    width: fit-content;
-    height: fit-content;
+/* ================== Headline ========================================= */
 
-    /* backdrop */
-    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.4);
+.m3-dialog .dialog-headline {
+	color: var(--dialog-headline-color);
+	font-size: var(--dialog-headline-size);
+	font-weight: var(--dialog-headline-weight);
+	line-height: var(--dialog-headline-line-height);
+	margin: var(--dialog-headline-margin);
+}
 
-    /* moved from .modal-container */
-    background: var(--dialog-bg-color);
-    padding: var(--dialog-padding);
-    border-radius: var(--dialog-radius);
-    min-width: var(--dialog-min-width);
-    max-width: var(--dialog-max-width);
-    box-sizing: border-box;
+/* ================== Content ========================================== */
 
-    color: var(--dialog-color);
-    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+.m3-dialog .dialog-content {
+	color: var(--dialog-content-color);
+	font-size: var(--dialog-content-size);
+	line-height: var(--dialog-content-line-height);
+	margin: var(--dialog-content-margin);
+}
 
-    flex-direction: column;
+/* ================== Actions ========================================== */
 
-    .header,
-    > :first-child {
-        margin: 0 0 var(--dialog-headline-margin-bottom) 0;
-        color: var(--dialog-headline-font-color);
-        font-size: var(--dialog-headline-font-size);
-        font-weight: var(--dialog-headline-font-weight);
-    }
+.m3-dialog .dialog-actions {
+	display: flex;
+	justify-content: var(--dialog-actions-justify);
+	gap: var(--dialog-actions-gap);
+}
 
-    .content,
-    > :nth-child(2) {
-        margin: 0 0 var(--dialog-content-margin-bottom) 0;
-        color: var(--dialog-content-font-color);
-        font-size: var(--dialog-content-font-size);
-        line-height: var(--dialog-content-line-height);
-    }
+/* ================== Icon (optional top icon) ========================= */
 
-    .actions,
-    > :nth-child(3) {
-        display: flex;
-        justify-content: flex-end;
-        gap: var(--dialog-actions-gap);
-    }
+.m3-dialog .dialog-icon {
+	display: flex;
+	justify-content: center;
+	margin: 0 0 1rem;
+	color: var(--color-primary);
+	font-size: 1.5rem;
+}
+
+/* ================== Open/Close ======================================= */
+/* 기본 숨김. open 속성이나 dialog-open 클래스로 표시 */
+
+.m3-dialog:not([open]):not(.dialog-open) {
+	display: none;
+}
+
+.m3-dialog[open],
+.m3-dialog.dialog-open {
+	display: flex;
 }

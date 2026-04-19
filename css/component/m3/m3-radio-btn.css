@@ -1,245 +1,124 @@
-/* =========================================
-   M3 Radio Button Variables
-   Google Material Design 3 스타일 변수 정의
-   ========================================= */
+/* ====== M3 Radio Button =============================================
+ * M3 spec: 20dp outer ring, 10dp inner dot, primary when selected
+ * Variable API: --radio-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
 .m3-radio {
-    /* 크기 및 간격 */
-    --radio-size: var(--space-6);       /* 라디오 버튼 크기 */
-    --radio-touch-size: var(--space-10);       /* 터치 영역 크기 (접근성) */
-    --radio-stroke-width: var(--space-1);      /* 테두리 두께 */
-    --radio-inner-stroke-width: 0.3125rem; /* 내부 점 크기 제어용 테두리 */
-    --radio-inner-dot-size: 0.625rem;   /* 내부 점 크기 (참조용) */
-    --radio-spacing-label: 0.9375rem;    /* 라디오와 라벨 사이 간격 */
-    --radio-label-size: 0.9375rem;       /* 라벨 폰트 크기 */
+	--radio-display: inline-flex;
+	--radio-align-items: center;
+	--radio-cursor: pointer;
+	--radio-gap: 0.75rem;
 
-    /* 버튼속성 */
-    --radio-display: inline-flex;
-    --radio-align-items: center;
-    --radio-cursor: pointer;
-    --radio-user-select: none;
+	--radio-size: 1.25rem;
+	--radio-touch-size: 2.5rem;
+	--radio-stroke-width: 0.125rem;
+	--radio-border-color: var(--color-text-muted);
+	--radio-background: transparent;
 
-    /* 색상 */
-    --radio-select-primary: var(--color-primary-hover);   /* 선택 컬러 */
-    --radio-unselect-primary: var(--color-text); /* 미선택 컬러 */
-    --radio-focus-ring: 0.1875rem;
+	--radio-dot-size: 0.625rem;
+	--radio-dot-color: var(--color-primary);
+	--radio-dot-opacity: 0;
 
-    /* 버튼스타일 before,after */
-    --radio-transform: translate(-50%, -50%);
-    --radio-pointer: none;
-    --radio-box-sizing: border-box;
-    --radio-transition: all 180ms ease;
-    --radio-border-color: var(--radio-unselect-primary);
-    --radio-border-color-checked: var(--radio-select-primary);
-    --radio-background-color: transparent;
-    /* 액션 스타일 hover, press, focus */
-    --radio-box-shadow: none;
-    --radio-background-color: transparent;
-    --radio-outline: none;
-    --radio-outline-offset: 0;
-    --radio-outline-offset-focus: 0.3125rem;
-    
-    /* 투명도 (Opacity) */
-    --alpha-1: 8%;
-    --alpha-2: 10%;
-    --alpha-3: 62%;
+	--radio-selected-color: var(--color-primary);
 
-    /* 투명도 (Color Mix용) */
-    --transparent-1: 10%;
-    --transparent-2: 90%;
-    --transparent-3: 92%;
-    --transparent-disabled: 62%;
-    
-    
+	--radio-state-opacity: 0;
+
+	--radio-label-size: 0.875rem;
+	--radio-label-color: var(--color-text);
+
+	--radio-outline: none;
+	--radio-outline-offset: 0;
+	--radio-box-shadow: none;
+	--radio-transition: all 180ms var(--ease-in-out);
 }
 
-/* 다크 모드 오버라이드 */
-@media (prefers-color-scheme: dark) {
-    .m3-radio {
-        --radio-select-primary: var(--color-primary);
-    }
-}
-
-/* =========================================
-   Container & Layout
-   ========================================= */
+/* ================== Base ============================================= */
 .m3-radio {
-    display: var(--radio-display);
-    align-items: var(--radio-align-items);
-    cursor: var(--radio-cursor);
-    user-select: var(--radio-user-select);
-    gap: var(--radio-spacing-label);
+	display: var(--radio-display);
+	align-items: var(--radio-align-items);
+	cursor: var(--radio-cursor);
+	user-select: none;
+	gap: var(--radio-gap);
 }
 
-/* =========================================
-   Input Reset & Touch Area
-   기본 라디오 버튼 숨김 및 커스텀 스타일 공간 확보
-   ========================================= */
 .m3-radio input[type="radio"] {
-    appearance: none;             /* 기본 브라우저 스타일 제거 */
-    width: var(--radio-touch-size); /* 터치 영역 확보 */
-    height: var(--radio-touch-size);
-    margin: var(--scale-0);
-    border: none;
-    position: relative;
-    background-color: var(--radio-background-color);
-    cursor: var(--radio-cursor);
+	appearance: none;
+	width: var(--radio-touch-size);
+	height: var(--radio-touch-size);
+	margin: 0;
+	border: none;
+	position: relative;
+	background-color: var(--radio-background);
+	cursor: var(--radio-cursor);
 }
 
-/* =========================================
-   Pseudo-elements Setup
-   ::before -> 외부 링
-   ::after  -> 내부 점
-   ========================================= */
 .m3-radio input[type="radio"]::before,
 .m3-radio input[type="radio"]::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-
-    transform: var(--radio-transform); /* 중앙 정렬 */
-    pointer-events: var(--radio-pointer);
-    box-sizing: var(--radio-box-sizing);
-    transition: var(--radio-transition);
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	box-sizing: border-box;
+	transition: var(--radio-transition);
 }
 
-/* 외부 링 (Unchecked State) */
+/* Outer ring */
 .m3-radio input[type="radio"]::before {
-    width: var(--radio-size);
-    height: var(--radio-size);
-    border-radius: var(--radius-full); /* 원형 */
-    border: var(--radio-stroke-width) solid var(--radio-unselect-primary);
-    box-shadow: var(--radio-box-shadow);
-    background-color: var(--radio-background-color);
-    outline: var(--radio-outline);
-    outline-offset: var(--radio-outline-offset);
+	width: var(--radio-size);
+	height: var(--radio-size);
+	border-radius: var(--radius-full);
+	border: var(--radio-stroke-width) solid var(--radio-border-color);
+	box-shadow: var(--radio-box-shadow);
+	background-color: var(--radio-background);
+	outline: var(--radio-outline);
+	outline-offset: var(--radio-outline-offset);
 }
 
-/* 내부 점 (Hidden by default) */
+/* Inner dot */
 .m3-radio input[type="radio"]::after {
-    width: 0;
-    height: 0;
-    border-radius: var(--radius-full);
-    border: var(--radio-inner-stroke-width) solid var(--radio-select-primary);
-    opacity: var(--opacity-0);
+	width: var(--radio-dot-size);
+	height: var(--radio-dot-size);
+	border-radius: var(--radius-full);
+	background-color: var(--radio-dot-color);
+	opacity: var(--radio-dot-opacity);
 }
 
-/* =========================================
-   States: Checked
-   ========================================= */
-/* 체크 시 외부 링 색상 변경 */
-.m3-radio input[type="radio"]:checked::before {
-    border-color: var(--radio-border-color-checked);
-}
+/* ================== States =========================================== */
 
-/* 체크 시 내부 점 표시 */
-.m3-radio input[type="radio"]:checked::after {
-    opacity: var(--opacity-100);
-}
+.m3-radio input[type="radio"]:checked::before { --radio-border-color: var(--radio-selected-color); }
+.m3-radio input[type="radio"]:checked::after { --radio-dot-opacity: 1; }
 
-/* =========================================
-   States: Hover
-   Hover 시 배경에 희미한 원(Ripple) 표시
-   ========================================= */
-.m3-radio input[type="radio"]:hover::before {
-    /* box-shadow로 Ripple 효과 구현 */
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-3));
-    --radio-background-color: color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-2));
-}
+.m3-radio input[type="radio"]:hover::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 8%, transparent); }
+.m3-radio input[type="radio"]:checked:hover::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-selected-color) 8%, transparent); }
 
-.m3-radio input[type="radio"]:checked:hover::before {
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-3));
-    --radio-background-color: color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-2));
-}
+.m3-radio input[type="radio"]:active::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 12%, transparent); }
+.m3-radio input[type="radio"]:checked:active::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-selected-color) 12%, transparent); }
 
-/* =========================================
-   States: Active (Press)
-   눌렀을 때 진한 Ripple 표시
-   ========================================= */
-.m3-radio input[type="radio"]:active::before {
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-2));
-    --radio-background-color: color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-2));
-}
+.m3-radio input[type="radio"]:focus-visible::before { --radio-outline: var(--border-width-2) solid var(--color-focus-ring); --radio-outline-offset: 0.25rem; }
 
-.m3-radio input[type="radio"]:checked:active::before {
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-2));
-    --radio-background-color: color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-2));
-}
+.m3-radio input[type="radio"]:disabled { --radio-cursor: not-allowed; }
+.m3-radio input[type="radio"]:disabled::before { --radio-border-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent); --radio-box-shadow: none; }
+.m3-radio input[type="radio"]:disabled::after { --radio-dot-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent); }
 
-/* =========================================
-   States: Focus
-   키보드 접근성 등을 위한 포커스 링
-   ========================================= */
-.m3-radio input[type="radio"]:focus::before {
-    --radio-outline: var(--border-width-1) solid color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-1));
-    --radio-outline-offset: var(--radio-outline-offset-focus);
-}
-
-.m3-radio input[type="radio"]:checked:focus::before {
-    --radio-outline: var(--border-width-1) solid color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-1));
-    --radio-outline-offset: var(--radio-outline-offset-focus);
-}
-
-/* =========================================
-   States: Disabled
-   ========================================= */
-.m3-radio input[type="radio"]:disabled {
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-.m3-radio input[type="radio"]:checked:disabled::before,
-.m3-radio input[type="radio"]:checked:disabled::after,
-.m3-radio input[type="radio"]:disabled::before,
-.m3-radio input[type="radio"]:disabled::after {
-    --radio-border-color: color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-disabled));
-    background-color: transparent;
-    box-shadow: none;
-}
-
-/* =========================================
-   Label
-   ========================================= */
+/* Label */
 .m3-radio .m3-radio-label {
-    font-size: var(--radio-label-size);
-    color: var(--radio-unselect-primary);
+	font-size: var(--radio-label-size);
+	color: var(--radio-label-color);
 }
 
-/* =========================================
-   Helpers: Force States
-   테스트 또는 강제 상태 표현용 클래스
-   (.radio:hover, .radio:press, .radio:focus)
-   ========================================= */
+/* ================== Color Variants =================================== */
 
-/* Hover Force */
-.radio\:hover input[type="radio"]::before {
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-3));
-    --radio-background-color: color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-2));
-}
+.m3-radio.radio-color\:primary { --radio-selected-color: var(--color-primary); --radio-dot-color: var(--color-primary); }
+.m3-radio.radio-color\:secondary { --radio-selected-color: var(--color-secondary); --radio-dot-color: var(--color-secondary); }
+.m3-radio.radio-color\:tertiary { --radio-selected-color: var(--color-tertiary); --radio-dot-color: var(--color-tertiary); }
+.m3-radio.radio-color\:danger { --radio-selected-color: var(--color-danger); --radio-dot-color: var(--color-danger); }
 
-.radio\:hover input[type="radio"]:checked::before {
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-3));
-    --radio-background-color: color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-2));
-}
+/* ================== Static States ==================================== */
 
-/* Press Force */
-.radio\:press input[type="radio"]::before {
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-2));
-    --radio-background-color: color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-2));
-}
-
-.radio\:press input[type="radio"]:checked::before {
-    --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-2));
-    --radio-background-color: color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-2));
-}
-
-/* Focus Force */
-.radio\:focus input[type="radio"]::before {
-    --radio-outline: var(--border-width-1) solid color-mix(in srgb, var(--radio-unselect-primary), transparent var(--transparent-1));
-    --radio-outline-offset: var(--radio-outline-offset-focus);
-}
-
-.radio\:focus input[type="radio"]:checked::before {
-    --radio-outline: var(--border-width-1) solid color-mix(in srgb, var(--radio-select-primary), transparent var(--transparent-1));
-    --radio-outline-offset: var(--radio-outline-offset-focus);
-}
+.m3-radio.radio-state\:hover input[type="radio"]::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 8%, transparent); }
+.m3-radio.radio-state\:hover input[type="radio"]:checked::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-selected-color) 8%, transparent); }
+.m3-radio.radio-state\:active input[type="radio"]::before { --radio-box-shadow: 0 0 0 0.625rem color-mix(in srgb, var(--radio-border-color) 12%, transparent); }
+.m3-radio.radio-state\:focus input[type="radio"]::before { --radio-outline: var(--border-width-2) solid var(--color-focus-ring); --radio-outline-offset: 0.25rem; }

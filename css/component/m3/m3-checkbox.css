@@ -1,232 +1,137 @@
-/* 체크박스 변수 */
+/* ====== M3 Checkbox ================================================
+ * M3 spec: 18dp box, 2dp radius, primary when checked
+ * Variable API: --checkbox-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
 .m3-checkbox {
-    --checkbox-main-color: var(--color-primary-hover);
-    --checkbox-icon-color: #ffffff;
-    --checkbox-border-color: var(--color-text-muted);
-    --checkbox-outline-color: transparent;
-    --checkbox-text-color: var(--color-text-muted);
-    --checkbox-opacity: var(--opacity-0);
-    --checkbox-icon-content: "\e5ca";
-    --checkbox-transparent-0: transparent 0%;
-    --checkbox-transparent-38: transparent 38%;
-    --checkbox-transparent-92: transparent 92%;
-    --checkbox-transparent-100: transparent 100%;
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(106, 142, 41, 0.3) 50%, rgba(106, 142, 41, 0.5) 100%);
+	--checkbox-display: inline-flex;
+	--checkbox-align-items: center;
+	--checkbox-padding: 0.5rem;
+	--checkbox-cursor: pointer;
+	--checkbox-gap: 0.75rem;
+
+	--checkbox-size: 1.125rem;
+	--checkbox-border-radius: 0.125rem;
+	--checkbox-border-width: 0.125rem;
+	--checkbox-border-color: var(--color-text-muted);
+	--checkbox-background: transparent;
+
+	--checkbox-check-color: var(--color-on-primary);
+	--checkbox-check-background: var(--color-primary);
+	--checkbox-check-opacity: 0;
+	--checkbox-check-content: "\e5ca";
+	--checkbox-check-font-size: 1.125rem;
+
+	--checkbox-state-size: 2.5rem;
+	--checkbox-state-color: var(--color-primary);
+	--checkbox-state-opacity: 0;
+
+	--checkbox-label-size: 0.875rem;
+	--checkbox-label-color: var(--color-text);
+
+	--checkbox-transition: all var(--duration-fast) var(--ease-in-out);
 }
 
-/* 다크모드 */
-@media (prefers-color-scheme: dark) {
-    .m3-checkbox input[type="checkbox"]::before {
-        --checkbox-outline-color: transparent;
-    }
-}
-
-/* 체크박스 동작 트랜지션 */
-.m3-checkbox,
-.m3-checkbox input[type="checkbox"]::after,
-.m3-checkbox input[type="checkbox"]::before {
-    transition: all 0.3s ease;
-}
-
+/* ================== Base ============================================= */
 .m3-checkbox {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.9375rem;
-    cursor: pointer;
-    user-select: none;
-    font-size: var(--space-5);
-    color: var(--checkbox-text-color);
+	display: var(--checkbox-display);
+	align-items: var(--checkbox-align-items);
+	padding: var(--checkbox-padding);
+	cursor: var(--checkbox-cursor);
+	user-select: none;
+	gap: var(--checkbox-gap);
+	color: var(--checkbox-label-color);
+	font-size: var(--checkbox-label-size);
+	transition: var(--checkbox-transition);
 }
 
 .m3-checkbox input[type="checkbox"] {
-    appearance: none;
-    position: relative;
-    margin-right: var(--space-6);
-    /* 크기/모양 */
-    width: 1.125rem;
-    height: 1.125rem;
-    border-radius: var(--radius-1);
-    border: var(--border-width-2) solid var(--checkbox-border-color);
-    box-sizing: border-box;
+	appearance: none;
+	position: relative;
+	width: var(--checkbox-size);
+	height: var(--checkbox-size);
+	border-radius: var(--checkbox-border-radius);
+	border: var(--checkbox-border-width) solid var(--checkbox-border-color);
+	background: var(--checkbox-background);
+	box-sizing: border-box;
+	cursor: inherit;
+	flex-shrink: 0;
+	margin: 0;
 }
 
+/* Check mark */
 .m3-checkbox input[type="checkbox"]::after {
-    /* 레이아웃 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* 크기/모양 */
-    width: inherit;
-    height: inherit;
-    position: absolute;
-    top: -var(--space-1);
-    left: -var(--space-1);
-    background-color: var(--checkbox-main-color);
-    border-color: var(--checkbox-main-color);
-    border-radius: var(--radius-1);
-    /* 컨텐츠 */
-    content: var(--checkbox-icon-content);
-    font-family: "Material Symbols Outlined";
-    font-size: 1.125rem;
-    font-weight: var(--font-weight-medium);
-    color: var(--checkbox-icon-color);
-    opacity: var(--checkbox-opacity);
+	content: var(--checkbox-check-content);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	inset: calc(-1 * var(--checkbox-border-width));
+	background-color: var(--checkbox-check-background);
+	border-radius: var(--checkbox-border-radius);
+	font-family: "Material Symbols Outlined";
+	font-size: var(--checkbox-check-font-size);
+	font-weight: var(--font-weight-medium);
+	color: var(--checkbox-check-color);
+	opacity: var(--checkbox-check-opacity);
+	transition: var(--checkbox-transition);
 }
 
+/* State layer */
 .m3-checkbox input[type="checkbox"]::before {
-    display: inline-flex;
-    /* 크기/모양 */
-    content: "";
-    width: var(--space-9);
-    height: var(--space-9);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    outline: 0.1875rem solid var(--checkbox-outline-color);
-    background: var(--checkbox-main-color);
-    opacity: var(--checkbox-opacity);
+	content: "";
+	position: absolute;
+	width: var(--checkbox-state-size);
+	height: var(--checkbox-state-size);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	background: var(--checkbox-state-color);
+	opacity: var(--checkbox-state-opacity);
+	transition: var(--checkbox-transition);
 }
 
-/* ⬇️state별 변수 구간 */
-.m3-checkbox input[type="checkbox"]:not(:disabled):checked::after {
-    --checkbox-icon-content: "\e5ca";
-    --checkbox-opacity: var(--opacity-100);
-}
+/* ================== States =========================================== */
+
+.m3-checkbox input[type="checkbox"]:checked::after { --checkbox-check-opacity: 1; }
+.m3-checkbox input[type="checkbox"]:not(:disabled):hover::before { --checkbox-state-opacity: 0.08; }
+.m3-checkbox input[type="checkbox"]:not(:disabled):focus-visible::before { --checkbox-state-opacity: 0.12; }
+.m3-checkbox input[type="checkbox"]:not(:disabled):active::before { --checkbox-state-opacity: 0.12; }
 
 .m3-checkbox input[type="checkbox"]:disabled {
-    --checkbox-border-color: color-mix(in srgb, var(--color-text-muted), var(--checkbox-transparent-38));
-    --checkbox-text-color: color-mix(in srgb, var(--color-text-muted), var(--checkbox-transparent-38));
+	--checkbox-border-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--checkbox-cursor: not-allowed;
 }
 
-.m3-checkbox input[type="checkbox"]:not(:disabled):hover::before {
-    --checkbox-outline-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-100));
-    --checkbox-main-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-92));
-    --checkbox-opacity: var(--opacity-100);
+.m3-checkbox input[type="checkbox"]:disabled::after {
+	--checkbox-check-background: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 }
 
-.m3-checkbox input[type="checkbox"]:not(:disabled):focus::before {
-    --checkbox-outline-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-0));
-    --checkbox-main-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-100));
-    --checkbox-opacity: var(--opacity-100);
+.m3-checkbox:has(input:disabled) {
+	--checkbox-label-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--checkbox-cursor: not-allowed;
 }
 
-.m3-checkbox input[type="checkbox"]:not(:disabled):active::before {
-    --checkbox-outline-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-100));
-    --checkbox-main-color: var(--background-gradient);
-    --checkbox-opacity: var(--opacity-90);
-}
-
+/* Indeterminate */
 .m3-checkbox.checkbox-mode\:indeterminate input[type="checkbox"]::after {
-    --checkbox-icon-content: "\f88a" !important;
+	--checkbox-check-content: "\f88a";
+	--checkbox-check-opacity: 1;
 }
 
-/* ⬇️각 상태를 기본으로 하는  정적인 상태의 체크박스 */
-.m3-checkbox.checkbox-state\:enabled input[type="checkbox"]::after {
-    --checkbox-icon-content: "\e5ca";
-    --checkbox-opacity: var(--opacity-100);
-}
+/* ================== Color Variants =================================== */
 
-.m3-checkbox.checkbox-state\:unselected-disabled input[type="checkbox"] {
-    --checkbox-border-color: color-mix(in srgb, var(--color-text-muted), var(--checkbox-transparent-38));
-    --checkbox-text-color: color-mix(in srgb, var(--color-text-muted), var(--checkbox-transparent-38));
-}
+.m3-checkbox.checkbox-color\:primary { --checkbox-check-background: var(--color-primary); --checkbox-state-color: var(--color-primary); }
+.m3-checkbox.checkbox-color\:secondary { --checkbox-check-background: var(--color-secondary); --checkbox-state-color: var(--color-secondary); }
+.m3-checkbox.checkbox-color\:tertiary { --checkbox-check-background: var(--color-tertiary); --checkbox-state-color: var(--color-tertiary); }
+.m3-checkbox.checkbox-color\:danger { --checkbox-check-background: var(--color-danger); --checkbox-state-color: var(--color-danger); }
+.m3-checkbox.checkbox-color\:success { --checkbox-check-background: var(--color-success); --checkbox-state-color: var(--color-success); }
+.m3-checkbox.checkbox-color\:warning { --checkbox-check-background: var(--color-warning); --checkbox-state-color: var(--color-warning); }
 
-.m3-checkbox.checkbox-state\:hovered input[type="checkbox"]::before {
-    --checkbox-outline-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-100));
-    --checkbox-main-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-92));
-    --checkbox-opacity: var(--opacity-100);
-}
+/* ================== Static States ==================================== */
 
-.m3-checkbox.checkbox-state\:focused input[type="checkbox"]::before {
-    --checkbox-outline-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-0));
-    --checkbox-main-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-100));
-    --checkbox-opacity: var(--opacity-100);
-}
-
-.m3-checkbox.checkbox-state\:pressed input[type="checkbox"]::before {
-    --checkbox-outline-color: color-mix(in srgb, var(--color-primary-hover), var(--checkbox-transparent-100));
-    --checkbox-main-color: var(--background-gradient);
-    --checkbox-opacity: var(--opacity-90);
-}
-
-/*  기본컬러 Green(main-2) 체크박스 컬러 옵션 Green(main-1,3), Blue(sub-1,2,3), Red(error-1,2,3), Brown(accent-1,2,3) */
-
-.checkbox-color\:main-1 input[type="checkbox"],
-.checkbox-color\:main-1 input[type="checkbox"]::after,
-.checkbox-color\:main-1 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-primary);
-    --color-primary-hover: var(--color-primary);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(140, 186, 53, 0.3) 50%, rgba(140, 186, 53, 0.5) 100%);
-}
-.checkbox-color\:main-3 input[type="checkbox"],
-.checkbox-color\:main-3 input[type="checkbox"]::after,
-.checkbox-color\:main-3 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-primary-active);
-    --color-primary-hover: var(--color-primary-active);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(61, 82, 24, 0.3) 50%, rgba(61, 82, 24, 0.5) 100%);
-}
-.checkbox-color\:sub-1 input[type="checkbox"],
-.checkbox-color\:sub-1 input[type="checkbox"]::after,
-.checkbox-color\:sub-1 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-secondary);
-    --color-primary-hover: var(--color-secondary);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(41, 131, 215, 0.3) 50%, rgba(41, 131, 215, 0.5) 100%);
-}
-.checkbox-color\:sub-2 input[type="checkbox"],
-.checkbox-color\:sub-2 input[type="checkbox"]::after,
-.checkbox-color\:sub-2 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-secondary-hover);
-    --color-primary-hover: var(--color-secondary-hover);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(37, 112, 182, 0.3) 50%, rgba(37, 112, 182, 0.5) 100%);
-}
-.checkbox-color\:sub-3 input[type="checkbox"],
-.checkbox-color\:sub-3 input[type="checkbox"]::after,
-.checkbox-color\:sub-3 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-secondary-active);
-    --color-primary-hover: var(--color-secondary-active);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(27, 87, 144, 0.3) 50%, rgba(27, 87, 144, 0.5) 100%);
-}
-.checkbox-color\:danger-1 input[type="checkbox"],
-.checkbox-color\:danger-1 input[type="checkbox"]::after,
-.checkbox-color\:danger-1 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-danger);
-    --color-primary-hover: var(--color-danger);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(239, 68, 68, 0.3) 50%, rgba(239, 68, 68, 0.5) 100%);
-}
-.checkbox-color\:danger-2 input[type="checkbox"],
-.checkbox-color\:danger-2 input[type="checkbox"]::after,
-.checkbox-color\:danger-2 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-danger-hover);
-    --color-primary-hover: var(--color-danger-hover);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(220, 38, 38, 0.3) 50%, rgba(220, 38, 38, 0.5) 100%);
-}
-.checkbox-color\:danger-3 input[type="checkbox"],
-.checkbox-color\:danger-3 input[type="checkbox"]::after,
-.checkbox-color\:danger-3 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-danger-active);
-    --color-primary-hover: var(--color-danger-active);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(185, 28, 28, 0.3) 50%, rgba(185, 28, 28, 0.5) 100%);
-}
-.checkbox-color\:accent-1 input[type="checkbox"],
-.checkbox-color\:accent-1 input[type="checkbox"]::after,
-.checkbox-color\:accent-1 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-tertiary);
-    --color-primary-hover: var(--color-tertiary);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(245, 158, 11, 0.3) 50%, rgba(245, 158, 11, 0.5) 100%);
-}
-.checkbox-color\:accent-2 input[type="checkbox"],
-.checkbox-color\:accent-2 input[type="checkbox"]::after,
-.checkbox-color\:accent-2 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-tertiary-hover);
-    --color-primary-hover: var(--color-tertiary-hover);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(217, 119, 6, 0.3) 50%, rgba(217, 119, 6, 0.5) 100%);
-}
-.checkbox-color\:accent-3 input[type="checkbox"],
-.checkbox-color\:accent-3 input[type="checkbox"]::after,
-.checkbox-color\:accent-3 input[type="checkbox"]::before{
-    --checkbox-main-color: var(--color-tertiary-active);
-    --color-primary-hover: var(--color-tertiary-active);
-    --background-gradient: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(180, 83, 9, 0.3) 50%, rgba(180, 83, 9, 0.5) 100%);
-}
+.m3-checkbox.checkbox-state\:checked input[type="checkbox"]::after { --checkbox-check-opacity: 1; }
+.m3-checkbox.checkbox-state\:hovered input[type="checkbox"]::before { --checkbox-state-opacity: 0.08; }
+.m3-checkbox.checkbox-state\:focused input[type="checkbox"]::before { --checkbox-state-opacity: 0.12; }
+.m3-checkbox.checkbox-state\:disabled input[type="checkbox"] { --checkbox-border-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent); }
