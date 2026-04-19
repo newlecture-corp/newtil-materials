@@ -78,10 +78,25 @@
 				<button class="m3-btn btn-color:danger btn-icon:leading"><i class="m3-icon icon:delete"></i>삭제</button>
 			</div>
 			<pre class="source">&lt;button class="m3-btn"&gt;Filled&lt;/button&gt;
+&lt;button class="m3-btn btn:elevated"&gt;Elevated&lt;/button&gt;
+&lt;button class="m3-btn btn:tonal"&gt;Tonal&lt;/button&gt;
 &lt;button class="m3-btn btn:outlined"&gt;Outlined&lt;/button&gt;
-&lt;button class="m3-btn btn-color:danger btn-icon:leading"&gt;
-  &lt;i class="m3-icon icon:delete"&gt;&lt;/i&gt;삭제
-&lt;/button&gt;</pre>
+&lt;button class="m3-btn btn:text"&gt;Text&lt;/button&gt;
+&lt;button class="m3-btn" disabled&gt;Disabled&lt;/button&gt;
+
+&lt;button class="m3-btn btn-color:secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="m3-btn btn-color:danger"&gt;Danger&lt;/button&gt;
+&lt;button class="m3-btn btn-color:success"&gt;Success&lt;/button&gt;
+&lt;button class="m3-btn btn-color:warning"&gt;Warning&lt;/button&gt;
+
+&lt;button class="m3-btn btn-size:xs"&gt;XS&lt;/button&gt;
+&lt;button class="m3-btn btn-size:sm"&gt;SM&lt;/button&gt;
+&lt;button class="m3-btn btn-size:md"&gt;MD&lt;/button&gt;
+&lt;button class="m3-btn btn-size:lg"&gt;LG&lt;/button&gt;
+
+&lt;button class="m3-btn btn-icon:leading"&gt;&lt;i class="m3-icon icon:add"&gt;&lt;/i&gt;추가&lt;/button&gt;
+&lt;button class="m3-btn btn:outlined btn-icon:leading"&gt;&lt;i class="m3-icon icon:search"&gt;&lt;/i&gt;검색&lt;/button&gt;
+&lt;button class="m3-btn btn-color:danger btn-icon:leading"&gt;&lt;i class="m3-icon icon:delete"&gt;&lt;/i&gt;삭제&lt;/button&gt;</pre>
 		</section>
 
 		<!-- Chips -->
@@ -95,7 +110,10 @@
 				<span class="m3-chip chip-color:success chip:selected">Success</span>
 			</div>
 			<pre class="source">&lt;span class="m3-chip"&gt;기본&lt;/span&gt;
-&lt;span class="m3-chip chip:selected"&gt;선택됨&lt;/span&gt;</pre>
+&lt;span class="m3-chip chip:selected"&gt;선택됨&lt;/span&gt;
+&lt;span class="m3-chip chip:elevated"&gt;Elevated&lt;/span&gt;
+&lt;span class="m3-chip chip-color:danger chip:selected"&gt;Danger&lt;/span&gt;
+&lt;span class="m3-chip chip-color:success chip:selected"&gt;Success&lt;/span&gt;</pre>
 		</section>
 
 		<!-- Icon -->
@@ -108,6 +126,11 @@
 				<i class="m3-icon icon:favorite icon-filled:1 icon-color:danger"></i>
 				<i class="m3-icon icon:home icon-size:lg icon-color:primary"></i>
 			</div>
+			<pre class="source">&lt;i class="m3-icon icon:home"&gt;&lt;/i&gt;
+&lt;i class="m3-icon icon:search"&gt;&lt;/i&gt;
+&lt;i class="m3-icon icon:settings"&gt;&lt;/i&gt;
+&lt;i class="m3-icon icon:favorite icon-filled:1 icon-color:danger"&gt;&lt;/i&gt;
+&lt;i class="m3-icon icon:home icon-size:lg icon-color:primary"&gt;&lt;/i&gt;</pre>
 		</section>
 
 		<!-- Deco -->
@@ -119,6 +142,10 @@
 				<span class="m3-deco icon:settings deco-pos:top">설정</span>
 				<span class="m3-deco icon:favorite deco-pos:top deco-active deco-color:danger icon-filled:1">좋아요</span>
 			</div>
+			<pre class="source">&lt;span class="m3-deco icon:home deco-pos:left"&gt;홈&lt;/span&gt;
+&lt;span class="m3-deco icon:search deco-pos:left"&gt;검색&lt;/span&gt;
+&lt;span class="m3-deco icon:settings deco-pos:top"&gt;설정&lt;/span&gt;
+&lt;span class="m3-deco icon:favorite deco-pos:top deco-active deco-color:danger icon-filled:1"&gt;좋아요&lt;/span&gt;</pre>
 		</section>
 
 		</div>
@@ -139,10 +166,10 @@
 				<label class="m3-switch switch-color:danger"><input type="checkbox" checked><span class="switch-label">Danger</span></label>
 				<label class="m3-switch"><input type="checkbox" disabled><span class="switch-label">Disabled</span></label>
 			</div>
-			<pre class="source">&lt;label class="m3-switch"&gt;
-  &lt;input type="checkbox" checked&gt;
-  &lt;span class="switch-label"&gt;On&lt;/span&gt;
-&lt;/label&gt;</pre>
+			<pre class="source">&lt;label class="m3-switch"&gt;&lt;input type="checkbox"&gt;&lt;span class="switch-label"&gt;Off&lt;/span&gt;&lt;/label&gt;
+&lt;label class="m3-switch"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="switch-label"&gt;On&lt;/span&gt;&lt;/label&gt;
+&lt;label class="m3-switch switch-color:danger"&gt;&lt;input type="checkbox" checked&gt;&lt;span class="switch-label"&gt;Danger&lt;/span&gt;&lt;/label&gt;
+&lt;label class="m3-switch"&gt;&lt;input type="checkbox" disabled&gt;&lt;span class="switch-label"&gt;Disabled&lt;/span&gt;&lt;/label&gt;</pre>
 		</section>
 
 		<!-- Checkbox -->
@@ -154,6 +181,10 @@
 				<label class="m3-checkbox checkbox-color:danger"><input type="checkbox" checked> Danger</label>
 				<label class="m3-checkbox"><input type="checkbox" disabled> Disabled</label>
 			</div>
+			<pre class="source">&lt;label class="m3-checkbox"&gt;&lt;input type="checkbox"&gt; 미선택&lt;/label&gt;
+&lt;label class="m3-checkbox"&gt;&lt;input type="checkbox" checked&gt; 선택&lt;/label&gt;
+&lt;label class="m3-checkbox checkbox-color:danger"&gt;&lt;input type="checkbox" checked&gt; Danger&lt;/label&gt;
+&lt;label class="m3-checkbox"&gt;&lt;input type="checkbox" disabled&gt; Disabled&lt;/label&gt;</pre>
 		</section>
 
 		<!-- Radio -->
@@ -165,6 +196,10 @@
 				<label class="m3-radio radio-color:danger"><input type="radio" name="demo-radio"><span class="m3-radio-label">Danger</span></label>
 				<label class="m3-radio"><input type="radio" name="demo-radio" disabled><span class="m3-radio-label">Disabled</span></label>
 			</div>
+			<pre class="source">&lt;label class="m3-radio"&gt;&lt;input type="radio" name="demo-radio" checked&gt;&lt;span class="m3-radio-label"&gt;옵션 A&lt;/span&gt;&lt;/label&gt;
+&lt;label class="m3-radio"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="m3-radio-label"&gt;옵션 B&lt;/span&gt;&lt;/label&gt;
+&lt;label class="m3-radio radio-color:danger"&gt;&lt;input type="radio" name="demo-radio"&gt;&lt;span class="m3-radio-label"&gt;Danger&lt;/span&gt;&lt;/label&gt;
+&lt;label class="m3-radio"&gt;&lt;input type="radio" name="demo-radio" disabled&gt;&lt;span class="m3-radio-label"&gt;Disabled&lt;/span&gt;&lt;/label&gt;</pre>
 		</section>
 
 		<!-- Text Field -->
@@ -189,9 +224,22 @@
 					<label>Disabled</label>
 				</div>
 			</div>
-			<pre class="source">&lt;div class="m3-text-field field:outlined"&gt;
+			<pre class="source">&lt;div class="m3-text-field"&gt;
   &lt;input type="text" placeholder=" "&gt;
-  &lt;label&gt;이름&lt;/label&gt;
+  &lt;label&gt;Filled&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="m3-text-field field:outlined"&gt;
+  &lt;input type="text" placeholder=" "&gt;
+  &lt;label&gt;Outlined&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="m3-text-field field-state:error"&gt;
+  &lt;input type="text" placeholder=" " value="잘못된 입력"&gt;
+  &lt;label&gt;Error&lt;/label&gt;
+  &lt;div class="field-supporting"&gt;올바른 값을 입력하세요&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="m3-text-field field:outlined field-state:disabled"&gt;
+  &lt;input type="text" placeholder=" " value="수정 불가" disabled&gt;
+  &lt;label&gt;Disabled&lt;/label&gt;
 &lt;/div&gt;</pre>
 		</section>
 
@@ -225,6 +273,24 @@
 					<div class="card-content">테두리만 있는 카드</div>
 				</div>
 			</div>
+			<pre class="source">&lt;div class="m3-card"&gt;
+  &lt;div class="card-media"&gt;&lt;img src="https://picsum.photos/seed/c1/400/200" alt="" style="height: 140px;"&gt;&lt;/div&gt;
+  &lt;div class="card-header"&gt;&lt;div class="card-titles"&gt;&lt;h3 class="card-headline" style="font-size: 1.125rem;"&gt;Elevated&lt;/h3&gt;&lt;p class="card-subhead"&gt;기본 카드&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="card-content"&gt;그림자가 있는 기본 카드&lt;/div&gt;
+  &lt;div class="card-actions"&gt;&lt;button class="m3-btn btn:text btn-size:xs"&gt;자세히&lt;/button&gt;&lt;button class="m3-btn btn-size:xs"&gt;확인&lt;/button&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="m3-card card:filled"&gt;
+  &lt;div class="card-media"&gt;&lt;img src="https://picsum.photos/seed/c2/400/200" alt="" style="height: 140px;"&gt;&lt;/div&gt;
+  &lt;div class="card-header"&gt;&lt;div class="card-titles"&gt;&lt;h3 class="card-headline" style="font-size: 1.125rem;"&gt;Filled&lt;/h3&gt;&lt;p class="card-subhead"&gt;진한 배경&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="card-content"&gt;그림자 없이 배경색만&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="m3-card card:outlined"&gt;
+  &lt;div class="card-media"&gt;&lt;img src="https://picsum.photos/seed/c3/400/200" alt="" style="height: 140px;"&gt;&lt;/div&gt;
+  &lt;div class="card-header"&gt;&lt;div class="card-titles"&gt;&lt;h3 class="card-headline" style="font-size: 1.125rem;"&gt;Outlined&lt;/h3&gt;&lt;p class="card-subhead"&gt;테두리&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="card-content"&gt;테두리만 있는 카드&lt;/div&gt;
+&lt;/div&gt;</pre>
 		</section>
 
 		<!-- Dialog -->
@@ -252,7 +318,26 @@
 					<button class="m3-btn btn:outlined" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">취소</button>
 					<button class="m3-btn btn-color:danger" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">삭제</button>
 				</div>
-			</div>
+			<pre class="source">&lt;button class="m3-btn" onclick="document.getElementById('demo-dialog').classList.add('dialog-open')"&gt;다이얼로그 열기&lt;/button&gt;
+
+&lt;div id="demo-dialog" class="m3-dialog"&gt;
+  &lt;h2 class="dialog-headline"&gt;알림&lt;/h2&gt;
+  &lt;p class="dialog-content"&gt;변경사항이 저장되지 않았습니다.&lt;/p&gt;
+  &lt;div class="dialog-actions"&gt;
+    &lt;button class="m3-btn btn:text" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')"&gt;취소&lt;/button&gt;
+    &lt;button class="m3-btn" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')"&gt;확인&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="demo-dialog-icon" class="m3-dialog"&gt;
+  &lt;div class="dialog-icon"&gt;&lt;i class="m3-icon icon:delete icon-color:danger icon-size:lg"&gt;&lt;/i&gt;&lt;/div&gt;
+  &lt;h2 class="dialog-headline" style="text-align: center;"&gt;삭제하시겠습니까?&lt;/h2&gt;
+  &lt;p class="dialog-content" style="text-align: center;"&gt;이 작업은 되돌릴 수 없습니다.&lt;/p&gt;
+  &lt;div class="dialog-actions"&gt;
+    &lt;button class="m3-btn btn:outlined" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')"&gt;취소&lt;/button&gt;
+    &lt;button class="m3-btn btn-color:danger" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')"&gt;삭제&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
 		</section>
 
 		<!-- List -->
@@ -282,13 +367,26 @@
 					</li>
 				</ul>
 			</div>
-			<pre class="source">&lt;ul class="m3-list"&gt;
-  &lt;li class="list-item list-clickable"&gt;
+			<pre class="source">&lt;ul class="m3-list" style="border: 1px solid var(--color-border); border-radius: 0.75rem; overflow: hidden;"&gt;
+  &lt;li class="list-item list-clickable list-active"&gt;
     &lt;div class="list-leading"&gt;&lt;i class="m3-icon icon:home"&gt;&lt;/i&gt;&lt;/div&gt;
-    &lt;div class="list-content"&gt;
-      &lt;div class="list-headline"&gt;홈&lt;/div&gt;
-      &lt;div class="list-supporting"&gt;설명&lt;/div&gt;
-    &lt;/div&gt;
+    &lt;div class="list-content"&gt;&lt;div class="list-headline"&gt;홈&lt;/div&gt;&lt;div class="list-supporting"&gt;메인 페이지&lt;/div&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;hr class="list-divider list-divider:inset"&gt;
+  &lt;li class="list-item list-clickable"&gt;
+    &lt;div class="list-leading"&gt;&lt;i class="m3-icon icon:mail"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="list-content"&gt;&lt;div class="list-headline"&gt;메일&lt;/div&gt;&lt;div class="list-supporting"&gt;새 메일 3건&lt;/div&gt;&lt;/div&gt;
+    &lt;div class="list-trailing" style="position: relative; display: inline-flex;"&gt;&lt;span class="m3-badge badge:inline badge-color:danger"&gt;3&lt;/span&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;hr class="list-divider list-divider:inset"&gt;
+  &lt;li class="list-item list-clickable"&gt;
+    &lt;div class="list-avatar"&gt;P&lt;/div&gt;
+    &lt;div class="list-content"&gt;&lt;div class="list-headline"&gt;프로필&lt;/div&gt;&lt;div class="list-supporting"&gt;계정 설정&lt;/div&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;hr class="list-divider list-divider:inset"&gt;
+  &lt;li class="list-item list-disabled"&gt;
+    &lt;div class="list-leading"&gt;&lt;i class="m3-icon icon:lock"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="list-content"&gt;&lt;div class="list-headline"&gt;관리자 메뉴&lt;/div&gt;&lt;div class="list-supporting"&gt;권한이 없습니다&lt;/div&gt;&lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</pre>
 		</section>
@@ -304,9 +402,13 @@
 				</div>
 				<div style="padding: 1.5rem; font-size: 0.875rem; color: var(--color-text-muted);">탭 콘텐츠 영역</div>
 			</div>
-			<pre class="source">&lt;div class="m3-tabs tabs:full"&gt;
-  &lt;button class="tab-item tab-active"&gt;최근&lt;/button&gt;
-  &lt;button class="tab-item"&gt;인기&lt;/button&gt;
+			<pre class="source">&lt;div style="max-width: 28rem; border: 1px solid var(--color-border); border-radius: 0.75rem; overflow: hidden;"&gt;
+  &lt;div class="m3-tabs tabs:full"&gt;
+    &lt;button class="tab-item tab-active"&gt;최근&lt;/button&gt;
+    &lt;button class="tab-item"&gt;인기&lt;/button&gt;
+    &lt;button class="tab-item"&gt;팔로잉&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div style="padding: 1.5rem; font-size: 0.875rem; color: var(--color-text-muted);"&gt;탭 콘텐츠 영역&lt;/div&gt;
 &lt;/div&gt;</pre>
 		</section>
 
@@ -342,7 +444,18 @@
 			<pre class="source">&lt;div style="position: relative; display: inline-flex;"&gt;
   &lt;i class="m3-icon icon:mail icon-size:lg"&gt;&lt;/i&gt;
   &lt;span class="m3-badge"&gt;5&lt;/span&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+&lt;div style="position: relative; display: inline-flex;"&gt;
+  &lt;i class="m3-icon icon:notifications icon-size:lg"&gt;&lt;/i&gt;
+  &lt;span class="m3-badge badge:dot"&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;div style="position: relative; display: inline-flex;"&gt;
+  &lt;i class="m3-icon icon:chat icon-size:lg"&gt;&lt;/i&gt;
+  &lt;span class="m3-badge badge-color:primary"&gt;12&lt;/span&gt;
+&lt;/div&gt;
+&lt;span class="m3-badge badge:inline badge-color:success"&gt;완료&lt;/span&gt;
+&lt;span class="m3-badge badge:inline badge-color:warning"&gt;대기&lt;/span&gt;
+&lt;span class="m3-badge badge:inline badge-color:danger"&gt;오류&lt;/span&gt;</pre>
 		</section>
 
 		<!-- Progress -->
@@ -374,8 +487,14 @@
 				</div>
 			</div>
 			<pre class="source">&lt;div class="m3-progress" style="--progress-value: 60%;"&gt;&lt;/div&gt;
+
 &lt;div class="m3-progress progress:indeterminate"&gt;&lt;/div&gt;
-&lt;div class="m3-progress progress:circular"&gt;&lt;/div&gt;</pre>
+
+&lt;div class="m3-progress progress-color:success" style="--progress-value: 80%;"&gt;&lt;/div&gt;
+&lt;div class="m3-progress progress-color:danger" style="--progress-value: 30%;"&gt;&lt;/div&gt;
+
+&lt;div class="m3-progress progress:circular"&gt;&lt;/div&gt;
+&lt;div class="m3-progress progress:circular progress-color:danger"&gt;&lt;/div&gt;</pre>
 		</section>
 
 		<!-- Snackbar -->
@@ -400,9 +519,22 @@
 				<span class="snackbar-text">네트워크 오류가 발생했습니다</span>
 				<button class="snackbar-action" onclick="hideSnackbar('snack-danger')">재시도</button>
 			</div>
-			<pre class="source">&lt;div class="m3-snackbar snackbar-open"&gt;
-  &lt;span class="snackbar-text"&gt;메시지&lt;/span&gt;
-  &lt;button class="snackbar-action"&gt;실행취소&lt;/button&gt;
+			<pre class="source">&lt;button class="m3-btn" onclick="showSnackbar('snack-default')"&gt;기본&lt;/button&gt;
+&lt;button class="m3-btn btn-color:success" onclick="showSnackbar('snack-success')"&gt;성공&lt;/button&gt;
+&lt;button class="m3-btn btn-color:danger" onclick="showSnackbar('snack-danger')"&gt;오류&lt;/button&gt;
+
+&lt;div id="snack-default" class="m3-snackbar"&gt;
+  &lt;span class="snackbar-text"&gt;파일이 저장되었습니다&lt;/span&gt;
+  &lt;button class="snackbar-action" onclick="hideSnackbar('snack-default')"&gt;실행취소&lt;/button&gt;
+  &lt;button class="snackbar-close" onclick="hideSnackbar('snack-default')"&gt;&lt;i class="m3-icon icon:close icon-size:xs"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id="snack-success" class="m3-snackbar snackbar-color:success"&gt;
+  &lt;span class="snackbar-text"&gt;업로드가 완료되었습니다&lt;/span&gt;
+  &lt;button class="snackbar-close" onclick="hideSnackbar('snack-success')"&gt;&lt;i class="m3-icon icon:close icon-size:xs"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id="snack-danger" class="m3-snackbar snackbar-color:danger"&gt;
+  &lt;span class="snackbar-text"&gt;네트워크 오류가 발생했습니다&lt;/span&gt;
+  &lt;button class="snackbar-action" onclick="hideSnackbar('snack-danger')"&gt;재시도&lt;/button&gt;
 &lt;/div&gt;</pre>
 		</section>
 

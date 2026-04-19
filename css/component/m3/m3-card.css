@@ -65,15 +65,15 @@
 	--card-actions-gap: 0.5rem;
 	--card-actions-padding: 0 var(--card-padding-x) var(--card-padding-y);
 
-	/* -- state layer -- */
+	/* -- state layer (default: disabled — no interactive states) -- */
 	--card-state-layer-color: var(--color-on-surface);
-	--card-state-hover-opacity: 0.08;
-	--card-state-focus-opacity: 0.12;
-	--card-state-pressed-opacity: 0.12;
-	--card-state-dragged-opacity: 0.16;
+	--card-state-hover-opacity: 0;
+	--card-state-focus-opacity: 0;
+	--card-state-pressed-opacity: 0;
+	--card-state-dragged-opacity: 0;
 
 	/* -- effects -- */
-	--card-elevation-hover: var(--shadow-md);
+	--card-elevation-hover: var(--shadow-sm);
 }
 
 /* ================== Base Container =================================== */
@@ -153,7 +153,7 @@
 .m3-card.card\:elevated {
 	--card-background: var(--color-surface-subtle);
 	--card-box-shadow: var(--shadow-sm);
-	--card-elevation-hover: var(--shadow-md);
+	--card-elevation-hover: var(--shadow-sm);
 }
 
 /* ================== Type: Filled ===================================== */
@@ -161,7 +161,7 @@
 .m3-card.card\:filled {
 	--card-background: var(--color-surface-muted);
 	--card-box-shadow: none;
-	--card-elevation-hover: var(--shadow-sm);
+	--card-elevation-hover: none;
 }
 
 /* ================== Type: Outlined =================================== */
@@ -170,7 +170,7 @@
 	--card-background: var(--color-surface);
 	--card-box-shadow: none;
 	--card-border: var(--border-width-1) solid var(--color-border);
-	--card-elevation-hover: var(--shadow-sm);
+	--card-elevation-hover: none;
 }
 
 .m3-card.card\:outlined:focus-visible,
@@ -182,11 +182,34 @@
 	--card-border: var(--border-width-1) solid color-mix(in srgb, var(--color-border) 38%, transparent);
 }
 
+/* ================== Option: Hover Enabled ============================ */
+
+.m3-card.card-hover\:enabled {
+	--card-state-hover-opacity: 0.08;
+	--card-state-focus-opacity: 0.12;
+	--card-state-pressed-opacity: 0.12;
+	--card-elevation-hover: var(--shadow-md);
+	--card-cursor: pointer;
+}
+
+/* Type-specific hover elevations (M3 spec: filled/outlined → level 1) */
+.m3-card.card\:filled.card-hover\:enabled {
+	--card-elevation-hover: var(--shadow-sm);
+}
+
+.m3-card.card\:outlined.card-hover\:enabled {
+	--card-elevation-hover: var(--shadow-sm);
+}
+
 /* ================== Clickable Card =================================== */
 
 .m3-card.card-clickable,
 .m3-card[onclick],
 a.m3-card {
+	--card-state-hover-opacity: 0.08;
+	--card-state-focus-opacity: 0.12;
+	--card-state-pressed-opacity: 0.12;
+	--card-elevation-hover: var(--shadow-md);
 	--card-cursor: pointer;
 	--card-text-decoration: none;
 	--card-color: inherit;
