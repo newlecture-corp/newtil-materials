@@ -16,7 +16,7 @@
 
 ### 기본 HTML 구조
 
-```html
+<Demo>
 <div class="m3-layout">
   <!-- Nav Drawer (Expanded에서 표시) -->
   <nav class="m3-nav-drawer layout-drawer">
@@ -73,7 +73,7 @@
     <a href="#" class="m3-deco icon:settings deco-pos:top">설정</a>
   </nav>
 </div>
-```
+</Demo>
 
 ### 내비게이션 자동 전환
 
@@ -87,7 +87,7 @@
 
 브레이크포인트에 관계없이 서랍을 항상 표시합니다.
 
-```html
+<Demo>
 <div class="m3-layout layout:fixed-drawer">
   <nav class="m3-nav-drawer layout-drawer">
     <!-- 서랍 내용 -->
@@ -101,13 +101,13 @@
     </main>
   </div>
 </div>
-```
+</Demo>
 
 ### 옵션: layout:no-header
 
 상단 앱 바를 숨깁니다.
 
-```html
+<Demo>
 <div class="m3-layout layout:no-header">
   <nav class="m3-nav-drawer layout-drawer">
     <!-- 서랍 내용 -->
@@ -121,7 +121,7 @@
     <!-- 하단 내비게이션 -->
   </nav>
 </div>
-```
+</Demo>
 
 ### 변수 API
 
@@ -161,31 +161,31 @@
 
 ### 기본 (Full Width)
 
-```html
+<Demo>
 <hr class="m3-divider">
-```
+</Demo>
 
 ### Inset
 
 좌측에 여백이 있는 구분선입니다.
 
-```html
+<Demo>
 <hr class="m3-divider divider:inset">
-```
+</Demo>
 
 ### Middle Inset
 
 좌우 양쪽에 여백이 있는 구분선입니다.
 
-```html
+<Demo>
 <hr class="m3-divider divider:middle-inset">
-```
+</Demo>
 
 ### Vertical
 
 세로 방향 구분선입니다.
 
-```html
+<Demo>
 <div style="display: flex; align-items: center; height: 3rem; gap: 1rem;">
   <span>항목 A</span>
   <hr class="m3-divider divider:vertical">
@@ -193,7 +193,7 @@
   <hr class="m3-divider divider:vertical">
   <span>항목 C</span>
 </div>
-```
+</Demo>
 
 ### 변수 API
 

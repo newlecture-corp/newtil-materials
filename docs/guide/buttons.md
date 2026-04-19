@@ -6,7 +6,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 ### 5가지 타입
 
-```html
+<Demo>
 <!-- filled (기본) -->
 <button class="m3-btn">Filled</button>
 
@@ -21,7 +21,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 <!-- text -->
 <button class="m3-btn btn:text">Text</button>
-```
+</Demo>
 
 | 클래스 | 설명 |
 |--------|------|
@@ -33,13 +33,13 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 ### 크기 변형
 
-```html
+<Demo>
 <button class="m3-btn btn-size:xs">Extra Small</button>
 <button class="m3-btn btn-size:sm">Small (기본)</button>
 <button class="m3-btn btn-size:md">Medium</button>
 <button class="m3-btn btn-size:lg">Large</button>
 <button class="m3-btn btn-size:xl">Extra Large</button>
-```
+</Demo>
 
 | 클래스 | 별칭 | 높이 | 패딩 | 폰트 크기 |
 |--------|------|------|------|----------|
@@ -53,19 +53,19 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 ### 모양 변형
 
-```html
+<Demo>
 <!-- round (기본) -->
 <button class="m3-btn">라운드</button>
 
 <!-- square -->
 <button class="m3-btn btn-shape:square">스퀘어</button>
-```
+</Demo>
 
 `btn-shape:square`를 사용하면 크기별로 적절한 border-radius가 적용됩니다.
 
 ### 색상 변형
 
-```html
+<Demo>
 <!-- Brand 색상 -->
 <button class="m3-btn btn-color:primary">Primary</button>
 <button class="m3-btn btn-color:secondary">Secondary</button>
@@ -80,13 +80,13 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 <button class="m3-btn btn-color:success">Success</button>
 <button class="m3-btn btn-color:warning">Warning</button>
 <button class="m3-btn btn-color:danger">Danger</button>
-```
+</Demo>
 
 ### 아이콘 버튼 (Leading / Trailing)
 
 버튼 안에 아이콘을 배치할 때 사용합니다.
 
-```html
+<Demo>
 <!-- 아이콘이 앞에 -->
 <button class="m3-btn btn-icon:leading">
   <i class="m3-icon icon:add"></i>추가
@@ -101,14 +101,14 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 <button class="m3-btn btn:tonal btn-color:danger btn-icon:leading">
   <i class="m3-icon icon:delete"></i>삭제
 </button>
-```
+</Demo>
 
 ### 비활성화
 
-```html
+<Demo>
 <button class="m3-btn" disabled>비활성화</button>
 <button class="m3-btn btn:outlined" disabled>비활성화</button>
-```
+</Demo>
 
 ### Variable API
 
@@ -146,15 +146,15 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 ### 기본 사용법
 
-```html
+<Demo>
 <button class="m3-fab">
   <i class="m3-icon icon:add"></i>
 </button>
-```
+</Demo>
 
 ### 크기 변형
 
-```html
+<Demo>
 <!-- small (40dp) -->
 <button class="m3-fab fab:small">
   <i class="m3-icon icon:add"></i>
@@ -174,7 +174,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 <button class="m3-fab fab:extended">
   <i class="m3-icon icon:edit"></i>새 글 작성
 </button>
-```
+</Demo>
 
 | 클래스 | 크기 | 설명 |
 |--------|------|------|
@@ -185,7 +185,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 ### 색상 변형
 
-```html
+<Demo>
 <button class="m3-fab fab-color:primary">
   <i class="m3-icon icon:add"></i>
 </button>
@@ -201,7 +201,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 <button class="m3-fab fab-color:surface">
   <i class="m3-icon icon:settings"></i>
 </button>
-```
+</Demo>
 
 | 클래스 | 배경 | 아이콘 색상 |
 |--------|------|------------|
@@ -237,16 +237,16 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 ### 기본 사용법
 
-```html
+<Demo>
 <!-- standard (기본) -->
 <button class="m3-icon-btn">
   <i class="m3-icon icon:settings"></i>
 </button>
-```
+</Demo>
 
 ### 4가지 타입
 
-```html
+<Demo>
 <!-- standard (기본) -->
 <button class="m3-icon-btn">
   <i class="m3-icon icon:settings"></i>
@@ -266,7 +266,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 <button class="m3-icon-btn icon-btn:outlined">
   <i class="m3-icon icon:settings"></i>
 </button>
-```
+</Demo>
 
 | 클래스 | 설명 |
 |--------|------|
@@ -279,7 +279,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 아이콘 버튼의 선택/비선택 상태를 표현합니다.
 
-```html
+<Demo>
 <!-- unselected -->
 <button class="m3-icon-btn icon-btn-toggle:unselected">
   <i class="m3-icon icon:favorite"></i>
@@ -304,7 +304,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 <button class="m3-icon-btn icon-btn:outlined icon-btn-toggle:selected">
   <i class="m3-icon icon:bookmark icon-filled:1" data-icon="bookmark"></i>
 </button>
-```
+</Demo>
 
 ### Variable API
 

@@ -4,14 +4,18 @@ import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import './style.css';
 
+// @newtil/components CSS (라이브 프리뷰용)
+import '../../../dist/index.css';
+
+// Demo 컴포넌트
+import Demo from './components/Demo.vue';
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    });
+    return h(DefaultTheme.Layout, null, {});
   },
   enhanceApp({ app }) {
-    // Components will be registered in individual pages if needed
+    app.component('Demo', Demo);
   }
 } satisfies Theme;

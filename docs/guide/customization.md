@@ -211,7 +211,7 @@ document.body.classList.toggle('dark-theme');
 
 ### 그라디언트 버튼
 
-```html
+<Demo>
 <button class="m3-btn" style="
   --btn-background-color: transparent;
   --btn-background-image: linear-gradient(135deg, #667eea, #764ba2);
@@ -220,11 +220,11 @@ document.body.classList.toggle('dark-theme');
 ">
   그라디언트
 </button>
-```
+</Demo>
 
 ### 큰 라운드 FAB
 
-```html
+<Demo>
 <button class="m3-fab" style="
   --fab-size: 5rem;
   --fab-icon-size: 2rem;
@@ -234,11 +234,11 @@ document.body.classList.toggle('dark-theme');
 ">
   <i class="m3-icon icon:add"></i>
 </button>
-```
+</Demo>
 
 ### 밑줄 없는 텍스트 필드
 
-```html
+<Demo>
 <div class="m3-text-field" style="
   --field-background: transparent;
   --field-indicator-height: 0;
@@ -248,4 +248,4 @@ document.body.classList.toggle('dark-theme');
   <input type="text" placeholder=" ">
   <label>커스텀 필드</label>
 </div>
-```
+</Demo>

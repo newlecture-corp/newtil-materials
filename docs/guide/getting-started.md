@@ -30,7 +30,7 @@ import '@newtil/components/css/component/m3/icon-essential.css';
 
 버튼과 아이콘을 조합한 간단한 예제입니다.
 
-```html
+<Demo>
 <!-- 기본 filled 버튼 -->
 <button class="m3-btn">저장</button>
 
@@ -41,7 +41,7 @@ import '@newtil/components/css/component/m3/icon-essential.css';
 
 <!-- 단독 아이콘 -->
 <i class="m3-icon icon:home icon-color:primary"></i>
-```
+</Demo>
 
 ## 프로젝트 구조
 

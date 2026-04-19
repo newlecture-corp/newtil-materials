@@ -8,7 +8,7 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <div class="m3-card">
   <div class="card-header">
     <h3 class="card-headline">카드 제목</h3>
@@ -18,14 +18,14 @@
     <p>카드 본문 텍스트입니다.</p>
   </div>
 </div>
-```
+</Demo>
 
 ### 미디어가 포함된 카드
 
-```html
+<Demo>
 <div class="m3-card">
   <div class="card-media">
-    <img src="photo.jpg" alt="사진">
+    <img src="https://picsum.photos/seed/demo/400/200" alt="사진">
   </div>
   <div class="card-header">
     <h3 class="card-headline">미디어 카드</h3>
@@ -39,27 +39,27 @@
     <button class="m3-btn btn:filled">확인</button>
   </div>
 </div>
-```
+</Demo>
 
 ### 카드 타입
 
-```html
+<Demo>
 <!-- Elevated (기본) -->
-<div class="m3-card">...</div>
-<div class="m3-card card:elevated">...</div>
+<div class="m3-card"><div class="card-content">Elevated (기본)</div></div>
+<div class="m3-card card:elevated"><div class="card-content">Elevated</div></div>
 
 <!-- Filled -->
-<div class="m3-card card:filled">...</div>
+<div class="m3-card card:filled"><div class="card-content">Filled</div></div>
 
 <!-- Outlined -->
-<div class="m3-card card:outlined">...</div>
-```
+<div class="m3-card card:outlined"><div class="card-content">Outlined</div></div>
+</Demo>
 
 ### 호버 효과 활성화
 
 기본 카드에는 호버 효과가 없습니다. `card-hover:enabled`를 추가하면 마우스 오버 시 그림자가 변합니다.
 
-```html
+<Demo>
 <div class="m3-card card-hover:enabled">
   <div class="card-content">호버 효과가 있는 카드</div>
 </div>
@@ -71,11 +71,11 @@
 <div class="m3-card card:outlined card-hover:enabled">
   <div class="card-content">Outlined + 호버</div>
 </div>
-```
+</Demo>
 
 ### 클릭 가능한 카드
 
-```html
+<Demo>
 <a href="/detail" class="m3-card card-clickable">
   <div class="card-header">
     <h3 class="card-headline">클릭 가능한 카드</h3>
@@ -84,11 +84,11 @@
     <p>카드 전체를 클릭할 수 있습니다.</p>
   </div>
 </a>
-```
+</Demo>
 
 ### 아바타가 있는 헤더
 
-```html
+<Demo>
 <div class="m3-card">
   <div class="card-header">
     <div class="card-avatar">A</div>
@@ -101,28 +101,28 @@
     <p>아바타와 함께 표시되는 카드 콘텐츠입니다.</p>
   </div>
 </div>
-```
+</Demo>
 
 ### 수평 레이아웃
 
-```html
+<Demo>
 <div class="m3-card card-layout:horizontal">
   <div class="card-media">
-    <img src="thumb.jpg" alt="썸네일">
+    <img src="https://picsum.photos/seed/thumb/200/200" alt="썸네일">
   </div>
   <div class="card-content">
     <h3 class="card-headline">수평 카드</h3>
     <p>미디어가 왼쪽에 배치됩니다.</p>
   </div>
 </div>
-```
+</Demo>
 
 ### 사이즈
 
-```html
+<Demo>
 <div class="m3-card card-size:compact">작은 카드</div>
 <div class="m3-card card-size:large">큰 카드</div>
-```
+</Demo>
 
 ### 변수 API
 
@@ -183,7 +183,7 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <dialog class="m3-dialog" open>
   <h2 class="dialog-headline">제목</h2>
   <div class="dialog-content">
@@ -194,11 +194,11 @@
     <button class="m3-btn btn:text">확인</button>
   </div>
 </dialog>
-```
+</Demo>
 
 ### 아이콘이 있는 다이얼로그
 
-```html
+<Demo>
 <dialog class="m3-dialog" open>
   <div class="dialog-icon">
     <i class="m3-icon icon:warning"></i>
@@ -212,13 +212,13 @@
     <button class="m3-btn btn:text">삭제</button>
   </div>
 </dialog>
-```
+</Demo>
 
 ### 열기/닫기
 
 JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다.
 
-```html
+<Demo>
 <button class="m3-btn btn:filled" onclick="document.getElementById('myDialog').showModal()">
   다이얼로그 열기
 </button>
@@ -230,7 +230,7 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
     <button class="m3-btn btn:text" onclick="document.getElementById('myDialog').close()">닫기</button>
   </div>
 </dialog>
-```
+</Demo>
 
 ### 변수 API
 
@@ -272,7 +272,7 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 
 ### 기본 사용법 (Standard)
 
-```html
+<Demo>
 <div class="m3-bottom-sheet sheet-open">
   <div class="sheet-drag-handle"></div>
   <div class="sheet-content">
@@ -280,13 +280,13 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
     <p>시트 본문 내용입니다.</p>
   </div>
 </div>
-```
+</Demo>
 
 ### Modal Bottom Sheet
 
 배경에 scrim(딤 처리)이 적용되는 모달 타입입니다.
 
-```html
+<Demo>
 <div class="m3-bottom-sheet sheet:modal sheet-open">
   <div class="sheet-drag-handle"></div>
   <div class="sheet-content">
@@ -295,20 +295,20 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
     <button class="m3-btn btn:filled">확인</button>
   </div>
 </div>
-```
+</Demo>
 
 ### 드래그 핸들
 
 `sheet-drag-handle`을 추가하면 시트 상단에 드래그 핸들이 표시됩니다.
 
-```html
+<Demo>
 <div class="m3-bottom-sheet sheet-open">
   <div class="sheet-drag-handle"></div>
   <div class="sheet-content">
     <p>드래그 핸들을 잡아 시트를 위아래로 조절할 수 있습니다.</p>
   </div>
 </div>
-```
+</Demo>
 
 ### 변수 API
 
@@ -344,51 +344,51 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 
 ### 기본 사용법
 
-```html
+<Demo>
 <span class="m3-chip">기본 칩</span>
 <span class="m3-chip">필터</span>
 <span class="m3-chip">태그</span>
-```
+</Demo>
 
 ### 선택된 칩
 
-```html
+<Demo>
 <span class="m3-chip chip:selected">선택됨</span>
 <span class="m3-chip">미선택</span>
-```
+</Demo>
 
 ### Elevated 칩
 
-```html
+<Demo>
 <span class="m3-chip chip:elevated">Elevated 칩</span>
-```
+</Demo>
 
 ### 닫기 버튼이 있는 칩
 
-```html
+<Demo>
 <span class="m3-chip chip:selected">
   태그 이름
   <button class="chip-close"><i class="m3-icon icon:close"></i></button>
 </span>
-```
+</Demo>
 
 ### 색상 변형
 
 색상 클래스는 `chip:selected` 상태에서 적용됩니다.
 
-```html
+<Demo>
 <span class="m3-chip chip:selected chip-color:primary">Primary</span>
 <span class="m3-chip chip:selected chip-color:secondary">Secondary</span>
 <span class="m3-chip chip:selected chip-color:danger">Danger</span>
 <span class="m3-chip chip:selected chip-color:success">Success</span>
 <span class="m3-chip chip:selected chip-color:warning">Warning</span>
-```
+</Demo>
 
 ### 비활성 칩
 
-```html
+<Demo>
 <span class="m3-chip chip-state:disabled">비활성 칩</span>
-```
+</Demo>
 
 ### 변수 API
 

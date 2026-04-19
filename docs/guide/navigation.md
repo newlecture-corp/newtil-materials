@@ -8,42 +8,42 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <div class="m3-tabs">
   <button class="tab-item tab-active">전체</button>
   <button class="tab-item">사진</button>
   <button class="tab-item">동영상</button>
   <button class="tab-item">음악</button>
 </div>
-```
+</Demo>
 
 ### 전체 너비 탭
 
 탭 항목이 전체 너비를 균등 분할합니다.
 
-```html
+<Demo>
 <div class="m3-tabs tabs:full">
   <button class="tab-item tab-active">홈</button>
   <button class="tab-item">인기</button>
   <button class="tab-item">최신</button>
 </div>
-```
+</Demo>
 
 ### Secondary 탭
 
 하단 인디케이터가 전체 너비로 표시되는 보조 탭 스타일입니다.
 
-```html
+<Demo>
 <div class="m3-tabs tabs:secondary">
   <button class="tab-item tab-active">개요</button>
   <button class="tab-item">스펙</button>
   <button class="tab-item">리뷰</button>
 </div>
-```
+</Demo>
 
 ### 아이콘이 있는 탭
 
-```html
+<Demo>
 <div class="m3-tabs tabs:with-icon">
   <button class="tab-item tab-active">
     <i class="m3-icon icon:home"></i>
@@ -58,11 +58,11 @@
     설정
   </button>
 </div>
-```
+</Demo>
 
 ### 색상 변형
 
-```html
+<Demo>
 <div class="m3-tabs tab-color:primary">
   <button class="tab-item tab-active">Primary</button>
   <button class="tab-item">탭 2</button>
@@ -77,7 +77,7 @@
   <button class="tab-item tab-active">Tertiary</button>
   <button class="tab-item">탭 2</button>
 </div>
-```
+</Demo>
 
 ### 변수 API
 
@@ -123,7 +123,7 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <header class="m3-top-app-bar">
   <button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
   <h1 class="bar-title">페이지 제목</h1>
@@ -132,13 +132,13 @@
     <button><i class="m3-icon icon:more_vert"></i></button>
   </div>
 </header>
-```
+</Demo>
 
 ### Center 정렬
 
 제목을 가운데 정렬합니다.
 
-```html
+<Demo>
 <header class="m3-top-app-bar bar:center">
   <button class="bar-leading"><i class="m3-icon icon:arrow_back"></i></button>
   <h1 class="bar-title">가운데 제목</h1>
@@ -146,33 +146,33 @@
     <button><i class="m3-icon icon:more_vert"></i></button>
   </div>
 </header>
-```
+</Demo>
 
 ### Elevated
 
 그림자가 있는 앱 바입니다.
 
-```html
+<Demo>
 <header class="m3-top-app-bar bar:elevated">
   <button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
   <h1 class="bar-title">Elevated 앱 바</h1>
 </header>
-```
+</Demo>
 
 ### Outlined
 
 하단 테두리가 있는 앱 바입니다.
 
-```html
+<Demo>
 <header class="m3-top-app-bar bar:outlined">
   <button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
   <h1 class="bar-title">Outlined 앱 바</h1>
 </header>
-```
+</Demo>
 
 ### 색상 변형
 
-```html
+<Demo>
 <header class="m3-top-app-bar bar-color:primary">
   <button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
   <h1 class="bar-title">Primary 앱 바</h1>
@@ -187,7 +187,7 @@
   <button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
   <h1 class="bar-title">Surface Subtle 앱 바</h1>
 </header>
-```
+</Demo>
 
 ### 변수 API
 
@@ -237,14 +237,14 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <nav class="m3-nav-bar">
   <a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
   <a href="#" class="m3-deco icon:search deco-pos:top">검색</a>
   <a href="#" class="m3-deco icon:favorite deco-pos:top">즐겨찾기</a>
   <a href="#" class="m3-deco icon:person deco-pos:top">프로필</a>
 </nav>
-```
+</Demo>
 
 ### 변수 API
 
@@ -277,7 +277,7 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <nav class="m3-nav-rail">
   <div class="rail-header">
     <button class="m3-fab fab:small"><i class="m3-icon icon:edit"></i></button>
@@ -289,7 +289,7 @@
     <a href="#" class="m3-deco icon:settings deco-pos:top">설정</a>
   </div>
 </nav>
-```
+</Demo>
 
 ### 변수 API
 
@@ -321,7 +321,7 @@
 
 ### Standard (기본)
 
-```html
+<Demo>
 <nav class="m3-nav-drawer">
   <div class="drawer-header">
     <h2 class="drawer-headline">메뉴</h2>
@@ -341,11 +341,11 @@
     </a>
   </div>
 </nav>
-```
+</Demo>
 
 ### 섹션과 구분선
 
-```html
+<Demo>
 <nav class="m3-nav-drawer">
   <div class="drawer-content">
     <a href="#" class="drawer-item drawer-item-active">
@@ -370,13 +370,13 @@
     </a>
   </div>
 </nav>
-```
+</Demo>
 
 ### Modal Drawer
 
 오버레이로 표시되는 모달 타입입니다. `drawer-open`으로 열고 닫습니다.
 
-```html
+<Demo>
 <nav class="m3-nav-drawer drawer:modal drawer-open">
   <div class="drawer-header">
     <h2 class="drawer-headline">메뉴</h2>
@@ -392,7 +392,7 @@
     </a>
   </div>
 </nav>
-```
+</Demo>
 
 ### 변수 API
 
@@ -437,7 +437,7 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <div class="m3-menu menu-open">
   <button class="menu-item">
     <span class="menu-label">복사</span>
@@ -449,11 +449,11 @@
     <span class="menu-label">삭제</span>
   </button>
 </div>
-```
+</Demo>
 
 ### 아이콘이 있는 메뉴
 
-```html
+<Demo>
 <div class="m3-menu menu-open">
   <button class="menu-item">
     <i class="m3-icon icon:edit"></i>
@@ -468,11 +468,11 @@
     <span class="menu-label">삭제</span>
   </button>
 </div>
-```
+</Demo>
 
 ### 구분선과 비활성 항목
 
-```html
+<Demo>
 <div class="m3-menu menu-open">
   <button class="menu-item">
     <i class="m3-icon icon:edit"></i>
@@ -488,7 +488,7 @@
     <span class="menu-label">보관 (비활성)</span>
   </button>
 </div>
-```
+</Demo>
 
 ### 변수 API
 
@@ -533,17 +533,17 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <ul class="m3-list">
   <li class="list-item">항목 1</li>
   <li class="list-item">항목 2</li>
   <li class="list-item">항목 3</li>
 </ul>
-```
+</Demo>
 
 ### Leading/Trailing 아이콘
 
-```html
+<Demo>
 <ul class="m3-list">
   <li class="list-item">
     <i class="m3-icon icon:inbox list-leading"></i>
@@ -560,11 +560,11 @@
     <span>임시보관함</span>
   </li>
 </ul>
-```
+</Demo>
 
 ### 아바타 리스트
 
-```html
+<Demo>
 <ul class="m3-list">
   <li class="list-item">
     <div class="list-avatar">A</div>
@@ -575,7 +575,7 @@
   </li>
   <li class="list-item">
     <div class="list-avatar">
-      <img src="avatar.jpg" alt="프로필">
+      <img src="https://picsum.photos/seed/avatar/80/80" alt="프로필">
     </div>
     <div>
       <div>김철수</div>
@@ -583,21 +583,21 @@
     </div>
   </li>
 </ul>
-```
+</Demo>
 
 ### 클릭 가능한 항목
 
-```html
+<Demo>
 <ul class="m3-list">
   <li class="list-item list-clickable">클릭 가능한 항목</li>
   <li class="list-item list-clickable list-active">활성 상태 항목</li>
   <li class="list-item list-disabled">비활성 항목</li>
 </ul>
-```
+</Demo>
 
 ### 구분선
 
-```html
+<Demo>
 <ul class="m3-list">
   <li class="list-item">항목 1</li>
   <li class="list-item">항목 2</li>
@@ -607,7 +607,7 @@
   <hr class="list-divider list-divider:inset">
   <li class="list-item">항목 5</li>
 </ul>
-```
+</Demo>
 
 ### 변수 API
 

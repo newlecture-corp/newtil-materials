@@ -8,7 +8,7 @@
 
 ### 숫자 배지
 
-```html
+<Demo>
 <div style="position: relative; display: inline-flex;">
   <i class="m3-icon icon:mail"></i>
   <span class="m3-badge">3</span>
@@ -18,35 +18,35 @@
   <i class="m3-icon icon:notifications"></i>
   <span class="m3-badge">99+</span>
 </div>
-```
+</Demo>
 
 ### 점 배지
 
-```html
+<Demo>
 <div style="position: relative; display: inline-flex;">
   <i class="m3-icon icon:chat"></i>
   <span class="m3-badge badge:dot"></span>
 </div>
-```
+</Demo>
 
 ### 인라인 배지
 
 독립적으로 텍스트 옆에 표시하는 인라인 배지입니다.
 
-```html
+<Demo>
 <span>메시지</span>
 <span class="m3-badge badge:inline">5</span>
-```
+</Demo>
 
 ### 색상 변형
 
-```html
+<Demo>
 <span class="m3-badge badge-color:primary">1</span>
 <span class="m3-badge badge-color:secondary">2</span>
 <span class="m3-badge badge-color:danger">3</span>
 <span class="m3-badge badge-color:success">4</span>
 <span class="m3-badge badge-color:warning">5</span>
-```
+</Demo>
 
 ### 변수 API
 
@@ -86,35 +86,35 @@
 
 진행률을 `--progress-value`로 지정합니다.
 
-```html
+<Demo>
 <div class="m3-progress" style="--progress-value: 40%;"></div>
 <div class="m3-progress" style="--progress-value: 75%;"></div>
 <div class="m3-progress" style="--progress-value: 100%;"></div>
-```
+</Demo>
 
 ### 선형 Indeterminate (불확정형)
 
 진행률을 알 수 없을 때 사용합니다.
 
-```html
+<Demo>
 <div class="m3-progress progress:indeterminate"></div>
-```
+</Demo>
 
 ### 원형 (Circular)
 
-```html
+<Demo>
 <div class="m3-progress progress:circular"></div>
-```
+</Demo>
 
 ### 색상 변형
 
-```html
+<Demo>
 <div class="m3-progress progress-color:primary" style="--progress-value: 60%;"></div>
 <div class="m3-progress progress-color:secondary" style="--progress-value: 60%;"></div>
 <div class="m3-progress progress-color:tertiary" style="--progress-value: 60%;"></div>
 <div class="m3-progress progress-color:danger" style="--progress-value: 60%;"></div>
 <div class="m3-progress progress-color:success" style="--progress-value: 60%;"></div>
-```
+</Demo>
 
 ### 변수 API
 
@@ -150,34 +150,34 @@
 
 ### 기본 사용법
 
-```html
+<Demo>
 <div class="m3-snackbar snackbar-open">
   <span class="snackbar-text">파일이 저장되었습니다</span>
 </div>
-```
+</Demo>
 
 ### 액션 버튼 포함
 
-```html
+<Demo>
 <div class="m3-snackbar snackbar-open">
   <span class="snackbar-text">메시지가 삭제되었습니다</span>
   <button class="snackbar-action">실행취소</button>
 </div>
-```
+</Demo>
 
 ### 닫기 버튼 포함
 
-```html
+<Demo>
 <div class="m3-snackbar snackbar-open">
   <span class="snackbar-text">네트워크에 연결되었습니다</span>
   <button class="snackbar-action">자세히</button>
   <button class="snackbar-close"><i class="m3-icon icon:close"></i></button>
 </div>
-```
+</Demo>
 
 ### 색상 변형
 
-```html
+<Demo>
 <div class="m3-snackbar snackbar-open snackbar-color:success">
   <span class="snackbar-text">성공적으로 저장되었습니다</span>
 </div>
@@ -189,7 +189,7 @@
 <div class="m3-snackbar snackbar-open snackbar-color:warning">
   <span class="snackbar-text">저장 공간이 부족합니다</span>
 </div>
-```
+</Demo>
 
 ### 변수 API
 
@@ -232,15 +232,15 @@
 
 ### Plain 툴팁
 
-```html
+<Demo>
 <div class="m3-tooltip">간단한 설명 텍스트</div>
-```
+</Demo>
 
 ### Rich 툴팁
 
 제목, 본문, 액션을 포함하는 풍부한 툴팁입니다.
 
-```html
+<Demo>
 <div class="m3-tooltip tooltip:rich">
   <div class="tooltip-title">기능 설명</div>
   <div class="tooltip-content">
@@ -251,7 +251,7 @@
     <button class="m3-btn btn:text btn-size:xs">자세히</button>
   </div>
 </div>
-```
+</Demo>
 
 ### 변수 API
 
