@@ -9,17 +9,14 @@
 		body { padding: 2rem; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface); }
 		h1 { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
 		h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted); }
-		h3 { font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted); }
 		section { margin-bottom: 3rem; }
 		p.desc { font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem; }
-		.demo { margin-bottom: 0.75rem; }
-		pre.source { background: var(--color-surface-muted); color: var(--color-text); padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.8125rem; line-height: 1.5; overflow-x: auto; margin: 0; font-family: ui-monospace, monospace; }
-		.example { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+		pre.source { background: var(--color-surface-muted); color: var(--color-text); padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.8125rem; line-height: 1.5; overflow-x: auto; margin: 0.75rem 0 0; font-family: ui-monospace, monospace; }
 	</style>
 </head>
 <body>
 
-	<div style="position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem;">
+	<div style="position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; z-index: 10;">
 		<button class="m3-btn btn-size:xs" onclick="setTheme('light')">Light</button>
 		<button class="m3-btn btn-size:xs" onclick="setTheme('dark')">Dark</button>
 	</div>
@@ -29,201 +26,298 @@
 	<!-- 1. 3 Types -->
 	<section>
 		<h2>1. 카드 타입 (elevated / filled / outlined)</h2>
-		<div class="example">
-			<div class="demo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
-				<div class="m3-card">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1.125rem; font-weight: 600;">Elevated (기본)</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">그림자가 있는 기본 카드. M3 surface-container-low.</p>
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+
+			<div class="m3-card">
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/elev/400/200" alt="sample" style="height: 160px;">
+				</div>
+				<div class="card-header">
+					<div class="card-titles">
+						<h3 class="card-headline">Elevated</h3>
+						<p class="card-subhead">기본 카드 · 그림자 있음</p>
 					</div>
 				</div>
-				<div class="m3-card card:filled">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1.125rem; font-weight: 600;">Filled</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">배경이 진한 카드. 그림자 없음. M3 surface-container-highest.</p>
-					</div>
-				</div>
-				<div class="m3-card card:outlined">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1.125rem; font-weight: 600;">Outlined</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">테두리만 있는 카드. 그림자 없음. M3 surface.</p>
-					</div>
+				<div class="card-content">surface-container-low 배경에 level1 그림자. hover 시 level2로 상승.</div>
+				<div class="card-actions">
+					<button class="m3-btn btn:text btn-size:xs">자세히</button>
+					<button class="m3-btn btn-size:xs">확인</button>
 				</div>
 			</div>
-			<pre class="source">&lt;div class="m3-card"&gt;Elevated (기본)&lt;/div&gt;
-&lt;div class="m3-card card:filled"&gt;Filled&lt;/div&gt;
-&lt;div class="m3-card card:outlined"&gt;Outlined&lt;/div&gt;</pre>
+
+			<div class="m3-card card:filled">
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/fill/400/200" alt="sample" style="height: 160px;">
+				</div>
+				<div class="card-header">
+					<div class="card-titles">
+						<h3 class="card-headline">Filled</h3>
+						<p class="card-subhead">배경이 진한 카드</p>
+					</div>
+				</div>
+				<div class="card-content">surface-container-highest 배경. 그림자 없음. hover 시 level1 그림자 추가.</div>
+				<div class="card-actions">
+					<button class="m3-btn btn:text btn-size:xs">자세히</button>
+					<button class="m3-btn btn-size:xs">확인</button>
+				</div>
+			</div>
+
+			<div class="m3-card card:outlined">
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/outl/400/200" alt="sample" style="height: 160px;">
+				</div>
+				<div class="card-header">
+					<div class="card-titles">
+						<h3 class="card-headline">Outlined</h3>
+						<p class="card-subhead">테두리만 있는 카드</p>
+					</div>
+				</div>
+				<div class="card-content">surface 배경에 outline-variant 테두리. 그림자 없음.</div>
+				<div class="card-actions">
+					<button class="m3-btn btn:text btn-size:xs">자세히</button>
+					<button class="m3-btn btn-size:xs">확인</button>
+				</div>
+			</div>
+
 		</div>
-	</section>
-
-	<!-- 2. Hover -->
-	<section>
-		<h2>2. Hover 상태</h2>
-		<p class="desc">마우스를 올리면 그림자가 깊어지고 state layer overlay가 적용됩니다.</p>
-		<div class="example">
-			<div class="demo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
-				<div class="m3-card" style="cursor: pointer;">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">Elevated hover</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">hover 시 level1 → level2</p>
-					</div>
-				</div>
-				<div class="m3-card card:filled" style="cursor: pointer;">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">Filled hover</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">hover 시 level0 → level1</p>
-					</div>
-				</div>
-				<div class="m3-card card:outlined" style="cursor: pointer;">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">Outlined hover</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">hover 시 그림자 추가</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 3. Static States -->
-	<section>
-		<h2>3. 고정 상태 (card-state: 클래스)</h2>
-		<div class="example">
-			<div class="demo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
-				<div class="m3-card card-state:hovered">
-					<div class="card-content"><p style="font-size: 0.875rem; margin: 0;">hovered</p></div>
-				</div>
-				<div class="m3-card card-state:focused">
-					<div class="card-content"><p style="font-size: 0.875rem; margin: 0;">focused</p></div>
-				</div>
-				<div class="m3-card card-state:pressed">
-					<div class="card-content"><p style="font-size: 0.875rem; margin: 0;">pressed</p></div>
-				</div>
-				<div class="m3-card card-state:disabled">
-					<div class="card-content"><p style="font-size: 0.875rem; margin: 0;">disabled</p></div>
-				</div>
-				<div class="m3-card card-state:dragged">
-					<div class="card-content"><p style="font-size: 0.875rem; margin: 0;">dragged</p></div>
-				</div>
-			</div>
-			<pre class="source">&lt;div class="m3-card card-state:hovered"&gt;...&lt;/div&gt;
-&lt;div class="m3-card card-state:focused"&gt;...&lt;/div&gt;
-&lt;div class="m3-card card-state:disabled"&gt;...&lt;/div&gt;
-&lt;div class="m3-card card-state:dragged"&gt;...&lt;/div&gt;</pre>
-		</div>
-	</section>
-
-	<!-- 4. Card Content Areas -->
-	<section>
-		<h2>4. 카드 내부 영역 (header / content / actions / media)</h2>
-		<div class="example">
-			<div class="demo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-				<div class="m3-card">
-					<div class="card-media">
-						<div style="height: 160px; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));"></div>
-					</div>
-					<div class="card-header">
-						<h3 style="margin: 0; font-size: 1.125rem; font-weight: 600;">미디어 카드</h3>
-					</div>
-					<div class="card-content">
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">상단에 이미지/비디오 영역이 있는 카드. card-media 클래스를 사용합니다.</p>
-					</div>
-					<div class="card-actions">
-						<button class="m3-btn btn:text btn-size:xs">자세히</button>
-						<button class="m3-btn btn-size:xs">확인</button>
-					</div>
-				</div>
-
-				<div class="m3-card card:outlined">
-					<div class="card-header">
-						<h3 style="margin: 0; font-size: 1.125rem; font-weight: 600;">일반 카드</h3>
-					</div>
-					<div class="card-content">
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">header, content, actions 영역을 가진 표준 카드 레이아웃입니다.</p>
-					</div>
-					<div class="card-actions">
-						<button class="m3-btn btn:outlined btn-size:xs">취소</button>
-						<button class="m3-btn btn-size:xs">확인</button>
-					</div>
-				</div>
-			</div>
-			<pre class="source">&lt;div class="m3-card"&gt;
-  &lt;div class="card-media"&gt;
-    &lt;img src="..." alt="..."&gt;
-  &lt;/div&gt;
+		<pre class="source">&lt;div class="m3-card"&gt;
+  &lt;div class="card-media"&gt;&lt;img src="..." alt="..."&gt;&lt;/div&gt;
   &lt;div class="card-header"&gt;
-    &lt;h3&gt;제목&lt;/h3&gt;
+    &lt;div class="card-titles"&gt;
+      &lt;h3 class="card-headline"&gt;제목&lt;/h3&gt;
+      &lt;p class="card-subhead"&gt;부제목&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="card-content"&gt;
-    &lt;p&gt;내용&lt;/p&gt;
-  &lt;/div&gt;
+  &lt;div class="card-content"&gt;본문&lt;/div&gt;
   &lt;div class="card-actions"&gt;
     &lt;button class="m3-btn btn:text btn-size:xs"&gt;자세히&lt;/button&gt;
     &lt;button class="m3-btn btn-size:xs"&gt;확인&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
+	</section>
+
+	<!-- 2. Avatar Header -->
+	<section>
+		<h2>2. 아바타 헤더</h2>
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+
+			<div class="m3-card card:outlined">
+				<div class="card-header">
+					<div class="card-avatar">N</div>
+					<div class="card-titles">
+						<h3 class="card-headline" style="font-size: 1rem; line-height: 1.5rem;">김뉴렉</h3>
+						<p class="card-subhead">Frontend Developer · 3시간 전</p>
+					</div>
+				</div>
+				<div class="card-content">newtil 생태계를 만들고 있습니다. 변수 기반 디자인 시스템으로 일관된 UI를 구현하는 것이 목표입니다.</div>
+				<div class="card-actions">
+					<button class="m3-btn btn:text btn-size:xs">댓글</button>
+					<div class="card-actions-end">
+						<button class="m3-btn btn:text btn-size:xs">공유</button>
+						<button class="m3-btn btn-size:xs">좋아요</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="m3-card">
+				<div class="card-header">
+					<div class="card-avatar" style="background-color: var(--color-secondary-subtle); color: var(--color-secondary);">P</div>
+					<div class="card-titles">
+						<h3 class="card-headline" style="font-size: 1rem; line-height: 1.5rem;">박디자인</h3>
+						<p class="card-subhead">UI/UX Designer · 어제</p>
+					</div>
+				</div>
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/avatar2/400/180" alt="post image" style="height: 180px;">
+				</div>
+				<div class="card-content">Material Design 3 기반의 컴포넌트를 CSS만으로 구현할 수 있다니 놀랍습니다.</div>
+				<div class="card-actions">
+					<button class="m3-btn btn:text btn-size:xs">댓글 12</button>
+					<div class="card-actions-end">
+						<button class="m3-btn btn-size:xs">좋아요 48</button>
+					</div>
+				</div>
+			</div>
+
 		</div>
+		<pre class="source">&lt;div class="card-header"&gt;
+  &lt;div class="card-avatar"&gt;N&lt;/div&gt;
+  &lt;div class="card-titles"&gt;
+    &lt;h3 class="card-headline"&gt;김뉴렉&lt;/h3&gt;
+    &lt;p class="card-subhead"&gt;Frontend Developer&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 3. Horizontal Layout -->
+	<section>
+		<h2>3. 가로 레이아웃 (card-layout:horizontal)</h2>
+		<div style="max-width: 36rem;">
+			<div class="m3-card card-layout:horizontal card:outlined">
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/horiz/300/300" alt="product" style="height: 100%; min-height: 180px;">
+				</div>
+				<div style="display: flex; flex-direction: column; flex: 1;">
+					<div class="card-header">
+						<div class="card-titles">
+							<h3 class="card-headline" style="font-size: 1.125rem;">가로 카드</h3>
+							<p class="card-subhead">이미지가 왼쪽에 배치</p>
+						</div>
+					</div>
+					<div class="card-content" style="flex: 1;">왼쪽에 이미지, 오른쪽에 콘텐츠가 배치되는 가로 레이아웃 카드입니다.</div>
+					<div class="card-actions">
+						<button class="m3-btn btn-size:xs">더 보기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-card card-layout:horizontal card:outlined"&gt;
+  &lt;div class="card-media"&gt;&lt;img src="..."&gt;&lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class="card-header"&gt;...&lt;/div&gt;
+    &lt;div class="card-content"&gt;...&lt;/div&gt;
+    &lt;div class="card-actions"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 4. Size Variants -->
+	<section>
+		<h2>4. 크기 변형 (compact / default / large)</h2>
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+			<div class="m3-card card-size:compact card:outlined">
+				<div class="card-header">
+					<div class="card-titles">
+						<h3 class="card-headline">Compact</h3>
+						<p class="card-subhead">작은 패딩, 작은 제목</p>
+					</div>
+				</div>
+				<div class="card-content">콤팩트한 카드입니다.</div>
+			</div>
+
+			<div class="m3-card card:outlined">
+				<div class="card-header">
+					<div class="card-titles">
+						<h3 class="card-headline">Default</h3>
+						<p class="card-subhead">기본 크기</p>
+					</div>
+				</div>
+				<div class="card-content">기본 크기 카드입니다.</div>
+			</div>
+
+			<div class="m3-card card-size:large card:outlined">
+				<div class="card-header">
+					<div class="card-titles">
+						<h3 class="card-headline">Large</h3>
+						<p class="card-subhead">넓은 패딩, 큰 제목</p>
+					</div>
+				</div>
+				<div class="card-content">큰 사이즈 카드입니다.</div>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-card card-size:compact"&gt;...&lt;/div&gt;
+&lt;div class="m3-card"&gt;...&lt;/div&gt; &lt;!-- default --&gt;
+&lt;div class="m3-card card-size:large"&gt;...&lt;/div&gt;</pre>
 	</section>
 
 	<!-- 5. Variable Override -->
 	<section>
-		<h2>5. 변수 오버라이드 (커스텀 카드)</h2>
-		<p class="desc">--card-* 변수를 inline style로 재정의해서 커스텀 카드를 만들 수 있습니다.</p>
-		<div class="example">
-			<div class="demo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
-				<div class="m3-card">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">기본 카드</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">기본 변수 그대로</p>
-					</div>
+		<h2>5. 변수 오버라이드</h2>
+		<p class="desc">--card-* 변수를 변경해서 완전히 다른 카드 만들기</p>
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+
+			<div class="m3-card" style="--card-border-radius: 1.5rem; --card-box-shadow: var(--shadow-xl);">
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/round/400/200" alt="" style="height: 140px;">
 				</div>
-				<div class="m3-card" style="--card-border-radius: var(--radius-full); --card-box-shadow: var(--shadow-xl);">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">둥근 + 강한 그림자</h3>
-						<p style="font-size: 0.875rem; color: var(--color-text-muted); margin: 0;">border-radius + shadow 변경</p>
-					</div>
-				</div>
-				<div class="m3-card" style="--card-background: var(--color-primary); --card-color: var(--color-on-primary);">
-					<div class="card-content">
-						<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">브랜드 카드</h3>
-						<p style="font-size: 0.875rem; margin: 0; opacity: 0.8;">배경+텍스트 색 변경</p>
-					</div>
+				<div class="card-content">
+					<h3 style="font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem;">둥근 모서리</h3>
+					<p style="margin: 0;">--card-border-radius: 1.5rem</p>
 				</div>
 			</div>
-			<pre class="source">&lt;div class="m3-card" style="--card-border-radius: var(--radius-full);
-     --card-box-shadow: var(--shadow-xl);"&gt;
-  둥근 + 강한 그림자
-&lt;/div&gt;
+
+			<div class="m3-card" style="--card-background: var(--color-primary); --card-color: var(--color-on-primary); --card-border-radius: 0;">
+				<div class="card-content" style="padding: 1.5rem;">
+					<h3 style="font-size: 1.25rem; font-weight: 600; margin: 0 0 0.5rem;">브랜드 카드</h3>
+					<p style="margin: 0; opacity: 0.85;">배경색, 텍스트색, 라운딩 모두 변수로 변경</p>
+				</div>
+			</div>
+
+			<div class="m3-card" style="--card-background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); --card-color: #fff; --card-box-shadow: var(--shadow-lg);">
+				<div class="card-content" style="padding: 1.5rem;">
+					<h3 style="font-size: 1.25rem; font-weight: 600; margin: 0 0 0.5rem;">그라디언트</h3>
+					<p style="margin: 0; opacity: 0.85;">background-color 대신 linear-gradient 적용</p>
+				</div>
+			</div>
+
+		</div>
+		<pre class="source">&lt;div class="m3-card" style="--card-border-radius: 1.5rem;
+     --card-box-shadow: var(--shadow-xl);"&gt;...&lt;/div&gt;
 
 &lt;div class="m3-card" style="--card-background: var(--color-primary);
-     --card-color: var(--color-on-primary);"&gt;
-  브랜드 카드
-&lt;/div&gt;</pre>
-		</div>
+     --card-color: var(--color-on-primary); --card-border-radius: 0;"&gt;...&lt;/div&gt;</pre>
 	</section>
 
-	<!-- 6. Brand Override (container scope) -->
+	<!-- 6. Real-world Examples -->
 	<section>
-		<h2>6. 브랜드 전환 (컨테이너 단위)</h2>
-		<p class="desc">컨테이너에서 --color-primary만 바꾸면 안의 모든 컴포넌트가 변경됩니다.</p>
-		<div class="example">
-			<div class="demo" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-				<div style="flex: 1; min-width: 200px;">
-					<p style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">기본 (green)</p>
-					<div class="m3-card">
-						<div class="card-content">
-							<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">카드</h3>
-							<button class="m3-btn btn-size:xs">버튼</button>
-						</div>
-					</div>
+		<h2>6. 실제 사용 예시</h2>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 1rem; color: var(--color-text-muted);">상품 카드 그리드</h3>
+		<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+			<div class="m3-card card-clickable">
+				<div class="card-media"><img src="https://picsum.photos/seed/prod1/300/200" alt="" style="height: 140px;"></div>
+				<div class="card-content">
+					<p style="margin: 0; font-weight: 600;">무선 이어폰</p>
+					<p style="margin: 0.25rem 0 0; font-size: 1rem; font-weight: 700; color: var(--color-primary);">₩89,000</p>
+					<p style="margin: 0.25rem 0 0; font-size: 0.75rem;">⭐ 4.8 · 리뷰 324</p>
 				</div>
-				<div style="flex: 1; min-width: 200px; --color-primary: #e91e63; --color-primary-hover: #c2185b; --color-on-primary: #fff; --color-primary-subtle: #fce4ec;">
-					<p style="font-size: 0.75rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">Pink 브랜드</p>
-					<div class="m3-card">
-						<div class="card-content">
-							<h3 style="margin: 0 0 0.5rem; font-size: 1rem; font-weight: 600;">카드</h3>
-							<button class="m3-btn btn-size:xs">버튼</button>
+			</div>
+			<div class="m3-card card-clickable">
+				<div class="card-media"><img src="https://picsum.photos/seed/prod2/300/200" alt="" style="height: 140px;"></div>
+				<div class="card-content">
+					<p style="margin: 0; font-weight: 600;">기계식 키보드</p>
+					<p style="margin: 0.25rem 0 0; font-size: 1rem; font-weight: 700; color: var(--color-primary);">₩129,000</p>
+					<p style="margin: 0.25rem 0 0; font-size: 0.75rem;">⭐ 4.6 · 리뷰 156</p>
+				</div>
+			</div>
+			<div class="m3-card card-clickable">
+				<div class="card-media"><img src="https://picsum.photos/seed/prod3/300/200" alt="" style="height: 140px;"></div>
+				<div class="card-content">
+					<p style="margin: 0; font-weight: 600;">USB-C 허브</p>
+					<p style="margin: 0.25rem 0 0; font-size: 1rem; font-weight: 700; color: var(--color-primary);">₩45,000</p>
+					<p style="margin: 0.25rem 0 0; font-size: 0.75rem;">⭐ 4.3 · 리뷰 89</p>
+				</div>
+			</div>
+		</div>
+
+		<h3 style="font-size: 0.875rem; font-weight: 500; margin: 2rem 0 1rem; color: var(--color-text-muted);">블로그 포스트 목록</h3>
+		<div style="display: flex; flex-direction: column; gap: 1rem; max-width: 40rem;">
+			<div class="m3-card card-layout:horizontal card:outlined card-clickable">
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/blog1/300/300" alt="" style="height: 100%; min-height: 140px;">
+				</div>
+				<div style="display: flex; flex-direction: column; flex: 1;">
+					<div class="card-header">
+						<div class="card-titles">
+							<h3 class="card-headline" style="font-size: 1rem; line-height: 1.5rem;">CSS 변수로 디자인 시스템 만들기</h3>
+							<p class="card-subhead">2026.04.19 · 5분 읽기</p>
 						</div>
 					</div>
+					<div class="card-content" style="flex: 1;">CSS Custom Properties를 활용해서 일관된 디자인 시스템을 구축하는 방법을 소개합니다.</div>
+				</div>
+			</div>
+			<div class="m3-card card-layout:horizontal card:outlined card-clickable">
+				<div class="card-media">
+					<img src="https://picsum.photos/seed/blog2/300/300" alt="" style="height: 100%; min-height: 140px;">
+				</div>
+				<div style="display: flex; flex-direction: column; flex: 1;">
+					<div class="card-header">
+						<div class="card-titles">
+							<h3 class="card-headline" style="font-size: 1rem; line-height: 1.5rem;">Material Design 3의 색상 체계</h3>
+							<p class="card-subhead">2026.04.17 · 8분 읽기</p>
+						</div>
+					</div>
+					<div class="card-content" style="flex: 1;">M3의 primary/secondary/tertiary 색상 역할과 다크모드 자동 전환 원리를 설명합니다.</div>
 				</div>
 			</div>
 		</div>
@@ -232,13 +326,11 @@
 	<!-- 7. Dark Mode -->
 	<section>
 		<h2>7. 다크모드</h2>
-		<p class="desc">상단 Light/Dark 버튼으로 전환. 모든 카드가 자동으로 다크 팔레트로 변환됩니다.</p>
-		<div class="example">
-			<div class="demo" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
-				<div class="m3-card"><div class="card-content"><p style="font-size: 0.875rem; margin: 0;">Elevated</p></div></div>
-				<div class="m3-card card:filled"><div class="card-content"><p style="font-size: 0.875rem; margin: 0;">Filled</p></div></div>
-				<div class="m3-card card:outlined"><div class="card-content"><p style="font-size: 0.875rem; margin: 0;">Outlined</p></div></div>
-			</div>
+		<p class="desc">상단 Light/Dark 버튼으로 전환. semantic 토큰이 자동 변환.</p>
+		<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+			<div class="m3-card"><div class="card-content"><p style="margin: 0;">Elevated</p></div></div>
+			<div class="m3-card card:filled"><div class="card-content"><p style="margin: 0;">Filled</p></div></div>
+			<div class="m3-card card:outlined"><div class="card-content"><p style="margin: 0;">Outlined</p></div></div>
 		</div>
 	</section>
 

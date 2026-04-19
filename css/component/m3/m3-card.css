@@ -2,22 +2,22 @@
  * Type :  elevated (default) | filled | outlined
  * State:  enabled (default) | disabled | hover | focus | active | dragged
  *
- * M3 spec source: material-components/material-web tokens
- * Ref: https://m3.material.io/components/cards/specs
+ * M3 카드 = 컨테이너 + 콘텐츠 구성 헬퍼
+ * 컨테이너: M3 토큰 기반 (elevation, shape, color)
+ * 콘텐츠: card-media, card-header, card-content, card-actions 조합
  *
- * Variable API: 모든 시각 속성은 --card-* 변수로 노출.
+ * Variable API: --card-* 변수로 커스텀 가능
  * ================================================================= */
 
 /* ================== Variables (Customization API) ==================== */
 .m3-card {
 	/* -- container -- */
-	--card-background: var(--color-surface-subtle);  /* M3 elevated: surface-container-low */
+	--card-background: var(--color-surface-subtle);   /* M3: surface-container-low */
 	--card-width: auto;
 	--card-height: auto;
-	--card-padding: 0;
 	--card-border: none;
-	--card-border-radius: 0.75rem;                   /* M3: corner-medium = 12dp */
-	--card-box-shadow: var(--shadow-sm);              /* M3 elevated: level1 */
+	--card-border-radius: 0.75rem;                    /* M3: corner-medium = 12dp */
+	--card-box-shadow: var(--shadow-sm);               /* M3: elevation level1 */
 	--card-opacity: 1;
 
 	/* -- outline/focus -- */
@@ -27,6 +27,23 @@
 	/* -- text -- */
 	--card-color: var(--color-on-surface);
 
+	/* -- content area spacing -- */
+	--card-padding-x: 1rem;                            /* M3: 16dp horizontal */
+	--card-padding-y: 1rem;                            /* M3: 16dp vertical */
+	--card-header-gap: 1rem;                           /* 아바타/제목 사이 */
+	--card-section-gap: 0;                             /* 영역 사이 간격 */
+
+	/* -- header typography -- */
+	--card-headline-size: 1.5rem;                      /* M3: title-large 22sp → 24px */
+	--card-headline-weight: 400;                       /* M3: regular */
+	--card-headline-line-height: 1.75rem;              /* M3: 28sp */
+	--card-subhead-size: 0.875rem;                     /* M3: body-medium 14sp */
+	--card-subhead-weight: 500;
+	--card-subhead-color: var(--color-text-muted);
+	--card-supporting-size: 0.875rem;                  /* M3: body-medium 14sp */
+	--card-supporting-color: var(--color-text-muted);
+	--card-supporting-line-height: 1.25rem;            /* M3: 20sp */
+
 	/* -- state layer -- */
 	--card-state-layer-color: var(--color-on-surface);
 	--card-state-hover-opacity: 0.08;
@@ -35,19 +52,20 @@
 	--card-state-dragged-opacity: 0.16;
 
 	/* -- effects -- */
-	--card-elevation-hover: var(--shadow-md);          /* M3 elevated hover: level2 */
+	--card-elevation-hover: var(--shadow-md);           /* M3: level2 on hover */
 	--card-transform: none;
 	--card-cursor: default;
 	--card-overflow: hidden;
 }
 
-/* ================== Base Style ======================================= */
+/* ================== Base Container =================================== */
 .m3-card {
+	display: flex;
+	flex-direction: column;
 	background-color: var(--card-background);
 	background-image: none;
 	width: var(--card-width);
 	height: var(--card-height);
-	padding: var(--card-padding);
 	border: var(--card-border);
 	border-radius: var(--card-border-radius);
 	box-shadow: var(--card-box-shadow);
@@ -61,6 +79,7 @@
 	cursor: var(--card-cursor);
 
 	position: relative;
+	box-sizing: border-box;
 	transition:
 		box-shadow var(--duration-normal) var(--ease-out),
 		transform var(--duration-normal) var(--ease-out),
@@ -69,7 +88,6 @@
 
 /* ================== Common States ==================================== */
 
-/* Hover: state layer overlay + elevation up */
 .m3-card:hover,
 .m3-card.card-state\:hovered {
 	background-image: linear-gradient(
@@ -79,7 +97,6 @@
 	--card-box-shadow: var(--card-elevation-hover);
 }
 
-/* Focus-visible */
 .m3-card:focus-visible,
 .m3-card.card-state\:focused {
 	background-image: linear-gradient(
@@ -90,7 +107,6 @@
 	--card-outline-offset: var(--space-1);
 }
 
-/* Active/Pressed */
 .m3-card:active,
 .m3-card.card-state\:pressed {
 	background-image: linear-gradient(
@@ -99,7 +115,6 @@
 	);
 }
 
-/* Disabled */
 .m3-card.card-state\:disabled {
 	--card-opacity: 0.38;
 	--card-box-shadow: none;
@@ -107,21 +122,17 @@
 	pointer-events: none;
 }
 
-/* Dragged */
 .m3-card.card-state\:dragged {
 	background-image: linear-gradient(
 		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-dragged-opacity) * 100%), transparent),
 		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-dragged-opacity) * 100%), transparent)
 	);
-	--card-box-shadow: var(--shadow-xl);               /* M3 dragged: level4 */
+	--card-box-shadow: var(--shadow-xl);
 	--card-transform: scale(1.02);
 	--card-cursor: grab;
 }
 
 /* ================== Type: Elevated (default) ========================= */
-/* M3: surface-container-low, level1 rest, level2 hover */
-/* Elevated is the DEFAULT — no additional class needed. */
-/* .card:elevated class is provided for explicit specification. */
 
 .m3-card.card\:elevated {
 	--card-background: var(--color-surface-subtle);
@@ -130,59 +141,57 @@
 }
 
 /* ================== Type: Filled ===================================== */
-/* M3: surface-container-highest, level0, level1 on hover */
+
 .m3-card.card\:filled {
-	--card-background: var(--color-surface-muted);     /* ≈ surface-container-highest */
-	--card-box-shadow: none;                           /* M3: level0 */
-	--card-elevation-hover: var(--shadow-sm);           /* M3: level1 on hover */
+	--card-background: var(--color-surface-muted);
+	--card-box-shadow: none;
+	--card-elevation-hover: var(--shadow-sm);
 }
 
 /* ================== Type: Outlined =================================== */
-/* M3: surface, level0, outline-variant border */
+
 .m3-card.card\:outlined {
 	--card-background: var(--color-surface);
 	--card-box-shadow: none;
 	--card-border: var(--border-width-1) solid var(--color-border);
 	--card-elevation-hover: var(--shadow-sm);
+}
 
-	&:focus-visible, &.card-state\:focused {
-		--card-border: var(--border-width-1) solid var(--color-on-surface);
-	}
+.m3-card.card\:outlined:focus-visible,
+.m3-card.card\:outlined.card-state\:focused {
+	--card-border: var(--border-width-1) solid var(--color-on-surface);
+}
 
-	&.card-state\:disabled {
-		--card-border: var(--border-width-1) solid color-mix(in srgb, var(--color-border) 38%, transparent);
-	}
+.m3-card.card\:outlined.card-state\:disabled {
+	--card-border: var(--border-width-1) solid color-mix(in srgb, var(--color-border) 38%, transparent);
 }
 
 /* ================== Clickable Card =================================== */
-/* 클릭 가능한 카드 — cursor: pointer + hover 시각 피드백 강화 */
+
 .m3-card.card-clickable,
 .m3-card[onclick],
 a.m3-card {
 	--card-cursor: pointer;
+	text-decoration: none;
+	color: inherit;
 }
 
-/* ================== Card Content Areas =============================== */
-/* M3 카드 내부 영역 — header, content, actions */
-.m3-card .card-header {
-	padding: 1rem 1rem 0;
-}
+/* ================== Content: Media =================================== */
+/* 카드 상단 이미지/비디오 — 카드 라운딩에 맞춤 */
 
-.m3-card .card-content {
-	padding: 1rem;
-}
-
-.m3-card .card-actions {
-	padding: 0.5rem 1rem 1rem;
-	display: flex;
-	gap: 0.5rem;
-	justify-content: flex-end;
-}
-
-/* 카드 미디어 (이미지/비디오 상단 영역) */
 .m3-card .card-media {
 	overflow: hidden;
+	flex-shrink: 0;
+}
+
+/* 첫 번째 자식이 media일 때 상단 라운딩 */
+.m3-card .card-media:first-child {
 	border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+}
+
+/* 마지막 자식이 media일 때 하단 라운딩 */
+.m3-card .card-media:last-child {
+	border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
 }
 
 .m3-card .card-media img,
@@ -193,21 +202,156 @@ a.m3-card {
 	object-fit: cover;
 }
 
-/* ================== Responsive Size ================================== */
+/* ================== Content: Header ================================== */
+/* M3 카드 헤더: 아바타(선택) + headline + subhead */
+
+.m3-card .card-header {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--card-header-gap);
+	padding: var(--card-padding-y) var(--card-padding-x) 0;
+}
+
+/* 아바타 영역 */
+.m3-card .card-header .card-avatar {
+	flex-shrink: 0;
+	width: 2.5rem;                                     /* M3: 40dp */
+	height: 2.5rem;
+	border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-primary-subtle);
+	color: var(--color-primary);
+	font-weight: 600;
+	font-size: 1rem;
+}
+
+.m3-card .card-header .card-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* 제목 영역 */
+.m3-card .card-header .card-titles {
+	flex: 1;
+	min-width: 0;
+}
+
+.m3-card .card-headline {
+	font-size: var(--card-headline-size);
+	font-weight: var(--card-headline-weight);
+	line-height: var(--card-headline-line-height);
+	color: var(--card-color);
+	margin: 0;
+}
+
+.m3-card .card-subhead {
+	font-size: var(--card-subhead-size);
+	font-weight: var(--card-subhead-weight);
+	color: var(--card-subhead-color);
+	margin: 0.25rem 0 0;
+}
+
+/* 헤더에 아바타 없이 바로 제목만 쓸 경우 — card-titles 래퍼 없이도 동작 */
+
+/* ================== Content: Body ==================================== */
+/* 본문 텍스트 (supporting text) */
+
+.m3-card .card-content {
+	padding: var(--card-padding-y) var(--card-padding-x);
+	font-size: var(--card-supporting-size);
+	color: var(--card-supporting-color);
+	line-height: var(--card-supporting-line-height);
+}
+
+/* 헤더 바로 다음의 content는 위 패딩 줄임 (시각적 간격 밸런스) */
+.m3-card .card-header + .card-content {
+	padding-top: 0.5rem;
+}
+
+/* ================== Content: Actions ================================= */
+/* 카드 하단 버튼 영역 */
+
+.m3-card .card-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0 var(--card-padding-x) var(--card-padding-y);
+}
+
+/* 좌우 분리 (왼쪽 액션 + 오른쪽 액션) */
+.m3-card .card-actions .card-actions-end {
+	margin-left: auto;
+	display: flex;
+	gap: 0.5rem;
+}
+
+/* ================== Layout Variants ================================== */
+
+/* 가로 레이아웃 카드 (이미지 옆 + 콘텐츠) */
+.m3-card.card-layout\:horizontal {
+	flex-direction: row;
+}
+
+.m3-card.card-layout\:horizontal .card-media {
+	width: 40%;
+	flex-shrink: 0;
+}
+
+.m3-card.card-layout\:horizontal .card-media:first-child {
+	border-radius: var(--card-border-radius) 0 0 var(--card-border-radius);
+}
+
+.m3-card.card-layout\:horizontal .card-media:last-child {
+	border-radius: 0 var(--card-border-radius) var(--card-border-radius) 0;
+}
+
+/* ================== Size Variants ==================================== */
+
+.m3-card.card-size\:compact {
+	--card-padding-x: 0.75rem;
+	--card-padding-y: 0.75rem;
+	--card-headline-size: 1rem;
+	--card-headline-line-height: 1.5rem;
+	--card-header-gap: 0.75rem;
+}
+
+.m3-card.card-size\:large {
+	--card-padding-x: 1.5rem;
+	--card-padding-y: 1.5rem;
+	--card-headline-size: 1.75rem;
+	--card-headline-line-height: 2.25rem;
+	--card-header-gap: 1.25rem;
+}
+
+/* ================== Responsive ======================================= */
+
 @media (min-width: 640px) {
-	.m3-card.sm\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); --card-elevation-hover: var(--shadow-md); }
-	.m3-card.sm\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; --card-elevation-hover: var(--shadow-sm); }
-	.m3-card.sm\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); --card-elevation-hover: var(--shadow-sm); }
+	.m3-card.sm\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
+	.m3-card.sm\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+	.m3-card.sm\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
+	.m3-card.sm\:card-layout\:horizontal { flex-direction: row; }
+	.m3-card.sm\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
+	.m3-card.sm\:card-size\:large { --card-padding-x: 1.5rem; --card-padding-y: 1.5rem; --card-headline-size: 1.75rem; }
 }
 
 @media (min-width: 768px) {
-	.m3-card.md\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); --card-elevation-hover: var(--shadow-md); }
-	.m3-card.md\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; --card-elevation-hover: var(--shadow-sm); }
-	.m3-card.md\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); --card-elevation-hover: var(--shadow-sm); }
+	.m3-card.md\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
+	.m3-card.md\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+	.m3-card.md\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
+	.m3-card.md\:card-layout\:horizontal { flex-direction: row; }
+	.m3-card.md\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
+	.m3-card.md\:card-size\:large { --card-padding-x: 1.5rem; --card-padding-y: 1.5rem; --card-headline-size: 1.75rem; }
 }
 
 @media (min-width: 1024px) {
-	.m3-card.lg\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); --card-elevation-hover: var(--shadow-md); }
-	.m3-card.lg\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; --card-elevation-hover: var(--shadow-sm); }
-	.m3-card.lg\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); --card-elevation-hover: var(--shadow-sm); }
+	.m3-card.lg\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
+	.m3-card.lg\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+	.m3-card.lg\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
+	.m3-card.lg\:card-layout\:horizontal { flex-direction: row; }
+	.m3-card.lg\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
+	.m3-card.lg\:card-size\:large { --card-padding-x: 1.5rem; --card-padding-y: 1.5rem; --card-headline-size: 1.75rem; }
 }
