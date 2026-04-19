@@ -3,7 +3,7 @@ layout: home
 hero:
   name: "@newtil/components"
   text: "Material Design 3 CSS 컴포넌트"
-  tagline: CSS 변수만으로 커스터마이징되는 M3 컴포넌트. 디자인 토큰 하나로 브랜드 전체를 바꾸세요.
+  tagline: 변수 기반으로 커스터마이징되는 M3 컴포넌트. 디자인 토큰 하나로 브랜드 전체를 바꾸세요.
   actions:
     - theme: brand
       text: 시작하기
