@@ -1,0 +1,202 @@
+/* ====== M3 Switch (Toggle) ==========================================
+ * M3 spec: track 52×32dp, handle 16dp(off)/24dp(on)/28dp(pressed)
+ * Variable API: --switch-* 변수로 커스텀 가능
+ *
+ * 사용법:
+ *   <label class="m3-switch">
+ *     <input type="checkbox">
+ *     <span class="switch-label">Wi-Fi</span>
+ *   </label>
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-switch {
+	/* container */
+	--switch-display: inline-flex;
+	--switch-align-items: center;
+	--switch-cursor: pointer;
+	--switch-gap: 0.75rem;
+
+	/* track */
+	--switch-track-width: 3.25rem;
+	--switch-track-height: 2rem;
+	--switch-track-radius: var(--radius-full);
+	--switch-track-color: var(--color-surface-muted);
+	--switch-track-border: 0.125rem solid var(--color-border-strong);
+	--switch-track-color-checked: var(--color-primary);
+	--switch-track-border-checked: 0.125rem solid var(--color-primary);
+
+	/* handle (thumb) */
+	--switch-handle-size: 1rem;
+	--switch-handle-size-checked: 1.5rem;
+	--switch-handle-size-pressed: 1.75rem;
+	--switch-handle-radius: var(--radius-full);
+	--switch-handle-color: var(--color-border-strong);
+	--switch-handle-color-checked: var(--color-on-primary);
+	--switch-handle-offset: 0.375rem;
+	--switch-handle-shadow: none;
+
+	/* state layer */
+	--switch-state-size: 2.5rem;
+	--switch-state-opacity: 0;
+
+	/* label */
+	--switch-label-size: 0.875rem;
+	--switch-label-color: var(--color-text);
+
+	/* transition */
+	--switch-transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Base ============================================= */
+.m3-switch {
+	display: var(--switch-display);
+	align-items: var(--switch-align-items);
+	cursor: var(--switch-cursor);
+	user-select: none;
+	gap: var(--switch-gap);
+}
+
+/* Hidden input — the checkbox drives :checked state */
+.m3-switch input[type="checkbox"] {
+	appearance: none;
+	position: relative;
+	width: var(--switch-track-width);
+	height: var(--switch-track-height);
+	margin: 0;
+	cursor: inherit;
+	flex-shrink: 0;
+
+	/* Track */
+	background-color: var(--switch-track-color);
+	border: var(--switch-track-border);
+	border-radius: var(--switch-track-radius);
+	box-sizing: border-box;
+	transition: var(--switch-transition);
+}
+
+/* Handle (thumb) via ::after */
+.m3-switch input[type="checkbox"]::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: var(--switch-handle-offset);
+	transform: translateY(-50%);
+	width: var(--switch-handle-size);
+	height: var(--switch-handle-size);
+	border-radius: var(--switch-handle-radius);
+	background-color: var(--switch-handle-color);
+	box-shadow: var(--switch-handle-shadow);
+	transition: var(--switch-transition);
+}
+
+/* State layer via ::before */
+.m3-switch input[type="checkbox"]::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: var(--switch-handle-offset);
+	transform: translate(
+		calc((var(--switch-handle-size) - var(--switch-state-size)) / 2),
+		-50%
+	);
+	width: var(--switch-state-size);
+	height: var(--switch-state-size);
+	border-radius: var(--radius-full);
+	background-color: var(--color-on-surface);
+	opacity: var(--switch-state-opacity);
+	transition: var(--switch-transition);
+}
+
+/* ================== Checked State ==================================== */
+
+.m3-switch input[type="checkbox"]:checked {
+	--switch-track-color: var(--switch-track-color-checked);
+	--switch-track-border: var(--switch-track-border-checked);
+}
+
+.m3-switch input[type="checkbox"]:checked::after {
+	--switch-handle-size: var(--switch-handle-size-checked);
+	--switch-handle-color: var(--switch-handle-color-checked);
+	left: calc(100% - var(--switch-handle-size-checked) - var(--switch-handle-offset));
+}
+
+.m3-switch input[type="checkbox"]:checked::before {
+	left: calc(100% - var(--switch-handle-size-checked) - var(--switch-handle-offset));
+	transform: translate(
+		calc((var(--switch-handle-size-checked) - var(--switch-state-size)) / 2),
+		-50%
+	);
+	background-color: var(--color-primary);
+}
+
+/* ================== Hover ============================================ */
+
+.m3-switch input[type="checkbox"]:not(:disabled):hover::before {
+	--switch-state-opacity: 0.08;
+}
+
+/* ================== Focus ============================================ */
+
+.m3-switch input[type="checkbox"]:not(:disabled):focus-visible::before {
+	--switch-state-opacity: 0.12;
+}
+
+/* ================== Active (Pressed) ================================= */
+
+.m3-switch input[type="checkbox"]:not(:disabled):active::after {
+	--switch-handle-size: var(--switch-handle-size-pressed);
+}
+
+.m3-switch input[type="checkbox"]:not(:disabled):active::before {
+	--switch-state-opacity: 0.12;
+}
+
+/* ================== Disabled ========================================= */
+
+.m3-switch input[type="checkbox"]:disabled {
+	--switch-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--switch-track-border: 0.125rem solid color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--switch-cursor: not-allowed;
+}
+
+.m3-switch input[type="checkbox"]:disabled::after {
+	--switch-handle-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+.m3-switch input[type="checkbox"]:disabled:checked {
+	--switch-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--switch-track-border: none;
+}
+
+.m3-switch input[type="checkbox"]:disabled:checked::after {
+	--switch-handle-color: var(--color-surface);
+}
+
+.m3-switch:has(input:disabled) {
+	--switch-cursor: not-allowed;
+	--switch-label-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* ================== Label ============================================ */
+
+.m3-switch .switch-label {
+	font-size: var(--switch-label-size);
+	color: var(--switch-label-color);
+}
+
+/* ================== Color Variants =================================== */
+
+.m3-switch.switch-color\:primary { --switch-track-color-checked: var(--color-primary); --switch-track-border-checked: 0.125rem solid var(--color-primary); }
+.m3-switch.switch-color\:secondary { --switch-track-color-checked: var(--color-secondary); --switch-track-border-checked: 0.125rem solid var(--color-secondary); }
+.m3-switch.switch-color\:tertiary { --switch-track-color-checked: var(--color-tertiary); --switch-track-border-checked: 0.125rem solid var(--color-tertiary); }
+.m3-switch.switch-color\:danger { --switch-track-color-checked: var(--color-danger); --switch-track-border-checked: 0.125rem solid var(--color-danger); }
+.m3-switch.switch-color\:success { --switch-track-color-checked: var(--color-success); --switch-track-border-checked: 0.125rem solid var(--color-success); }
+
+/* ================== Static States ==================================== */
+
+.m3-switch.switch-state\:checked input[type="checkbox"] { --switch-track-color: var(--switch-track-color-checked); --switch-track-border: var(--switch-track-border-checked); }
+.m3-switch.switch-state\:checked input[type="checkbox"]::after { --switch-handle-size: var(--switch-handle-size-checked); --switch-handle-color: var(--switch-handle-color-checked); left: calc(100% - var(--switch-handle-size-checked) - var(--switch-handle-offset)); }
+.m3-switch.switch-state\:hovered input[type="checkbox"]::before { --switch-state-opacity: 0.08; }
+.m3-switch.switch-state\:focused input[type="checkbox"]::before { --switch-state-opacity: 0.12; }
+.m3-switch.switch-state\:disabled input[type="checkbox"] { --switch-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent); --switch-cursor: not-allowed; }

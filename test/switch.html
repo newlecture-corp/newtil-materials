@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>m3-switch 테스트</title>
+	<link rel="stylesheet" href="../dist/index.css" />
+	<style>
+		body { padding: 2rem; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface); }
+		h1 { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
+		h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted); }
+		section { margin-bottom: 3rem; }
+		p.desc { font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem; }
+		pre.source { background: var(--color-surface-muted); color: var(--color-text); padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.8125rem; line-height: 1.5; overflow-x: auto; margin: 0.75rem 0 0; font-family: ui-monospace, monospace; }
+		.demo { margin-bottom: 0.75rem; }
+		.demo-row { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+		.demo-col { display: flex; flex-direction: column; gap: 0.5rem; }
+	</style>
+</head>
+<body>
+
+	<div style="position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; z-index: 10;">
+		<button class="m3-btn btn-size:xs" onclick="setTheme('light')">Light</button>
+		<button class="m3-btn btn-size:xs" onclick="setTheme('dark')">Dark</button>
+	</div>
+
+	<h1>m3-switch 테스트</h1>
+
+	<!-- 1. 기본 -->
+	<section>
+		<h2>1. 기본 스위치</h2>
+		<div class="demo demo-row">
+			<label class="m3-switch">
+				<input type="checkbox">
+				<span class="switch-label">Off</span>
+			</label>
+			<label class="m3-switch">
+				<input type="checkbox" checked>
+				<span class="switch-label">On</span>
+			</label>
+			<label class="m3-switch">
+				<input type="checkbox" disabled>
+				<span class="switch-label">Disabled Off</span>
+			</label>
+			<label class="m3-switch">
+				<input type="checkbox" checked disabled>
+				<span class="switch-label">Disabled On</span>
+			</label>
+		</div>
+		<pre class="source">&lt;label class="m3-switch"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;span class="switch-label"&gt;Off&lt;/span&gt;
+&lt;/label&gt;
+&lt;label class="m3-switch"&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;span class="switch-label"&gt;On&lt;/span&gt;
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 2. 색상 -->
+	<section>
+		<h2>2. 색상 변형</h2>
+		<div class="demo demo-row">
+			<label class="m3-switch switch-color:primary"><input type="checkbox" checked><span class="switch-label">primary</span></label>
+			<label class="m3-switch switch-color:secondary"><input type="checkbox" checked><span class="switch-label">secondary</span></label>
+			<label class="m3-switch switch-color:tertiary"><input type="checkbox" checked><span class="switch-label">tertiary</span></label>
+			<label class="m3-switch switch-color:danger"><input type="checkbox" checked><span class="switch-label">danger</span></label>
+			<label class="m3-switch switch-color:success"><input type="checkbox" checked><span class="switch-label">success</span></label>
+		</div>
+		<pre class="source">&lt;label class="m3-switch switch-color:danger"&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;span class="switch-label"&gt;danger&lt;/span&gt;
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 3. 라벨 없이 -->
+	<section>
+		<h2>3. 라벨 없이</h2>
+		<div class="demo demo-row">
+			<label class="m3-switch"><input type="checkbox"></label>
+			<label class="m3-switch"><input type="checkbox" checked></label>
+			<label class="m3-switch switch-color:danger"><input type="checkbox" checked></label>
+		</div>
+		<pre class="source">&lt;label class="m3-switch"&gt;&lt;input type="checkbox"&gt;&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 4. 변수 오버라이드 -->
+	<section>
+		<h2>4. 변수 오버라이드</h2>
+		<div class="demo demo-row">
+			<label class="m3-switch" style="--switch-track-color-checked: #e91e63; --switch-track-border-checked: 0.125rem solid #e91e63;">
+				<input type="checkbox" checked>
+				<span class="switch-label">커스텀 Pink</span>
+			</label>
+			<label class="m3-switch" style="--switch-track-width: 4rem; --switch-track-height: 2.5rem; --switch-handle-size: 1.25rem; --switch-handle-size-checked: 1.75rem;">
+				<input type="checkbox" checked>
+				<span class="switch-label">큰 스위치</span>
+			</label>
+			<label class="m3-switch" style="--switch-track-radius: 0.25rem; --switch-handle-radius: 0.125rem;">
+				<input type="checkbox" checked>
+				<span class="switch-label">사각 스위치</span>
+			</label>
+		</div>
+		<pre class="source">&lt;label class="m3-switch" style="--switch-track-color-checked: #e91e63;
+     --switch-track-border-checked: 0.125rem solid #e91e63;"&gt;
+  &lt;input type="checkbox" checked&gt;
+  &lt;span class="switch-label"&gt;커스텀 Pink&lt;/span&gt;
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 5. 고정 상태 -->
+	<section>
+		<h2>5. 고정 상태</h2>
+		<div class="demo demo-row">
+			<label class="m3-switch switch-state:checked"><input type="checkbox"><span class="switch-label">checked</span></label>
+			<label class="m3-switch switch-state:hovered"><input type="checkbox"><span class="switch-label">hovered</span></label>
+			<label class="m3-switch switch-state:focused"><input type="checkbox"><span class="switch-label">focused</span></label>
+			<label class="m3-switch switch-state:disabled"><input type="checkbox"><span class="switch-label">disabled</span></label>
+		</div>
+	</section>
+
+	<!-- 6. 실제 사용 — 설정 페이지 -->
+	<section>
+		<h2>6. 실제 사용 — 설정 페이지</h2>
+		<div style="max-width: 28rem;">
+			<div class="m3-card card:outlined">
+				<div class="card-header">
+					<div class="card-titles">
+						<h3 class="card-headline" style="font-size: 1.125rem; line-height: 1.5rem;">알림 설정</h3>
+					</div>
+				</div>
+				<div class="card-content" style="padding-top: 0;">
+					<div style="display: flex; flex-direction: column; gap: 0;">
+
+						<div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--color-border-subtle);">
+							<div>
+								<div style="font-weight: 500;">푸시 알림</div>
+								<div style="font-size: 0.75rem; color: var(--color-text-muted);">새 메시지 수신 시 알림</div>
+							</div>
+							<label class="m3-switch"><input type="checkbox" checked></label>
+						</div>
+
+						<div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--color-border-subtle);">
+							<div>
+								<div style="font-weight: 500;">이메일 알림</div>
+								<div style="font-size: 0.75rem; color: var(--color-text-muted);">주간 요약 이메일</div>
+							</div>
+							<label class="m3-switch"><input type="checkbox"></label>
+						</div>
+
+						<div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--color-border-subtle);">
+							<div>
+								<div style="font-weight: 500;">다크모드</div>
+								<div style="font-size: 0.75rem; color: var(--color-text-muted);">어두운 테마 사용</div>
+							</div>
+							<label class="m3-switch switch-color:secondary"><input type="checkbox" onchange="setTheme(this.checked ? 'dark' : 'light')"></label>
+						</div>
+
+						<div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0;">
+							<div>
+								<div style="font-weight: 500;">소리</div>
+								<div style="font-size: 0.75rem; color: var(--color-text-muted);">알림 소리 켜기</div>
+							</div>
+							<label class="m3-switch"><input type="checkbox" checked></label>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 7. 다크모드 -->
+	<section>
+		<h2>7. 다크모드</h2>
+		<p class="desc">상단 Light/Dark 전환. 또는 위 설정 카드의 다크모드 스위치 사용.</p>
+		<div class="demo demo-row">
+			<label class="m3-switch"><input type="checkbox"><span class="switch-label">Off</span></label>
+			<label class="m3-switch"><input type="checkbox" checked><span class="switch-label">On</span></label>
+			<label class="m3-switch switch-color:success"><input type="checkbox" checked><span class="switch-label">Success</span></label>
+		</div>
+	</section>
+
+	<script>
+		function setTheme(mode) {
+			if (mode === 'auto') {
+				document.documentElement.removeAttribute('data-theme');
+			} else {
+				document.documentElement.setAttribute('data-theme', mode);
+			}
+		}
+	</script>
+</body>
+</html>
