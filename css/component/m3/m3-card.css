@@ -209,7 +209,7 @@ a.m3-card {
 	display: flex;
 	align-items: flex-start;
 	gap: var(--card-header-gap);
-	padding: var(--card-padding-y) var(--card-padding-x) 0;
+	padding: var(--card-padding-y) var(--card-padding-x);
 }
 
 /* 아바타 영역 */
@@ -267,9 +267,13 @@ a.m3-card {
 	line-height: var(--card-supporting-line-height);
 }
 
-/* 헤더 바로 다음의 content는 위 패딩 줄임 (시각적 간격 밸런스) */
+/* 연속된 콘텐츠 영역 간 중복 패딩 제거 */
 .m3-card .card-header + .card-content {
-	padding-top: 0.5rem;
+	padding-top: 0;
+}
+
+.m3-card .card-header + .card-media {
+	margin-top: 0;
 }
 
 /* ================== Content: Actions ================================= */
