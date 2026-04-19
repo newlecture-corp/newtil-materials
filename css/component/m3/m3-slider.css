@@ -1,0 +1,161 @@
+/* ====== M3 Slider ====================================================
+ * M3 spec: Track 4dp height, handle 20dp, active track uses primary
+ * Types: continuous (default), discrete (with tick marks)
+ *
+ * 사용법:
+ *   <div class="m3-slider">
+ *     <input type="range" min="0" max="100" value="50">
+ *   </div>
+ *   <div class="m3-slider slider:discrete">
+ *     <input type="range" min="0" max="100" value="50" step="10">
+ *   </div>
+ *
+ * Variable API: --slider-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-slider {
+	/* container */
+	--slider-width: 100%;
+	--slider-padding: 0.5rem 0;
+
+	/* track */
+	--slider-track-height: 0.25rem;
+	--slider-track-color: var(--color-primary-subtle);
+	--slider-track-active-color: var(--color-primary);
+	--slider-track-border-radius: var(--radius-full);
+
+	/* handle (thumb) */
+	--slider-handle-size: 1.25rem;
+	--slider-handle-color: var(--color-primary);
+	--slider-handle-border-radius: var(--radius-full);
+	--slider-handle-shadow: var(--shadow-sm);
+	--slider-handle-border: none;
+
+	/* state layer */
+	--slider-state-hover-opacity: 0.08;
+	--slider-state-focus-opacity: 0.12;
+	--slider-state-layer-color: var(--color-primary);
+	--slider-state-layer-size: 2.5rem;
+
+	/* disabled */
+	--slider-disabled-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--slider-disabled-active-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--slider-disabled-handle-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--slider-disabled-cursor: default;
+
+	/* transition */
+	--slider-transition: box-shadow var(--duration-fast) var(--ease-in-out);
+
+	/* discrete tick */
+	--slider-tick-size: 0.125rem;
+	--slider-tick-color: var(--color-on-primary);
+	--slider-tick-inactive-color: var(--color-primary-subtle);
+}
+
+/* ================== Base ============================================= */
+.m3-slider {
+	display: flex;
+	align-items: center;
+	width: var(--slider-width);
+	padding: var(--slider-padding);
+	box-sizing: border-box;
+}
+
+/* ================== Range Input ====================================== */
+.m3-slider input[type="range"] {
+	appearance: none;
+	width: 100%;
+	height: var(--slider-track-height);
+	background: var(--slider-track-color);
+	border-radius: var(--slider-track-border-radius);
+	outline: none;
+	margin: 0;
+	cursor: pointer;
+}
+
+/* ================== Thumb — WebKit =================================== */
+.m3-slider input[type="range"]::-webkit-slider-thumb {
+	appearance: none;
+	width: var(--slider-handle-size);
+	height: var(--slider-handle-size);
+	background-color: var(--slider-handle-color);
+	border: var(--slider-handle-border);
+	border-radius: var(--slider-handle-border-radius);
+	box-shadow: var(--slider-handle-shadow);
+	transition: var(--slider-transition);
+}
+
+/* ================== Thumb — Firefox ================================== */
+.m3-slider input[type="range"]::-moz-range-thumb {
+	width: var(--slider-handle-size);
+	height: var(--slider-handle-size);
+	background-color: var(--slider-handle-color);
+	border: var(--slider-handle-border);
+	border-radius: var(--slider-handle-border-radius);
+	box-shadow: var(--slider-handle-shadow);
+	transition: var(--slider-transition);
+}
+
+/* ================== Active Track — Firefox =========================== */
+.m3-slider input[type="range"]::-moz-range-progress {
+	background-color: var(--slider-track-active-color);
+	height: var(--slider-track-height);
+	border-radius: var(--slider-track-border-radius);
+}
+
+/* ================== Hover ============================================ */
+.m3-slider input[type="range"]:not(:disabled):hover::-webkit-slider-thumb {
+	box-shadow: var(--slider-handle-shadow),
+		0 0 0 calc(var(--slider-state-layer-size) / 2 - var(--slider-handle-size) / 2)
+		color-mix(in srgb, var(--slider-state-layer-color) calc(var(--slider-state-hover-opacity) * 100%), transparent);
+}
+
+.m3-slider input[type="range"]:not(:disabled):hover::-moz-range-thumb {
+	box-shadow: var(--slider-handle-shadow),
+		0 0 0 calc(var(--slider-state-layer-size) / 2 - var(--slider-handle-size) / 2)
+		color-mix(in srgb, var(--slider-state-layer-color) calc(var(--slider-state-hover-opacity) * 100%), transparent);
+}
+
+/* ================== Focus ============================================ */
+.m3-slider input[type="range"]:not(:disabled):focus-visible::-webkit-slider-thumb {
+	box-shadow: var(--slider-handle-shadow),
+		0 0 0 calc(var(--slider-state-layer-size) / 2 - var(--slider-handle-size) / 2)
+		color-mix(in srgb, var(--slider-state-layer-color) calc(var(--slider-state-focus-opacity) * 100%), transparent);
+}
+
+.m3-slider input[type="range"]:not(:disabled):focus-visible::-moz-range-thumb {
+	box-shadow: var(--slider-handle-shadow),
+		0 0 0 calc(var(--slider-state-layer-size) / 2 - var(--slider-handle-size) / 2)
+		color-mix(in srgb, var(--slider-state-layer-color) calc(var(--slider-state-focus-opacity) * 100%), transparent);
+}
+
+/* ================== Disabled ========================================= */
+.m3-slider input[type="range"]:disabled {
+	cursor: var(--slider-disabled-cursor);
+	background: var(--slider-disabled-track-color);
+}
+
+.m3-slider input[type="range"]:disabled::-webkit-slider-thumb {
+	--slider-handle-color: var(--slider-disabled-handle-color);
+	--slider-handle-shadow: none;
+}
+
+.m3-slider input[type="range"]:disabled::-moz-range-thumb {
+	--slider-handle-color: var(--slider-disabled-handle-color);
+	--slider-handle-shadow: none;
+}
+
+.m3-slider input[type="range"]:disabled::-moz-range-progress {
+	background-color: var(--slider-disabled-active-color);
+}
+
+/* ================== Discrete ========================================= */
+.m3-slider.slider\:discrete input[type="range"] {
+	/* step attribute on the input handles discrete snapping natively */
+}
+
+/* ================== Color Variants =================================== */
+.m3-slider.slider-color\:primary { --slider-track-active-color: var(--color-primary); --slider-handle-color: var(--color-primary); --slider-state-layer-color: var(--color-primary); --slider-track-color: var(--color-primary-subtle); }
+.m3-slider.slider-color\:secondary { --slider-track-active-color: var(--color-secondary); --slider-handle-color: var(--color-secondary); --slider-state-layer-color: var(--color-secondary); --slider-track-color: var(--color-secondary-subtle); }
+.m3-slider.slider-color\:tertiary { --slider-track-active-color: var(--color-tertiary); --slider-handle-color: var(--color-tertiary); --slider-state-layer-color: var(--color-tertiary); --slider-track-color: var(--color-tertiary-subtle); }

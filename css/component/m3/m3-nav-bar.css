@@ -1,0 +1,80 @@
+/* ====== M3 Navigation Bar (Bottom Navigation) =======================
+ * M3 spec: 80dp height, fixed bottom, 3-5 destinations, surface bg
+ * 내부 아이템은 m3-deco 컴포넌트를 사용하여 icon+text 렌더링.
+ *
+ * 사용법:
+ *   <nav class="m3-nav-bar">
+ *     <a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+ *     <a href="#" class="m3-deco icon:search deco-pos:top">검색</a>
+ *     <a href="#" class="m3-deco icon:settings deco-pos:top">설정</a>
+ *   </nav>
+ *
+ * Variable API: --nav-bar-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-nav-bar {
+	/* container */
+	--nav-bar-height: 5rem;                          /* 80dp */
+	--nav-bar-background: var(--color-surface);
+	--nav-bar-border-top: 0.0625rem solid var(--color-border-subtle);
+	--nav-bar-padding: 0 0.5rem;
+	--nav-bar-gap: 0;
+	--nav-bar-box-shadow: none;
+	--nav-bar-color: var(--color-on-surface);
+
+	/* positioning */
+	--nav-bar-position: fixed;
+	--nav-bar-bottom: 0;
+	--nav-bar-left: 0;
+	--nav-bar-right: 0;
+	--nav-bar-z-index: var(--z-fixed);
+
+	/* transition */
+	--nav-bar-transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+/* ================== Base ============================================= */
+.m3-nav-bar {
+	height: var(--nav-bar-height);
+	background-color: var(--nav-bar-background);
+	border-top: var(--nav-bar-border-top);
+	padding: var(--nav-bar-padding);
+	gap: var(--nav-bar-gap);
+	box-shadow: var(--nav-bar-box-shadow);
+	color: var(--nav-bar-color);
+	position: var(--nav-bar-position);
+	bottom: var(--nav-bar-bottom);
+	left: var(--nav-bar-left);
+	right: var(--nav-bar-right);
+	z-index: var(--nav-bar-z-index);
+	transition: var(--nav-bar-transition);
+
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	box-sizing: border-box;
+}
+
+/* ================== Items (m3-deco) ================================== */
+/* m3-deco 아이템이 nav-bar 내에서 균등 분배 */
+.m3-nav-bar > .m3-deco {
+	flex: 1;
+}
+
+/* ================== Options ========================================== */
+
+/* Elevated — shadow instead of border */
+.m3-nav-bar.nav-bar\:elevated {
+	--nav-bar-border-top: none;
+	--nav-bar-box-shadow: var(--shadow-md);
+}
+
+/* Color variants */
+.m3-nav-bar.nav-bar-color\:surface-subtle {
+	--nav-bar-background: var(--color-surface-subtle);
+}
+
+.m3-nav-bar.nav-bar-color\:surface-muted {
+	--nav-bar-background: var(--color-surface-muted);
+}

@@ -1,0 +1,109 @@
+/* ====== M3 Tooltip ===================================================
+ * M3 spec: Plain tooltip (inverse surface, small text)
+ *          Rich tooltip (surface, larger with title/actions)
+ *
+ * 사용법:
+ *   <div class="m3-tooltip">간단한 설명</div>
+ *   <div class="m3-tooltip tooltip:rich">
+ *     <div class="tooltip-title">제목</div>
+ *     <div class="tooltip-content">자세한 설명 텍스트</div>
+ *     <div class="tooltip-actions">
+ *       <button class="m3-btn btn:text btn-size:xs">자세히</button>
+ *     </div>
+ *   </div>
+ *
+ * Variable API: --tooltip-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-tooltip {
+	/* container */
+	--tooltip-background: var(--color-surface-inverse);
+	--tooltip-color: var(--color-on-surface-inverse);
+	--tooltip-border-radius: var(--radius-sm);
+	--tooltip-padding: 0.25rem 0.5rem;
+	--tooltip-font-size: 0.75rem;
+	--tooltip-line-height: 1rem;
+	--tooltip-max-width: 12.5rem;
+	--tooltip-z-index: var(--z-tooltip, var(--z-toast));
+	--tooltip-box-shadow: none;
+	--tooltip-border: none;
+	--tooltip-font-weight: var(--font-weight-medium, 500);
+
+	/* rich variant */
+	--tooltip-rich-background: var(--color-surface-muted);
+	--tooltip-rich-color: var(--color-on-surface);
+	--tooltip-rich-border-radius: var(--radius-md);
+	--tooltip-rich-padding: 0.75rem 1rem;
+	--tooltip-rich-max-width: 20rem;
+	--tooltip-rich-box-shadow: var(--shadow-md);
+	--tooltip-rich-font-size: 0.875rem;
+	--tooltip-rich-line-height: 1.25rem;
+
+	/* title (rich) */
+	--tooltip-title-font-size: 0.875rem;
+	--tooltip-title-font-weight: var(--font-weight-medium, 500);
+	--tooltip-title-color: var(--color-on-surface);
+	--tooltip-title-margin: 0 0 0.25rem;
+	--tooltip-title-line-height: 1.25rem;
+
+	/* content (rich) */
+	--tooltip-content-color: var(--color-text-muted);
+	--tooltip-content-margin: 0 0 0.5rem;
+
+	/* actions (rich) */
+	--tooltip-actions-gap: 0.5rem;
+	--tooltip-actions-margin: 0.5rem 0 0;
+}
+
+/* ================== Base (Plain) ===================================== */
+.m3-tooltip {
+	position: absolute;
+	z-index: var(--tooltip-z-index);
+
+	background-color: var(--tooltip-background);
+	color: var(--tooltip-color);
+	border: var(--tooltip-border);
+	border-radius: var(--tooltip-border-radius);
+	padding: var(--tooltip-padding);
+	font-size: var(--tooltip-font-size);
+	font-weight: var(--tooltip-font-weight);
+	line-height: var(--tooltip-line-height);
+	max-width: var(--tooltip-max-width);
+	box-shadow: var(--tooltip-box-shadow);
+	box-sizing: border-box;
+}
+
+/* ================== Rich Variant ===================================== */
+.m3-tooltip.tooltip\:rich {
+	--tooltip-background: var(--tooltip-rich-background);
+	--tooltip-color: var(--tooltip-rich-color);
+	--tooltip-border-radius: var(--tooltip-rich-border-radius);
+	--tooltip-padding: var(--tooltip-rich-padding);
+	--tooltip-max-width: var(--tooltip-rich-max-width);
+	--tooltip-box-shadow: var(--tooltip-rich-box-shadow);
+	--tooltip-font-size: var(--tooltip-rich-font-size);
+	--tooltip-line-height: var(--tooltip-rich-line-height);
+}
+
+/* ================== Title (Rich) ===================================== */
+.m3-tooltip .tooltip-title {
+	font-size: var(--tooltip-title-font-size);
+	font-weight: var(--tooltip-title-font-weight);
+	color: var(--tooltip-title-color);
+	line-height: var(--tooltip-title-line-height);
+	margin: var(--tooltip-title-margin);
+}
+
+/* ================== Content (Rich) =================================== */
+.m3-tooltip .tooltip-content {
+	color: var(--tooltip-content-color);
+	margin: var(--tooltip-content-margin);
+}
+
+/* ================== Actions (Rich) =================================== */
+.m3-tooltip .tooltip-actions {
+	display: flex;
+	gap: var(--tooltip-actions-gap);
+	margin: var(--tooltip-actions-margin);
+}

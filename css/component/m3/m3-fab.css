@@ -1,0 +1,189 @@
+/* ====== M3 FAB (Material Design 3 spec-aligned) =====================
+ * Size :  fab (default 56dp) | fab:small (40dp) | fab:large (96dp) | fab:extended
+ * Color:  surface (default) | primary | secondary | tertiary
+ * State:  enabled (default) | hover | focus | active | disabled
+ *
+ * M3 spec: level3 shadow at rest, level4 on hover
+ * Ref: https://m3.material.io/components/floating-action-button/specs
+ *
+ * Variable API: --fab-* 변수로 모든 시각 요소 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables (Customization API) ==================== */
+.m3-fab {
+	/* -- dimensions -- */
+	--fab-size: 3.5rem;                                    /* M3: 56dp */
+	--fab-padding: 1rem;                                   /* M3: 16dp */
+	--fab-gap: 0.75rem;                                    /* M3: 12dp (extended) */
+	--fab-icon-size: 1.5rem;                               /* M3: 24dp */
+
+	/* -- colors (surface default) -- */
+	--fab-background: var(--color-surface-subtle);         /* M3: surface-container-high */
+	--fab-color: var(--color-primary);                     /* M3: primary */
+
+	/* -- effects -- */
+	--fab-box-shadow: var(--shadow-lg);                    /* M3: level3 */
+	--fab-elevation-hover: var(--shadow-xl);               /* M3: level4 */
+
+	/* -- border -- */
+	--fab-border-radius: 1rem;                             /* M3: large = 16dp */
+
+	/* -- typography (extended) -- */
+	--fab-font-size: 0.875rem;                             /* M3: label-large 14sp */
+	--fab-font-weight: var(--font-weight-medium);          /* M3: 500 */
+	--fab-line-height: 1.25rem;                            /* M3: 20sp */
+	--fab-letter-spacing: 0.00625rem;                      /* M3: 0.1px */
+
+	/* -- focus ring -- */
+	--fab-outline: none;
+	--fab-outline-offset: 0;
+
+	/* -- state layer -- */
+	--fab-state-layer-color: var(--color-primary);
+	--fab-state-hover-opacity: 0.08;                       /* M3: 8% */
+	--fab-state-focus-opacity: 0.12;                       /* M3: 12% */
+	--fab-state-pressed-opacity: 0.12;                     /* M3: 12% */
+}
+
+/* ================== Base Style ======================================= */
+.m3-fab {
+	min-width: var(--fab-size);
+	height: var(--fab-size);
+	padding: var(--fab-padding);
+	gap: var(--fab-gap);
+
+	color: var(--fab-color);
+	background-color: var(--fab-background);
+	background-image: none;
+	box-shadow: var(--fab-box-shadow);
+	border-radius: var(--fab-border-radius);
+
+	font-size: var(--fab-font-size);
+	font-weight: var(--fab-font-weight);
+	line-height: var(--fab-line-height);
+	letter-spacing: var(--fab-letter-spacing);
+	white-space: nowrap;
+
+	outline: var(--fab-outline);
+	outline-offset: var(--fab-outline-offset);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+	border: none;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+
+	transition:
+		box-shadow var(--duration-normal) var(--ease-in-out),
+		background-image var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Child: Icon ====================================== */
+.m3-fab .m3-icon,
+.m3-fab [class*="material-symbols"] {
+	font-size: var(--fab-icon-size);
+	width: var(--fab-icon-size);
+	height: var(--fab-icon-size);
+}
+
+/* ================== States =========================================== */
+
+/* Hover */
+.m3-fab:hover,
+.m3-fab.fab-state\:hover {
+	--fab-box-shadow: var(--fab-elevation-hover);
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--fab-state-layer-color) calc(var(--fab-state-hover-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--fab-state-layer-color) calc(var(--fab-state-hover-opacity) * 100%), transparent)
+	);
+}
+
+/* Focus-visible */
+.m3-fab:focus-visible,
+.m3-fab.fab-state\:focus {
+	--fab-outline: var(--border-width-2) solid var(--color-focus-ring);
+	--fab-outline-offset: var(--space-1);
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--fab-state-layer-color) calc(var(--fab-state-focus-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--fab-state-layer-color) calc(var(--fab-state-focus-opacity) * 100%), transparent)
+	);
+}
+
+/* Active/Pressed */
+.m3-fab:active,
+.m3-fab.fab-state\:active {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--fab-state-layer-color) calc(var(--fab-state-pressed-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--fab-state-layer-color) calc(var(--fab-state-pressed-opacity) * 100%), transparent)
+	);
+}
+
+/* Disabled */
+.m3-fab:disabled,
+.m3-fab.fab-state\:disabled {
+	--fab-background: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--fab-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--fab-box-shadow: none;
+	--fab-outline: none;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* ================== Size: Small ====================================== */
+/* M3: 40dp, medium corner (12dp) */
+.m3-fab.fab\:small {
+	--fab-size: 2.5rem;                                    /* M3: 40dp */
+	--fab-padding: 0.5rem;                                 /* M3: 8dp */
+	--fab-border-radius: 0.75rem;                          /* M3: medium = 12dp */
+	--fab-icon-size: 1.5rem;                               /* M3: 24dp */
+}
+
+/* ================== Size: Large ====================================== */
+/* M3: 96dp, extra-large corner (28dp) */
+.m3-fab.fab\:large {
+	--fab-size: 6rem;                                      /* M3: 96dp */
+	--fab-padding: 1.875rem;                               /* M3: 30dp */
+	--fab-border-radius: 1.75rem;                          /* M3: extra-large = 28dp */
+	--fab-icon-size: 2.25rem;                              /* M3: 36dp */
+}
+
+/* ================== Size: Extended =================================== */
+/* M3: height 56dp, auto width, 16dp padding horizontal */
+.m3-fab.fab\:extended {
+	--fab-size: 3.5rem;                                    /* M3: 56dp height */
+	--fab-padding: 1rem 1.25rem;                           /* M3: 16dp vertical, 20dp horizontal */
+	--fab-border-radius: 1rem;                             /* M3: large = 16dp */
+}
+
+/* ================== Color: Primary =================================== */
+/* M3: primary-container bg, on-primary-container icon */
+.m3-fab.fab-color\:primary {
+	--fab-background: var(--color-primary);
+	--fab-color: var(--color-on-primary);
+	--fab-state-layer-color: var(--color-on-primary);
+}
+
+/* ================== Color: Secondary ================================= */
+.m3-fab.fab-color\:secondary {
+	--fab-background: var(--color-secondary);
+	--fab-color: var(--color-on-secondary);
+	--fab-state-layer-color: var(--color-on-secondary);
+}
+
+/* ================== Color: Tertiary ================================== */
+.m3-fab.fab-color\:tertiary {
+	--fab-background: var(--color-tertiary);
+	--fab-color: var(--color-on-tertiary);
+	--fab-state-layer-color: var(--color-on-tertiary);
+}
+
+/* ================== Color: Surface =================================== */
+.m3-fab.fab-color\:surface {
+	--fab-background: var(--color-surface-subtle);
+	--fab-color: var(--color-primary);
+	--fab-state-layer-color: var(--color-primary);
+}

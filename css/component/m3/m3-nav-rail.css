@@ -1,0 +1,117 @@
+/* ====== M3 Navigation Rail ==========================================
+ * M3 spec: 80dp width, vertical, fixed left side, optional FAB at top
+ * 내부 아이템은 m3-deco 컴포넌트를 사용하여 icon+text 렌더링.
+ *
+ * 사용법:
+ *   <nav class="m3-nav-rail">
+ *     <div class="rail-header">
+ *       <button class="m3-fab fab:small"><i class="m3-icon icon:edit"></i></button>
+ *     </div>
+ *     <div class="rail-items">
+ *       <a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+ *       <a href="#" class="m3-deco icon:search deco-pos:top">검색</a>
+ *       <a href="#" class="m3-deco icon:settings deco-pos:top">설정</a>
+ *     </div>
+ *   </nav>
+ *
+ * Variable API: --rail-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-nav-rail {
+	/* container */
+	--rail-width: 5rem;                              /* 80dp */
+	--rail-background: var(--color-surface);
+	--rail-border-right: 0.0625rem solid var(--color-border-subtle);
+	--rail-padding: 0.75rem 0;
+	--rail-box-shadow: none;
+	--rail-color: var(--color-on-surface);
+
+	/* positioning */
+	--rail-position: fixed;
+	--rail-top: 0;
+	--rail-left: 0;
+	--rail-bottom: 0;
+	--rail-z-index: var(--z-fixed);
+
+	/* header */
+	--rail-header-padding: 0.75rem 0 1rem;
+	--rail-header-gap: 0.75rem;
+
+	/* items */
+	--rail-items-gap: 0.75rem;                       /* 12dp */
+	--rail-items-padding: 0;
+
+	/* transition */
+	--rail-transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+/* ================== Base ============================================= */
+.m3-nav-rail {
+	width: var(--rail-width);
+	background-color: var(--rail-background);
+	border-right: var(--rail-border-right);
+	padding: var(--rail-padding);
+	box-shadow: var(--rail-box-shadow);
+	color: var(--rail-color);
+	position: var(--rail-position);
+	top: var(--rail-top);
+	left: var(--rail-left);
+	bottom: var(--rail-bottom);
+	z-index: var(--rail-z-index);
+	transition: var(--rail-transition);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	overflow-y: auto;
+}
+
+/* ================== Header (optional FAB) ============================ */
+.m3-nav-rail .rail-header {
+	padding: var(--rail-header-padding);
+	gap: var(--rail-header-gap);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+/* ================== Items ============================================ */
+.m3-nav-rail .rail-items {
+	gap: var(--rail-items-gap);
+	padding: var(--rail-items-padding);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+}
+
+/* ================== Options ========================================== */
+
+/* Elevated — shadow instead of border */
+.m3-nav-rail.rail\:elevated {
+	--rail-border-right: none;
+	--rail-box-shadow: var(--shadow-md);
+}
+
+/* Align items to top (default), center, or end */
+.m3-nav-rail.rail-align\:center .rail-items {
+	justify-content: center;
+}
+
+.m3-nav-rail.rail-align\:end .rail-items {
+	justify-content: flex-end;
+}
+
+/* Color variants */
+.m3-nav-rail.rail-color\:surface-subtle {
+	--rail-background: var(--color-surface-subtle);
+}
+
+.m3-nav-rail.rail-color\:surface-muted {
+	--rail-background: var(--color-surface-muted);
+}

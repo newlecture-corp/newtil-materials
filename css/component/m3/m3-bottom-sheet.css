@@ -1,0 +1,129 @@
+/* ====== M3 Bottom Sheet ==============================================
+ * M3 spec: surface container, rounded top corners (28dp), drag handle
+ * Types: standard (non-modal, default), modal (with scrim)
+ * Hidden by default, shown with sheet-open.
+ *
+ * 사용법:
+ *   <div class="m3-bottom-sheet sheet-open">
+ *     <div class="sheet-drag-handle"></div>
+ *     <div class="sheet-content">
+ *       <h3 class="sheet-headline">제목</h3>
+ *       <p>내용</p>
+ *     </div>
+ *   </div>
+ *
+ *   <!-- Modal -->
+ *   <div class="m3-bottom-sheet sheet:modal sheet-open">
+ *     <div class="sheet-drag-handle"></div>
+ *     <div class="sheet-content">내용</div>
+ *   </div>
+ *
+ * Variable API: --sheet-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-bottom-sheet {
+	/* container */
+	--sheet-background: var(--color-surface);
+	--sheet-border-radius: 1.75rem 1.75rem 0 0;
+	--sheet-max-height: 80vh;
+	--sheet-z-index: var(--z-modal);
+	--sheet-box-shadow: var(--shadow-lg);
+	--sheet-padding: 0;
+	--sheet-border: none;
+	--sheet-color: var(--color-on-surface);
+
+	/* position */
+	--sheet-bottom: 0;
+	--sheet-left: 0;
+	--sheet-width: 100%;
+
+	/* drag handle */
+	--sheet-handle-width: 2rem;
+	--sheet-handle-height: 0.25rem;
+	--sheet-handle-color: var(--color-border);
+	--sheet-handle-border-radius: var(--radius-full);
+	--sheet-handle-margin: 1rem auto 0;
+
+	/* headline */
+	--sheet-headline-font-size: 1rem;
+	--sheet-headline-font-weight: var(--font-weight-medium, 500);
+	--sheet-headline-color: var(--color-on-surface);
+	--sheet-headline-line-height: 1.5rem;
+	--sheet-headline-margin: 0 0 0.5rem;
+
+	/* content */
+	--sheet-content-padding: 1rem 1.5rem 1.5rem;
+	--sheet-content-color: var(--color-text-muted);
+	--sheet-content-font-size: 0.875rem;
+	--sheet-content-line-height: 1.25rem;
+
+	/* scrim (modal) */
+	--sheet-scrim-color: rgba(0, 0, 0, 0.32);
+	--sheet-scrim-z-index: var(--z-overlay);
+
+	/* transition */
+	--sheet-transition: transform var(--duration-normal) var(--ease-out);
+}
+
+/* ================== Base ============================================= */
+.m3-bottom-sheet {
+	display: none;
+	flex-direction: column;
+	position: fixed;
+	bottom: var(--sheet-bottom);
+	left: var(--sheet-left);
+	width: var(--sheet-width);
+	z-index: var(--sheet-z-index);
+
+	background-color: var(--sheet-background);
+	border: var(--sheet-border);
+	border-radius: var(--sheet-border-radius);
+	max-height: var(--sheet-max-height);
+	box-shadow: var(--sheet-box-shadow);
+	padding: var(--sheet-padding);
+	color: var(--sheet-color);
+	box-sizing: border-box;
+	transition: var(--sheet-transition);
+	overflow: hidden;
+}
+
+/* ================== Open ============================================= */
+.m3-bottom-sheet.sheet-open {
+	display: flex;
+}
+
+/* ================== Drag Handle ====================================== */
+.m3-bottom-sheet .sheet-drag-handle {
+	width: var(--sheet-handle-width);
+	height: var(--sheet-handle-height);
+	background-color: var(--sheet-handle-color);
+	border-radius: var(--sheet-handle-border-radius);
+	margin: var(--sheet-handle-margin);
+}
+
+/* ================== Content ========================================== */
+.m3-bottom-sheet .sheet-content {
+	flex: 1;
+	overflow-y: auto;
+	padding: var(--sheet-content-padding);
+	color: var(--sheet-content-color);
+	font-size: var(--sheet-content-font-size);
+	line-height: var(--sheet-content-line-height);
+}
+
+/* ================== Headline ========================================= */
+.m3-bottom-sheet .sheet-headline {
+	font-size: var(--sheet-headline-font-size);
+	font-weight: var(--sheet-headline-font-weight);
+	color: var(--sheet-headline-color);
+	line-height: var(--sheet-headline-line-height);
+	margin: var(--sheet-headline-margin);
+}
+
+/* ================== Modal Variant ==================================== */
+/* Modal uses box-shadow trick for scrim, same as dialog */
+.m3-bottom-sheet.sheet\:modal {
+	--sheet-box-shadow: 0 0 0 100vmax var(--sheet-scrim-color), var(--shadow-lg);
+	--sheet-z-index: var(--sheet-scrim-z-index);
+}

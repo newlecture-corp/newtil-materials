@@ -1,0 +1,71 @@
+/* ====== M3 Divider (Material Design 3 spec-aligned) ==================
+ * Type :  full-width (default) | inset | middle-inset | vertical
+ *
+ * M3 spec: 1dp height, outline-variant color
+ * Ref: https://m3.material.io/components/divider/specs
+ *
+ * Variable API: --divider-* 변수로 모든 시각 요소 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables (Customization API) ==================== */
+.m3-divider {
+	/* -- color -- */
+	--divider-color: var(--color-border);                  /* M3: outline-variant */
+
+	/* -- dimensions -- */
+	--divider-width: 100%;                                 /* M3: full-width */
+	--divider-thickness: 0.0625rem;                        /* M3: 1dp */
+	--divider-margin: 0;
+
+	/* -- inset -- */
+	--divider-inset-start: 0;
+	--divider-inset-end: 0;
+
+	/* -- vertical mode -- */
+	--divider-height: auto;                                /* vertical 시 사용 */
+}
+
+/* ================== Base Style ======================================= */
+.m3-divider {
+	width: var(--divider-width);
+	height: var(--divider-height);
+	margin: var(--divider-margin);
+	margin-inline-start: var(--divider-inset-start);
+	margin-inline-end: var(--divider-inset-end);
+
+	border: none;
+	border-top-width: var(--divider-thickness);
+	border-top-style: solid;
+	border-top-color: var(--divider-color);
+
+	box-sizing: border-box;
+}
+
+/* ================== Option: Inset ==================================== */
+/* M3: 16dp padding each side */
+.m3-divider.divider\:inset {
+	--divider-inset-start: 1rem;                           /* M3: 16dp */
+	--divider-inset-end: 1rem;                             /* M3: 16dp */
+}
+
+/* ================== Option: Middle Inset ============================= */
+/* M3: left inset only (16dp) */
+.m3-divider.divider\:middle-inset {
+	--divider-inset-start: 1rem;                           /* M3: 16dp */
+	--divider-inset-end: 0;
+}
+
+/* ================== Option: Vertical ================================= */
+.m3-divider.divider\:vertical {
+	--divider-width: auto;
+	--divider-height: 100%;
+	--divider-thickness: 0;
+
+	border-top: none;
+	border-inline-start-width: 0.0625rem;                  /* M3: 1dp */
+	border-inline-start-style: solid;
+	border-inline-start-color: var(--divider-color);
+
+	display: inline-block;
+	align-self: stretch;
+}

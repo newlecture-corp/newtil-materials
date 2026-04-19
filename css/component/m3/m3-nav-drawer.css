@@ -1,0 +1,241 @@
+/* ====== M3 Navigation Drawer ========================================
+ * M3 spec: 360dp width, surface bg, list-like items
+ * Types: standard (inline, default), modal (overlay with scrim)
+ *
+ * 사용법 (standard):
+ *   <nav class="m3-nav-drawer">
+ *     <div class="drawer-header">
+ *       <h2 class="drawer-headline">메뉴</h2>
+ *     </div>
+ *     <div class="drawer-content">
+ *       <a href="#" class="drawer-item drawer-item-active">
+ *         <i class="m3-icon icon:home"></i>
+ *         <span class="drawer-label">홈</span>
+ *       </a>
+ *       <a href="#" class="drawer-item">
+ *         <i class="m3-icon icon:mail"></i>
+ *         <span class="drawer-label">메일</span>
+ *       </a>
+ *       <hr class="m3-divider">
+ *       <span class="drawer-section-header">설정</span>
+ *       <a href="#" class="drawer-item">
+ *         <i class="m3-icon icon:settings"></i>
+ *         <span class="drawer-label">환경설정</span>
+ *       </a>
+ *     </div>
+ *   </nav>
+ *
+ * 사용법 (modal):
+ *   <nav class="m3-nav-drawer drawer:modal drawer-open">...</nav>
+ *
+ * Variable API: --drawer-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-nav-drawer {
+	/* container */
+	--drawer-width: 22.5rem;                         /* 360dp */
+	--drawer-background: var(--color-surface);
+	--drawer-border-right: 0.0625rem solid var(--color-border-subtle);
+	--drawer-padding: 0.75rem 0;
+	--drawer-box-shadow: none;
+	--drawer-color: var(--color-on-surface);
+	--drawer-z-index: var(--z-fixed);
+
+	/* header / headline */
+	--drawer-headline-font-size: 0.875rem;
+	--drawer-headline-font-weight: 600;
+	--drawer-headline-color: var(--color-text-muted);
+	--drawer-headline-padding: 1rem 1.75rem 0.5rem;
+	--drawer-headline-letter-spacing: 0.0625rem;
+
+	/* content */
+	--drawer-content-padding: 0 0.75rem;
+	--drawer-content-gap: 0.125rem;
+
+	/* item */
+	--drawer-item-height: 3.5rem;                    /* 56dp */
+	--drawer-item-padding: 0 1rem;
+	--drawer-item-gap: 0.75rem;                      /* 12dp */
+	--drawer-item-color: var(--color-on-surface);
+	--drawer-item-font-size: 0.875rem;
+	--drawer-item-font-weight: 500;
+	--drawer-item-line-height: 1.25rem;
+	--drawer-item-border-radius: var(--radius-full);
+	--drawer-item-background: transparent;
+	--drawer-item-cursor: pointer;
+	--drawer-item-icon-size: 1.5rem;
+	--drawer-item-icon-color: var(--color-text-muted);
+
+	/* item active */
+	--drawer-item-active-background: var(--color-primary-subtle);
+	--drawer-item-active-color: var(--color-primary);
+	--drawer-item-active-icon-color: var(--color-primary);
+	--drawer-item-active-font-weight: 700;
+
+	/* section header */
+	--drawer-section-header-font-size: 0.875rem;
+	--drawer-section-header-font-weight: 600;
+	--drawer-section-header-color: var(--color-text-muted);
+	--drawer-section-header-padding: 1.125rem 1rem 0.5rem;
+	--drawer-section-header-letter-spacing: 0.0625rem;
+
+	/* state layer */
+	--drawer-state-hover-opacity: 0.08;
+
+	/* modal */
+	--drawer-scrim-background: rgba(0, 0, 0, 0.32);
+
+	/* transition */
+	--drawer-transition: transform var(--duration-normal) var(--ease-out);
+}
+
+/* ================== Base ============================================= */
+.m3-nav-drawer {
+	width: var(--drawer-width);
+	background-color: var(--drawer-background);
+	border-right: var(--drawer-border-right);
+	padding: var(--drawer-padding);
+	box-shadow: var(--drawer-box-shadow);
+	color: var(--drawer-color);
+	z-index: var(--drawer-z-index);
+	transition: var(--drawer-transition);
+
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	overflow-y: auto;
+}
+
+/* ================== Header / Headline ================================ */
+.m3-nav-drawer .drawer-header {
+	flex-shrink: 0;
+}
+
+.m3-nav-drawer .drawer-headline {
+	font-size: var(--drawer-headline-font-size);
+	font-weight: var(--drawer-headline-font-weight);
+	color: var(--drawer-headline-color);
+	padding: var(--drawer-headline-padding);
+	letter-spacing: var(--drawer-headline-letter-spacing);
+	margin: 0;
+	text-transform: uppercase;
+}
+
+/* ================== Content ========================================== */
+.m3-nav-drawer .drawer-content {
+	padding: var(--drawer-content-padding);
+	gap: var(--drawer-content-gap);
+
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+/* ================== Item ============================================= */
+.m3-nav-drawer .drawer-item {
+	height: var(--drawer-item-height);
+	padding: var(--drawer-item-padding);
+	gap: var(--drawer-item-gap);
+	color: var(--drawer-item-color);
+	font-size: var(--drawer-item-font-size);
+	font-weight: var(--drawer-item-font-weight);
+	line-height: var(--drawer-item-line-height);
+	border-radius: var(--drawer-item-border-radius);
+	background-color: var(--drawer-item-background);
+	cursor: var(--drawer-item-cursor);
+
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	flex-shrink: 0;
+}
+
+/* Item icon (m3-icon inside drawer-item) */
+.m3-nav-drawer .drawer-item .m3-icon {
+	font-size: var(--drawer-item-icon-size);
+	color: var(--drawer-item-icon-color);
+	flex-shrink: 0;
+}
+
+/* Item label */
+.m3-nav-drawer .drawer-item .drawer-label {
+	flex: 1;
+	min-width: 0;
+}
+
+/* ================== Item States ====================================== */
+
+/* Hover */
+.m3-nav-drawer .drawer-item:hover {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--drawer-item-color) calc(var(--drawer-state-hover-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--drawer-item-color) calc(var(--drawer-state-hover-opacity) * 100%), transparent)
+	);
+}
+
+/* Active */
+.m3-nav-drawer .drawer-item.drawer-item-active {
+	--drawer-item-background: var(--drawer-item-active-background);
+	--drawer-item-color: var(--drawer-item-active-color);
+	--drawer-item-icon-color: var(--drawer-item-active-icon-color);
+	--drawer-item-font-weight: var(--drawer-item-active-font-weight);
+}
+
+/* ================== Section Header =================================== */
+.m3-nav-drawer .drawer-section-header {
+	font-size: var(--drawer-section-header-font-size);
+	font-weight: var(--drawer-section-header-font-weight);
+	color: var(--drawer-section-header-color);
+	padding: var(--drawer-section-header-padding);
+	letter-spacing: var(--drawer-section-header-letter-spacing);
+
+	display: block;
+}
+
+/* ================== Modal Drawer ===================================== */
+
+/* Modal: fixed positioning + scrim via ::before */
+.m3-nav-drawer.drawer\:modal {
+	--drawer-position: fixed;
+	--drawer-box-shadow: var(--shadow-lg);
+	--drawer-border-right: none;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+
+/* Scrim overlay — SEPARATE rule block */
+.m3-nav-drawer.drawer\:modal::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--drawer-scrim-background);
+	z-index: -1;
+	opacity: 1;
+	transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+/* ================== Open / Closed States ============================= */
+
+/* Closed: slide out to the left */
+.m3-nav-drawer.drawer\:modal.drawer-closed {
+	transform: translateX(-100%);
+}
+
+/* Closed scrim hidden */
+.m3-nav-drawer.drawer\:modal.drawer-closed::before {
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* Open: slide in */
+.m3-nav-drawer.drawer\:modal.drawer-open {
+	transform: translateX(0);
+}
