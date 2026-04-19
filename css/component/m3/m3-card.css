@@ -1,202 +1,213 @@
+/* ====== M3 Card (Material Design 3 spec-aligned) =====================
+ * Type :  elevated (default) | filled | outlined
+ * State:  enabled (default) | disabled | hover | focus | active | dragged
+ *
+ * M3 spec source: material-components/material-web tokens
+ * Ref: https://m3.material.io/components/cards/specs
+ *
+ * Variable API: 모든 시각 속성은 --card-* 변수로 노출.
+ * ================================================================= */
+
+/* ================== Variables (Customization API) ==================== */
 .m3-card {
-    /* 추가 변수 선언 */
-    --overflow-hidden: hidden;
-    --cursor-pointer: pointer;
-    --cursor-grab: grab;
-    --cursor-not-allowed: not-allowed;
+	/* -- container -- */
+	--card-background: var(--color-surface-subtle);  /* M3 elevated: surface-container-low */
+	--card-width: auto;
+	--card-height: auto;
+	--card-padding: 0;
+	--card-border: none;
+	--card-border-radius: 0.75rem;                   /* M3: corner-medium = 12dp */
+	--card-box-shadow: var(--shadow-sm);              /* M3 elevated: level1 */
+	--card-opacity: 1;
 
+	/* -- outline/focus -- */
+	--card-outline: none;
+	--card-outline-offset: 0;
 
-    /* ========== 카드의 변수 선언(기본값) ========== */
-    /* boxing */
-    --card-background: var(--color-surface);
-    --card-width: auto;
-    --card-height: auto;
-    --card-padding: var(--space-5);
-    --card-border: none;
-    /* --card-border: var(--border-width-2) solid var(--color-surface-subtle); */
-    --card-border-radius: var(--radius-4);
-    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, var(--opacity-40)),
-        0 var(--space-1) var(--space-1) rgba(0, 0, 0, var(--opacity-50));
-    --card-opacity: var(--opacity-100);
-    --card-outline: none;
-    --card-outline-offset: 0;
-    --card-transform: none;
-    
-    /* font */
-    --card-font-color: var(--color-text);
-    
-    /* 상태별 변수 */
-    --card-focused-outline-color: var(--color-text);
-    --card-border-outline-color: var(--color-text);
-    --card-outlined-color: var(--color-text);
-    /* overlay */
-    --card-overflow: var(--overflow-hidden);
+	/* -- text -- */
+	--card-color: var(--color-on-surface);
 
-    /* effect */
-    --card-cursor: var(--cursor-pointer);
-    --card-transition: box-shadow var(--duration-normal) var(--ease-out),
-        transform var(--duration-normal) var(--ease-out),
-        opacity var(--duration-normal) var(--ease-out);
-}
-/* ====== 다크 모드 ====== */
+	/* -- state layer -- */
+	--card-state-layer-color: var(--color-on-surface);
+	--card-state-hover-opacity: 0.08;
+	--card-state-focus-opacity: 0.12;
+	--card-state-pressed-opacity: 0.12;
+	--card-state-dragged-opacity: 0.16;
 
-@media (prefers-color-scheme: dark) {
-    .m3-card {
-        /* 다크모드에서 변경되는 변수들만 재정의 */
-        --card-background: var(--color-surface-subtle);
-        --card-font-color: var(--color-text);
-    }
-
-    .card\:elevated.card-state\:focused{
-        --card-focused-outline-color: var(--color-text);
-    }
-    .card\:filled.card-state\:focused{
-        --card-focused-outline-color: var(--color-text);
-    }
-    .card\:outlined.card-state\:focused {
-        --card-border: var(--border-width-1) solid var(--card-border-outline-color);
-        --card-outlined-color: var(--color-text);
-        --card-outline: 0.1875rem solid var(--card-outlined-color);
-    }
+	/* -- effects -- */
+	--card-elevation-hover: var(--shadow-md);          /* M3 elevated hover: level2 */
+	--card-transform: none;
+	--card-cursor: default;
+	--card-overflow: hidden;
 }
 
-/* ====== LIGHT MODE (Default) ====== */
-
-/* 카드 컨테이너 */
+/* ================== Base Style ======================================= */
 .m3-card {
-    /* boxing */
-    background: var(--card-background);
-    width: var(--card-width);
-    height: var(--card-height);
-    padding: var(--card-padding);
-    border: var(--card-border);
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--card-box-shadow);
-    opacity: var(--card-opacity);
-    outline: var(--card-outline);
-    outline-offset: var(--card-outline-offset);
-    transform: var(--card-transform);
-    color: var(--card-font-color);
-    /* layout */
-    overflow: var(--card-overflow);
+	background-color: var(--card-background);
+	background-image: none;
+	width: var(--card-width);
+	height: var(--card-height);
+	padding: var(--card-padding);
+	border: var(--card-border);
+	border-radius: var(--card-border-radius);
+	box-shadow: var(--card-box-shadow);
+	opacity: var(--card-opacity);
+	color: var(--card-color);
 
-    /* effect */
-    cursor: var(--card-cursor);
-    transition: var(--card-transition);
+	outline: var(--card-outline);
+	outline-offset: var(--card-outline-offset);
+	transform: var(--card-transform);
+	overflow: var(--card-overflow);
+	cursor: var(--card-cursor);
+
+	position: relative;
+	transition:
+		box-shadow var(--duration-normal) var(--ease-out),
+		transform var(--duration-normal) var(--ease-out),
+		background-image var(--duration-fast) var(--ease-in-out);
 }
 
-/* ================ Elevated-type ================ */
+/* ================== Common States ==================================== */
 
-.card\:elevated.card-state\:enabled {
-    --card-opacity: var(--opacity-100);
-    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
+/* Hover: state layer overlay + elevation up */
+.m3-card:hover,
+.m3-card.card-state\:hovered {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-hover-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-hover-opacity) * 100%), transparent)
+	);
+	--card-box-shadow: var(--card-elevation-hover);
 }
 
-.card\:elevated.card-state\:disabled {
-    --card-opacity: 0.38;
-    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.14);
-    --card-cursor: var(--cursor-not-allowed);
+/* Focus-visible */
+.m3-card:focus-visible,
+.m3-card.card-state\:focused {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-focus-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-focus-opacity) * 100%), transparent)
+	);
+	--card-outline: var(--border-width-2) solid var(--color-focus-ring);
+	--card-outline-offset: var(--space-1);
 }
 
-.card\:elevated.card-state\:hovered {
-    --card-box-shadow: 0 var(--space-1) var(--space-3) rgba(0, 0, 0, 0.14),
-        0 var(--space-2) var(--space-3) rgba(0, 0, 0, 0.12);
-    filter: brightness(0.92);
+/* Active/Pressed */
+.m3-card:active,
+.m3-card.card-state\:pressed {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-pressed-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-pressed-opacity) * 100%), transparent)
+	);
 }
 
-.card\:elevated.card-state\:focused {
-    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
-    --card-outline: var(--border-width-2) solid var(--card-focused-outline-color);
-    --card-outline-offset: var(--space-1);
-    filter: brightness(0.90);
+/* Disabled */
+.m3-card.card-state\:disabled {
+	--card-opacity: 0.38;
+	--card-box-shadow: none;
+	--card-cursor: not-allowed;
+	pointer-events: none;
 }
 
-.card\:elevated.card-state\:dragged {
-    --card-box-shadow: 0 var(--space-4) var(--space-5) rgba(0, 0, 0, 0.14),
-        0 var(--space-3) var(--space-3) rgba(0, 0, 0, 0.12);
-    --card-transform: scale(1.02);
-    --card-cursor: var(--cursor-grab);
-    filter: brightness(0.84);
+/* Dragged */
+.m3-card.card-state\:dragged {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-dragged-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--card-state-layer-color) calc(var(--card-state-dragged-opacity) * 100%), transparent)
+	);
+	--card-box-shadow: var(--shadow-xl);               /* M3 dragged: level4 */
+	--card-transform: scale(1.02);
+	--card-cursor: grab;
 }
 
-/* ================  Filled-type ================ */
+/* ================== Type: Elevated (default) ========================= */
+/* M3: surface-container-low, level1 rest, level2 hover */
+/* Elevated is the DEFAULT — no additional class needed. */
+/* .card:elevated class is provided for explicit specification. */
 
-.card\:filled.card-state\:enabled {
-    --card-opacity: var(--opacity-100);
-    --card-box-shadow: none;
+.m3-card.card\:elevated {
+	--card-background: var(--color-surface-subtle);
+	--card-box-shadow: var(--shadow-sm);
+	--card-elevation-hover: var(--shadow-md);
 }
 
-.card\:filled.card-state\:disabled {
-    --card-opacity: 0.38;
-    --card-box-shadow: none;
-    --card-cursor: var(--cursor-not-allowed);
+/* ================== Type: Filled ===================================== */
+/* M3: surface-container-highest, level0, level1 on hover */
+.m3-card.card\:filled {
+	--card-background: var(--color-surface-muted);     /* ≈ surface-container-highest */
+	--card-box-shadow: none;                           /* M3: level0 */
+	--card-elevation-hover: var(--shadow-sm);           /* M3: level1 on hover */
 }
 
-.card\:filled.card-state\:hovered {
-    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
-    filter: brightness(0.92);
+/* ================== Type: Outlined =================================== */
+/* M3: surface, level0, outline-variant border */
+.m3-card.card\:outlined {
+	--card-background: var(--color-surface);
+	--card-box-shadow: none;
+	--card-border: var(--border-width-1) solid var(--color-border);
+	--card-elevation-hover: var(--shadow-sm);
+
+	&:focus-visible, &.card-state\:focused {
+		--card-border: var(--border-width-1) solid var(--color-on-surface);
+	}
+
+	&.card-state\:disabled {
+		--card-border: var(--border-width-1) solid color-mix(in srgb, var(--color-border) 38%, transparent);
+	}
 }
 
-.card\:filled.card-state\:focused {
-    --card-box-shadow: none;
-    --card-outline: var(--border-width-2) solid var(--card-focused-outline-color);
-    --card-outline-offset: var(--space-1);
-    filter: brightness(0.90);
+/* ================== Clickable Card =================================== */
+/* 클릭 가능한 카드 — cursor: pointer + hover 시각 피드백 강화 */
+.m3-card.card-clickable,
+.m3-card[onclick],
+a.m3-card {
+	--card-cursor: pointer;
 }
 
-.card\:filled.card-state\:dragged {
-    --card-box-shadow: 0 var(--space-3) var(--space-5) rgba(0, 0, 0, 0.14),
-        0 var(--space-2) var(--space-3) rgba(0, 0, 0, 0.12);
-    --card-transform: scale(1.02);
-    --card-cursor: var(--cursor-grab);
-    filter: brightness(0.84);
+/* ================== Card Content Areas =============================== */
+/* M3 카드 내부 영역 — header, content, actions */
+.m3-card .card-header {
+	padding: 1rem 1rem 0;
 }
 
-/* ================ Outlined-type ================ */
-
-.card\:outlined.card-state\:enabled {
-    --card-opacity: var(--opacity-100);
-    --card-box-shadow: none;
-    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
+.m3-card .card-content {
+	padding: 1rem;
 }
 
-.card\:outlined.card-state\:disabled {
-    --card-opacity: 0.38;
-    --card-box-shadow: none;
-    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
-    --card-cursor: var(--cursor-not-allowed);
+.m3-card .card-actions {
+	padding: 0.5rem 1rem 1rem;
+	display: flex;
+	gap: 0.5rem;
+	justify-content: flex-end;
 }
 
-.card\:outlined.card-state\:hovered {
-    --card-box-shadow: 0 var(--space-1) var(--space-2) rgba(0, 0, 0, 0.12),
-        0 var(--space-1) var(--space-1) rgba(0, 0, 0, 0.14);
-    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
-    filter: brightness(0.92);
+/* 카드 미디어 (이미지/비디오 상단 영역) */
+.m3-card .card-media {
+	overflow: hidden;
+	border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
 }
 
-.card\:outlined.card-state\:focused {
-    --card-box-shadow: none;
-    --card-border: var(--border-width-1) solid var(--card-focused-outline-color);
-    --card-outline: var(--border-width-2) solid var(--card-focused-outline-color);
-    --card-outline-offset: var(--space-1);
-    filter: brightness(0.90);
+.m3-card .card-media img,
+.m3-card .card-media video {
+	display: block;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
 }
 
-
-.card\:outlined.card-state\:dragged {
-    --card-box-shadow: 0 var(--space-4) var(--space-5) rgba(0, 0, 0, 0.14),
-        0 var(--space-3) var(--space-3) rgba(0, 0, 0, 0.12);
-    --card-border: var(--border-width-1) solid var(--card-border-outline-color);
-    --card-transform: scale(1.02);
-    --card-cursor: var(--cursor-grab);
-    filter: brightness(0.84);
+/* ================== Responsive Size ================================== */
+@media (min-width: 640px) {
+	.m3-card.sm\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); --card-elevation-hover: var(--shadow-md); }
+	.m3-card.sm\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; --card-elevation-hover: var(--shadow-sm); }
+	.m3-card.sm\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); --card-elevation-hover: var(--shadow-sm); }
 }
 
-/* 카드 컨텐츠 */
-.m3-card .content {
-    padding: var(--card-content-padding);
-    
+@media (min-width: 768px) {
+	.m3-card.md\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); --card-elevation-hover: var(--shadow-md); }
+	.m3-card.md\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; --card-elevation-hover: var(--shadow-sm); }
+	.m3-card.md\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); --card-elevation-hover: var(--shadow-sm); }
+}
+
+@media (min-width: 1024px) {
+	.m3-card.lg\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); --card-elevation-hover: var(--shadow-md); }
+	.m3-card.lg\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; --card-elevation-hover: var(--shadow-sm); }
+	.m3-card.lg\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); --card-elevation-hover: var(--shadow-sm); }
 }
