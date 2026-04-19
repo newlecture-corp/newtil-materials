@@ -19,6 +19,11 @@
 	--icon-weight: 400;                   /* 100~700 */
 	--icon-grade: 0;                      /* -25, 0, 200 */
 	--icon-optical-size: 24;              /* 20, 24, 40, 48 */
+
+	/* hover effect */
+	--icon-hover-border-radius: 50%;
+	--icon-hover-scale: 1.3;
+	--icon-hover-inner-scale: 0.8;
 }
 
 /* ================== Base Style ======================================= */
@@ -98,38 +103,38 @@
 
 /* ================== Color ============================================ */
 /* Brand */
-.m3-icon.icon-color\:primary        { color: var(--color-primary); }
-.m3-icon.icon-color\:primary-hover   { color: var(--color-primary-hover); }
-.m3-icon.icon-color\:primary-active  { color: var(--color-primary-active); }
-.m3-icon.icon-color\:secondary       { color: var(--color-secondary); }
-.m3-icon.icon-color\:secondary-hover { color: var(--color-secondary-hover); }
-.m3-icon.icon-color\:tertiary        { color: var(--color-tertiary); }
-.m3-icon.icon-color\:tertiary-hover  { color: var(--color-tertiary-hover); }
+.m3-icon.icon-color\:primary        { --icon-color: var(--color-primary); }
+.m3-icon.icon-color\:primary-hover   { --icon-color: var(--color-primary-hover); }
+.m3-icon.icon-color\:primary-active  { --icon-color: var(--color-primary-active); }
+.m3-icon.icon-color\:secondary       { --icon-color: var(--color-secondary); }
+.m3-icon.icon-color\:secondary-hover { --icon-color: var(--color-secondary-hover); }
+.m3-icon.icon-color\:tertiary        { --icon-color: var(--color-tertiary); }
+.m3-icon.icon-color\:tertiary-hover  { --icon-color: var(--color-tertiary-hover); }
 
 /* Surface / Text */
-.m3-icon.icon-color\:surface         { color: var(--color-surface); }
-.m3-icon.icon-color\:on-surface      { color: var(--color-on-surface); }
-.m3-icon.icon-color\:text            { color: var(--color-text); }
-.m3-icon.icon-color\:text-muted      { color: var(--color-text-muted); }
-.m3-icon.icon-color\:text-subtle     { color: var(--color-text-subtle); }
+.m3-icon.icon-color\:surface         { --icon-color: var(--color-surface); }
+.m3-icon.icon-color\:on-surface      { --icon-color: var(--color-on-surface); }
+.m3-icon.icon-color\:text            { --icon-color: var(--color-text); }
+.m3-icon.icon-color\:text-muted      { --icon-color: var(--color-text-muted); }
+.m3-icon.icon-color\:text-subtle     { --icon-color: var(--color-text-subtle); }
 
 /* Status */
-.m3-icon.icon-color\:success { color: var(--color-success); }
-.m3-icon.icon-color\:warning { color: var(--color-warning); }
-.m3-icon.icon-color\:danger  { color: var(--color-danger); }
+.m3-icon.icon-color\:success { --icon-color: var(--color-success); }
+.m3-icon.icon-color\:warning { --icon-color: var(--color-warning); }
+.m3-icon.icon-color\:danger  { --icon-color: var(--color-danger); }
 
 /* Special */
-.m3-icon.icon-color\:white   { color: #ffffff; }
-.m3-icon.icon-color\:black   { color: #000000; }
+.m3-icon.icon-color\:white   { --icon-color: #ffffff; }
+.m3-icon.icon-color\:black   { --icon-color: #000000; }
 
 /* ================== Hover Effect ===================================== */
 .m3-icon.icon-hover:hover {
-	border-radius: 50%;
-	transform: scale(1.3);
+	border-radius: var(--icon-hover-border-radius);
+	transform: scale(var(--icon-hover-scale));
+}
 
-	&::before {
-		transform: scale(0.8);
-	}
+.m3-icon.icon-hover:hover::before {
+	transform: scale(var(--icon-hover-inner-scale));
 }
 
 /* ================== Responsive Size ================================== */

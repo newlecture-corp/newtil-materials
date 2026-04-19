@@ -38,6 +38,11 @@
 	/* actions */
 	--dialog-actions-gap: 0.5rem;
 	--dialog-actions-justify: flex-end;
+
+	/* icon */
+	--dialog-icon-margin: 0 0 1rem;
+	--dialog-icon-color: var(--color-primary);
+	--dialog-icon-size: 1.5rem;
 }
 
 /* ================== Base ============================================= */
@@ -95,9 +100,9 @@
 .m3-dialog .dialog-icon {
 	display: flex;
 	justify-content: center;
-	margin: 0 0 1rem;
-	color: var(--color-primary);
-	font-size: 1.5rem;
+	margin: var(--dialog-icon-margin);
+	color: var(--dialog-icon-color);
+	font-size: var(--dialog-icon-size);
 }
 
 /* ================== Open/Close ======================================= */

@@ -38,6 +38,7 @@
 	--bar-title-overflow: hidden;
 	--bar-title-white-space: nowrap;
 	--bar-title-text-overflow: ellipsis;
+	--bar-title-text-align: start;
 
 	/* icons */
 	--bar-icon-size: 3rem;
@@ -45,6 +46,9 @@
 	--bar-icon-radius: 50%;
 	--bar-icon-background: transparent;
 	--bar-icon-cursor: pointer;
+
+	/* trailing */
+	--bar-trailing-gap: 0;
 
 	/* transition */
 	--bar-transition: box-shadow var(--duration-normal) var(--ease-out);
@@ -77,6 +81,7 @@
 	overflow: var(--bar-title-overflow);
 	white-space: var(--bar-title-white-space);
 	text-overflow: var(--bar-title-text-overflow);
+	text-align: var(--bar-title-text-align);
 	margin: 0;
 }
 
@@ -111,12 +116,12 @@
 .m3-top-app-bar .bar-trailing {
 	display: flex;
 	align-items: center;
-	gap: 0;
+	gap: var(--bar-trailing-gap);
 }
 
 /* ================== Type: Center Aligned ============================== */
-.m3-top-app-bar.bar\:center .bar-title {
-	text-align: center;
+.m3-top-app-bar.bar\:center {
+	--bar-title-text-align: center;
 }
 
 /* ================== Type: Elevated (scroll shadow) =================== */

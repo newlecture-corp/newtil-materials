@@ -26,14 +26,26 @@
 	--deco-width: auto;
 	--deco-height: auto;
 	--deco-padding: 0;
+	--deco-border-radius: 0;
+	--deco-background-color: transparent;
 	--deco-color: var(--color-primary);
 	--deco-font-size: var(--font-size-sm);
+
+	/* active pill */
+	--deco-pill-height: 2rem;
+	--deco-pill-width: calc(var(--icon-size) + 2rem);
+	--deco-pill-radius: 1rem;
+	--deco-pill-background: transparent;
+	--deco-pill-color: inherit;
 }
 
 /* ================== Base Style ======================================= */
 .m3-deco {
 	width: var(--deco-width);
-	height: auto;
+	height: var(--deco-height);
+	padding: var(--deco-padding);
+	border-radius: var(--deco-border-radius);
+	background-color: var(--deco-background-color);
 	font-size: var(--deco-font-size);
 	text-align: center;
 	text-decoration: none;
@@ -56,11 +68,13 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--icon-size);
-	height: var(--icon-size);
+	width: var(--deco-pill-width, var(--icon-size));
+	height: var(--deco-pill-height, var(--icon-size));
+	border-radius: var(--deco-pill-radius, 0);
+	background-color: var(--deco-pill-background);
+	color: var(--deco-pill-color);
 	overflow: hidden;
 	order: var(--deco-order, 0);
-	color: inherit;
 	font-family: var(--icon-family);
 	font-size: var(--icon-size);
 	font-variation-settings:
@@ -108,24 +122,18 @@
 /* top/bottom: pill은 아이콘 뒤에만. 아이콘은 pill 위에서 흰색. */
 .m3-deco.deco-active.deco-pos\:top,
 .m3-deco.deco-active.deco-pos\:bottom {
-	&::before {
-		height: 2rem;
-		width: calc(var(--icon-size) + 2rem);
-		background-color: var(--deco-color);
-		border-radius: 1rem;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		color: var(--color-on-primary);     /* 아이콘은 pill 위에서 흰색 */
-	}
+	--deco-pill-background: var(--deco-color);
+	--deco-pill-color: var(--color-on-primary);
+}
 
-	&:hover::before {
-		background-color: color-mix(in srgb, var(--deco-color) 85%, transparent);
-	}
+.m3-deco.deco-active.deco-pos\:top:hover,
+.m3-deco.deco-active.deco-pos\:bottom:hover {
+	--deco-pill-background: color-mix(in srgb, var(--deco-color) 85%, transparent);
+}
 
-	&:active::before {
-		background-color: color-mix(in srgb, var(--deco-color) 75%, transparent);
-	}
+.m3-deco.deco-active.deco-pos\:top:active,
+.m3-deco.deco-active.deco-pos\:bottom:active {
+	--deco-pill-background: color-mix(in srgb, var(--deco-color) 75%, transparent);
 }
 
 /* left/right: pill이 전체 요소 감쌈. 아이콘+텍스트 모두 흰색. */
@@ -133,20 +141,21 @@
 .m3-deco.deco-active.deco-pos\:right {
 	--deco-height: 2.5rem;
 	--deco-padding: 0 0.75rem;
+	--deco-border-radius: calc(var(--deco-height) / 2);
+	--deco-background-color: var(--deco-color);
+	color: var(--color-on-primary);
+	--deco-pill-background: transparent;
+	--deco-pill-color: inherit;
+}
 
-	height: var(--deco-height);
-	padding: var(--deco-padding);
-	border-radius: calc(var(--deco-height) / 2);
-	background-color: var(--deco-color);
-	color: var(--color-on-primary);         /* 아이콘+텍스트 모두 흰색 */
+.m3-deco.deco-active.deco-pos\:left:hover,
+.m3-deco.deco-active.deco-pos\:right:hover {
+	--deco-background-color: color-mix(in srgb, var(--deco-color) 85%, transparent);
+}
 
-	&:hover {
-		background-color: color-mix(in srgb, var(--deco-color) 85%, transparent);
-	}
-
-	&:active {
-		background-color: color-mix(in srgb, var(--deco-color) 75%, transparent);
-	}
+.m3-deco.deco-active.deco-pos\:left:active,
+.m3-deco.deco-active.deco-pos\:right:active {
+	--deco-background-color: color-mix(in srgb, var(--deco-color) 75%, transparent);
 }
 
 /* ================== Gap ============================================== */

@@ -34,6 +34,15 @@
 	/* action */
 	--snackbar-action-color: var(--color-primary-subtle);
 	--snackbar-action-font-weight: var(--font-weight-medium);
+	--snackbar-action-padding: 0.5rem;
+	--snackbar-action-border-radius: 0.25rem;
+
+	/* close */
+	--snackbar-close-padding: 0.5rem;
+	--snackbar-close-border-radius: 50%;
+
+	/* text */
+	--snackbar-text-padding: 0.875rem 0;
 }
 
 /* ================== Base ============================================= */
@@ -67,7 +76,7 @@
 	flex: 1;
 	font-size: var(--snackbar-font-size);
 	line-height: var(--snackbar-line-height);
-	padding: 0.875rem 0;
+	padding: var(--snackbar-text-padding);
 }
 
 .m3-snackbar .snackbar-action {
@@ -77,8 +86,8 @@
 	background: transparent;
 	border: none;
 	cursor: pointer;
-	padding: 0.5rem;
-	border-radius: 0.25rem;
+	padding: var(--snackbar-action-padding);
+	border-radius: var(--snackbar-action-border-radius);
 	font-family: inherit;
 	white-space: nowrap;
 }
@@ -97,8 +106,8 @@
 	background: transparent;
 	border: none;
 	cursor: pointer;
-	padding: 0.5rem;
-	border-radius: 50%;
+	padding: var(--snackbar-close-padding);
+	border-radius: var(--snackbar-close-border-radius);
 	color: var(--snackbar-color);
 }
 

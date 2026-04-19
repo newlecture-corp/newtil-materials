@@ -21,6 +21,7 @@
 .m3-text-field {
 	/* container */
 	--field-background: var(--color-surface-muted);
+	--field-border: none;
 	--field-border-radius: 0.25rem 0.25rem 0 0;
 	--field-padding-x: 1rem;
 	--field-padding-top: 0.5rem;
@@ -28,6 +29,10 @@
 	--field-min-height: 3.5rem;
 	--field-width: 100%;
 	--field-cursor: text;
+
+	/* input */
+	--field-input-padding-top: 1.5rem;
+	--field-input-padding-left: var(--field-padding-x);
 
 	/* active indicator (bottom line — filled only) */
 	--field-indicator-height: 0.0625rem;
@@ -55,10 +60,17 @@
 	--field-label-size-float: 0.75rem;
 	--field-label-color: var(--color-text-muted);
 	--field-label-color-focus: var(--color-primary);
+	--field-label-left: var(--field-padding-x);
+	--field-label-background: transparent;
+	--field-label-padding: 0;
 
 	/* supporting text */
 	--field-supporting-size: 0.75rem;
 	--field-supporting-color: var(--color-text-muted);
+	--field-supporting-padding: 0.25rem var(--field-padding-x) 0;
+
+	/* icon */
+	--field-icon-left: 0.75rem;
 
 	/* error */
 	--field-error-color: var(--color-danger);
@@ -81,9 +93,11 @@
 /* Input wrapper — the visible "box" */
 .m3-text-field {
 	background-color: var(--field-background);
+	border: var(--field-border);
 	border-radius: var(--field-border-radius);
 	min-height: var(--field-min-height);
 	cursor: var(--field-cursor);
+	transition: var(--field-transition);
 }
 
 /* ================== Input ============================================ */
@@ -94,7 +108,8 @@
 	outline: none;
 	background: transparent;
 	width: 100%;
-	padding: 1.5rem var(--field-padding-x) var(--field-padding-bottom);
+	padding: var(--field-input-padding-top) var(--field-padding-x) var(--field-padding-bottom);
+	padding-left: var(--field-input-padding-left);
 	font-size: var(--field-font-size);
 	font-weight: var(--field-font-weight);
 	color: var(--field-color);
@@ -120,11 +135,13 @@
 /* ================== Label (floating) ================================= */
 .m3-text-field label {
 	position: absolute;
-	left: var(--field-padding-x);
+	left: var(--field-label-left);
 	top: 50%;
 	transform: translateY(-50%);
 	font-size: var(--field-label-size);
 	color: var(--field-label-color);
+	background-color: var(--field-label-background);
+	padding: var(--field-label-padding);
 	pointer-events: none;
 	transition: var(--field-transition);
 	transform-origin: left top;
@@ -169,14 +186,12 @@
 /* ================== Type: Outlined =================================== */
 .m3-text-field.field\:outlined {
 	--field-background: transparent;
+	--field-border: var(--field-outline-width) solid var(--field-outline-color);
 	--field-border-radius: 0.25rem;
-	border: var(--field-outline-width) solid var(--field-outline-color);
-	transition: var(--field-transition);
-}
-
-/* outlined는 active indicator 숨김 */
-.m3-text-field.field\:outlined::after {
-	display: none;
+	--field-indicator-height: 0;
+	--field-indicator-height-focus: 0;
+	--field-label-background: var(--color-surface);
+	--field-label-padding: 0 0.25rem;
 }
 
 .m3-text-field.field\:outlined:hover {
@@ -188,12 +203,6 @@
 	--field-outline-color: var(--field-outline-color-focus);
 }
 
-/* outlined label 배경 (outline 위에 겹치지 않게) */
-.m3-text-field.field\:outlined label {
-	background-color: var(--color-surface);
-	padding: 0 0.25rem;
-}
-
 /* ================== Error State ====================================== */
 .m3-text-field.field-state\:error::after {
 	--field-indicator-color: var(--field-error-color);
@@ -203,7 +212,6 @@
 .m3-text-field.field-state\:error input:focus + label {
 	--field-label-color: var(--field-error-color);
 	--field-label-color-focus: var(--field-error-color);
-	color: var(--field-error-color);
 }
 
 .m3-text-field.field-state\:error input {
@@ -234,7 +242,7 @@
 .m3-text-field .field-supporting {
 	font-size: var(--field-supporting-size);
 	color: var(--field-supporting-color);
-	padding: 0.25rem var(--field-padding-x) 0;
+	padding: var(--field-supporting-padding);
 }
 
 .m3-text-field.field-state\:error .field-supporting {
@@ -246,20 +254,17 @@
 	position: relative;
 }
 
-.m3-text-field.field-icon\:leading input {
-	padding-left: 3rem;
-}
-
-.m3-text-field.field-icon\:leading label {
-	left: 3rem;
+.m3-text-field.field-icon\:leading {
+	--field-input-padding-left: 3rem;
+	--field-label-left: 3rem;
 }
 
 .m3-text-field.field-icon\:leading .m3-icon {
 	position: absolute;
-	left: 0.75rem;
+	left: var(--field-icon-left);
 	top: 50%;
 	transform: translateY(-50%);
-	color: var(--color-text-muted);
+	color: var(--field-label-color);
 }
 
 /* ================== Color Variants =================================== */

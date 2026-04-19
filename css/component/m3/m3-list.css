@@ -46,6 +46,16 @@
 	/* divider */
 	--list-divider-color: var(--color-border-subtle);
 	--list-divider-width: 0.0625rem;
+	--list-divider-margin: 0;
+	--list-divider-margin-left: 0;
+	--list-divider-border: none;
+
+	/* avatar */
+	--list-avatar-background: var(--color-primary-subtle);
+	--list-avatar-color: var(--color-primary);
+	--list-avatar-font-weight: 600;
+	--list-avatar-font-size: 0.875rem;
+	--list-avatar-border-radius: 50%;
 
 	/* state */
 	--list-state-hover-opacity: 0.08;
@@ -148,15 +158,15 @@
 	flex-shrink: 0;
 	width: var(--list-avatar-size);
 	height: var(--list-avatar-size);
-	border-radius: 50%;
+	border-radius: var(--list-avatar-border-radius);
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--color-primary-subtle);
-	color: var(--color-primary);
-	font-weight: 600;
-	font-size: 0.875rem;
+	background-color: var(--list-avatar-background);
+	color: var(--list-avatar-color);
+	font-weight: var(--list-avatar-font-weight);
+	font-size: var(--list-avatar-font-size);
 }
 
 .m3-list .list-item .list-avatar img {
@@ -170,17 +180,18 @@
 .m3-list .list-divider {
 	height: var(--list-divider-width);
 	background-color: var(--list-divider-color);
-	margin: 0;
-	border: none;
+	margin: var(--list-divider-margin);
+	margin-left: var(--list-divider-margin-left);
+	border: var(--list-divider-border);
 }
 
 /* Inset divider (indented) */
 .m3-list .list-divider.list-divider\:inset {
-	margin-left: 1rem;
+	--list-divider-margin-left: 1rem;
 }
 
 .m3-list .list-divider.list-divider\:full {
-	margin-left: 0;
+	--list-divider-margin-left: 0;
 }
 
 /* ================== Size Variants ==================================== */

@@ -33,6 +33,10 @@
 	--tab-item-white-space: nowrap;
 	--tab-item-flex: 0 0 auto;
 	--tab-item-min-width: auto;
+	--tab-item-gap: 0.5rem;
+
+	/* icon */
+	--tab-icon-size: 1.5rem;
 
 	/* indicator */
 	--tab-indicator-height: 0.1875rem;
@@ -81,7 +85,7 @@
 	transition: var(--tab-transition);
 	font-family: inherit;
 	text-decoration: none;
-	gap: 0.5rem;
+	gap: var(--tab-item-gap);
 }
 
 /* Indicator via ::after */
@@ -137,7 +141,7 @@
 }
 
 .m3-tabs .tab-item .tab-icon {
-	font-size: 1.5rem;
+	font-size: var(--tab-icon-size);
 }
 
 /* ================== Color Variants =================================== */
