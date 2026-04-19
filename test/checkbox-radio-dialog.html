@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>m3-checkbox / m3-radio / m3-dialog 테스트</title>
+	<link rel="stylesheet" href="../dist/index.css" />
+	<style>
+		body { padding: 2rem; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface); }
+		h1 { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
+		h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted); }
+		h3 { font-size: 0.875rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--color-text-muted); }
+		section { margin-bottom: 3rem; }
+		p.desc { font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem; }
+		pre.source { background: var(--color-surface-muted); color: var(--color-text); padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.8125rem; line-height: 1.5; overflow-x: auto; margin: 0.75rem 0 0; font-family: ui-monospace, monospace; }
+		.demo { margin-bottom: 0.75rem; }
+		.demo-row { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+	</style>
+</head>
+<body>
+
+	<div style="position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; z-index: 9999;">
+		<button class="m3-btn btn-size:xs" onclick="setTheme('light')">Light</button>
+		<button class="m3-btn btn-size:xs" onclick="setTheme('dark')">Dark</button>
+	</div>
+
+	<!-- ================================================================ -->
+	<h1>m3-checkbox 테스트</h1>
+
+	<!-- 1. 기본 -->
+	<section>
+		<h2>1. 기본 체크박스</h2>
+		<div class="demo demo-row">
+			<label class="m3-checkbox">
+				<input type="checkbox"> 동의합니다
+			</label>
+			<label class="m3-checkbox">
+				<input type="checkbox" checked> 선택됨
+			</label>
+			<label class="m3-checkbox">
+				<input type="checkbox" disabled> 비활성
+			</label>
+			<label class="m3-checkbox">
+				<input type="checkbox" checked disabled> 선택+비활성
+			</label>
+		</div>
+		<pre class="source">&lt;label class="m3-checkbox"&gt;
+  &lt;input type="checkbox"&gt; 동의합니다
+&lt;/label&gt;
+&lt;label class="m3-checkbox"&gt;
+  &lt;input type="checkbox" checked&gt; 선택됨
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 2. 색상 변형 -->
+	<section>
+		<h2>2. 색상 변형</h2>
+		<div class="demo demo-row">
+			<label class="m3-checkbox checkbox-color:primary"><input type="checkbox" checked> primary</label>
+			<label class="m3-checkbox checkbox-color:secondary"><input type="checkbox" checked> secondary</label>
+			<label class="m3-checkbox checkbox-color:tertiary"><input type="checkbox" checked> tertiary</label>
+			<label class="m3-checkbox checkbox-color:danger"><input type="checkbox" checked> danger</label>
+			<label class="m3-checkbox checkbox-color:success"><input type="checkbox" checked> success</label>
+			<label class="m3-checkbox checkbox-color:warning"><input type="checkbox" checked> warning</label>
+		</div>
+		<pre class="source">&lt;label class="m3-checkbox checkbox-color:danger"&gt;
+  &lt;input type="checkbox" checked&gt; danger
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 3. Indeterminate -->
+	<section>
+		<h2>3. Indeterminate (부분 선택)</h2>
+		<div class="demo demo-row">
+			<label class="m3-checkbox checkbox-mode:indeterminate"><input type="checkbox" checked> 부분 선택</label>
+			<label class="m3-checkbox checkbox-mode:indeterminate checkbox-color:secondary"><input type="checkbox" checked> secondary</label>
+		</div>
+		<pre class="source">&lt;label class="m3-checkbox checkbox-mode:indeterminate"&gt;
+  &lt;input type="checkbox" checked&gt; 부분 선택
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 4. 고정 상태 -->
+	<section>
+		<h2>4. 고정 상태 (static)</h2>
+		<div class="demo demo-row">
+			<label class="m3-checkbox checkbox-state:checked"><input type="checkbox"> checked</label>
+			<label class="m3-checkbox checkbox-state:hovered"><input type="checkbox"> hovered</label>
+			<label class="m3-checkbox checkbox-state:focused"><input type="checkbox"> focused</label>
+			<label class="m3-checkbox checkbox-state:disabled"><input type="checkbox"> disabled</label>
+		</div>
+		<pre class="source">&lt;label class="m3-checkbox checkbox-state:hovered"&gt;
+  &lt;input type="checkbox"&gt; hovered
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 5. 변수 오버라이드 -->
+	<section>
+		<h2>5. 변수 오버라이드</h2>
+		<div class="demo demo-row">
+			<label class="m3-checkbox" style="--checkbox-check-background: #e91e63; --checkbox-state-color: #e91e63;">
+				<input type="checkbox" checked> 커스텀 Pink
+			</label>
+			<label class="m3-checkbox" style="--checkbox-size: 1.5rem; --checkbox-check-font-size: 1.5rem; --checkbox-border-radius: 0.25rem;">
+				<input type="checkbox" checked> 큰 체크박스
+			</label>
+		</div>
+		<pre class="source">&lt;label class="m3-checkbox" style="--checkbox-check-background: #e91e63;
+     --checkbox-state-color: #e91e63;"&gt;
+  &lt;input type="checkbox" checked&gt; 커스텀 Pink
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 6. 실제 사용 — 폼 -->
+	<section>
+		<h2>6. 실제 사용 — 회원가입 약관</h2>
+		<div style="max-width: 28rem; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 0.75rem;">
+			<h3 style="margin: 0 0 1rem; font-size: 1.125rem; font-weight: 600;">약관 동의</h3>
+			<div style="display: flex; flex-direction: column; gap: 0.25rem;">
+				<label class="m3-checkbox"><input type="checkbox"> <strong>전체 동의</strong></label>
+				<hr style="border: none; border-top: 1px solid var(--color-border); margin: 0.5rem 0;">
+				<label class="m3-checkbox"><input type="checkbox"> [필수] 서비스 이용약관</label>
+				<label class="m3-checkbox"><input type="checkbox"> [필수] 개인정보 수집·이용 동의</label>
+				<label class="m3-checkbox"><input type="checkbox"> [선택] 마케팅 수신 동의</label>
+			</div>
+		</div>
+	</section>
+
+	<hr style="border: none; border-top: 1px solid var(--color-border); margin: 3rem 0;">
+
+	<!-- ================================================================ -->
+	<h1>m3-radio 테스트</h1>
+
+	<!-- 7. 기본 -->
+	<section>
+		<h2>7. 기본 라디오 버튼</h2>
+		<div class="demo" style="display: flex; flex-direction: column; gap: 0.25rem;">
+			<label class="m3-radio">
+				<input type="radio" name="size" checked>
+				<span class="m3-radio-label">Small</span>
+			</label>
+			<label class="m3-radio">
+				<input type="radio" name="size">
+				<span class="m3-radio-label">Medium</span>
+			</label>
+			<label class="m3-radio">
+				<input type="radio" name="size">
+				<span class="m3-radio-label">Large</span>
+			</label>
+			<label class="m3-radio">
+				<input type="radio" name="size" disabled>
+				<span class="m3-radio-label">Disabled</span>
+			</label>
+		</div>
+		<pre class="source">&lt;label class="m3-radio"&gt;
+  &lt;input type="radio" name="size" checked&gt;
+  &lt;span class="m3-radio-label"&gt;Small&lt;/span&gt;
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 8. 색상 -->
+	<section>
+		<h2>8. 색상 변형</h2>
+		<div class="demo demo-row">
+			<label class="m3-radio radio-color:primary"><input type="radio" name="color" checked><span class="m3-radio-label">primary</span></label>
+			<label class="m3-radio radio-color:secondary"><input type="radio" name="color"><span class="m3-radio-label">secondary</span></label>
+			<label class="m3-radio radio-color:tertiary"><input type="radio" name="color"><span class="m3-radio-label">tertiary</span></label>
+			<label class="m3-radio radio-color:danger"><input type="radio" name="color"><span class="m3-radio-label">danger</span></label>
+		</div>
+		<pre class="source">&lt;label class="m3-radio radio-color:danger"&gt;
+  &lt;input type="radio" name="color"&gt;
+  &lt;span class="m3-radio-label"&gt;danger&lt;/span&gt;
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 9. 고정 상태 -->
+	<section>
+		<h2>9. 고정 상태</h2>
+		<div class="demo demo-row">
+			<label class="m3-radio radio-state:hover"><input type="radio"><span class="m3-radio-label">hover</span></label>
+			<label class="m3-radio radio-state:active"><input type="radio"><span class="m3-radio-label">active</span></label>
+			<label class="m3-radio radio-state:focus"><input type="radio"><span class="m3-radio-label">focus</span></label>
+		</div>
+	</section>
+
+	<!-- 10. 변수 오버라이드 -->
+	<section>
+		<h2>10. 변수 오버라이드</h2>
+		<div class="demo demo-row">
+			<label class="m3-radio" style="--radio-selected-color: #e91e63; --radio-dot-color: #e91e63;">
+				<input type="radio" name="custom" checked>
+				<span class="m3-radio-label">커스텀 Pink</span>
+			</label>
+			<label class="m3-radio" style="--radio-size: 1.75rem; --radio-dot-size: 0.875rem; --radio-touch-size: 3rem;">
+				<input type="radio" name="custom">
+				<span class="m3-radio-label">큰 라디오</span>
+			</label>
+		</div>
+		<pre class="source">&lt;label class="m3-radio" style="--radio-selected-color: #e91e63;
+     --radio-dot-color: #e91e63;"&gt;
+  &lt;input type="radio" checked&gt; 커스텀 Pink
+&lt;/label&gt;</pre>
+	</section>
+
+	<!-- 11. 실제 사용 — 설정 -->
+	<section>
+		<h2>11. 실제 사용 — 알림 설정</h2>
+		<div style="max-width: 28rem; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 0.75rem;">
+			<h3 style="margin: 0 0 1rem; font-size: 1.125rem; font-weight: 600;">알림 빈도</h3>
+			<div style="display: flex; flex-direction: column; gap: 0.25rem;">
+				<label class="m3-radio"><input type="radio" name="notify" checked><span class="m3-radio-label">모든 알림</span></label>
+				<label class="m3-radio"><input type="radio" name="notify"><span class="m3-radio-label">중요 알림만</span></label>
+				<label class="m3-radio"><input type="radio" name="notify"><span class="m3-radio-label">알림 끄기</span></label>
+			</div>
+		</div>
+	</section>
+
+	<hr style="border: none; border-top: 1px solid var(--color-border); margin: 3rem 0;">
+
+	<!-- ================================================================ -->
+	<h1>m3-dialog 테스트</h1>
+
+	<!-- 12. 기본 다이얼로그 -->
+	<section>
+		<h2>12. 기본 다이얼로그</h2>
+		<p class="desc">버튼을 클릭하면 다이얼로그가 열립니다.</p>
+		<div class="demo">
+			<button class="m3-btn" onclick="document.getElementById('dialog-basic').classList.add('dialog-open')">기본 다이얼로그 열기</button>
+		</div>
+
+		<div id="dialog-basic" class="m3-dialog">
+			<h2 class="dialog-headline">알림</h2>
+			<p class="dialog-content">변경사항이 저장되지 않았습니다. 정말 나가시겠습니까?</p>
+			<div class="dialog-actions">
+				<button class="m3-btn btn:text" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">취소</button>
+				<button class="m3-btn" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">확인</button>
+			</div>
+		</div>
+
+		<pre class="source">&lt;div class="m3-dialog dialog-open"&gt;
+  &lt;h2 class="dialog-headline"&gt;알림&lt;/h2&gt;
+  &lt;p class="dialog-content"&gt;내용&lt;/p&gt;
+  &lt;div class="dialog-actions"&gt;
+    &lt;button class="m3-btn btn:text"&gt;취소&lt;/button&gt;
+    &lt;button class="m3-btn"&gt;확인&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 13. 아이콘 다이얼로그 -->
+	<section>
+		<h2>13. 아이콘 다이얼로그</h2>
+		<div class="demo">
+			<button class="m3-btn btn-color:danger" onclick="document.getElementById('dialog-icon').classList.add('dialog-open')">삭제 확인 다이얼로그</button>
+		</div>
+
+		<div id="dialog-icon" class="m3-dialog">
+			<div class="dialog-icon"><i class="m3-icon icon:delete icon-color:danger icon-size:lg"></i></div>
+			<h2 class="dialog-headline" style="text-align: center;">정말 삭제하시겠습니까?</h2>
+			<p class="dialog-content" style="text-align: center;">이 작업은 되돌릴 수 없습니다. 모든 데이터가 영구적으로 삭제됩니다.</p>
+			<div class="dialog-actions">
+				<button class="m3-btn btn:outlined" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">취소</button>
+				<button class="m3-btn btn-color:danger" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">삭제</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- 14. 변수 오버라이드 다이얼로그 -->
+	<section>
+		<h2>14. 변수 오버라이드 다이얼로그</h2>
+		<div class="demo demo-row">
+			<button class="m3-btn btn:outlined" onclick="document.getElementById('dialog-custom').classList.add('dialog-open')">커스텀 다이얼로그</button>
+		</div>
+
+		<div id="dialog-custom" class="m3-dialog" style="--dialog-border-radius: 0.5rem; --dialog-background: var(--color-primary); --dialog-color: var(--color-on-primary); --dialog-headline-color: var(--color-on-primary); --dialog-content-color: rgba(255,255,255,0.8);">
+			<h2 class="dialog-headline">커스텀 스타일</h2>
+			<p class="dialog-content">--dialog-* 변수를 변경해서 완전히 다른 다이얼로그를 만들 수 있습니다.</p>
+			<div class="dialog-actions">
+				<button class="m3-btn" style="--btn-background-color: rgba(255,255,255,0.2); --btn-color: #fff;" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">닫기</button>
+			</div>
+		</div>
+
+		<pre class="source">&lt;div class="m3-dialog" style="--dialog-border-radius: 0.5rem;
+     --dialog-background: var(--color-primary);
+     --dialog-headline-color: var(--color-on-primary);"&gt;
+  ...
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 15. 다크모드 -->
+	<section>
+		<h2>15. 다크모드</h2>
+		<p class="desc">상단 Light/Dark 전환 후 다이얼로그 열어보세요. 모든 컴포넌트가 자동 전환.</p>
+		<div class="demo demo-row">
+			<label class="m3-checkbox checkbox-color:primary"><input type="checkbox" checked> 체크박스</label>
+			<label class="m3-radio radio-color:primary"><input type="radio" name="dark" checked><span class="m3-radio-label">라디오</span></label>
+			<button class="m3-btn" onclick="document.getElementById('dialog-dark').classList.add('dialog-open')">다이얼로그</button>
+		</div>
+
+		<div id="dialog-dark" class="m3-dialog">
+			<h2 class="dialog-headline">다크모드 테스트</h2>
+			<p class="dialog-content">이 다이얼로그는 Light/Dark 모드에 따라 자동으로 색이 변합니다.</p>
+			<div class="dialog-actions">
+				<button class="m3-btn" onclick="this.closest('.m3-dialog').classList.remove('dialog-open')">닫기</button>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		function setTheme(mode) {
+			if (mode === 'auto') {
+				document.documentElement.removeAttribute('data-theme');
+			} else {
+				document.documentElement.setAttribute('data-theme', mode);
+			}
+		}
+	</script>
+</body>
+</html>
