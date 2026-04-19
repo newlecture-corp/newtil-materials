@@ -33,12 +33,16 @@
 	"scripts": {
 		"build": "rm -rf ./dist && rollup -c",
 		"deploy": "npm run build && npm publish",
-		"prepublishOnly": "npm run build"
+		"prepublishOnly": "npm run build",
+		"docs:dev": "vitepress dev docs --host",
+		"docs:build": "vitepress build docs",
+		"docs:preview": "vitepress preview docs"
 	},
 	"dependencies": {
 		"@newtil/design-tokens": "^0.1.0"
 	},
 	"devDependencies": {
+		"vitepress": "^1.6.4",
 		"@rollup/plugin-terser": "^0.4.4",
 		"postcss": "^8.4.33",
 		"postcss-import": "^16.1.0",
