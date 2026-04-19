@@ -1,0 +1,135 @@
+/* ====== M3 Chips ====================================================
+ * Type: assist | filter | input | suggestion
+ * M3 spec: 32dp height, corner-small (8dp), label-large text
+ *
+ * 사용법:
+ *   <span class="m3-chip">기본 칩</span>
+ *   <span class="m3-chip chip:outlined">아웃라인</span>
+ *   <span class="m3-chip chip:selected">선택됨</span>
+ *
+ * Variable API: --chip-* 변수로 커스텀 가능
+ * ================================================================= */
+
+.m3-chip {
+	/* container */
+	--chip-display: inline-flex;
+	--chip-align-items: center;
+	--chip-height: 2rem;
+	--chip-padding: 0 0.75rem;
+	--chip-gap: 0.5rem;
+	--chip-border-radius: 0.5rem;
+	--chip-background: transparent;
+	--chip-color: var(--color-on-surface);
+	--chip-border: 0.0625rem solid var(--color-border);
+	--chip-cursor: pointer;
+
+	/* text */
+	--chip-font-size: 0.875rem;
+	--chip-font-weight: var(--font-weight-medium);
+
+	/* icon */
+	--chip-icon-size: 1.125rem;
+
+	/* selected */
+	--chip-selected-background: var(--color-primary-subtle);
+	--chip-selected-color: var(--color-primary);
+	--chip-selected-border: 0.0625rem solid transparent;
+
+	/* transition */
+	--chip-transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Base ============================================= */
+.m3-chip {
+	display: var(--chip-display);
+	align-items: var(--chip-align-items);
+	height: var(--chip-height);
+	padding: var(--chip-padding);
+	gap: var(--chip-gap);
+	border-radius: var(--chip-border-radius);
+	background-color: var(--chip-background);
+	color: var(--chip-color);
+	border: var(--chip-border);
+	cursor: var(--chip-cursor);
+	font-size: var(--chip-font-size);
+	font-weight: var(--chip-font-weight);
+	user-select: none;
+	white-space: nowrap;
+	text-decoration: none;
+	transition: var(--chip-transition);
+	box-sizing: border-box;
+}
+
+/* ================== States =========================================== */
+
+.m3-chip:hover {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--chip-color) 8%, transparent),
+		color-mix(in srgb, var(--chip-color) 8%, transparent)
+	);
+}
+
+.m3-chip:active {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--chip-color) 12%, transparent),
+		color-mix(in srgb, var(--chip-color) 12%, transparent)
+	);
+}
+
+.m3-chip:disabled,
+.m3-chip.chip-state\:disabled {
+	--chip-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--chip-border: 0.0625rem solid color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--chip-cursor: not-allowed;
+}
+
+/* ================== Selected ========================================= */
+
+.m3-chip.chip\:selected {
+	--chip-background: var(--chip-selected-background);
+	--chip-color: var(--chip-selected-color);
+	--chip-border: var(--chip-selected-border);
+}
+
+/* ================== Elevated (with shadow) =========================== */
+
+.m3-chip.chip\:elevated {
+	--chip-border: none;
+	--chip-background: var(--color-surface-subtle);
+	box-shadow: var(--shadow-sm);
+}
+
+/* ================== With Icon ======================================== */
+
+.m3-chip .chip-icon {
+	font-size: var(--chip-icon-size);
+	width: var(--chip-icon-size);
+	height: var(--chip-icon-size);
+}
+
+/* Close/remove button */
+.m3-chip .chip-close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--chip-icon-size);
+	height: var(--chip-icon-size);
+	border-radius: 50%;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: inherit;
+	padding: 0;
+	font-size: var(--chip-icon-size);
+}
+
+.m3-chip .chip-close:hover {
+	background-color: color-mix(in srgb, var(--chip-color) 12%, transparent);
+}
+
+/* ================== Color Variants =================================== */
+.m3-chip.chip-color\:primary { --chip-selected-background: var(--color-primary-subtle); --chip-selected-color: var(--color-primary); }
+.m3-chip.chip-color\:secondary { --chip-selected-background: var(--color-secondary-subtle); --chip-selected-color: var(--color-secondary); }
+.m3-chip.chip-color\:danger { --chip-selected-background: var(--color-danger-subtle); --chip-selected-color: var(--color-danger); }
+.m3-chip.chip-color\:success { --chip-selected-background: var(--color-success-subtle); --chip-selected-color: var(--color-success); }
+.m3-chip.chip-color\:warning { --chip-selected-background: var(--color-warning-subtle); --chip-selected-color: var(--color-warning); }

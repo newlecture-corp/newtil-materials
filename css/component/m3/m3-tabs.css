@@ -1,0 +1,146 @@
+/* ====== M3 Tabs =====================================================
+ * Type: primary (default) | secondary
+ * M3 spec: 48dp height, primary bottom indicator, title-small label
+ *
+ * 사용법:
+ *   <div class="m3-tabs">
+ *     <button class="tab-item tab-active">탭 1</button>
+ *     <button class="tab-item">탭 2</button>
+ *     <button class="tab-item">탭 3</button>
+ *   </div>
+ *
+ * Variable API: --tab-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-tabs {
+	/* container */
+	--tab-display: flex;
+	--tab-background: var(--color-surface);
+	--tab-border-bottom: 0.0625rem solid var(--color-border-subtle);
+	--tab-height: 3rem;
+	--tab-gap: 0;
+	--tab-overflow: auto;
+
+	/* item */
+	--tab-item-padding: 0 1.5rem;
+	--tab-item-color: var(--color-text-muted);
+	--tab-item-color-active: var(--color-primary);
+	--tab-item-font-size: 0.875rem;
+	--tab-item-font-weight: var(--font-weight-medium);
+	--tab-item-cursor: pointer;
+	--tab-item-background: transparent;
+	--tab-item-white-space: nowrap;
+	--tab-item-flex: 0 0 auto;
+	--tab-item-min-width: auto;
+
+	/* indicator */
+	--tab-indicator-height: 0.1875rem;
+	--tab-indicator-color: var(--color-primary);
+	--tab-indicator-radius: 0.1875rem 0.1875rem 0 0;
+
+	/* state layer */
+	--tab-state-hover-opacity: 0.08;
+
+	/* transition */
+	--tab-transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Base ============================================= */
+.m3-tabs {
+	display: var(--tab-display);
+	background-color: var(--tab-background);
+	border-bottom: var(--tab-border-bottom);
+	height: var(--tab-height);
+	gap: var(--tab-gap);
+	overflow-x: var(--tab-overflow);
+	scrollbar-width: none;
+}
+
+.m3-tabs::-webkit-scrollbar {
+	display: none;
+}
+
+/* ================== Tab Item ========================================= */
+.m3-tabs .tab-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--tab-item-padding);
+	color: var(--tab-item-color);
+	font-size: var(--tab-item-font-size);
+	font-weight: var(--tab-item-font-weight);
+	cursor: var(--tab-item-cursor);
+	background: var(--tab-item-background);
+	border: none;
+	white-space: var(--tab-item-white-space);
+	flex: var(--tab-item-flex);
+	min-width: var(--tab-item-min-width);
+	height: 100%;
+	position: relative;
+	transition: var(--tab-transition);
+	font-family: inherit;
+	text-decoration: none;
+	gap: 0.5rem;
+}
+
+/* Indicator via ::after */
+.m3-tabs .tab-item::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 0;
+	background-color: var(--tab-indicator-color);
+	border-radius: var(--tab-indicator-radius);
+	transition: var(--tab-transition);
+}
+
+/* Active */
+.m3-tabs .tab-item.tab-active {
+	--tab-item-color: var(--tab-item-color-active);
+}
+
+.m3-tabs .tab-item.tab-active::after {
+	height: var(--tab-indicator-height);
+}
+
+/* Hover */
+.m3-tabs .tab-item:hover {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--tab-item-color) calc(var(--tab-state-hover-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--tab-item-color) calc(var(--tab-state-hover-opacity) * 100%), transparent)
+	);
+}
+
+/* Disabled */
+.m3-tabs .tab-item:disabled {
+	--tab-item-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--tab-item-cursor: not-allowed;
+}
+
+/* ================== Type: Full Width (균등 분배) ===================== */
+.m3-tabs.tabs\:full .tab-item {
+	--tab-item-flex: 1;
+}
+
+/* ================== Type: Secondary ================================== */
+.m3-tabs.tabs\:secondary .tab-item.tab-active::after {
+	--tab-indicator-height: 0.125rem;
+	--tab-indicator-radius: 0;
+}
+
+/* ================== With Icon ======================================== */
+.m3-tabs.tabs\:with-icon {
+	--tab-height: 4rem;
+}
+
+.m3-tabs .tab-item .tab-icon {
+	font-size: 1.5rem;
+}
+
+/* ================== Color Variants =================================== */
+.m3-tabs.tab-color\:primary { --tab-item-color-active: var(--color-primary); --tab-indicator-color: var(--color-primary); }
+.m3-tabs.tab-color\:secondary { --tab-item-color-active: var(--color-secondary); --tab-indicator-color: var(--color-secondary); }
+.m3-tabs.tab-color\:tertiary { --tab-item-color-active: var(--color-tertiary); --tab-indicator-color: var(--color-tertiary); }

@@ -1,0 +1,85 @@
+/* ====== M3 Progress Indicator ========================================
+ * Type: linear (default) | circular
+ * M3 spec: primary track color, 4dp height (linear), 48dp (circular)
+ *
+ * 사용법:
+ *   <div class="m3-progress" style="--progress-value: 60%;"></div>
+ *   <div class="m3-progress progress:indeterminate"></div>
+ *   <div class="m3-progress progress:circular"></div>
+ *
+ * Variable API: --progress-* 변수로 커스텀 가능
+ * ================================================================= */
+
+.m3-progress {
+	/* container */
+	--progress-height: 0.25rem;
+	--progress-width: 100%;
+	--progress-track-color: var(--color-primary-subtle);
+	--progress-indicator-color: var(--color-primary);
+	--progress-border-radius: var(--radius-full);
+	--progress-value: 0%;
+
+	/* circular */
+	--progress-circular-size: 3rem;
+	--progress-circular-stroke: 0.25rem;
+}
+
+/* ================== Linear =========================================== */
+.m3-progress {
+	width: var(--progress-width);
+	height: var(--progress-height);
+	background-color: var(--progress-track-color);
+	border-radius: var(--progress-border-radius);
+	overflow: hidden;
+	position: relative;
+}
+
+/* Determinate indicator */
+.m3-progress::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: var(--progress-value);
+	background-color: var(--progress-indicator-color);
+	border-radius: var(--progress-border-radius);
+	transition: width var(--duration-normal) var(--ease-out);
+}
+
+/* Indeterminate animation */
+.m3-progress.progress\:indeterminate::after {
+	width: 40%;
+	animation: m3-progress-indeterminate 1.5s var(--ease-in-out) infinite;
+}
+
+@keyframes m3-progress-indeterminate {
+	0% { left: -40%; }
+	100% { left: 100%; }
+}
+
+/* ================== Circular ========================================= */
+.m3-progress.progress\:circular {
+	--progress-width: var(--progress-circular-size);
+	--progress-height: var(--progress-circular-size);
+	background: transparent;
+	border-radius: 50%;
+	border: var(--progress-circular-stroke) solid var(--progress-track-color);
+	border-top-color: var(--progress-indicator-color);
+	animation: m3-progress-spin 0.8s linear infinite;
+}
+
+.m3-progress.progress\:circular::after {
+	display: none;
+}
+
+@keyframes m3-progress-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* ================== Color Variants =================================== */
+.m3-progress.progress-color\:primary { --progress-indicator-color: var(--color-primary); --progress-track-color: var(--color-primary-subtle); }
+.m3-progress.progress-color\:secondary { --progress-indicator-color: var(--color-secondary); --progress-track-color: var(--color-secondary-subtle); }
+.m3-progress.progress-color\:tertiary { --progress-indicator-color: var(--color-tertiary); --progress-track-color: var(--color-tertiary-subtle); }
+.m3-progress.progress-color\:danger { --progress-indicator-color: var(--color-danger); --progress-track-color: var(--color-danger-subtle); }
+.m3-progress.progress-color\:success { --progress-indicator-color: var(--color-success); --progress-track-color: var(--color-success-subtle); }

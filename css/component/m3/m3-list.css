@@ -1,0 +1,198 @@
+/* ====== M3 List =====================================================
+ * M3 spec: one-line 56dp, two-line 72dp, three-line 88dp
+ * 16dp horizontal padding, on-surface text
+ *
+ * 사용법:
+ *   <ul class="m3-list">
+ *     <li class="list-item">항목 1</li>
+ *     <li class="list-item">항목 2</li>
+ *   </ul>
+ *
+ * Variable API: --list-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-list {
+	/* container */
+	--list-display: flex;
+	--list-flex-direction: column;
+	--list-background: transparent;
+	--list-padding: 0.5rem 0;
+	--list-gap: 0;
+	--list-margin: 0;
+
+	/* item */
+	--list-item-padding: 0.5rem 1rem;
+	--list-item-min-height: 3rem;
+	--list-item-color: var(--color-on-surface);
+	--list-item-font-size: 1rem;
+	--list-item-font-weight: 400;
+	--list-item-line-height: 1.5rem;
+	--list-item-cursor: default;
+	--list-item-background: transparent;
+	--list-item-gap: 1rem;
+	--list-item-border-radius: 0;
+
+	/* secondary text */
+	--list-secondary-size: 0.875rem;
+	--list-secondary-color: var(--color-text-muted);
+	--list-secondary-line-height: 1.25rem;
+
+	/* leading/trailing */
+	--list-leading-size: 1.5rem;
+	--list-leading-color: var(--color-text-muted);
+	--list-avatar-size: 2.5rem;
+
+	/* divider */
+	--list-divider-color: var(--color-border-subtle);
+	--list-divider-width: 0.0625rem;
+
+	/* state */
+	--list-state-hover-opacity: 0.08;
+
+	/* transition */
+	--list-transition: background-image var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Base ============================================= */
+.m3-list {
+	display: var(--list-display);
+	flex-direction: var(--list-flex-direction);
+	background-color: var(--list-background);
+	padding: var(--list-padding);
+	gap: var(--list-gap);
+	margin: var(--list-margin);
+	list-style: none;
+}
+
+/* ================== List Item ======================================== */
+.m3-list .list-item {
+	display: flex;
+	align-items: center;
+	padding: var(--list-item-padding);
+	min-height: var(--list-item-min-height);
+	color: var(--list-item-color);
+	font-size: var(--list-item-font-size);
+	font-weight: var(--list-item-font-weight);
+	line-height: var(--list-item-line-height);
+	cursor: var(--list-item-cursor);
+	background: var(--list-item-background);
+	gap: var(--list-item-gap);
+	border-radius: var(--list-item-border-radius);
+	transition: var(--list-transition);
+	text-decoration: none;
+}
+
+/* Clickable item */
+.m3-list .list-item.list-clickable,
+.m3-list a.list-item {
+	--list-item-cursor: pointer;
+}
+
+.m3-list .list-item.list-clickable:hover,
+.m3-list a.list-item:hover {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--color-on-surface) calc(var(--list-state-hover-opacity) * 100%), transparent),
+		color-mix(in srgb, var(--color-on-surface) calc(var(--list-state-hover-opacity) * 100%), transparent)
+	);
+}
+
+/* Active/Selected */
+.m3-list .list-item.list-active {
+	--list-item-background: var(--color-primary-subtle);
+	--list-item-color: var(--color-primary);
+}
+
+/* Disabled */
+.m3-list .list-item.list-disabled {
+	--list-item-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--list-item-cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* ================== Content Areas ==================================== */
+
+.m3-list .list-item .list-content {
+	flex: 1;
+	min-width: 0;
+}
+
+.m3-list .list-item .list-headline {
+	font-size: var(--list-item-font-size);
+	font-weight: var(--list-item-font-weight);
+	line-height: var(--list-item-line-height);
+	color: var(--list-item-color);
+}
+
+.m3-list .list-item .list-supporting {
+	font-size: var(--list-secondary-size);
+	color: var(--list-secondary-color);
+	line-height: var(--list-secondary-line-height);
+}
+
+/* ================== Leading/Trailing ================================= */
+
+.m3-list .list-item .list-leading {
+	flex-shrink: 0;
+	color: var(--list-leading-color);
+	font-size: var(--list-leading-size);
+}
+
+.m3-list .list-item .list-trailing {
+	flex-shrink: 0;
+	color: var(--list-secondary-color);
+	font-size: var(--list-secondary-size);
+}
+
+.m3-list .list-item .list-avatar {
+	flex-shrink: 0;
+	width: var(--list-avatar-size);
+	height: var(--list-avatar-size);
+	border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-primary-subtle);
+	color: var(--color-primary);
+	font-weight: 600;
+	font-size: 0.875rem;
+}
+
+.m3-list .list-item .list-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* ================== Divider ========================================== */
+
+.m3-list .list-divider {
+	height: var(--list-divider-width);
+	background-color: var(--list-divider-color);
+	margin: 0;
+	border: none;
+}
+
+/* Inset divider (indented) */
+.m3-list .list-divider.list-divider\:inset {
+	margin-left: 1rem;
+}
+
+.m3-list .list-divider.list-divider\:full {
+	margin-left: 0;
+}
+
+/* ================== Size Variants ==================================== */
+
+.m3-list.list-size\:compact {
+	--list-item-padding: 0.25rem 1rem;
+	--list-item-min-height: 2.5rem;
+	--list-item-font-size: 0.875rem;
+}
+
+.m3-list.list-size\:large {
+	--list-item-padding: 0.75rem 1.5rem;
+	--list-item-min-height: 4rem;
+	--list-item-font-size: 1.125rem;
+}

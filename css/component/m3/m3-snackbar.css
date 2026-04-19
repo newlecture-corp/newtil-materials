@@ -1,0 +1,108 @@
+/* ====== M3 Snackbar =================================================
+ * M3 spec: inverse-surface bg, inverse-on-surface text, 48dp min height
+ * Position: bottom center, auto-dismiss
+ *
+ * 사용법:
+ *   <div class="m3-snackbar snackbar-open">
+ *     <span class="snackbar-text">파일이 저장되었습니다</span>
+ *     <button class="snackbar-action">실행취소</button>
+ *     <button class="snackbar-close"><i class="m3-icon icon:close"></i></button>
+ *   </div>
+ *
+ * Variable API: --snackbar-* 변수로 커스텀 가능
+ * ================================================================= */
+
+.m3-snackbar {
+	/* container */
+	--snackbar-background: var(--color-surface-inverse);
+	--snackbar-color: var(--color-on-surface-inverse);
+	--snackbar-border-radius: 0.25rem;
+	--snackbar-padding: 0 0.5rem 0 1rem;
+	--snackbar-min-height: 3rem;
+	--snackbar-max-width: 35rem;
+	--snackbar-box-shadow: var(--shadow-md);
+	--snackbar-z-index: var(--z-toast);
+	--snackbar-bottom: 1.5rem;
+	--snackbar-left: 50%;
+	--snackbar-transform: translateX(-50%);
+	--snackbar-gap: 0.5rem;
+
+	/* text */
+	--snackbar-font-size: 0.875rem;
+	--snackbar-line-height: 1.25rem;
+
+	/* action */
+	--snackbar-action-color: var(--color-primary-subtle);
+	--snackbar-action-font-weight: var(--font-weight-medium);
+}
+
+/* ================== Base ============================================= */
+.m3-snackbar {
+	display: none;
+	align-items: center;
+	gap: var(--snackbar-gap);
+	background-color: var(--snackbar-background);
+	color: var(--snackbar-color);
+	border-radius: var(--snackbar-border-radius);
+	padding: var(--snackbar-padding);
+	min-height: var(--snackbar-min-height);
+	max-width: var(--snackbar-max-width);
+	box-shadow: var(--snackbar-box-shadow);
+	position: fixed;
+	bottom: var(--snackbar-bottom);
+	left: var(--snackbar-left);
+	transform: var(--snackbar-transform);
+	z-index: var(--snackbar-z-index);
+	box-sizing: border-box;
+}
+
+/* Open */
+.m3-snackbar.snackbar-open {
+	display: flex;
+}
+
+/* ================== Content ========================================== */
+
+.m3-snackbar .snackbar-text {
+	flex: 1;
+	font-size: var(--snackbar-font-size);
+	line-height: var(--snackbar-line-height);
+	padding: 0.875rem 0;
+}
+
+.m3-snackbar .snackbar-action {
+	color: var(--snackbar-action-color);
+	font-weight: var(--snackbar-action-font-weight);
+	font-size: var(--snackbar-font-size);
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	font-family: inherit;
+	white-space: nowrap;
+}
+
+.m3-snackbar .snackbar-action:hover {
+	background-image: linear-gradient(
+		color-mix(in srgb, var(--snackbar-action-color) 8%, transparent),
+		color-mix(in srgb, var(--snackbar-action-color) 8%, transparent)
+	);
+}
+
+.m3-snackbar .snackbar-close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem;
+	border-radius: 50%;
+	color: var(--snackbar-color);
+}
+
+/* ================== Color Variants =================================== */
+.m3-snackbar.snackbar-color\:success { --snackbar-background: var(--color-success); --snackbar-color: var(--color-on-success); }
+.m3-snackbar.snackbar-color\:danger { --snackbar-background: var(--color-danger); --snackbar-color: var(--color-on-danger); }
+.m3-snackbar.snackbar-color\:warning { --snackbar-background: var(--color-warning); --snackbar-color: var(--color-on-warning); }
