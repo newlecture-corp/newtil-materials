@@ -1,0 +1,268 @@
+/* ====== M3 Text Field ================================================
+ * Type:  filled (default) | outlined
+ * State: enabled | focused | hovered | error | disabled
+ *
+ * M3 spec: container with floating label, active indicator / outline
+ * Variable API: --field-* 변수로 커스텀 가능
+ *
+ * 사용법:
+ *   <div class="m3-text-field">
+ *     <input type="text" placeholder=" ">
+ *     <label>Label</label>
+ *   </div>
+ *
+ *   <div class="m3-text-field field:outlined">
+ *     <input type="text" placeholder=" ">
+ *     <label>Label</label>
+ *   </div>
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-text-field {
+	/* container */
+	--field-background: var(--color-surface-muted);
+	--field-border-radius: 0.25rem 0.25rem 0 0;
+	--field-padding-x: 1rem;
+	--field-padding-top: 0.5rem;
+	--field-padding-bottom: 0.5rem;
+	--field-min-height: 3.5rem;
+	--field-width: 100%;
+	--field-cursor: text;
+
+	/* active indicator (bottom line — filled only) */
+	--field-indicator-height: 0.0625rem;
+	--field-indicator-color: var(--color-text-muted);
+	--field-indicator-height-focus: 0.1875rem;
+	--field-indicator-color-focus: var(--color-primary);
+	--field-indicator-color-hover: var(--color-on-surface);
+
+	/* outline (outlined only) */
+	--field-outline-width: 0.0625rem;
+	--field-outline-color: var(--color-border-strong);
+	--field-outline-width-focus: 0.1875rem;
+	--field-outline-color-focus: var(--color-primary);
+
+	/* input text */
+	--field-font-size: 1rem;
+	--field-font-weight: 400;
+	--field-color: var(--color-on-surface);
+	--field-line-height: 1.5rem;
+	--field-placeholder-color: var(--color-text-muted);
+	--field-caret-color: var(--color-primary);
+
+	/* label */
+	--field-label-size: 1rem;
+	--field-label-size-float: 0.75rem;
+	--field-label-color: var(--color-text-muted);
+	--field-label-color-focus: var(--color-primary);
+
+	/* supporting text */
+	--field-supporting-size: 0.75rem;
+	--field-supporting-color: var(--color-text-muted);
+
+	/* error */
+	--field-error-color: var(--color-danger);
+
+	/* disabled */
+	--field-disabled-opacity: 0.38;
+
+	/* transition */
+	--field-transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Base Container =================================== */
+.m3-text-field {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: var(--field-width);
+}
+
+/* Input wrapper — the visible "box" */
+.m3-text-field {
+	background-color: var(--field-background);
+	border-radius: var(--field-border-radius);
+	min-height: var(--field-min-height);
+	cursor: var(--field-cursor);
+}
+
+/* ================== Input ============================================ */
+.m3-text-field input,
+.m3-text-field textarea {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: transparent;
+	width: 100%;
+	padding: 1.5rem var(--field-padding-x) var(--field-padding-bottom);
+	font-size: var(--field-font-size);
+	font-weight: var(--field-font-weight);
+	color: var(--field-color);
+	line-height: var(--field-line-height);
+	caret-color: var(--field-caret-color);
+	box-sizing: border-box;
+	font-family: inherit;
+	transition: var(--field-transition);
+}
+
+.m3-text-field input::placeholder,
+.m3-text-field textarea::placeholder {
+	color: var(--field-placeholder-color);
+	opacity: 0;
+	transition: var(--field-transition);
+}
+
+.m3-text-field input:focus::placeholder,
+.m3-text-field textarea:focus::placeholder {
+	opacity: 1;
+}
+
+/* ================== Label (floating) ================================= */
+.m3-text-field label {
+	position: absolute;
+	left: var(--field-padding-x);
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: var(--field-label-size);
+	color: var(--field-label-color);
+	pointer-events: none;
+	transition: var(--field-transition);
+	transform-origin: left top;
+}
+
+/* Label floats up when input is focused or has value */
+.m3-text-field input:focus + label,
+.m3-text-field input:not(:placeholder-shown) + label,
+.m3-text-field textarea:focus + label,
+.m3-text-field textarea:not(:placeholder-shown) + label {
+	top: 0.5rem;
+	transform: translateY(0);
+	font-size: var(--field-label-size-float);
+}
+
+.m3-text-field input:focus + label,
+.m3-text-field textarea:focus + label {
+	color: var(--field-label-color-focus);
+}
+
+/* ================== Active Indicator (filled — bottom line) ========== */
+.m3-text-field::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: var(--field-indicator-height);
+	background-color: var(--field-indicator-color);
+	transition: var(--field-transition);
+}
+
+.m3-text-field:hover::after {
+	--field-indicator-color: var(--field-indicator-color-hover);
+}
+
+.m3-text-field:focus-within::after {
+	--field-indicator-height: var(--field-indicator-height-focus);
+	--field-indicator-color: var(--field-indicator-color-focus);
+}
+
+/* ================== Type: Outlined =================================== */
+.m3-text-field.field\:outlined {
+	--field-background: transparent;
+	--field-border-radius: 0.25rem;
+	border: var(--field-outline-width) solid var(--field-outline-color);
+	transition: var(--field-transition);
+}
+
+/* outlined는 active indicator 숨김 */
+.m3-text-field.field\:outlined::after {
+	display: none;
+}
+
+.m3-text-field.field\:outlined:hover {
+	--field-outline-color: var(--color-on-surface);
+}
+
+.m3-text-field.field\:outlined:focus-within {
+	--field-outline-width: var(--field-outline-width-focus);
+	--field-outline-color: var(--field-outline-color-focus);
+}
+
+/* outlined label 배경 (outline 위에 겹치지 않게) */
+.m3-text-field.field\:outlined label {
+	background-color: var(--color-surface);
+	padding: 0 0.25rem;
+}
+
+/* ================== Error State ====================================== */
+.m3-text-field.field-state\:error::after {
+	--field-indicator-color: var(--field-error-color);
+}
+
+.m3-text-field.field-state\:error label,
+.m3-text-field.field-state\:error input:focus + label {
+	--field-label-color: var(--field-error-color);
+	--field-label-color-focus: var(--field-error-color);
+	color: var(--field-error-color);
+}
+
+.m3-text-field.field-state\:error input {
+	--field-caret-color: var(--field-error-color);
+}
+
+.m3-text-field.field\:outlined.field-state\:error {
+	--field-outline-color: var(--field-error-color);
+}
+
+.m3-text-field.field\:outlined.field-state\:error:focus-within {
+	--field-outline-color: var(--field-error-color);
+}
+
+/* ================== Disabled ========================================= */
+.m3-text-field.field-state\:disabled {
+	opacity: var(--field-disabled-opacity);
+	--field-cursor: not-allowed;
+	pointer-events: none;
+}
+
+.m3-text-field.field-state\:disabled input,
+.m3-text-field.field-state\:disabled textarea {
+	color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* ================== Supporting Text ================================== */
+.m3-text-field .field-supporting {
+	font-size: var(--field-supporting-size);
+	color: var(--field-supporting-color);
+	padding: 0.25rem var(--field-padding-x) 0;
+}
+
+.m3-text-field.field-state\:error .field-supporting {
+	color: var(--field-error-color);
+}
+
+/* ================== With Icon ======================================== */
+.m3-text-field.field-icon\:leading {
+	position: relative;
+}
+
+.m3-text-field.field-icon\:leading input {
+	padding-left: 3rem;
+}
+
+.m3-text-field.field-icon\:leading label {
+	left: 3rem;
+}
+
+.m3-text-field.field-icon\:leading .m3-icon {
+	position: absolute;
+	left: 0.75rem;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--color-text-muted);
+}
+
+/* ================== Color Variants =================================== */
+.m3-text-field.field-color\:primary { --field-indicator-color-focus: var(--color-primary); --field-outline-color-focus: var(--color-primary); --field-label-color-focus: var(--color-primary); --field-caret-color: var(--color-primary); }
+.m3-text-field.field-color\:secondary { --field-indicator-color-focus: var(--color-secondary); --field-outline-color-focus: var(--color-secondary); --field-label-color-focus: var(--color-secondary); --field-caret-color: var(--color-secondary); }
+.m3-text-field.field-color\:tertiary { --field-indicator-color-focus: var(--color-tertiary); --field-outline-color-focus: var(--color-tertiary); --field-label-color-focus: var(--color-tertiary); --field-caret-color: var(--color-tertiary); }

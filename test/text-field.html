@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>m3-text-field 테스트</title>
+	<link rel="stylesheet" href="../dist/index.css" />
+	<style>
+		body { padding: 2rem; font-family: system-ui; background: var(--color-surface); color: var(--color-on-surface); }
+		h1 { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
+		h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-text-muted); }
+		section { margin-bottom: 3rem; }
+		p.desc { font-size: 0.875rem; color: var(--color-text-subtle); margin-bottom: 1rem; }
+		pre.source { background: var(--color-surface-muted); color: var(--color-text); padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.8125rem; line-height: 1.5; overflow-x: auto; margin: 0.75rem 0 0; font-family: ui-monospace, monospace; }
+		.demo { margin-bottom: 0.75rem; }
+		.demo-row { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start; }
+	</style>
+</head>
+<body>
+
+	<div style="position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; z-index: 10;">
+		<button class="m3-btn btn-size:xs" onclick="setTheme('light')">Light</button>
+		<button class="m3-btn btn-size:xs" onclick="setTheme('dark')">Dark</button>
+	</div>
+
+	<h1>m3-text-field 테스트</h1>
+
+	<!-- 1. Filled (기본) -->
+	<section>
+		<h2>1. Filled (기본)</h2>
+		<p class="desc">배경색 + 하단 indicator. 클릭하면 라벨이 위로 올라갑니다.</p>
+		<div class="demo demo-row">
+			<div class="m3-text-field" style="max-width: 16rem;">
+				<input type="text" placeholder=" ">
+				<label>이름</label>
+			</div>
+			<div class="m3-text-field" style="max-width: 16rem;">
+				<input type="email" placeholder=" " value="user@example.com">
+				<label>이메일</label>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-text-field"&gt;
+  &lt;input type="text" placeholder=" "&gt;
+  &lt;label&gt;이름&lt;/label&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 2. Outlined -->
+	<section>
+		<h2>2. Outlined</h2>
+		<p class="desc">테두리 + 라벨이 테두리 위에 걸쳐서 올라감.</p>
+		<div class="demo demo-row">
+			<div class="m3-text-field field:outlined" style="max-width: 16rem;">
+				<input type="text" placeholder=" ">
+				<label>이름</label>
+			</div>
+			<div class="m3-text-field field:outlined" style="max-width: 16rem;">
+				<input type="email" placeholder=" " value="user@example.com">
+				<label>이메일</label>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-text-field field:outlined"&gt;
+  &lt;input type="text" placeholder=" "&gt;
+  &lt;label&gt;이름&lt;/label&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 3. Error State -->
+	<section>
+		<h2>3. Error 상태</h2>
+		<div class="demo demo-row">
+			<div class="m3-text-field field-state:error" style="max-width: 16rem;">
+				<input type="text" placeholder=" " value="abc">
+				<label>비밀번호</label>
+				<div class="field-supporting">8자 이상 입력해주세요</div>
+			</div>
+			<div class="m3-text-field field:outlined field-state:error" style="max-width: 16rem;">
+				<input type="email" placeholder=" " value="invalid-email">
+				<label>이메일</label>
+				<div class="field-supporting">올바른 이메일 형식이 아닙니다</div>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-text-field field-state:error"&gt;
+  &lt;input type="text" placeholder=" " value="abc"&gt;
+  &lt;label&gt;비밀번호&lt;/label&gt;
+  &lt;div class="field-supporting"&gt;8자 이상 입력해주세요&lt;/div&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 4. Disabled -->
+	<section>
+		<h2>4. Disabled 상태</h2>
+		<div class="demo demo-row">
+			<div class="m3-text-field field-state:disabled" style="max-width: 16rem;">
+				<input type="text" placeholder=" " value="수정 불가" disabled>
+				<label>비활성</label>
+			</div>
+			<div class="m3-text-field field:outlined field-state:disabled" style="max-width: 16rem;">
+				<input type="text" placeholder=" " value="수정 불가" disabled>
+				<label>비활성</label>
+			</div>
+		</div>
+	</section>
+
+	<!-- 5. Supporting Text -->
+	<section>
+		<h2>5. 보조 텍스트 (Supporting Text)</h2>
+		<div class="demo demo-row">
+			<div class="m3-text-field" style="max-width: 16rem;">
+				<input type="password" placeholder=" ">
+				<label>비밀번호</label>
+				<div class="field-supporting">영문, 숫자 포함 8자 이상</div>
+			</div>
+			<div class="m3-text-field field:outlined" style="max-width: 16rem;">
+				<input type="text" placeholder=" ">
+				<label>닉네임</label>
+				<div class="field-supporting">2~16자, 특수문자 불가</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 6. With Icon -->
+	<section>
+		<h2>6. 아이콘 포함</h2>
+		<div class="demo demo-row">
+			<div class="m3-text-field field-icon:leading" style="max-width: 16rem;">
+				<i class="m3-icon icon:search"></i>
+				<input type="text" placeholder=" ">
+				<label>검색</label>
+			</div>
+			<div class="m3-text-field field:outlined field-icon:leading" style="max-width: 16rem;">
+				<i class="m3-icon icon:mail"></i>
+				<input type="email" placeholder=" ">
+				<label>이메일</label>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-text-field field-icon:leading"&gt;
+  &lt;i class="m3-icon icon:search"&gt;&lt;/i&gt;
+  &lt;input type="text" placeholder=" "&gt;
+  &lt;label&gt;검색&lt;/label&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 7. Textarea -->
+	<section>
+		<h2>7. Textarea (여러 줄)</h2>
+		<div class="demo demo-row">
+			<div class="m3-text-field" style="max-width: 20rem;">
+				<textarea placeholder=" " rows="4"></textarea>
+				<label>메모</label>
+			</div>
+			<div class="m3-text-field field:outlined" style="max-width: 20rem;">
+				<textarea placeholder=" " rows="4"></textarea>
+				<label>설명</label>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-text-field"&gt;
+  &lt;textarea placeholder=" " rows="4"&gt;&lt;/textarea&gt;
+  &lt;label&gt;메모&lt;/label&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 8. Color Variants -->
+	<section>
+		<h2>8. 색상 변형 (focus 색상)</h2>
+		<div class="demo demo-row">
+			<div class="m3-text-field field-color:primary field:outlined" style="max-width: 12rem;">
+				<input type="text" placeholder=" "><label>primary</label>
+			</div>
+			<div class="m3-text-field field-color:secondary field:outlined" style="max-width: 12rem;">
+				<input type="text" placeholder=" "><label>secondary</label>
+			</div>
+			<div class="m3-text-field field-color:tertiary field:outlined" style="max-width: 12rem;">
+				<input type="text" placeholder=" "><label>tertiary</label>
+			</div>
+		</div>
+	</section>
+
+	<!-- 9. Variable Override -->
+	<section>
+		<h2>9. 변수 오버라이드</h2>
+		<div class="demo demo-row">
+			<div class="m3-text-field field:outlined" style="max-width: 16rem; --field-outline-color-focus: #e91e63; --field-label-color-focus: #e91e63; --field-caret-color: #e91e63; --field-border-radius: 1rem;">
+				<input type="text" placeholder=" "><label>커스텀 Pink</label>
+			</div>
+		</div>
+		<pre class="source">&lt;div class="m3-text-field field:outlined"
+     style="--field-outline-color-focus: #e91e63;
+            --field-label-color-focus: #e91e63;
+            --field-caret-color: #e91e63;
+            --field-border-radius: 1rem;"&gt;
+  &lt;input type="text" placeholder=" "&gt;
+  &lt;label&gt;커스텀 Pink&lt;/label&gt;
+&lt;/div&gt;</pre>
+	</section>
+
+	<!-- 10. 실제 사용 — 로그인 폼 -->
+	<section>
+		<h2>10. 실제 사용 — 로그인 폼</h2>
+		<div class="m3-card card:outlined" style="max-width: 24rem; margin: 0;">
+			<div class="card-header">
+				<div class="card-titles">
+					<h3 class="card-headline" style="font-size: 1.25rem; text-align: center;">로그인</h3>
+				</div>
+			</div>
+			<div class="card-content" style="display: flex; flex-direction: column; gap: 1rem;">
+				<div class="m3-text-field field:outlined field-icon:leading">
+					<i class="m3-icon icon:person"></i>
+					<input type="email" placeholder=" ">
+					<label>이메일</label>
+				</div>
+				<div class="m3-text-field field:outlined field-icon:leading">
+					<i class="m3-icon icon:lock"></i>
+					<input type="password" placeholder=" ">
+					<label>비밀번호</label>
+				</div>
+				<label class="m3-checkbox" style="padding: 0;">
+					<input type="checkbox"> 로그인 유지
+				</label>
+				<button class="m3-btn" style="width: 100%;">로그인</button>
+				<button class="m3-btn btn:text" style="width: 100%;">계정 만들기</button>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		function setTheme(mode) {
+			if (mode === 'auto') {
+				document.documentElement.removeAttribute('data-theme');
+			} else {
+				document.documentElement.setAttribute('data-theme', mode);
+			}
+		}
+	</script>
+</body>
+</html>
