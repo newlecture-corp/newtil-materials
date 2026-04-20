@@ -78,7 +78,8 @@
 	--field-label-focus-size: var(--field-label-size-float);
 	--field-label-display: block;
 	--field-flex-direction: column;
-	--field-label-order: 0;
+	--field-label-order: 1;
+	--field-input-order: 0;
 	--field-label-gap: 0;
 	--field-label-min-width: auto;
 	--field-label-align-self: auto;
@@ -137,6 +138,7 @@
 	border: var(--field-input-box-border);
 	border-radius: var(--field-input-box-border-radius);
 	min-height: var(--field-input-box-min-height);
+	order: var(--field-input-order);
 	width: 100%;
 	padding: var(--field-input-padding-top) var(--field-padding-x) var(--field-padding-bottom);
 	padding-left: var(--field-input-padding-left);
@@ -415,18 +417,21 @@
 .m3-text-field.field-label\:top {
 	--field-flex-direction: column;
 	--field-label-order: 0;
+	--field-input-order: 1;
 }
 
 /* 아래 (캡션) */
 .m3-text-field.field-label\:bottom {
 	--field-flex-direction: column;
 	--field-label-order: 1;
+	--field-input-order: 0;
 }
 
 /* 왼쪽 (가로 정렬) */
 .m3-text-field.field-label\:left {
 	--field-flex-direction: row;
 	--field-label-order: 0;
+	--field-input-order: 1;
 	--field-label-align-self: center;
 	--field-label-min-width: 6rem;
 	--field-label-gap: 0.75rem;
@@ -436,6 +441,7 @@
 .m3-text-field.field-label\:right {
 	--field-flex-direction: row;
 	--field-label-order: 1;
+	--field-input-order: 0;
 	--field-label-align-self: center;
 	--field-label-min-width: 6rem;
 	--field-label-gap: 0.75rem;
