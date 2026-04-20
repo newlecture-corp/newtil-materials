@@ -1,0 +1,176 @@
+/* ====== M3 Form (newtil 확장) =========================================
+ * M3 스펙에는 Form 전용 컴포넌트가 없습니다. 이 컴포넌트는
+ * 폼의 공통 레이아웃 패턴(헤더 / 필드 / 액션 / 메시지)을 표준화하기 위한
+ * newtil 확장입니다.
+ *
+ * 사용법:
+ *   <form class="m3-form">
+ *     <div class="form-header">
+ *       <h2 class="form-headline">로그인</h2>
+ *       <p class="form-description">함께 공부하러 오셨군요!</p>
+ *     </div>
+ *
+ *     <div class="form-message form-message:error">
+ *       이메일 또는 비밀번호가 올바르지 않습니다.
+ *     </div>
+ *
+ *     <div class="form-fields">
+ *       <div class="m3-text-field field:outlined">...</div>
+ *       <div class="m3-text-field field:outlined">...</div>
+ *     </div>
+ *
+ *     <div class="form-actions">
+ *       <button class="m3-btn btn:text">취소</button>
+ *       <button class="m3-btn">로그인</button>
+ *     </div>
+ *   </form>
+ *
+ * Variable API: --form-* 변수로 커스텀 가능
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-form {
+	/* container */
+	--form-display: flex;
+	--form-flex-direction: column;
+	--form-gap: 1.5rem;
+	--form-width: 100%;
+
+	/* header */
+	--form-header-gap: 0.25rem;
+	--form-headline-size: 1.5rem;
+	--form-headline-weight: 600;
+	--form-headline-color: var(--color-on-surface);
+	--form-headline-line-height: 2rem;
+	--form-headline-margin: 0;
+	--form-description-size: 0.875rem;
+	--form-description-color: var(--color-text-muted);
+	--form-description-line-height: 1.25rem;
+	--form-description-margin: 0;
+
+	/* fields */
+	--form-fields-gap: 1rem;
+
+	/* actions */
+	--form-actions-gap: 0.5rem;
+	--form-actions-justify: flex-end;
+	--form-actions-align: center;
+
+	/* message */
+	--form-message-padding: 0.75rem 1rem;
+	--form-message-border-radius: 0.5rem;
+	--form-message-font-size: 0.875rem;
+	--form-message-line-height: 1.25rem;
+	--form-message-background: var(--color-surface-muted);
+	--form-message-color: var(--color-on-surface);
+}
+
+/* ================== Base ============================================= */
+.m3-form {
+	display: var(--form-display);
+	flex-direction: var(--form-flex-direction);
+	gap: var(--form-gap);
+	width: var(--form-width);
+	box-sizing: border-box;
+}
+
+/* ================== Header =========================================== */
+
+.m3-form .form-header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--form-header-gap);
+}
+
+.m3-form .form-headline {
+	font-size: var(--form-headline-size);
+	font-weight: var(--form-headline-weight);
+	line-height: var(--form-headline-line-height);
+	color: var(--form-headline-color);
+	margin: var(--form-headline-margin);
+}
+
+.m3-form .form-description {
+	font-size: var(--form-description-size);
+	line-height: var(--form-description-line-height);
+	color: var(--form-description-color);
+	margin: var(--form-description-margin);
+}
+
+/* ================== Fields =========================================== */
+
+.m3-form .form-fields {
+	display: flex;
+	flex-direction: column;
+	gap: var(--form-fields-gap);
+}
+
+/* ================== Actions ========================================== */
+
+.m3-form .form-actions {
+	display: flex;
+	align-items: var(--form-actions-align);
+	justify-content: var(--form-actions-justify);
+	gap: var(--form-actions-gap);
+}
+
+/* Actions 정렬 옵션 */
+.m3-form .form-actions.form-actions\:start { --form-actions-justify: flex-start; }
+.m3-form .form-actions.form-actions\:center { --form-actions-justify: center; }
+.m3-form .form-actions.form-actions\:end { --form-actions-justify: flex-end; }
+.m3-form .form-actions.form-actions\:between { --form-actions-justify: space-between; }
+.m3-form .form-actions.form-actions\:stretch {
+	--form-actions-justify: stretch;
+}
+
+/* stretch일 때 버튼이 가로 전체 차지 */
+.m3-form .form-actions.form-actions\:stretch > * {
+	flex: 1;
+}
+
+/* ================== Message ========================================== */
+
+.m3-form .form-message {
+	padding: var(--form-message-padding);
+	border-radius: var(--form-message-border-radius);
+	font-size: var(--form-message-font-size);
+	line-height: var(--form-message-line-height);
+	background-color: var(--form-message-background);
+	color: var(--form-message-color);
+	box-sizing: border-box;
+}
+
+/* Message 상태 변형 */
+.m3-form .form-message.form-message\:error {
+	--form-message-background: color-mix(in srgb, var(--color-danger) 10%, transparent);
+	--form-message-color: var(--color-danger);
+}
+
+.m3-form .form-message.form-message\:success {
+	--form-message-background: color-mix(in srgb, var(--color-success) 10%, transparent);
+	--form-message-color: var(--color-success);
+}
+
+.m3-form .form-message.form-message\:warning {
+	--form-message-background: color-mix(in srgb, var(--color-warning) 10%, transparent);
+	--form-message-color: var(--color-warning);
+}
+
+.m3-form .form-message.form-message\:info {
+	--form-message-background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+	--form-message-color: var(--color-primary);
+}
+
+/* ================== Layout Variants ================================== */
+
+/* 간격이 더 넓은 variant */
+.m3-form.form\:loose {
+	--form-gap: 2rem;
+	--form-fields-gap: 1.5rem;
+}
+
+/* 간격이 더 좁은 variant */
+.m3-form.form\:compact {
+	--form-gap: 1rem;
+	--form-fields-gap: 0.75rem;
+}
