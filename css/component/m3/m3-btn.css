@@ -7,6 +7,12 @@
  * M3 spec source: material-components/material-web tokens
  * Ref: https://m3.material.io/components/buttons/specs
  *
+ * 커스터마이징 철학:
+ *   Type variant (btn:outlined 등)와 Color variant (btn-color:danger 등)가
+ *   자연스럽게 조합되도록 "--btn-accent" 의미 변수를 사용.
+ *   - btn-color:*는 --btn-accent/--btn-on-accent만 변경 (배경/텍스트 직접 변경 안 함)
+ *   - btn:*는 accent를 어떻게 사용할지만 결정 (filled=bg, outlined=text/border, text=text)
+ *
  * Variable API: 모든 시각 속성은 --btn-* 변수로 노출.
  * ============================================================= */
 
@@ -24,9 +30,13 @@
 	--btn-gap: 0.5rem;                  /* M3: 8dp icon-label gap */
 	--btn-icon-size: 1.125rem;          /* M3: 18dp */
 
-	/* -- colors (filled default) -- */
-	--btn-color: var(--color-on-primary);
-	--btn-background-color: var(--color-primary);
+	/* -- semantic accent (btn-color:*가 이것을 변경) -- */
+	--btn-accent: var(--color-primary);
+	--btn-on-accent: var(--color-on-primary);
+
+	/* -- colors (filled default: bg=accent, text=on-accent) -- */
+	--btn-color: var(--btn-on-accent);
+	--btn-background-color: var(--btn-accent);
 	--btn-background-image: none;
 
 	/* -- effects -- */
@@ -48,8 +58,8 @@
 	--btn-state-focus-opacity: 0.12;    /* M3: focus = 12% */
 	--btn-state-pressed-opacity: 0.12;  /* M3: pressed = 12% */
 
-	/* -- state layer color (default: on-primary for filled) -- */
-	--btn-state-layer-color: var(--color-on-primary);
+	/* -- state layer color (filled: on-accent 위에 오버레이) -- */
+	--btn-state-layer-color: var(--btn-on-accent);
 }
 
 /* ================== Base Style ======================================= */
@@ -135,118 +145,108 @@
 }
 
 /* ================== Type: Elevated =================================== */
-/* M3: surface-container-low bg, primary text, level1 elevation */
+/* M3: surface-container-low bg, accent text, level1 elevation */
 .m3-btn.btn\:elevated {
-	--btn-color: var(--color-primary);
+	--btn-color: var(--btn-accent);
 	--btn-background-color: var(--color-surface-subtle); /* ≈ surface-container-low */
 	--btn-box-shadow: var(--shadow-sm);                  /* M3: level1 */
 	--btn-elevation-hover: var(--shadow-md);              /* M3: level2 on hover */
-	--btn-state-layer-color: var(--color-primary);
+	--btn-state-layer-color: var(--btn-accent);
+}
 
-	&:disabled, &.btn-state\:disabled {
-		--btn-background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-		--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-		--btn-box-shadow: none;
-	}
+.m3-btn.btn\:elevated:disabled,
+.m3-btn.btn\:elevated.btn-state\:disabled {
+	--btn-background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--btn-box-shadow: none;
 }
 
 /* ================== Type: Tonal ====================================== */
-/* M3: secondary-container bg, on-secondary-container text */
+/* M3: secondary-container bg, on-secondary-container text.
+ * Tonal은 "tonal" 자체의 색 의미가 있어 accent와 다름 */
 .m3-btn.btn\:tonal {
 	--btn-color: var(--color-secondary);                 /* ≈ on-secondary-container */
 	--btn-background-color: var(--color-secondary-subtle); /* ≈ secondary-container */
 	--btn-elevation-hover: var(--shadow-sm);              /* M3: level1 on hover */
 	--btn-state-layer-color: var(--color-secondary);      /* ≈ on-secondary-container */
+}
 
-	&:disabled, &.btn-state\:disabled {
-		--btn-background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-		--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-	}
+.m3-btn.btn\:tonal:disabled,
+.m3-btn.btn\:tonal.btn-state\:disabled {
+	--btn-background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 }
 
 /* ================== Type: Outlined =================================== */
-/* M3: transparent bg, outline border, primary text */
+/* M3: transparent bg, outline border, accent text */
 .m3-btn.btn\:outlined {
-	--btn-color: var(--color-primary);
+	--btn-color: var(--btn-accent);
 	--btn-background-color: transparent;
 	--btn-border-width: 0.0625rem;                       /* M3: 1px / 1dp */
-	--btn-border-color: var(--color-border);             /* ≈ outline */
+	--btn-border-color: var(--color-border);             /* ≈ outline (neutral) */
 	--btn-elevation-hover: none;
-	--btn-state-layer-color: var(--color-primary);
+	--btn-state-layer-color: var(--btn-accent);
+}
 
-	&:hover, &.btn-state\:hover {
-		--btn-background-image: linear-gradient(
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-hover-opacity) * 100%), transparent),
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-hover-opacity) * 100%), transparent)
-		);
-		--btn-box-shadow: none;
-	}
+.m3-btn.btn\:outlined:hover,
+.m3-btn.btn\:outlined.btn-state\:hover {
+	--btn-box-shadow: none;
+}
 
-	&:active, &.btn-state\:active {
-		--btn-background-image: linear-gradient(
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-pressed-opacity) * 100%), transparent),
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-pressed-opacity) * 100%), transparent)
-		);
-	}
+.m3-btn.btn\:outlined:focus-visible,
+.m3-btn.btn\:outlined.btn-state\:focus {
+	--btn-border-color: var(--btn-accent);
+}
 
-	&:focus-visible, &.btn-state\:focus {
-		--btn-border-color: var(--color-primary);
-	}
-
-	&:disabled, &.btn-state\:disabled {
-		--btn-background-color: transparent;
-		--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-		--btn-border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-	}
+.m3-btn.btn\:outlined:disabled,
+.m3-btn.btn\:outlined.btn-state\:disabled {
+	--btn-background-color: transparent;
+	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--btn-border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
 }
 
 /* ================== Type: Text ======================================= */
-/* M3: transparent bg, primary text, tighter padding (12dp) */
+/* M3: transparent bg, accent text, tighter padding (12dp) */
 .m3-btn.btn\:text {
-	--btn-color: var(--color-primary);
+	--btn-color: var(--btn-accent);
 	--btn-background-color: transparent;
 	--btn-border-width: 0;
 	--btn-padding: 0 0.75rem;                            /* M3: 12dp */
 	--btn-elevation-hover: none;
-	--btn-state-layer-color: var(--color-primary);
+	--btn-state-layer-color: var(--btn-accent);
+}
 
-	&:hover, &.btn-state\:hover {
-		--btn-background-image: linear-gradient(
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-hover-opacity) * 100%), transparent),
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-hover-opacity) * 100%), transparent)
-		);
-		--btn-box-shadow: none;
-	}
+.m3-btn.btn\:text:hover,
+.m3-btn.btn\:text.btn-state\:hover {
+	--btn-box-shadow: none;
+}
 
-	&:active, &.btn-state\:active {
-		--btn-background-image: linear-gradient(
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-pressed-opacity) * 100%), transparent),
-			color-mix(in srgb, var(--btn-state-layer-color) calc(var(--btn-state-pressed-opacity) * 100%), transparent)
-		);
-	}
-
-	&:disabled, &.btn-state\:disabled {
-		--btn-background-color: transparent;
-		--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-	}
+.m3-btn.btn\:text:disabled,
+.m3-btn.btn\:text.btn-state\:disabled {
+	--btn-background-color: transparent;
+	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 }
 
 /* ================== Color Variants =================================== */
+/* 색상 variant는 --btn-accent/--btn-on-accent만 변경 (배경·텍스트 직접 건드리지 않음).
+ * Type variant가 accent를 어떻게 사용할지 결정:
+ *   - filled: bg=accent, text=on-accent
+ *   - outlined/text/elevated: text=accent, bg=type별 */
 
 /* Brand */
-.m3-btn.btn-color\:primary { --btn-background-color: var(--color-primary); --btn-color: var(--color-on-primary); --btn-state-layer-color: var(--color-on-primary); }
-.m3-btn.btn-color\:secondary { --btn-background-color: var(--color-secondary); --btn-color: var(--color-on-secondary); --btn-state-layer-color: var(--color-on-secondary); }
-.m3-btn.btn-color\:tertiary { --btn-background-color: var(--color-tertiary); --btn-color: var(--color-on-tertiary); --btn-state-layer-color: var(--color-on-tertiary); }
+.m3-btn.btn-color\:primary   { --btn-accent: var(--color-primary);   --btn-on-accent: var(--color-on-primary); }
+.m3-btn.btn-color\:secondary { --btn-accent: var(--color-secondary); --btn-on-accent: var(--color-on-secondary); }
+.m3-btn.btn-color\:tertiary  { --btn-accent: var(--color-tertiary);  --btn-on-accent: var(--color-on-tertiary); }
 
-/* Surface */
-.m3-btn.btn-color\:surface { --btn-background-color: var(--color-surface); --btn-color: var(--color-on-surface); --btn-state-layer-color: var(--color-on-surface); }
-.m3-btn.btn-color\:surface-subtle { --btn-background-color: var(--color-surface-subtle); --btn-color: var(--color-on-surface); --btn-state-layer-color: var(--color-on-surface); }
-.m3-btn.btn-color\:surface-inverse { --btn-background-color: var(--color-surface-inverse); --btn-color: var(--color-on-surface-inverse); --btn-state-layer-color: var(--color-on-surface-inverse); }
+/* Surface (배경 색 계열 — accent/on-accent 의미 반전) */
+.m3-btn.btn-color\:surface         { --btn-accent: var(--color-surface);         --btn-on-accent: var(--color-on-surface); }
+.m3-btn.btn-color\:surface-subtle  { --btn-accent: var(--color-surface-subtle);  --btn-on-accent: var(--color-on-surface); }
+.m3-btn.btn-color\:surface-inverse { --btn-accent: var(--color-surface-inverse); --btn-on-accent: var(--color-on-surface-inverse); }
 
 /* Status */
-.m3-btn.btn-color\:success { --btn-background-color: var(--color-success); --btn-color: var(--color-on-success); --btn-state-layer-color: var(--color-on-success); }
-.m3-btn.btn-color\:warning { --btn-background-color: var(--color-warning); --btn-color: var(--color-on-warning); --btn-state-layer-color: var(--color-on-warning); }
-.m3-btn.btn-color\:danger { --btn-background-color: var(--color-danger); --btn-color: var(--color-on-danger); --btn-state-layer-color: var(--color-on-danger); }
+.m3-btn.btn-color\:success { --btn-accent: var(--color-success); --btn-on-accent: var(--color-on-success); }
+.m3-btn.btn-color\:warning { --btn-accent: var(--color-warning); --btn-on-accent: var(--color-on-warning); }
+.m3-btn.btn-color\:danger  { --btn-accent: var(--color-danger);  --btn-on-accent: var(--color-on-danger); }
 
 /* ================== Sizes ============================================ */
 /* M3 default = 40dp. Extended sizes are newtil additions. */
@@ -288,38 +288,36 @@
 /* ================== Shape: Square ==================================== */
 .m3-btn.btn-shape\:square {
 	--btn-border-radius: var(--radius-4); /* 12dp */
-
-	&.btn-size\:xs, &.btn-size\:1 { --btn-border-radius: var(--radius-3); }
-	&.btn-size\:sm, &.btn-size\:2 { --btn-border-radius: var(--radius-4); }
-	&.btn-size\:md, &.btn-size\:3 { --btn-border-radius: var(--radius-5); }
-	&.btn-size\:lg, &.btn-size\:4 { --btn-border-radius: var(--radius-6); }
-	&.btn-size\:xl, &.btn-size\:5 { --btn-border-radius: var(--radius-6); }
 }
+.m3-btn.btn-shape\:square.btn-size\:xs, .m3-btn.btn-shape\:square.btn-size\:1 { --btn-border-radius: var(--radius-3); }
+.m3-btn.btn-shape\:square.btn-size\:sm, .m3-btn.btn-shape\:square.btn-size\:2 { --btn-border-radius: var(--radius-4); }
+.m3-btn.btn-shape\:square.btn-size\:md, .m3-btn.btn-shape\:square.btn-size\:3 { --btn-border-radius: var(--radius-5); }
+.m3-btn.btn-shape\:square.btn-size\:lg, .m3-btn.btn-shape\:square.btn-size\:4 { --btn-border-radius: var(--radius-6); }
+.m3-btn.btn-shape\:square.btn-size\:xl, .m3-btn.btn-shape\:square.btn-size\:5 { --btn-border-radius: var(--radius-6); }
 
 /* ================== With Icon ======================================== */
 /* M3: leading icon changes padding to 16dp/24dp */
-/* m3-icon은 기본 inherit이므로 별도 규칙 불필요 */
 
 .m3-btn.btn-icon\:leading {
 	--btn-padding: 0 1.5rem 0 1rem;    /* M3: 16dp left, 24dp right */
+}
 
-	& .m3-icon,
-	& [class*="material-symbols"] {
-		font-size: var(--btn-icon-size);
-		width: var(--btn-icon-size);
-		height: var(--btn-icon-size);
-	}
+.m3-btn.btn-icon\:leading .m3-icon,
+.m3-btn.btn-icon\:leading [class*="material-symbols"] {
+	font-size: var(--btn-icon-size);
+	width: var(--btn-icon-size);
+	height: var(--btn-icon-size);
 }
 
 .m3-btn.btn-icon\:trailing {
 	--btn-padding: 0 1rem 0 1.5rem;    /* M3: 24dp left, 16dp right */
+}
 
-	& .m3-icon,
-	& [class*="material-symbols"] {
-		font-size: var(--btn-icon-size);
-		width: var(--btn-icon-size);
-		height: var(--btn-icon-size);
-	}
+.m3-btn.btn-icon\:trailing .m3-icon,
+.m3-btn.btn-icon\:trailing [class*="material-symbols"] {
+	font-size: var(--btn-icon-size);
+	width: var(--btn-icon-size);
+	height: var(--btn-icon-size);
 }
 
 /* ================== Responsive Size ================================== */
