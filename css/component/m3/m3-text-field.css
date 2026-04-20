@@ -1,7 +1,8 @@
-/* ====== M3 Text Field (M3 spec-aligned + newtil size extension) ========
- * Type:  filled (default) | outlined
- * Size:  xs | sm | md (M3 default = 56dp) | lg | xl  [newtil 확장]
- * State: enabled | focused | hovered | error | disabled
+/* ====== M3 Text Field (M3 spec-aligned + newtil extensions) ============
+ * Type:   filled (default) | outlined
+ * Size:   xs | sm | md (M3 default = 56dp) | lg | xl            [newtil 확장]
+ * Label:  (기본=M3 floating) | top | left | right | bottom | none [newtil 확장]
+ * State:  enabled | focused | hovered | error | disabled
  *
  * M3 spec: container with floating label, active indicator / outline
  *          기본 높이 56dp (M3 권장). size variant는 newtil 확장.
@@ -68,6 +69,28 @@
 	--field-label-background: transparent;
 	--field-label-padding: 0;
 
+	/* label position / layout (외부 라벨 모드 전환용) */
+	--field-label-position: absolute;
+	--field-label-top: 50%;
+	--field-label-transform: translateY(-50%);
+	--field-label-focus-top: 0.5rem;
+	--field-label-focus-transform: translateY(0);
+	--field-label-focus-size: var(--field-label-size-float);
+	--field-label-display: block;
+	--field-flex-direction: column;
+	--field-label-order: 0;
+	--field-label-gap: 0;
+	--field-label-min-width: auto;
+	--field-label-align-self: auto;
+	--field-placeholder-opacity: 0;
+	--field-indicator-display: block;
+
+	/* input 박스 스타일 (외부 라벨 모드에서만 input이 박스가 됨) */
+	--field-input-box-background: transparent;
+	--field-input-box-border: none;
+	--field-input-box-border-radius: 0;
+	--field-input-box-min-height: auto;
+
 	/* supporting text */
 	--field-supporting-size: 0.75rem;
 	--field-supporting-color: var(--color-text-muted);
@@ -90,11 +113,12 @@
 .m3-text-field {
 	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-direction: var(--field-flex-direction);
+	gap: var(--field-label-gap);
 	width: var(--field-width);
 }
 
-/* Input wrapper — the visible "box" */
+/* Input wrapper — the visible "box" (외부 라벨 모드에선 transparent로 오버라이드됨) */
 .m3-text-field {
 	background-color: var(--field-background);
 	border: var(--field-border);
@@ -108,9 +132,11 @@
 .m3-text-field input,
 .m3-text-field textarea {
 	appearance: none;
-	border: none;
 	outline: none;
-	background: transparent;
+	background: var(--field-input-box-background);
+	border: var(--field-input-box-border);
+	border-radius: var(--field-input-box-border-radius);
+	min-height: var(--field-input-box-min-height);
 	width: 100%;
 	padding: var(--field-input-padding-top) var(--field-padding-x) var(--field-padding-bottom);
 	padding-left: var(--field-input-padding-left);
@@ -127,7 +153,7 @@
 .m3-text-field input::placeholder,
 .m3-text-field textarea::placeholder {
 	color: var(--field-placeholder-color);
-	opacity: 0;
+	opacity: var(--field-placeholder-opacity);
 	transition: var(--field-transition);
 }
 
@@ -138,10 +164,14 @@
 
 /* ================== Label (floating) ================================= */
 .m3-text-field label {
-	position: absolute;
+	position: var(--field-label-position);
 	left: var(--field-label-left);
-	top: 50%;
-	transform: translateY(-50%);
+	top: var(--field-label-top);
+	transform: var(--field-label-transform);
+	display: var(--field-label-display);
+	order: var(--field-label-order);
+	min-width: var(--field-label-min-width);
+	align-self: var(--field-label-align-self);
 	font-size: var(--field-label-size);
 	color: var(--field-label-color);
 	background-color: var(--field-label-background);
@@ -156,9 +186,9 @@
 .m3-text-field input:not(:placeholder-shown) + label,
 .m3-text-field textarea:focus + label,
 .m3-text-field textarea:not(:placeholder-shown) + label {
-	top: 0.5rem;
-	transform: translateY(0);
-	font-size: var(--field-label-size-float);
+	top: var(--field-label-focus-top);
+	transform: var(--field-label-focus-transform);
+	font-size: var(--field-label-focus-size);
 }
 
 .m3-text-field input:focus + label,
@@ -169,6 +199,7 @@
 /* ================== Active Indicator (filled — bottom line) ========== */
 .m3-text-field::after {
 	content: "";
+	display: var(--field-indicator-display);
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -331,4 +362,101 @@
 	--field-line-height: 1.875rem;
 	--field-label-size: 1.25rem;
 	--field-label-size-float: 0.875rem;
+}
+
+/* ================== Label Position Variants (newtil 확장) ============
+ * 기본값: M3 floating label (container가 박스, label absolute로 내부 배치)
+ * 외부 모드: container는 레이아웃 wrapper, input이 박스, label은 static
+ *
+ * 공통 변경 (외부 모드):
+ *   - container: 박스 스타일 제거 (background/border/radius/min-height)
+ *   - input: 박스 스타일 받음
+ *   - label: position static, floating 애니메이션 비활성
+ *   - placeholder: 기본 노출 (opacity 1)
+ *   - active indicator: 숨김
+ *   - input padding-top: floating label 공간 불필요 → 0.5rem
+ * ================================================================= */
+
+.m3-text-field.field-label\:top,
+.m3-text-field.field-label\:bottom,
+.m3-text-field.field-label\:left,
+.m3-text-field.field-label\:right {
+	/* container 박스 스타일 제거 */
+	--field-background: transparent;
+	--field-border: none;
+	--field-min-height: auto;
+	--field-label-gap: 0.375rem;
+
+	/* input이 박스 역할 */
+	--field-input-box-background: var(--color-surface-muted);
+	--field-input-box-border: var(--field-outline-width) solid var(--field-outline-color);
+	--field-input-box-border-radius: 0.375rem;
+	--field-input-box-min-height: 2.5rem;
+	--field-input-padding-top: 0.5rem;
+	--field-padding-bottom: 0.5rem;
+
+	/* label static 포지셔닝 */
+	--field-label-position: static;
+	--field-label-top: auto;
+	--field-label-transform: none;
+	--field-label-left: auto;
+	--field-label-focus-top: auto;
+	--field-label-focus-transform: none;
+	--field-label-focus-size: var(--field-label-size);
+
+	/* placeholder 정상 노출 */
+	--field-placeholder-opacity: 1;
+
+	/* active indicator 숨김 (input이 자체 border 가짐) */
+	--field-indicator-display: none;
+}
+
+/* 위 (기본 외부) */
+.m3-text-field.field-label\:top {
+	--field-flex-direction: column;
+	--field-label-order: 0;
+}
+
+/* 아래 (캡션) */
+.m3-text-field.field-label\:bottom {
+	--field-flex-direction: column;
+	--field-label-order: 1;
+}
+
+/* 왼쪽 (가로 정렬) */
+.m3-text-field.field-label\:left {
+	--field-flex-direction: row;
+	--field-label-order: 0;
+	--field-label-align-self: center;
+	--field-label-min-width: 6rem;
+	--field-label-gap: 0.75rem;
+}
+
+/* 오른쪽 */
+.m3-text-field.field-label\:right {
+	--field-flex-direction: row;
+	--field-label-order: 1;
+	--field-label-align-self: center;
+	--field-label-min-width: 6rem;
+	--field-label-gap: 0.75rem;
+}
+
+/* 라벨 숨김 (검색바 등) */
+.m3-text-field.field-label\:none {
+	--field-label-display: none;
+	--field-placeholder-opacity: 1;
+	/* container는 여전히 박스 (floating 애니메이션만 무효화) */
+	--field-input-padding-top: var(--field-padding-top);
+}
+
+/* 외부 모드에서 input focus 시 border 강조 */
+.m3-text-field.field-label\:top input:focus,
+.m3-text-field.field-label\:top textarea:focus,
+.m3-text-field.field-label\:bottom input:focus,
+.m3-text-field.field-label\:bottom textarea:focus,
+.m3-text-field.field-label\:left input:focus,
+.m3-text-field.field-label\:left textarea:focus,
+.m3-text-field.field-label\:right input:focus,
+.m3-text-field.field-label\:right textarea:focus {
+	--field-input-box-border: var(--field-outline-width-focus) solid var(--field-outline-color-focus);
 }
