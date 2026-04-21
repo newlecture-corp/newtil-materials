@@ -78,6 +78,7 @@
 	--field-label-focus-size: var(--field-label-size-float);
 	--field-label-display: block;
 	--field-flex-direction: column;
+	--field-justify-content: flex-start;
 	--field-label-order: 1;
 	--field-input-order: 0;
 	--field-label-gap: 0;
@@ -115,6 +116,7 @@
 	position: relative;
 	display: flex;
 	flex-direction: var(--field-flex-direction);
+	justify-content: var(--field-justify-content);
 	gap: var(--field-label-gap);
 	width: var(--field-width);
 }
@@ -447,12 +449,13 @@
 	--field-label-gap: 0.75rem;
 }
 
-/* 라벨 숨김 (검색바 등) */
+/* 라벨 숨김 (검색바 등) — container는 박스 유지, input을 수직 중앙 정렬 */
 .m3-text-field.field-label\:none {
 	--field-label-display: none;
 	--field-placeholder-opacity: 1;
-	/* container는 여전히 박스 (floating 애니메이션만 무효화) */
 	--field-input-padding-top: var(--field-padding-top);
+	--field-padding-bottom: var(--field-padding-top);
+	--field-justify-content: center;
 }
 
 /* 외부 모드에서 input focus 시 border 강조 */
