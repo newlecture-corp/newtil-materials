@@ -1,251 +1,253 @@
 # 커스터마이징
 
-@newtil/components는 CSS 변수(Custom Properties)를 통해 모든 시각 속성을 외부에 노출합니다. JavaScript 없이 CSS만으로 컴포넌트의 외관을 완전히 제어할 수 있습니다.
+`@newtil/components`를 원하는 모양으로 만드는 방법.
 
-## 변수 기반 커스터마이징 철학
+## 3단계 우선순위
 
-각 컴포넌트는 `--btn-*`, `--field-*`, `--switch-*` 등 네이밍 규칙을 따르는 CSS 변수를 정의합니다. 이 변수들이 곧 컴포넌트의 커스터마이징 API입니다.
+**반드시 이 순서로 시도하세요:**
 
-- 내부 구현은 감추고, 변수만 공개합니다
-- 변수를 오버라이드하면 하위 구조가 자동으로 반영합니다
-- 색상 변수만으로 일관된 UI를 유지합니다
+```
+1. 클래스 타입 (기본 컴포넌트)
+        ↓ 원하는 모양이 안 나오면
+2. 옵션 클래스 (variant)
+        ↓ 옵션에도 없으면
+3. CSS 변수 오버라이드 (최후의 수단)
+```
 
-## 컴포넌트 변수 오버라이드 방법
+**왜 순서가 중요한가:**
 
-### 방법 1. inline style
+- **타입**은 "가장 자주 쓰는 모양" → 대부분 이것만 써도 충분
+- **옵션**은 "자주 있는 변형"을 미리 정의한 프리셋 → 변수 여러 개 조합을 한 클래스로 응축
+- **변수**는 "한 번 쓰는 고유 조정" → 반복되면 옵션이 부족하다는 신호
 
-가장 간단한 방법입니다. 특정 인스턴스만 변경할 때 사용합니다.
+---
+
+## 1단계: 클래스 타입만 사용
+
+<Demo>
+<div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+  <button class="m3-btn">저장</button>
+  <div class="m3-text-field" style="max-width: 14rem;">
+    <input type="text" placeholder=" ">
+    <label>이름</label>
+  </div>
+  <label class="m3-checkbox"><input type="checkbox" checked> 동의</label>
+</div>
+</Demo>
 
 ```html
-<!-- 버튼 높이와 모서리 변경 -->
-<button class="m3-btn" style="--btn-height: 3rem; --btn-border-radius: 0.5rem;">
-  커스텀 버튼
-</button>
-
-<!-- 텍스트 필드 배경 변경 -->
-<div class="m3-text-field" style="--field-background: #f5f0ff;">
+<button class="m3-btn">저장</button>
+<div class="m3-text-field">
   <input type="text" placeholder=" ">
-  <label>커스텀 필드</label>
+  <label>이름</label>
 </div>
-
-<!-- 스위치 트랙 너비 변경 -->
-<label class="m3-switch" style="--switch-track-width: 4rem; --switch-track-height: 2.5rem;">
-  <input type="checkbox">
-  <span class="switch-label">넓은 스위치</span>
+<label class="m3-checkbox">
+  <input type="checkbox" checked> 동의
 </label>
 ```
 
-### 방법 2. 커스텀 클래스
+기본 타입으로 원하는 모양이면 **여기서 끝**. 다른 수정 불필요.
 
-동일한 스타일을 여러 요소에 적용할 때 사용합니다.
+---
+
+## 2단계: 옵션 클래스 (variant)
+
+기본으로 부족하면 **이미 정의된 옵션**을 조합. 각 컴포넌트는 자주 쓰는 변형을 옵션으로 제공합니다.
+
+### 버튼 예시
+
+<Demo>
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
+  <button class="m3-btn btn:outlined">Outlined</button>
+  <button class="m3-btn btn:text">Text</button>
+  <button class="m3-btn btn:outlined btn-size:xs">XS</button>
+  <button class="m3-btn btn:outlined btn-color:danger">Danger</button>
+  <button class="m3-btn btn-icon:leading"><i class="m3-icon" data-icon="add"></i>추가</button>
+</div>
+</Demo>
 
 ```html
-<style>
-  .btn-compact {
-    --btn-height: 2rem;
-    --btn-padding: 0 0.75rem;
-    --btn-font-size: 0.75rem;
-    --btn-border-radius: 0.375rem;
-  }
-</style>
-
-<button class="m3-btn btn-compact">작은 버튼</button>
-<button class="m3-btn btn:outlined btn-compact">작은 아웃라인</button>
+<button class="m3-btn btn:outlined">Outlined</button>
+<button class="m3-btn btn:outlined btn-size:xs btn-color:danger">삭제</button>
 ```
 
-### 방법 3. 부모 요소에서 일괄 오버라이드
+**옵션은 여러 축에서 조합 가능합니다:** type(filled/outlined/text/...) + size(xs/sm/md/lg/xl) + color(primary/danger/...) + icon(leading/trailing).
 
-섹션이나 페이지 단위로 스타일을 변경할 때 사용합니다.
+### 텍스트 필드 예시
 
-```html
-<style>
-  .admin-panel .m3-btn {
-    --btn-border-radius: 0.25rem;
-    --btn-font-weight: 600;
-  }
-
-  .admin-panel .m3-text-field {
-    --field-border-radius: 0.25rem 0.25rem 0 0;
-  }
-</style>
-
-<div class="admin-panel">
-  <button class="m3-btn">저장</button>
-  <div class="m3-text-field">
+<Demo>
+<div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 22rem;">
+  <div class="m3-text-field field:outlined field-size:xs">
     <input type="text" placeholder=" ">
-    <label>관리자 메모</label>
+    <label>XS Outlined</label>
+  </div>
+  <div class="m3-text-field field-label:top">
+    <label>이름</label>
+    <input type="text" placeholder="예: 홍길동">
+  </div>
+  <div class="m3-text-field field-label:none">
+    <input type="search" placeholder="검색...">
   </div>
 </div>
+</Demo>
+
+각 컴포넌트의 전체 옵션은 해당 가이드 페이지에서 확인하세요.
+
+---
+
+## 3단계: CSS 변수 오버라이드 (최후의 수단)
+
+옵션으로도 표현 안 되는 조정이 필요할 때만 변수를 건드립니다.
+
+### 인스턴스 한정 (인라인 style)
+
+**한 곳에서만** 쓰는 조정은 인라인 스타일로:
+
+```html
+<button
+  class="m3-btn btn:outlined"
+  style="--btn-border-radius: 0.25rem;"
+>
+  저장
+</button>
 ```
 
-## 테마 만들기
+인라인 style은 특이성이 최고라 newtil variant를 안정적으로 덮어씁니다.
 
-CSS 변수를 일괄 변경하여 프로젝트 전용 테마를 만들 수 있습니다.
+### 섹션 스코프 (부모 요소)
 
-### 브랜드 색상 테마
+**같은 섹션에서 반복**되는 조정은 부모 컨테이너에서:
+
+```html
+<div style="--btn-border-radius: 0.25rem;">
+  <button class="m3-btn">A</button>
+  <button class="m3-btn btn:outlined">B</button>
+  <button class="m3-btn btn:text">C</button>
+</div>
+```
+
+CSS 변수는 부모→자식으로 상속되므로 컨테이너에서 한 번 설정하면 내부 모든 컴포넌트에 적용.
+
+### 앱 전역 브랜드 (`:root`)
+
+브랜드 색 전환은 예외적으로 권장되는 변수 사용입니다. `globals.css`에서 한 번 설정하고 끝:
 
 ```css
-/* brand-theme.css */
+@import "@newtil/components/index.css";
+
 :root {
-  /* 주요 색상 오버라이드 */
-  --color-primary: #6750a4;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-active: #3730a3;
+  --color-primary-subtle: rgba(79, 70, 229, 0.1);
   --color-on-primary: #ffffff;
-  --color-primary-hover: #5b44a0;
-  --color-primary-active: #4f389c;
-
-  --color-secondary: #625b71;
-  --color-on-secondary: #ffffff;
-
-  --color-tertiary: #7d5260;
-  --color-on-tertiary: #ffffff;
-
-  /* 표면 색상 */
-  --color-surface: #fffbfe;
-  --color-on-surface: #1c1b1f;
-  --color-surface-muted: #f4eff4;
-  --color-surface-subtle: #e7e0ec;
 }
 ```
 
-### 컴포넌트 테마
+이건 **앱 정체성**을 정의하는 설정이라 변수로 처리하는 게 맞습니다.
 
-특정 컴포넌트의 기본 스타일을 프로젝트 전체에서 변경합니다.
+---
 
-```css
-/* component-theme.css */
+## 변수 오버라이드가 반복되면 — 옵션 부재의 신호
 
-/* 모든 버튼을 사각형으로 */
-.m3-btn {
-  --btn-border-radius: 0.5rem;
-}
+같은 변수 오버라이드가 여러 곳에서 반복되고 있다면 멈추고 확인하세요:
 
-/* 모든 텍스트 필드의 포커스 색상 변경 */
-.m3-text-field {
-  --field-indicator-color-focus: #6750a4;
-  --field-label-color-focus: #6750a4;
-  --field-caret-color: #6750a4;
-}
-
-/* 체크박스 기본 색상 변경 */
-.m3-checkbox {
-  --checkbox-check-background: #6750a4;
-  --checkbox-state-color: #6750a4;
-}
+```html
+<!-- ⚠️ 이런 반복 -->
+<button class="m3-btn" style="--btn-border-radius: 0.25rem;">A</button>
+<button class="m3-btn" style="--btn-border-radius: 0.25rem;">B</button>
+<button class="m3-btn" style="--btn-border-radius: 0.25rem;">C</button>
 ```
 
-## design-tokens 연동
+이건 **"radius가 작은 버튼" 옵션이 필요하다**는 신호입니다. 이미 정의된 옵션이 있는지 먼저 확인:
 
-`@newtil/design-tokens`와 함께 사용하면 색상 체계를 통합 관리할 수 있습니다.
-
-```css
-@import '@newtil/design-tokens/tokens.css';
-@import '@newtil/components/css/component/m3/m3-btn.css';
-@import '@newtil/components/css/component/m3/m3-text-field.css';
+```html
+<!-- ✓ btn-shape:square 옵션 활용 -->
+<button class="m3-btn btn-shape:square">A</button>
+<button class="m3-btn btn-shape:square">B</button>
+<button class="m3-btn btn-shape:square">C</button>
 ```
 
-design-tokens가 정의하는 `--color-primary`, `--color-surface` 등의 변수를 컴포넌트가 자동으로 참조합니다. 토큰 값을 바꾸면 모든 컴포넌트가 일괄 변경됩니다.
+**원하는 옵션이 없다면** → 라이브러리에 요청하세요 (아래 참조).
+
+---
+
+## 부족한 옵션·타입은 요청해주세요
+
+라이브러리의 기본 타입이 실전에 안 맞거나, 필요한 옵션이 없다면 **변수로 우회하지 말고** 요청해주세요. 같은 요구가 반복된다는 신호일 가능성이 높고, 정식 옵션으로 추가되면 모든 사용자가 혜택을 봅니다.
+
+**요청 채널:**
+
+- **GitHub Issue**
+  - [@newtil/components](https://github.com/newlecture-corp/newtil-components/issues)
+  - [@newtil/css](https://github.com/newlecture-corp/newtil-css/issues)
+  - [@newtil/design-tokens](https://github.com/newlecture-corp/newtil-design-tokens/issues)
+- **뉴렉처 프로젝트 피드백:** https://www.newlecture.com/projects/feedback
+
+**요청 시 포함하면 좋은 내용:**
+
+- 어떤 컴포넌트의 어떤 모양이 필요한지 (스크린샷/그림 첨부)
+- 현재 변수 오버라이드로 어떻게 우회하고 있는지
+- 비슷한 요구가 얼마나 반복되는지
+
+---
+
+## 자주 하는 실수
+
+### 1. 옵션 확인 없이 바로 변수 오버라이드
 
 ```css
-/* design-tokens 값을 프로젝트에 맞게 오버라이드 */
-:root {
-  --color-primary: #0066cc;
-  --color-on-primary: #ffffff;
-  --color-secondary: #44a844;
-  --color-on-secondary: #ffffff;
-}
-```
-
-## 다크모드 지원
-
-`prefers-color-scheme` 미디어 쿼리 또는 클래스 토글로 다크모드를 구현합니다.
-
-### 미디어 쿼리 방식
-
-```css
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #d0bcff;
-    --color-on-primary: #381e72;
-    --color-surface: #1c1b1f;
-    --color-on-surface: #e6e1e5;
-    --color-surface-muted: #2b2930;
-    --color-surface-subtle: #36343b;
-    --color-border-strong: #49454f;
-    --color-text: #e6e1e5;
-    --color-text-muted: #cac4d0;
-    --color-text-subtle: #938f99;
-  }
-}
-```
-
-### 클래스 토글 방식
-
-```css
-.dark-theme {
-  --color-primary: #d0bcff;
-  --color-on-primary: #381e72;
-  --color-surface: #1c1b1f;
-  --color-on-surface: #e6e1e5;
-  --color-surface-muted: #2b2930;
-  --color-surface-subtle: #36343b;
-  --color-border-strong: #49454f;
-  --color-text: #e6e1e5;
-  --color-text-muted: #cac4d0;
+/* ❌ 옵션이 있는데 변수를 먼저 건드림 */
+.my-btn {
+  --btn-background-color: transparent;
+  --btn-color: var(--color-primary);
+  --btn-border-width: 1px;
+  --btn-border-color: var(--color-primary);
 }
 ```
 
 ```html
-<body class="dark-theme">
-  <button class="m3-btn">다크모드 버튼</button>
-</body>
+<!-- ✓ btn:outlined 한 옵션 -->
+<button class="m3-btn btn:outlined">저장</button>
 ```
 
-```js
-// 토글 예시
-document.body.classList.toggle('dark-theme');
+### 2. variant와 충돌하는 조합
+
+```html
+<!-- ❌ btn:outlined + btn-color:danger → 의도: outlined+빨간글자. 실제: filled+빨간배경 -->
+<button class="m3-btn btn:outlined btn-color:danger">삭제</button>
 ```
 
-컴포넌트 CSS를 직접 수정할 필요 없이 색상 토큰만 바꾸면 모든 컴포넌트에 다크모드가 적용됩니다. 이것이 변수 기반 설계의 핵심 장점입니다.
+`btn-color:*`는 filled 기준 variant라 outlined와 조합 시 outlined 효과가 무효화됩니다. 이 경우는 인라인 style로 텍스트/보더 색만 오버라이드:
 
-## 커스터마이징 예시 모음
-
-### 그라디언트 버튼
-
-<Demo>
-<button class="m3-btn" style="
-  --btn-background-color: transparent;
-  --btn-background-image: linear-gradient(135deg, #667eea, #764ba2);
-  --btn-color: #ffffff;
-  --btn-state-layer-color: #ffffff;
-">
-  그라디언트
+```html
+<!-- ✓ outlined 유지 + 색상만 변경 -->
+<button
+  class="m3-btn btn:outlined"
+  style="--btn-color: var(--color-danger); --btn-border-color: var(--color-danger);"
+>
+  삭제
 </button>
-</Demo>
+```
 
-### 큰 라운드 FAB
+### 3. `@import` 순서 실수
 
-<Demo>
-<button class="m3-fab" style="
-  --fab-size: 5rem;
-  --fab-icon-size: 2rem;
-  --fab-border-radius: var(--radius-full);
-  --fab-background: #6750a4;
-  --fab-color: #ffffff;
-">
-  <i class="m3-icon icon:add"></i>
-</button>
-</Demo>
+오버라이드는 반드시 **import 이후**에:
 
-### 밑줄 없는 텍스트 필드
+```css
+/* ❌ */
+:root { --color-primary: #4f46e5; }
+@import "@newtil/components";
 
-<Demo>
-<div class="m3-text-field" style="
-  --field-background: transparent;
-  --field-indicator-height: 0;
-  --field-border-radius: 0.5rem;
-  --field-border: 1px solid var(--color-border-strong);
-">
-  <input type="text" placeholder=" ">
-  <label>커스텀 필드</label>
-</div>
-</Demo>
+/* ✓ */
+@import "@newtil/components";
+:root { --color-primary: #4f46e5; }
+```
+
+### 4. 파생 토큰 누락
+
+`--color-primary`만 바꾸고 `--color-primary-hover`, `--color-primary-subtle`를 빠뜨리면 hover 상태가 원래 색으로 남습니다. 관련 파생 토큰은 함께 조정해야 합니다.
+
+### 5. CSS 모듈에서 특이성 부족
+
+newtil variant는 2-클래스 선택자(`.m3-btn.btn\:outlined`)라 CSS 모듈의 단일 클래스로는 덮기 어렵습니다. CSS 모듈을 쓰기 전에 **인라인 style**이나 **부모 스코프**를 먼저 고려하세요. 꼭 CSS 모듈이 필요하면 `:global(.m3-btn).myClass` 패턴.
