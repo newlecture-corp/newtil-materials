@@ -1,16 +1,16 @@
 ---
 layout: home
 hero:
-  name: "@newtil/components"
-  text: "Material Design 3 CSS 컴포넌트"
-  tagline: 변수 기반으로 커스터마이징되는 M3 컴포넌트. 디자인 토큰 하나로 브랜드 전체를 바꾸세요.
+  name: "@newtil/materials"
+  text: "Material Design 3 CSS 구현체"
+  tagline: Google M3 스펙을 충실히 구현한 m3- prefix 컴포넌트. @newtil/design-tokens 위에 동작.
   actions:
     - theme: brand
       text: 시작하기
       link: /guide/getting-started
     - theme: alt
       text: GitHub
-      link: https://github.com/newlecture-corp/newtil-components
+      link: https://github.com/newlecture-corp/newtil-materials
 ---
 
 ## 핵심 특징

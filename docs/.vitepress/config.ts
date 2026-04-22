@@ -1,12 +1,12 @@
 import { defineConfig } from "vitepress";
 
-const BASE_PATH = "/newtil-components/";
+const BASE_PATH = "/newtil-materials/";
 
 export default defineConfig({
   ignoreDeadLinks: true,
   base: BASE_PATH,
-  title: "@newtil/components",
-  description: "Material Design 3 CSS 컴포넌트 라이브러리",
+  title: "@newtil/materials",
+  description: "Material Design 3 CSS 구현체 — m3- prefix 컴포넌트",
   appearance: true,
   lang: "ko",
   head: [
@@ -17,7 +17,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/newlecture-corp/newtil-components",
+        link: "https://github.com/newlecture-corp/newtil-materials",
       },
     ],
 
