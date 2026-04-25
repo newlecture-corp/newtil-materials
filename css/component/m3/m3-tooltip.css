@@ -31,7 +31,7 @@
 	--tooltip-font-weight: var(--font-weight-medium, 500);
 
 	/* rich variant */
-	--tooltip-rich-background: var(--color-surface-muted);
+	--tooltip-rich-background: var(--color-surface-2);
 	--tooltip-rich-color: var(--color-on-surface);
 	--tooltip-rich-border-radius: var(--radius-md);
 	--tooltip-rich-padding: 0.75rem 1rem;

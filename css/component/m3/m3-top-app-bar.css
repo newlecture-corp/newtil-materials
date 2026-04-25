@@ -140,4 +140,4 @@
 /* ================== Color Variants =================================== */
 .m3-top-app-bar.bar-color\:primary { --bar-background: var(--color-primary); --bar-color: var(--color-on-primary); --bar-title-color: var(--color-on-primary); --bar-icon-color: var(--color-on-primary); }
 .m3-top-app-bar.bar-color\:surface { --bar-background: var(--color-surface); --bar-color: var(--color-on-surface); }
-.m3-top-app-bar.bar-color\:surface-subtle { --bar-background: var(--color-surface-subtle); }
+.m3-top-app-bar.bar-color\:surface-1 { --bar-background: var(--color-surface-1); }

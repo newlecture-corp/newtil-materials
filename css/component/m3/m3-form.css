@@ -61,7 +61,7 @@
 	--form-message-border-radius: 0.5rem;
 	--form-message-font-size: 0.875rem;
 	--form-message-line-height: 1.25rem;
-	--form-message-background: var(--color-surface-muted);
+	--form-message-background: var(--color-surface-2);
 	--form-message-color: var(--color-on-surface);
 }
 

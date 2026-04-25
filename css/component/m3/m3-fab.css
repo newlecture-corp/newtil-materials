@@ -18,7 +18,7 @@
 	--fab-icon-size: 1.5rem;                               /* M3: 24dp */
 
 	/* -- colors (surface default) -- */
-	--fab-background: var(--color-surface-subtle);         /* M3: surface-container-high */
+	--fab-background: var(--color-surface-1);         /* M3: surface-container-high */
 	--fab-color: var(--color-primary);                     /* M3: primary */
 
 	/* -- effects -- */
@@ -183,7 +183,7 @@
 
 /* ================== Color: Surface =================================== */
 .m3-fab.fab-color\:surface {
-	--fab-background: var(--color-surface-subtle);
+	--fab-background: var(--color-surface-1);
 	--fab-color: var(--color-primary);
 	--fab-state-layer-color: var(--color-primary);
 }

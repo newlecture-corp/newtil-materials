@@ -21,7 +21,7 @@
 	--switch-track-width: 3.25rem;
 	--switch-track-height: 2rem;
 	--switch-track-radius: var(--radius-full);
-	--switch-track-color: var(--color-surface-muted);
+	--switch-track-color: var(--color-surface-2);
 	--switch-track-border: 0.125rem solid var(--color-border-strong);
 	--switch-track-color-checked: var(--color-primary);
 	--switch-track-border-checked: 0.125rem solid var(--color-primary);

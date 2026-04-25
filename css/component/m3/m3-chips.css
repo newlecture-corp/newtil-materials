@@ -107,7 +107,7 @@
 
 .m3-chip.chip\:elevated {
 	--chip-border: none;
-	--chip-background: var(--color-surface-subtle);
+	--chip-background: var(--color-surface-1);
 	--chip-box-shadow: var(--shadow-sm);
 }
 

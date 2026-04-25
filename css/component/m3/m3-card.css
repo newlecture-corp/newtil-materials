@@ -11,7 +11,7 @@
 /* ================== Variables (Customization API) ==================== */
 .m3-card {
 	/* -- container -- */
-	--card-background: var(--color-surface-subtle);
+	--card-background: var(--color-surface-1);
 	--card-width: auto;
 	--card-height: auto;
 	--card-border: none;
@@ -151,7 +151,7 @@
 /* ================== Type: Elevated (default) ========================= */
 
 .m3-card.card\:elevated {
-	--card-background: var(--color-surface-subtle);
+	--card-background: var(--color-surface-1);
 	--card-box-shadow: var(--shadow-sm);
 	--card-elevation-hover: var(--shadow-sm);
 }
@@ -159,7 +159,7 @@
 /* ================== Type: Filled ===================================== */
 
 .m3-card.card\:filled {
-	--card-background: var(--color-surface-muted);
+	--card-background: var(--color-surface-2);
 	--card-box-shadow: none;
 	--card-elevation-hover: none;
 }
@@ -357,8 +357,8 @@ a.m3-card {
 /* ================== Responsive ======================================= */
 
 @media (min-width: 640px) {
-	.m3-card.sm\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
-	.m3-card.sm\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+	.m3-card.sm\:card\:elevated { --card-background: var(--color-surface-1); --card-box-shadow: var(--shadow-sm); }
+	.m3-card.sm\:card\:filled { --card-background: var(--color-surface-2); --card-box-shadow: none; }
 	.m3-card.sm\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
 	.m3-card.sm\:card-layout\:horizontal { --card-flex-direction: row; --card-media-width: 40%; }
 	.m3-card.sm\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
@@ -366,8 +366,8 @@ a.m3-card {
 }
 
 @media (min-width: 768px) {
-	.m3-card.md\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
-	.m3-card.md\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+	.m3-card.md\:card\:elevated { --card-background: var(--color-surface-1); --card-box-shadow: var(--shadow-sm); }
+	.m3-card.md\:card\:filled { --card-background: var(--color-surface-2); --card-box-shadow: none; }
 	.m3-card.md\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
 	.m3-card.md\:card-layout\:horizontal { --card-flex-direction: row; --card-media-width: 40%; }
 	.m3-card.md\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }
@@ -375,8 +375,8 @@ a.m3-card {
 }
 
 @media (min-width: 1024px) {
-	.m3-card.lg\:card\:elevated { --card-background: var(--color-surface-subtle); --card-box-shadow: var(--shadow-sm); }
-	.m3-card.lg\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+	.m3-card.lg\:card\:elevated { --card-background: var(--color-surface-1); --card-box-shadow: var(--shadow-sm); }
+	.m3-card.lg\:card\:filled { --card-background: var(--color-surface-2); --card-box-shadow: none; }
 	.m3-card.lg\:card\:outlined { --card-background: var(--color-surface); --card-box-shadow: none; --card-border: var(--border-width-1) solid var(--color-border); }
 	.m3-card.lg\:card-layout\:horizontal { --card-flex-direction: row; --card-media-width: 40%; }
 	.m3-card.lg\:card-size\:compact { --card-padding-x: 0.75rem; --card-padding-y: 0.75rem; --card-headline-size: 1rem; }

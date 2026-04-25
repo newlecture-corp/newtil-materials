@@ -71,10 +71,10 @@
 }
 
 /* Color variants */
-.m3-nav-bar.nav-bar-color\:surface-subtle {
-	--nav-bar-background: var(--color-surface-subtle);
+.m3-nav-bar.nav-bar-color\:surface-1 {
+	--nav-bar-background: var(--color-surface-1);
 }
 
-.m3-nav-bar.nav-bar-color\:surface-muted {
-	--nav-bar-background: var(--color-surface-muted);
+.m3-nav-bar.nav-bar-color\:surface-2 {
+	--nav-bar-background: var(--color-surface-2);
 }

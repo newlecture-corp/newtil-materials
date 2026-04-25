@@ -194,7 +194,7 @@
 
 /* Filled toggle unselected: M3 surface-container-highest bg, primary icon */
 .m3-icon-btn.icon-btn\:filled.icon-btn-toggle\:unselected {
-	--icon-btn-background: var(--color-surface-muted);
+	--icon-btn-background: var(--color-surface-2);
 	--icon-btn-color: var(--color-primary);
 	--icon-btn-state-layer-color: var(--color-primary);
 }
@@ -208,7 +208,7 @@
 
 /* Tonal toggle unselected: M3 surface-container-highest bg, on-surface-variant icon */
 .m3-icon-btn.icon-btn\:tonal.icon-btn-toggle\:unselected {
-	--icon-btn-background: var(--color-surface-muted);
+	--icon-btn-background: var(--color-surface-2);
 	--icon-btn-color: var(--color-on-surface);
 	--icon-btn-state-layer-color: var(--color-on-surface);
 }

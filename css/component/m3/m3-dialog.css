@@ -7,7 +7,7 @@
 /* ================== Variables ======================================== */
 .m3-dialog {
 	/* container */
-	--dialog-background: var(--color-surface-muted);
+	--dialog-background: var(--color-surface-2);
 	--dialog-border-radius: 1.75rem;
 	--dialog-padding: 1.5rem;
 	--dialog-min-width: 17.5rem;

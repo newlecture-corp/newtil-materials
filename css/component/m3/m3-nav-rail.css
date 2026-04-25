@@ -108,10 +108,10 @@
 }
 
 /* Color variants */
-.m3-nav-rail.rail-color\:surface-subtle {
-	--rail-background: var(--color-surface-subtle);
+.m3-nav-rail.rail-color\:surface-1 {
+	--rail-background: var(--color-surface-1);
 }
 
-.m3-nav-rail.rail-color\:surface-muted {
-	--rail-background: var(--color-surface-muted);
+.m3-nav-rail.rail-color\:surface-2 {
+	--rail-background: var(--color-surface-2);
 }

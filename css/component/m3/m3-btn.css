@@ -148,7 +148,7 @@
 /* M3: surface-container-low bg, accent text, level1 elevation */
 .m3-btn.btn\:elevated {
 	--btn-color: var(--btn-accent);
-	--btn-background-color: var(--color-surface-subtle); /* ≈ surface-container-low */
+	--btn-background-color: var(--color-surface-1); /* ≈ surface-container-low */
 	--btn-box-shadow: var(--shadow-sm);                  /* M3: level1 */
 	--btn-elevation-hover: var(--shadow-md);              /* M3: level2 on hover */
 	--btn-state-layer-color: var(--btn-accent);
@@ -240,7 +240,7 @@
 
 /* Surface (배경 색 계열 — accent/on-accent 의미 반전) */
 .m3-btn.btn-color\:surface         { --btn-accent: var(--color-surface);         --btn-on-accent: var(--color-on-surface); }
-.m3-btn.btn-color\:surface-subtle  { --btn-accent: var(--color-surface-subtle);  --btn-on-accent: var(--color-on-surface); }
+.m3-btn.btn-color\:surface-1  { --btn-accent: var(--color-surface-1);  --btn-on-accent: var(--color-on-surface); }
 .m3-btn.btn-color\:surface-inverse { --btn-accent: var(--color-surface-inverse); --btn-on-accent: var(--color-on-surface-inverse); }
 
 /* Status */
