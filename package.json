@@ -1,6 +1,6 @@
 {
 	"name": "@newtil/materials",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "Material Design 3 구현 CSS 라이브러리 — m3- prefix 기반 컴포넌트 (버튼, 카드, 다이얼로그, 네비 등). @newtil/design-tokens 위에 동작.",
 	"publishConfig": {
 		"access": "public"
