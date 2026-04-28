@@ -23,12 +23,13 @@
 	--nav-bar-box-shadow: none;
 	--nav-bar-color: var(--color-on-surface);
 
-	/* positioning */
-	--nav-bar-position: fixed;
-	--nav-bar-bottom: 0;
-	--nav-bar-left: 0;
-	--nav-bar-right: 0;
-	--nav-bar-z-index: var(--z-fixed);
+	/* positioning — layout-neutral by default. Use `nav-bar:fixed` modifier
+	 * to opt into the canonical MD3 fixed-bottom-edge behavior. */
+	--nav-bar-position: static;
+	--nav-bar-bottom: auto;
+	--nav-bar-left: auto;
+	--nav-bar-right: auto;
+	--nav-bar-z-index: auto;
 
 	/* transition */
 	--nav-bar-transition: box-shadow var(--duration-normal) var(--ease-out);
@@ -63,6 +64,15 @@
 }
 
 /* ================== Options ========================================== */
+
+/* Layout: Fixed (opt-in MD3 default) — bar occupies the full bottom edge */
+.m3-nav-bar.nav-bar\:fixed {
+	--nav-bar-position: fixed;
+	--nav-bar-bottom: 0;
+	--nav-bar-left: 0;
+	--nav-bar-right: 0;
+	--nav-bar-z-index: var(--z-fixed);
+}
 
 /* Elevated — shadow instead of border */
 .m3-nav-bar.nav-bar\:elevated {

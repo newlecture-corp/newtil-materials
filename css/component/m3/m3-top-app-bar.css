@@ -25,9 +25,12 @@
 	--bar-box-shadow: none;
 	--bar-border-bottom: none;
 	--bar-color: var(--color-on-surface);
-	--bar-position: sticky;
-	--bar-top: 0;
-	--bar-z-index: var(--z-sticky);
+	/* Layout-neutral by default. Position decisions belong to the shell.
+	 * Use the `bar:fixed` modifier to opt into the canonical MD3 sticky-top
+	 * behavior. */
+	--bar-position: static;
+	--bar-top: auto;
+	--bar-z-index: auto;
 
 	/* title */
 	--bar-title-size: 1.375rem;
@@ -125,6 +128,13 @@
 /* ================== Type: Center Aligned ============================== */
 .m3-top-app-bar.bar\:center {
 	--bar-title-text-align: center;
+}
+
+/* ================== Layout: Fixed (opt-in MD3 default) ================ */
+.m3-top-app-bar.bar\:fixed {
+	--bar-position: sticky;
+	--bar-top: 0;
+	--bar-z-index: var(--z-sticky);
 }
 
 /* ================== Type: Elevated (scroll shadow) =================== */

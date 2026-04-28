@@ -27,12 +27,13 @@
 	--rail-box-shadow: none;
 	--rail-color: var(--color-on-surface);
 
-	/* positioning */
-	--rail-position: fixed;
-	--rail-top: 0;
-	--rail-left: 0;
-	--rail-bottom: 0;
-	--rail-z-index: var(--z-fixed);
+	/* positioning — layout-neutral by default. Use `rail:fixed` modifier to
+	 * opt into the canonical MD3 fixed-left-edge behavior. */
+	--rail-position: static;
+	--rail-top: auto;
+	--rail-left: auto;
+	--rail-bottom: auto;
+	--rail-z-index: auto;
 
 	/* header */
 	--rail-header-padding: 0.75rem 0 1rem;
@@ -91,6 +92,15 @@
 }
 
 /* ================== Options ========================================== */
+
+/* Layout: Fixed (opt-in MD3 default) — rail occupies the full left edge */
+.m3-nav-rail.rail\:fixed {
+	--rail-position: fixed;
+	--rail-top: 0;
+	--rail-left: 0;
+	--rail-bottom: 0;
+	--rail-z-index: var(--z-fixed);
+}
 
 /* Elevated — shadow instead of border */
 .m3-nav-rail.rail\:elevated {
