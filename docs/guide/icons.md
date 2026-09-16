@@ -36,93 +36,93 @@ Essential에 없는 아이콘은 `data-icon` 속성으로 사용합니다. Mater
 
 ### Navigation
 
-| 클래스 | 아이콘 이름 |
-|--------|------------|
-| `icon:home` | 홈 |
-| `icon:menu` | 메뉴 |
-| `icon:close` | 닫기 |
-| `icon:arrow_back` | 뒤로 |
-| `icon:arrow_forward` | 앞으로 |
-| `icon:expand_more` | 펼치기 |
-| `icon:expand_less` | 접기 |
-| `icon:chevron_left` | 왼쪽 |
-| `icon:chevron_right` | 오른쪽 |
-| `icon:more_vert` | 더보기 (세로) |
-| `icon:more_horiz` | 더보기 (가로) |
-| `icon:refresh` | 새로고침 |
-| `icon:settings` | 설정 |
-| `icon:apps` | 앱 |
-| `icon:launch` | 실행 |
+| 모양 | 클래스 | 아이콘 이름 |
+|:---:|---|---|
+| <i class="m3-icon icon:home"></i> | `icon:home` | 홈 |
+| <i class="m3-icon icon:menu"></i> | `icon:menu` | 메뉴 |
+| <i class="m3-icon icon:close"></i> | `icon:close` | 닫기 |
+| <i class="m3-icon icon:arrow_back"></i> | `icon:arrow_back` | 뒤로 |
+| <i class="m3-icon icon:arrow_forward"></i> | `icon:arrow_forward` | 앞으로 |
+| <i class="m3-icon icon:expand_more"></i> | `icon:expand_more` | 펼치기 |
+| <i class="m3-icon icon:expand_less"></i> | `icon:expand_less` | 접기 |
+| <i class="m3-icon icon:chevron_left"></i> | `icon:chevron_left` | 왼쪽 |
+| <i class="m3-icon icon:chevron_right"></i> | `icon:chevron_right` | 오른쪽 |
+| <i class="m3-icon icon:more_vert"></i> | `icon:more_vert` | 더보기 (세로) |
+| <i class="m3-icon icon:more_horiz"></i> | `icon:more_horiz` | 더보기 (가로) |
+| <i class="m3-icon icon:refresh"></i> | `icon:refresh` | 새로고침 |
+| <i class="m3-icon icon:settings"></i> | `icon:settings` | 설정 |
+| <i class="m3-icon icon:apps"></i> | `icon:apps` | 앱 |
+| <i class="m3-icon icon:launch"></i> | `icon:launch` | 실행 |
 
 ### Actions
 
-| 클래스 | 아이콘 이름 |
-|--------|------------|
-| `icon:add` | 추가 |
-| `icon:remove` | 제거 |
-| `icon:edit` | 편집 |
-| `icon:delete` | 삭제 |
-| `icon:save` | 저장 |
-| `icon:check` | 체크 |
-| `icon:clear` | 지우기 |
-| `icon:cancel` | 취소 |
-| `icon:done` | 완료 |
-| `icon:search` | 검색 |
-| `icon:share` | 공유 |
-| `icon:download` | 다운로드 |
-| `icon:upload` | 업로드 |
-| `icon:copy` | 복사 |
-| `icon:visibility` | 보이기 |
-| `icon:visibility_off` | 숨기기 |
-| `icon:lock` | 잠금 |
-| `icon:lock_open` | 잠금 해제 |
-| `icon:sync` | 동기화 |
-| `icon:info` | 정보 |
+| 모양 | 클래스 | 아이콘 이름 |
+|:---:|---|---|
+| <i class="m3-icon icon:add"></i> | `icon:add` | 추가 |
+| <i class="m3-icon icon:remove"></i> | `icon:remove` | 제거 |
+| <i class="m3-icon icon:edit"></i> | `icon:edit` | 편집 |
+| <i class="m3-icon icon:delete"></i> | `icon:delete` | 삭제 |
+| <i class="m3-icon icon:save"></i> | `icon:save` | 저장 |
+| <i class="m3-icon icon:check"></i> | `icon:check` | 체크 |
+| <i class="m3-icon icon:clear"></i> | `icon:clear` | 지우기 |
+| <i class="m3-icon icon:cancel"></i> | `icon:cancel` | 취소 |
+| <i class="m3-icon icon:done"></i> | `icon:done` | 완료 |
+| <i class="m3-icon icon:search"></i> | `icon:search` | 검색 |
+| <i class="m3-icon icon:share"></i> | `icon:share` | 공유 |
+| <i class="m3-icon icon:download"></i> | `icon:download` | 다운로드 |
+| <i class="m3-icon icon:upload"></i> | `icon:upload` | 업로드 |
+| <i class="m3-icon icon:copy"></i> | `icon:copy` | 복사 |
+| <i class="m3-icon icon:visibility"></i> | `icon:visibility` | 보이기 |
+| <i class="m3-icon icon:visibility_off"></i> | `icon:visibility_off` | 숨기기 |
+| <i class="m3-icon icon:lock"></i> | `icon:lock` | 잠금 |
+| <i class="m3-icon icon:lock_open"></i> | `icon:lock_open` | 잠금 해제 |
+| <i class="m3-icon icon:sync"></i> | `icon:sync` | 동기화 |
+| <i class="m3-icon icon:info"></i> | `icon:info` | 정보 |
 
 ### Communication
 
-| 클래스 | 아이콘 이름 |
-|--------|------------|
-| `icon:email` | 이메일 |
-| `icon:phone` | 전화 |
-| `icon:chat` | 채팅 |
-| `icon:notifications` | 알림 |
-| `icon:send` | 보내기 |
-| `icon:reply` | 답장 |
-| `icon:help` | 도움말 |
-| `icon:feedback` | 피드백 |
+| 모양 | 클래스 | 아이콘 이름 |
+|:---:|---|---|
+| <i class="m3-icon icon:email"></i> | `icon:email` | 이메일 |
+| <i class="m3-icon icon:phone"></i> | `icon:phone` | 전화 |
+| <i class="m3-icon icon:chat"></i> | `icon:chat` | 채팅 |
+| <i class="m3-icon icon:notifications"></i> | `icon:notifications` | 알림 |
+| <i class="m3-icon icon:send"></i> | `icon:send` | 보내기 |
+| <i class="m3-icon icon:reply"></i> | `icon:reply` | 답장 |
+| <i class="m3-icon icon:help"></i> | `icon:help` | 도움말 |
+| <i class="m3-icon icon:feedback"></i> | `icon:feedback` | 피드백 |
 
 ### Media
 
-| 클래스 | 아이콘 이름 |
-|--------|------------|
-| `icon:play_arrow` | 재생 |
-| `icon:pause` | 일시정지 |
-| `icon:stop` | 정지 |
-| `icon:volume_up` | 볼륨 높임 |
-| `icon:volume_off` | 음소거 |
-| `icon:mic` | 마이크 |
-| `icon:mic_off` | 마이크 꺼짐 |
+| 모양 | 클래스 | 아이콘 이름 |
+|:---:|---|---|
+| <i class="m3-icon icon:play_arrow"></i> | `icon:play_arrow` | 재생 |
+| <i class="m3-icon icon:pause"></i> | `icon:pause` | 일시정지 |
+| <i class="m3-icon icon:stop"></i> | `icon:stop` | 정지 |
+| <i class="m3-icon icon:volume_up"></i> | `icon:volume_up` | 볼륨 높임 |
+| <i class="m3-icon icon:volume_off"></i> | `icon:volume_off` | 음소거 |
+| <i class="m3-icon icon:mic"></i> | `icon:mic` | 마이크 |
+| <i class="m3-icon icon:mic_off"></i> | `icon:mic_off` | 마이크 꺼짐 |
 
 ### Files
 
-| 클래스 | 아이콘 이름 |
-|--------|------------|
-| `icon:folder` | 폴더 |
-| `icon:folder_open` | 폴더 열기 |
-| `icon:attach_file` | 파일 첨부 |
-| `icon:cloud` | 클라우드 |
-| `icon:description` | 문서 |
+| 모양 | 클래스 | 아이콘 이름 |
+|:---:|---|---|
+| <i class="m3-icon icon:folder"></i> | `icon:folder` | 폴더 |
+| <i class="m3-icon icon:folder_open"></i> | `icon:folder_open` | 폴더 열기 |
+| <i class="m3-icon icon:attach_file"></i> | `icon:attach_file` | 파일 첨부 |
+| <i class="m3-icon icon:cloud"></i> | `icon:cloud` | 클라우드 |
+| <i class="m3-icon icon:description"></i> | `icon:description` | 문서 |
 
 ### Social
 
-| 클래스 | 아이콘 이름 |
-|--------|------------|
-| `icon:person` | 사용자 |
-| `icon:people` | 그룹 |
-| `icon:favorite` | 좋아요 |
-| `icon:star` | 별 |
-| `icon:thumb_up` | 추천 |
+| 모양 | 클래스 | 아이콘 이름 |
+|:---:|---|---|
+| <i class="m3-icon icon:person"></i> | `icon:person` | 사용자 |
+| <i class="m3-icon icon:people"></i> | `icon:people` | 그룹 |
+| <i class="m3-icon icon:favorite"></i> | `icon:favorite` | 좋아요 |
+| <i class="m3-icon icon:star"></i> | `icon:star` | 별 |
+| <i class="m3-icon icon:thumb_up"></i> | `icon:thumb_up` | 추천 |
 
 ## 크기 옵션
 
@@ -166,7 +166,7 @@ Essential에 없는 아이콘은 `data-icon` 속성으로 사용합니다. Mater
 </Demo>
 
 | 클래스 | 설명 |
-|--------|------|
+|:---:|---|---|
 | `icon-color:primary` | 주요 색상 |
 | `icon-color:primary-hover` | 주요 색상 (hover) |
 | `icon-color:primary-active` | 주요 색상 (active) |
