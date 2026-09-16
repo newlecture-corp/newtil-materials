@@ -32,6 +32,42 @@ Essential에 없는 아이콘은 `data-icon` 속성으로 사용합니다. Mater
 
 전체 아이콘 목록은 [Google Material Symbols](https://fonts.google.com/icons)에서 검색할 수 있습니다. 아이콘 이름은 소문자 + 언더스코어 형식입니다 (예: `shopping_cart`, `arrow_forward`, `dark_mode`).
 
+## 방법 3. 아이콘 추가하기 (icon:이름 클래스 직접 정의)
+
+Essential 60개에 없는 아이콘을 프로젝트에서 자주 쓴다면 `icon:이름` 클래스를 직접 정의합니다. 패키지는 틀(`.m3-icon` 이 `::before` 를 Material Symbols 글리프로 그리는 규칙)만 제공하고, 어떤 아이콘을 클래스로 둘지는 사용자가 정합니다.
+
+정의는 한 줄입니다. `content` 에 Material Symbols 아이콘 이름을 그대로 쓰면 폰트의 ligature 가 글리프로 바꿉니다.
+
+```css
+/* 프로젝트 CSS — @newtil/materials 를 import 한 뒤 어디든 */
+.icon\:rocket::before  { content: "rocket_launch"; }
+.icon\:cart::before    { content: "shopping_cart"; }
+.icon\:account::before { content: "account_circle"; }
+```
+
+```html
+<i class="m3-icon icon:rocket"></i>
+<i class="m3-icon icon:cart icon-color:primary"></i>
+<i class="m3-icon icon:account icon-size:lg icon-filled:1"></i>
+```
+
+<style>
+.icon\:rocket::before  { content: "rocket_launch"; }
+.icon\:cart::before    { content: "shopping_cart"; }
+.icon\:account::before { content: "account_circle"; }
+</style>
+
+<Demo>
+<i class="m3-icon icon:rocket"></i>
+<i class="m3-icon icon:cart icon-color:primary"></i>
+<i class="m3-icon icon:account icon-size:lg icon-filled:1"></i>
+</Demo>
+
+- 클래스 이름은 자유입니다. 아이콘 이름과 같을 필요가 없어서 `icon:cart` 처럼 짧게 둘 수 있습니다.
+- 크기·색·채움 옵션(`icon-size:`, `icon-color:`, `icon-filled:`)은 Essential 아이콘과 똑같이 붙습니다.
+- Essential 은 `content: "\e88a"` 처럼 코드포인트를 쓰지만 이름(ligature)으로 써도 결과는 같습니다. 코드포인트는 [Google Material Symbols](https://fonts.google.com/icons) 에서 아이콘을 고르면 "Code point" 로 표시됩니다.
+- `.m3-icon` 은 폰트 글리프 전용입니다. Material Symbols 에 없는 SVG 아이콘은 `<svg>` 를 직접 넣으세요.
+
 ## Essential 60개 아이콘 목록
 
 ### Navigation

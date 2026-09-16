@@ -36,15 +36,15 @@ export default defineConfig({
         base: "/guide",
         items: [
           { text: "시작하기", link: "/getting-started" },
-          { text: "아이콘", link: "/icons" },
-          { text: "커스터마이징", link: "/customization" },
         ],
       },
       {
         text: "컴포넌트",
         base: "/guide",
         items: [
+          { text: "아이콘", link: "/icons" },
           { text: "버튼", link: "/buttons" },
+          { text: "콤비네이션", link: "/customization" },
           { text: "입력", link: "/inputs" },
           { text: "컨테이너", link: "/containment" },
           { text: "커뮤니케이션", link: "/communication" },

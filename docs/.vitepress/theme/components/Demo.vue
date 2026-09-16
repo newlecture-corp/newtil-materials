@@ -99,6 +99,15 @@ function toggleEdit() {
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
+  /* transform 이 있는 요소는 position: fixed 자손의 기준 상자가 된다.
+     다이얼로그·바텀시트·스낵바·드로어처럼 fixed 로 그려지는 컴포넌트가 문서 화면 전체를 덮지 않고
+     이 상자 안에서 미리보기로 보이게 한다. */
+  position: relative;
+  transform: translateZ(0);
+}
+/* fixed 자손은 상자 높이에 기여하지 않으므로 그런 데모는 높이를 확보한다 */
+.demo-preview:has(dialog, .m3-bottom-sheet, .m3-nav-drawer, .m3-snackbar, .m3-layout, .m3-nav-bar, .m3-nav-rail) {
+  min-height: 26rem;
 }
 
 .demo-toolbar {

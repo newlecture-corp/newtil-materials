@@ -28,7 +28,7 @@ hero:
 
 - [시작하기](/guide/getting-started) — 설치, 기본 사용법
 - [아이콘](/guide/icons) — Material Symbols 아이콘 설정
-- [커스터마이징](/guide/customization) — CSS 변수로 테마 커스터마이징
+- [콤비네이션](/guide/customization) — 타입·옵션 클래스를 조합해 모양을 만드는 법(변수 오버라이드는 마지막)
 
 ## 컴포넌트
 
