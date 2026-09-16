@@ -183,11 +183,22 @@
   <h1 class="bar-title">Surface 앱 바</h1>
 </header>
 
-<header class="m3-top-app-bar bar-color:surface-subtle">
+<header class="m3-top-app-bar bar-color:surface-1">
   <button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
-  <h1 class="bar-title">Surface Subtle 앱 바</h1>
+  <h1 class="bar-title">Surface 1 앱 바</h1>
 </header>
 </Demo>
+
+### 상단 고정: bar:fixed
+
+0.4.0 부터 `m3-top-app-bar` 는 기본이 `position: static` 입니다(배치는 페이지 셸이 결정). M3 의 상단 고정 동작이 필요하면 `bar:fixed` 를 붙입니다. `position: sticky; top: 0; z-index: var(--z-sticky)` 가 적용됩니다.
+
+```html
+<header class="m3-top-app-bar bar:fixed">
+  <button class="bar-leading"><i class="m3-icon icon:menu"></i></button>
+  <h1 class="bar-title">스크롤해도 상단에 남는 앱 바</h1>
+</header>
+```
 
 ### 변수 API
 
@@ -200,17 +211,17 @@
 | `--bar-padding` | `0 0.5rem` | 내부 여백 |
 | `--bar-box-shadow` | `none` | 그림자 |
 | `--bar-border-bottom` | `none` | 하단 테두리 |
-| `--bar-color` | `var(--color-on-surface)` | 텍스트 색상 |
-| `--bar-position` | `sticky` | 포지션 |
-| `--bar-top` | `0` | 상단 위치 |
-| `--bar-z-index` | `var(--z-sticky)` | z-index |
+| `--bar-color` | `var(--color-text)` | 텍스트 색상 |
+| `--bar-position` | `static` | 포지션. `bar:fixed` 가 `sticky` 로 변경 |
+| `--bar-top` | `auto` | 상단 위치. `bar:fixed` 가 `0` 으로 변경 |
+| `--bar-z-index` | `auto` | z-index. `bar:fixed` 가 `var(--z-sticky)` 로 변경 |
 | `--bar-title-size` | `1.375rem` | 제목 글자 크기 |
 | `--bar-title-weight` | `400` | 제목 굵기 |
-| `--bar-title-color` | `var(--color-on-surface)` | 제목 색상 |
+| `--bar-title-color` | `var(--color-text)` | 제목 색상 |
 | `--bar-title-flex` | `1` | 제목 flex |
 | `--bar-title-text-align` | `start` | 제목 정렬 |
 | `--bar-icon-size` | `3rem` | 아이콘 버튼 크기 |
-| `--bar-icon-color` | `var(--color-on-surface)` | 아이콘 색상 |
+| `--bar-icon-color` | `var(--color-text)` | 아이콘 색상 |
 | `--bar-icon-radius` | `50%` | 아이콘 버튼 모서리 |
 | `--bar-trailing-gap` | `0` | 후행 아이콘 간격 |
 | `--bar-state-hover-opacity` | `0.08` | 호버 상태 불투명도 |
@@ -225,9 +236,10 @@
 | `bar:center` | 제목 가운데 정렬 |
 | `bar:elevated` | Elevated 스타일 (그림자) |
 | `bar:outlined` | Outlined 스타일 (하단 테두리) |
+| `bar:fixed` | 상단 고정 (sticky, `--z-sticky`) |
 | `bar-color:primary` | Primary 배경 색상 |
 | `bar-color:surface` | Surface 배경 색상 |
-| `bar-color:surface-subtle` | Surface Subtle 배경 색상 |
+| `bar-color:surface-1` | Surface 1 배경 색상 (`--color-surface-1`) |
 
 ---
 
@@ -246,6 +258,18 @@
 </nav>
 </Demo>
 
+### 하단 고정: nav-bar:fixed
+
+0.4.0 부터 `m3-nav-bar` 는 기본이 `position: static` 이라 문서 흐름 안에 놓입니다. M3 의 하단 고정 동작은 `nav-bar:fixed` 로 켭니다. `position: fixed; bottom: 0; left: 0; right: 0; z-index: var(--z-fixed)` 가 적용되므로 본문에 바 높이만큼 하단 여백을 주어야 합니다.
+
+```html
+<nav class="m3-nav-bar nav-bar:fixed">
+  <a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+  <a href="#" class="m3-deco icon:search deco-pos:top">검색</a>
+  <a href="#" class="m3-deco icon:person deco-pos:top">프로필</a>
+</nav>
+```
+
 ### 변수 API
 
 | 변수명 | 기본값 | 설명 |
@@ -256,10 +280,19 @@
 | `--nav-bar-padding` | `0 0.5rem` | 내부 여백 |
 | `--nav-bar-gap` | `0` | 아이템 간격 |
 | `--nav-bar-box-shadow` | `none` | 그림자 |
-| `--nav-bar-color` | `var(--color-on-surface)` | 텍스트 색상 |
-| `--nav-bar-position` | `fixed` | 포지션 |
-| `--nav-bar-bottom` | `0` | 하단 위치 |
-| `--nav-bar-z-index` | `var(--z-fixed)` | z-index |
+| `--nav-bar-color` | `var(--color-text)` | 텍스트 색상 |
+| `--nav-bar-position` | `static` | 포지션. `nav-bar:fixed` 가 `fixed` 로 변경 |
+| `--nav-bar-bottom` | `auto` | 하단 위치. `nav-bar:fixed` 가 `0` 으로 변경 |
+| `--nav-bar-left` | `auto` | 좌측 위치. `nav-bar:fixed` 가 `0` 으로 변경 |
+| `--nav-bar-right` | `auto` | 우측 위치. `nav-bar:fixed` 가 `0` 으로 변경 |
+| `--nav-bar-z-index` | `auto` | z-index. `nav-bar:fixed` 가 `var(--z-fixed)` 로 변경 |
+
+### 옵션 클래스
+
+| 클래스 | 설명 |
+|--------|------|
+| `nav-bar:fixed` | 하단 고정 (fixed, `--z-fixed`) |
+| `nav-bar:elevated` | 테두리 대신 그림자 |
 
 ### 하위 클래스
 
@@ -291,6 +324,19 @@
 </nav>
 </Demo>
 
+### 좌측 고정: rail:fixed
+
+0.4.0 부터 `m3-nav-rail` 은 기본이 `position: static` 입니다. M3 의 좌측 가장자리 고정 동작은 `rail:fixed` 로 켭니다. `position: fixed; top: 0; left: 0; bottom: 0; z-index: var(--z-fixed)` 가 적용되므로 본문에 레일 너비만큼 좌측 여백을 주어야 합니다. `m3-layout` 안에서 `layout-rail` 로 쓸 때는 레이아웃이 직접 고정하므로 이 옵션이 필요 없습니다.
+
+```html
+<nav class="m3-nav-rail rail:fixed">
+  <div class="rail-items">
+    <a href="#" class="m3-deco icon:home deco-pos:top deco-active">홈</a>
+    <a href="#" class="m3-deco icon:search deco-pos:top">검색</a>
+  </div>
+</nav>
+```
+
 ### 변수 API
 
 | 변수명 | 기본값 | 설명 |
@@ -300,11 +346,19 @@
 | `--rail-border-right` | `0.0625rem solid var(--color-border-subtle)` | 우측 테두리 |
 | `--rail-padding` | `0.75rem 0` | 내부 여백 |
 | `--rail-box-shadow` | `none` | 그림자 |
-| `--rail-color` | `var(--color-on-surface)` | 텍스트 색상 |
-| `--rail-position` | `fixed` | 포지션 |
-| `--rail-top` | `0` | 상단 위치 |
-| `--rail-left` | `0` | 좌측 위치 |
-| `--rail-z-index` | `var(--z-fixed)` | z-index |
+| `--rail-color` | `var(--color-text)` | 텍스트 색상 |
+| `--rail-position` | `static` | 포지션. `rail:fixed` 가 `fixed` 로 변경 |
+| `--rail-top` | `auto` | 상단 위치. `rail:fixed` 가 `0` 으로 변경 |
+| `--rail-left` | `auto` | 좌측 위치. `rail:fixed` 가 `0` 으로 변경 |
+| `--rail-bottom` | `auto` | 하단 위치. `rail:fixed` 가 `0` 으로 변경 |
+| `--rail-z-index` | `auto` | z-index. `rail:fixed` 가 `var(--z-fixed)` 로 변경 |
+
+### 옵션 클래스
+
+| 클래스 | 설명 |
+|--------|------|
+| `rail:fixed` | 좌측 고정 (fixed, `--z-fixed`) |
+| `rail:elevated` | 테두리 대신 그림자 |
 
 ### 하위 클래스
 
@@ -332,11 +386,11 @@
       <span class="drawer-label">홈</span>
     </a>
     <a href="#" class="drawer-item">
-      <i class="m3-icon icon:mail"></i>
+      <i class="m3-icon icon:email"></i>
       <span class="drawer-label">메일</span>
     </a>
     <a href="#" class="drawer-item">
-      <i class="m3-icon icon:calendar_today"></i>
+      <i class="m3-icon" data-icon="calendar_today"></i>
       <span class="drawer-label">일정</span>
     </a>
   </div>
@@ -353,7 +407,7 @@
       <span class="drawer-label">홈</span>
     </a>
     <a href="#" class="drawer-item">
-      <i class="m3-icon icon:mail"></i>
+      <i class="m3-icon icon:email"></i>
       <span class="drawer-label">메일</span>
     </a>
 
@@ -403,7 +457,7 @@
 | `--drawer-border-right` | `0.0625rem solid var(--color-border-subtle)` | 우측 테두리 |
 | `--drawer-padding` | `0.75rem 0` | 내부 여백 |
 | `--drawer-box-shadow` | `none` | 그림자 |
-| `--drawer-color` | `var(--color-on-surface)` | 텍스트 색상 |
+| `--drawer-color` | `var(--color-text)` | 텍스트 색상 |
 | `--drawer-z-index` | `var(--z-fixed)` | z-index |
 | `--drawer-headline-font-size` | `0.875rem` | 헤드라인 글자 크기 |
 | `--drawer-headline-font-weight` | `600` | 헤드라인 굵기 |
@@ -460,7 +514,7 @@
     <span class="menu-label">수정</span>
   </button>
   <button class="menu-item">
-    <i class="m3-icon icon:content_copy"></i>
+    <i class="m3-icon icon:copy"></i>
     <span class="menu-label">복사</span>
   </button>
   <button class="menu-item">
@@ -484,7 +538,7 @@
     <span class="menu-label">공유</span>
   </button>
   <button class="menu-item menu-item-disabled">
-    <i class="m3-icon icon:archive"></i>
+    <i class="m3-icon" data-icon="archive"></i>
     <span class="menu-label">보관 (비활성)</span>
   </button>
 </div>
@@ -502,10 +556,10 @@
 | `--menu-max-width` | `17.5rem` | 최대 너비 |
 | `--menu-z-index` | `var(--z-dropdown)` | z-index |
 | `--menu-border` | `none` | 테두리 |
-| `--menu-color` | `var(--color-on-surface)` | 텍스트 색상 |
+| `--menu-color` | `var(--color-text)` | 텍스트 색상 |
 | `--menu-item-height` | `3rem` | 항목 높이 |
 | `--menu-item-padding` | `0 0.75rem` | 항목 내부 여백 |
-| `--menu-item-color` | `var(--color-on-surface)` | 항목 색상 |
+| `--menu-item-color` | `var(--color-text)` | 항목 색상 |
 | `--menu-item-font-size` | `0.875rem` | 항목 글자 크기 |
 | `--menu-item-gap` | `0.75rem` | 아이콘-라벨 간격 |
 | `--menu-item-border-radius` | `0` | 항목 모서리 |
@@ -546,7 +600,7 @@
 <Demo>
 <ul class="m3-list">
   <li class="list-item">
-    <i class="m3-icon icon:inbox list-leading"></i>
+    <i class="m3-icon list-leading" data-icon="inbox"></i>
     <span>받은편지함</span>
     <span class="list-trailing">24</span>
   </li>
@@ -556,7 +610,7 @@
     <span class="list-trailing">5</span>
   </li>
   <li class="list-item">
-    <i class="m3-icon icon:drafts list-leading"></i>
+    <i class="m3-icon list-leading" data-icon="drafts"></i>
     <span>임시보관함</span>
   </li>
 </ul>
@@ -570,7 +624,7 @@
     <div class="list-avatar">A</div>
     <div>
       <div>홍길동</div>
-      <div class="list-secondary">hong@example.com</div>
+      <div class="list-supporting">hong@example.com</div>
     </div>
   </li>
   <li class="list-item">
@@ -579,7 +633,7 @@
     </div>
     <div>
       <div>김철수</div>
-      <div class="list-secondary">kim@example.com</div>
+      <div class="list-supporting">kim@example.com</div>
     </div>
   </li>
 </ul>
@@ -620,7 +674,7 @@
 | `--list-gap` | `0` | 항목 간 간격 |
 | `--list-item-padding` | `0.5rem 1rem` | 항목 내부 여백 |
 | `--list-item-min-height` | `3rem` | 항목 최소 높이 |
-| `--list-item-color` | `var(--color-on-surface)` | 항목 텍스트 색상 |
+| `--list-item-color` | `var(--color-text)` | 항목 텍스트 색상 |
 | `--list-item-font-size` | `1rem` | 항목 글자 크기 |
 | `--list-item-font-weight` | `400` | 항목 글자 굵기 |
 | `--list-item-line-height` | `1.5rem` | 항목 줄 높이 |
@@ -647,7 +701,7 @@
 | `list-leading` | 선행 요소 (아이콘) |
 | `list-trailing` | 후행 요소 |
 | `list-avatar` | 아바타 |
-| `list-secondary` | 보조 텍스트 |
+| `list-supporting` | 보조 텍스트 (`--list-secondary-*` 변수 사용) |
 | `list-clickable` | 클릭 가능한 항목 |
 | `list-active` | 활성 상태 |
 | `list-disabled` | 비활성 상태 |

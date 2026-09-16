@@ -1,4 +1,4 @@
-# @newtil/components 설계 가이드라인
+# @newtil/materials 설계 가이드라인
 
 이 문서는 M3 컴포넌트 CSS를 작성할 때 반드시 따라야 하는 규칙을 정의합니다.
 새 컴포넌트를 추가하거나 기존 컴포넌트를 수정할 때 이 문서를 기준으로 검증합니다.
@@ -331,10 +331,10 @@ m3-컴포넌트.css
 
 ```css
 @media (min-width: 640px) {
-    .m3-card.sm\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+    .m3-card.sm\:card\:filled { --card-background: var(--color-surface-2); --card-box-shadow: none; }
 }
 @media (min-width: 768px) {
-    .m3-card.md\:card\:filled { --card-background: var(--color-surface-muted); --card-box-shadow: none; }
+    .m3-card.md\:card\:filled { --card-background: var(--color-surface-2); --card-box-shadow: none; }
 }
 ```
 

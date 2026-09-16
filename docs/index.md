@@ -18,11 +18,11 @@ hero:
 | 특징 | 설명 |
 |------|------|
 | **Material Design 3** | Google M3 스펙 기반 컴포넌트 — 버튼, 카드, 다이얼로그, 탭 등 |
-| **CSS 변수 커스터마이징** | `--md-sys-color-primary` 하나로 전체 브랜드 색상 변경 |
+| **CSS 변수 커스터마이징** | `--color-primary` 등 design-tokens 변수만 바꾸면 전체 브랜드 색상 변경. 컴포넌트마다 `--btn-*`, `--card-*` Variable API 제공 |
 | **디자인 토큰 공유** | `@newtil/design-tokens`와 동일한 토큰 — `@newtil/css`와 시각적 일관성 자동 유지 |
 | **다크모드 내장** | 시스템 자동 + 수동 토글. 모든 컴포넌트가 다크모드 지원 |
 | **프레임워크 무관** | 순수 CSS 클래스 — React, Vue, Svelte, 바닐라 HTML 어디서든 사용 |
-| **경량** | 필요한 컴포넌트만 import. 트리쉐이킹 지원 |
+| **순수 CSS** | JavaScript 런타임 없음. `@newtil/materials/index.css` 하나로 모든 컴포넌트 제공 |
 
 ## 가이드
 

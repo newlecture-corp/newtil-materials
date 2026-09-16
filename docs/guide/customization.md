@@ -1,6 +1,6 @@
 # 커스터마이징
 
-`@newtil/components`를 원하는 모양으로 만드는 방법.
+`@newtil/materials`를 원하는 모양으로 만드는 방법.
 
 ## 3단계 우선순위
 
@@ -133,7 +133,7 @@ CSS 변수는 부모→자식으로 상속되므로 컨테이너에서 한 번 �
 브랜드 색 전환은 예외적으로 권장되는 변수 사용입니다. `globals.css`에서 한 번 설정하고 끝:
 
 ```css
-@import "@newtil/components/index.css";
+@import "@newtil/materials/index.css";
 
 :root {
   --color-primary: #4f46e5;
@@ -179,10 +179,9 @@ CSS 변수는 부모→자식으로 상속되므로 컨테이너에서 한 번 �
 **요청 채널:**
 
 - **GitHub Issue**
-  - [@newtil/components](https://github.com/newlecture-corp/newtil-components/issues)
+  - [@newtil/materials](https://github.com/newlecture-corp/newtil-materials/issues)
   - [@newtil/css](https://github.com/newlecture-corp/newtil-css/issues)
   - [@newtil/design-tokens](https://github.com/newlecture-corp/newtil-design-tokens/issues)
-- **뉴렉처 프로젝트 피드백:** https://www.newlecture.com/projects/feedback
 
 **요청 시 포함하면 좋은 내용:**
 
@@ -211,24 +210,28 @@ CSS 변수는 부모→자식으로 상속되므로 컨테이너에서 한 번 �
 <button class="m3-btn btn:outlined">저장</button>
 ```
 
-### 2. variant와 충돌하는 조합
+### 2. 옵션 클래스를 컴포넌트 클래스와 다른 요소에 붙임
 
 ```html
-<!-- ❌ btn:outlined + btn-color:danger → 의도: outlined+빨간글자. 실제: filled+빨간배경 -->
-<button class="m3-btn btn:outlined btn-color:danger">삭제</button>
+<!-- ❌ 옵션이 부모에 있음. 선택자가 .m3-btn.btn-size\:lg 라 적용되지 않음 -->
+<div class="btn-size:lg">
+  <button class="m3-btn">저장</button>
+</div>
 ```
 
-`btn-color:*`는 filled 기준 variant라 outlined와 조합 시 outlined 효과가 무효화됩니다. 이 경우는 인라인 style로 텍스트/보더 색만 오버라이드:
+옵션 클래스 선택자는 `.m3-btn.btn-size\:lg` 처럼 컴포넌트 클래스와 **같은 요소**를 요구합니다. 부모에 두려면 옵션이 아니라 변수를 상속시켜야 합니다:
 
 ```html
-<!-- ✓ outlined 유지 + 색상만 변경 -->
-<button
-  class="m3-btn btn:outlined"
-  style="--btn-color: var(--color-danger); --btn-border-color: var(--color-danger);"
->
-  삭제
-</button>
+<!-- ✓ 옵션은 같은 요소에 -->
+<button class="m3-btn btn-size:lg">저장</button>
+
+<!-- ✓ 부모 스코프는 변수로 -->
+<div style="--btn-height: 3.5rem;">
+  <button class="m3-btn">저장</button>
+</div>
 ```
+
+참고로 타입(`btn:outlined`)과 색(`btn-color:danger`)은 설계상 조합됩니다. `btn-color:*`는 `--btn-accent`만 바꾸고, 타입은 그 accent를 배경으로 쓸지(filled) 글자·테두리로 쓸지(outlined/text) 결정합니다.
 
 ### 3. `@import` 순서 실수
 
@@ -237,10 +240,10 @@ CSS 변수는 부모→자식으로 상속되므로 컨테이너에서 한 번 �
 ```css
 /* ❌ */
 :root { --color-primary: #4f46e5; }
-@import "@newtil/components";
+@import "@newtil/materials/index.css";
 
 /* ✓ */
-@import "@newtil/components";
+@import "@newtil/materials/index.css";
 :root { --color-primary: #4f46e5; }
 ```
 

@@ -10,7 +10,7 @@
 
 <Demo>
 <div style="position: relative; display: inline-flex;">
-  <i class="m3-icon icon:mail"></i>
+  <i class="m3-icon icon:email"></i>
   <span class="m3-badge">3</span>
 </div>
 
@@ -196,7 +196,7 @@
 | 변수명 | 기본값 | 설명 |
 |--------|--------|------|
 | `--snackbar-background` | `var(--color-surface-inverse)` | 배경색 |
-| `--snackbar-color` | `var(--color-on-surface-inverse)` | 텍스트 색상 |
+| `--snackbar-color` | `var(--color-text-inverse)` | 텍스트 색상 |
 | `--snackbar-border-radius` | `0.25rem` | 모서리 둥글기 |
 | `--snackbar-padding` | `0 0.5rem 0 1rem` | 내부 여백 |
 | `--snackbar-min-height` | `3rem` | 최소 높이 |
@@ -258,18 +258,18 @@
 | 변수명 | 기본값 | 설명 |
 |--------|--------|------|
 | `--tooltip-background` | `var(--color-surface-inverse)` | 배경색 |
-| `--tooltip-color` | `var(--color-on-surface-inverse)` | 텍스트 색상 |
-| `--tooltip-border-radius` | `var(--radius-sm)` | 모서리 둥글기 |
+| `--tooltip-color` | `var(--color-text-inverse)` | 텍스트 색상 |
+| `--tooltip-border-radius` | `var(--radius-2)` | 모서리 둥글기 |
 | `--tooltip-padding` | `0.25rem 0.5rem` | 내부 여백 |
 | `--tooltip-font-size` | `0.75rem` | 글자 크기 |
 | `--tooltip-line-height` | `1rem` | 줄 높이 |
 | `--tooltip-max-width` | `12.5rem` | 최대 너비 |
-| `--tooltip-z-index` | `var(--z-tooltip)` | z-index |
+| `--tooltip-z-index` | `var(--z-tooltip, var(--z-toast))` | z-index |
 | `--tooltip-box-shadow` | `none` | 그림자 |
 | `--tooltip-border` | `none` | 테두리 |
-| `--tooltip-font-weight` | `var(--font-weight-medium)` | 글자 굵기 |
-| `--tooltip-rich-background` | `var(--color-surface-muted)` | Rich 배경색 |
-| `--tooltip-rich-color` | `var(--color-on-surface)` | Rich 텍스트 색상 |
+| `--tooltip-font-weight` | `var(--font-weight-medium, 500)` | 글자 굵기 |
+| `--tooltip-rich-background` | `var(--color-surface-2)` | Rich 배경색 |
+| `--tooltip-rich-color` | `var(--color-text)` | Rich 텍스트 색상 |
 
 ### 옵션 클래스
 

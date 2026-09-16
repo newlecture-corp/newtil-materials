@@ -36,7 +36,7 @@
   </div>
   <div class="card-actions">
     <button class="m3-btn btn:text">취소</button>
-    <button class="m3-btn btn:filled">확인</button>
+    <button class="m3-btn">확인</button>
   </div>
 </div>
 </Demo>
@@ -128,14 +128,14 @@
 
 | 변수명 | 기본값 | 설명 |
 |--------|--------|------|
-| `--card-background` | `var(--color-surface-subtle)` | 카드 배경색 |
+| `--card-background` | `var(--color-surface-1)` | 카드 배경색 |
 | `--card-width` | `auto` | 카드 너비 |
 | `--card-height` | `auto` | 카드 높이 |
 | `--card-border` | `none` | 카드 테두리 |
 | `--card-border-radius` | `0.75rem` | 모서리 둥글기 |
 | `--card-box-shadow` | `var(--shadow-sm)` | 그림자 |
 | `--card-opacity` | `1` | 불투명도 |
-| `--card-color` | `var(--color-on-surface)` | 텍스트 색상 |
+| `--card-color` | `var(--color-text)` | 텍스트 색상 |
 | `--card-overflow` | `hidden` | 오버플로우 처리 |
 | `--card-flex-direction` | `column` | 레이아웃 방향 |
 | `--card-padding-x` | `1rem` | 좌우 내부 여백 |
@@ -143,7 +143,7 @@
 | `--card-header-gap` | `1rem` | 헤더 내 간격 |
 | `--card-headline-size` | `1.5rem` | 헤드라인 글자 크기 |
 | `--card-headline-weight` | `400` | 헤드라인 굵기 |
-| `--card-headline-color` | `var(--color-on-surface)` | 헤드라인 색상 |
+| `--card-headline-color` | `var(--color-text)` | 헤드라인 색상 |
 | `--card-subhead-size` | `0.875rem` | 서브헤드 글자 크기 |
 | `--card-subhead-color` | `var(--color-text-muted)` | 서브헤드 색상 |
 | `--card-supporting-size` | `0.875rem` | 본문 글자 크기 |
@@ -201,7 +201,7 @@
 <Demo>
 <dialog class="m3-dialog" open>
   <div class="dialog-icon">
-    <i class="m3-icon icon:warning"></i>
+    <i class="m3-icon" data-icon="warning"></i>
   </div>
   <h2 class="dialog-headline">삭제 확인</h2>
   <div class="dialog-content">
@@ -219,7 +219,7 @@
 JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다.
 
 <Demo>
-<button class="m3-btn btn:filled" onclick="document.getElementById('myDialog').showModal()">
+<button class="m3-btn" onclick="document.getElementById('myDialog').showModal()">
   다이얼로그 열기
 </button>
 
@@ -236,7 +236,7 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 
 | 변수명 | 기본값 | 설명 |
 |--------|--------|------|
-| `--dialog-background` | `var(--color-surface-muted)` | 배경색 |
+| `--dialog-background` | `var(--color-surface-2)` | 배경색 |
 | `--dialog-border-radius` | `1.75rem` | 모서리 둥글기 |
 | `--dialog-padding` | `1.5rem` | 내부 여백 |
 | `--dialog-min-width` | `17.5rem` | 최소 너비 |
@@ -244,7 +244,7 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 | `--dialog-color` | `var(--color-text-muted)` | 텍스트 색상 |
 | `--dialog-border` | `none` | 테두리 |
 | `--dialog-box-shadow` | `var(--shadow-lg)` | 그림자 |
-| `--dialog-scrim-color` | `rgba(0, 0, 0, 0.32)` | 배경 딤(scrim) 색상 |
+| `--dialog-scrim-color` | `var(--color-scrim)` | 배경 딤(scrim) 색상 |
 | `--dialog-z-index` | `var(--z-modal)` | z-index |
 | `--dialog-headline-color` | `var(--color-text)` | 제목 색상 |
 | `--dialog-headline-size` | `1.5rem` | 제목 글자 크기 |
@@ -292,7 +292,7 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
   <div class="sheet-content">
     <h3 class="sheet-headline">모달 시트</h3>
     <p>배경을 탭하면 닫히는 모달 시트입니다.</p>
-    <button class="m3-btn btn:filled">확인</button>
+    <button class="m3-btn">확인</button>
   </div>
 </div>
 </Demo>
@@ -321,7 +321,7 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 | `--sheet-box-shadow` | `var(--shadow-lg)` | 그림자 |
 | `--sheet-padding` | `0` | 내부 여백 |
 | `--sheet-border` | `none` | 테두리 |
-| `--sheet-color` | `var(--color-on-surface)` | 텍스트 색상 |
+| `--sheet-color` | `var(--color-text)` | 텍스트 색상 |
 | `--sheet-bottom` | `0` | 하단 위치 |
 | `--sheet-left` | `0` | 좌측 위치 |
 | `--sheet-width` | `100%` | 너비 |
@@ -399,7 +399,7 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 | `--chip-gap` | `0.5rem` | 내부 요소 간격 |
 | `--chip-border-radius` | `0.5rem` | 모서리 둥글기 |
 | `--chip-background` | `transparent` | 배경색 |
-| `--chip-color` | `var(--color-on-surface)` | 텍스트 색상 |
+| `--chip-color` | `var(--color-text)` | 텍스트 색상 |
 | `--chip-border` | `0.0625rem solid var(--color-border)` | 테두리 |
 | `--chip-font-size` | `0.875rem` | 글자 크기 |
 | `--chip-font-weight` | `var(--font-weight-medium)` | 글자 굵기 |

@@ -73,7 +73,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 <!-- Surface 색상 -->
 <button class="m3-btn btn-color:surface">Surface</button>
-<button class="m3-btn btn-color:surface-subtle">Surface Subtle</button>
+<button class="m3-btn btn-color:surface-1">Surface 1</button>
 <button class="m3-btn btn-color:surface-inverse">Surface Inverse</button>
 
 <!-- 상태 색상 -->
@@ -122,8 +122,10 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 | `--btn-padding` | `0 1.5rem` | 내부 여백 (24dp) |
 | `--btn-gap` | `0.5rem` | 아이콘-라벨 간격 (8dp) |
 | `--btn-icon-size` | `1.125rem` | 아이콘 크기 (18dp) |
-| `--btn-color` | `var(--color-on-primary)` | 텍스트 색상 |
-| `--btn-background-color` | `var(--color-primary)` | 배경 색상 |
+| `--btn-accent` | `var(--color-primary)` | 의미 색상. `btn-color:*`가 이 변수만 변경 |
+| `--btn-on-accent` | `var(--color-on-primary)` | accent 위 글자 색상 |
+| `--btn-color` | `var(--btn-on-accent)` | 텍스트 색상 |
+| `--btn-background-color` | `var(--btn-accent)` | 배경 색상 |
 | `--btn-background-image` | `none` | 배경 이미지 |
 | `--btn-box-shadow` | `none` | 그림자 |
 | `--btn-elevation-hover` | `var(--shadow-sm)` | 호버 시 그림자 |
@@ -136,7 +138,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 | `--btn-state-hover-opacity` | `0.08` | 호버 state layer 투명도 |
 | `--btn-state-focus-opacity` | `0.12` | 포커스 state layer 투명도 |
 | `--btn-state-pressed-opacity` | `0.12` | 눌림 state layer 투명도 |
-| `--btn-state-layer-color` | `var(--color-on-primary)` | State layer 색상 |
+| `--btn-state-layer-color` | `var(--btn-on-accent)` | State layer 색상 |
 
 ---
 
@@ -205,7 +207,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 | 클래스 | 배경 | 아이콘 색상 |
 |--------|------|------------|
-| (기본) | surface-container-high | primary |
+| (기본) | surface-1 | primary |
 | `fab-color:primary` | primary | on-primary |
 | `fab-color:secondary` | secondary | on-secondary |
 | `fab-color:tertiary` | tertiary | on-tertiary |
@@ -219,7 +221,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 | `--fab-padding` | `1rem` | 내부 여백 (16dp) |
 | `--fab-gap` | `0.75rem` | 아이콘-텍스트 간격 (12dp) |
 | `--fab-icon-size` | `1.5rem` | 아이콘 크기 (24dp) |
-| `--fab-background` | `var(--color-surface-subtle)` | 배경 색상 |
+| `--fab-background` | `var(--color-surface-1)` | 배경 색상 |
 | `--fab-color` | `var(--color-primary)` | 아이콘/텍스트 색상 |
 | `--fab-box-shadow` | `var(--shadow-lg)` | 그림자 (level3) |
 | `--fab-elevation-hover` | `var(--shadow-xl)` | 호버 시 그림자 (level4) |
@@ -302,7 +304,7 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 
 <!-- outlined + toggle -->
 <button class="m3-icon-btn icon-btn:outlined icon-btn-toggle:selected">
-  <i class="m3-icon icon:bookmark icon-filled:1" data-icon="bookmark"></i>
+  <i class="m3-icon icon-filled:1" data-icon="bookmark"></i>
 </button>
 </Demo>
 
@@ -314,13 +316,13 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 | `--icon-btn-touch-size` | `3rem` | 터치 영역 (48dp) |
 | `--icon-btn-icon-size` | `1.5rem` | 아이콘 크기 (24dp) |
 | `--icon-btn-background` | `transparent` | 배경 |
-| `--icon-btn-color` | `var(--color-on-surface)` | 아이콘 색상 |
+| `--icon-btn-color` | `var(--color-text)` | 아이콘 색상 |
 | `--icon-btn-box-shadow` | `none` | 그림자 |
 | `--icon-btn-border-width` | `0` | 테두리 두께 |
 | `--icon-btn-border-color` | `transparent` | 테두리 색상 |
 | `--icon-btn-border-style` | `solid` | 테두리 스타일 |
 | `--icon-btn-border-radius` | `var(--radius-full)` | 모서리 둥글기 |
-| `--icon-btn-state-layer-color` | `var(--color-on-surface)` | State layer 색상 |
+| `--icon-btn-state-layer-color` | `var(--color-text)` | State layer 색상 |
 | `--icon-btn-state-hover-opacity` | `0.08` | 호버 투명도 |
 | `--icon-btn-state-focus-opacity` | `0.12` | 포커스 투명도 |
 | `--icon-btn-state-pressed-opacity` | `0.12` | 눌림 투명도 |

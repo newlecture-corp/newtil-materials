@@ -1,30 +1,53 @@
 # 시작하기
 
-@newtil/components는 CSS 변수 기반의 Material Design 3 컴포넌트 라이브러리입니다. 별도의 JavaScript 없이 순수 CSS만으로 버튼, 입력 필드, 아이콘 등 UI 컴포넌트를 구현합니다.
+`@newtil/materials` 는 Material Design 3 를 CSS 로 구현한 `m3-` 컴포넌트 라이브러리입니다. 별도의 JavaScript 없이 순수 CSS 클래스만으로 버튼, 입력 필드, 카드, 내비게이션 등을 구현하며, 모든 시각 속성은 `@newtil/design-tokens` 의 변수 위에서 동작합니다.
 
 ## 설치
 
 ```bash
-npm install @newtil/components
+npm install @newtil/materials
 ```
+
+`@newtil/design-tokens` 는 의존성으로 함께 설치됩니다.
 
 ## CSS 가져오기
 
-### HTML link 태그
-
-```html
-<link rel="stylesheet" href="node_modules/@newtil/components/css/component/m3/m3-btn.css">
-<link rel="stylesheet" href="node_modules/@newtil/components/css/component/m3/m3-icon.css">
-<link rel="stylesheet" href="node_modules/@newtil/components/css/component/m3/icon-essential.css">
-```
+패키지가 공개하는 진입점은 두 개뿐입니다. 개별 컴포넌트 파일(`css/component/m3/*.css`)은 패키지 외부에서 가져올 수 없습니다.
 
 ### JavaScript import (Vite, Webpack 등)
 
+패키지를 그대로 가져오면 `dist/index.css` 가 로드됩니다.
+
 ```js
-import '@newtil/components/css/component/m3/m3-btn.css';
-import '@newtil/components/css/component/m3/m3-icon.css';
-import '@newtil/components/css/component/m3/icon-essential.css';
+import "@newtil/materials";
 ```
+
+### CSS `@import`
+
+```css
+@import "@newtil/materials/index.css";
+```
+
+### HTML link 태그
+
+번들러 없이 쓸 때는 `node_modules` 의 빌드 결과를 직접 참조합니다.
+
+```html
+<link rel="stylesheet" href="node_modules/@newtil/materials/dist/index.css">
+```
+
+## index.css 에 들어 있는 것
+
+`index.css` 하나가 다음을 순서대로 포함합니다.
+
+1. `@newtil/design-tokens` — 색·간격·글꼴·모서리·그림자·층 변수
+2. reset
+3. Material Symbols 폰트 `@import` (Google Fonts, Outlined·Rounded·Sharp)
+4. 모든 `m3-*` 컴포넌트와 `icon:*` 아이콘 클래스
+
+::: warning 아이콘 폰트는 네트워크 의존성입니다
+Material Symbols 폰트는 패키지에 포함되지 않고 런타임에 `fonts.googleapis.com` 에서 받아옵니다. 오프라인 환경이나 CSP 로 Google Fonts 가 막힌 환경에서는 아이콘이 이름 텍스트로 보입니다. 자세한 내용은 [아이콘](./icons.md) 문서를 참고하세요.
+:::
 
 ## 첫 번째 예제
 
@@ -43,41 +66,20 @@ import '@newtil/components/css/component/m3/icon-essential.css';
 <i class="m3-icon icon:home icon-color:primary"></i>
 </Demo>
 
-## 프로젝트 구조
+## 클래스 규칙
 
-```
-@newtil/components/
-└── css/
-    └── component/
-        └── m3/
-            ├── m3-icon.css          # 아이콘 기본 스타일
-            ├── icon-essential.css   # Essential 60개 아이콘 정의
-            ├── m3-btn.css           # 버튼
-            ├── m3-fab.css           # FAB (Floating Action Button)
-            ├── m3-icon-btn.css      # 아이콘 버튼
-            ├── m3-text-field.css    # 텍스트 입력 필드
-            ├── m3-checkbox.css      # 체크박스
-            ├── m3-radio-btn.css     # 라디오 버튼
-            ├── m3-switch.css        # 스위치 (토글)
-            ├── m3-slider.css        # 슬라이더
-            ├── m3-card.css          # 카드
-            ├── m3-dialog.css        # 다이얼로그
-            ├── m3-chips.css         # 칩
-            ├── m3-tabs.css          # 탭
-            ├── m3-nav-bar.css       # 내비게이션 바
-            ├── m3-nav-drawer.css    # 내비게이션 드로어
-            ├── m3-nav-rail.css      # 내비게이션 레일
-            ├── m3-menu.css          # 메뉴
-            ├── m3-list.css          # 리스트
-            ├── m3-snackbar.css      # 스낵바
-            ├── m3-progress.css      # 프로그레스
-            ├── m3-tooltip.css       # 툴팁
-            └── ...
-```
+| 용도 | 패턴 | 예시 |
+|------|------|------|
+| 컴포넌트 | `m3-컴포넌트` | `m3-btn`, `m3-card`, `m3-text-field` |
+| 타입 변형 | `컴포넌트:타입` | `btn:outlined`, `card:filled` |
+| 속성 변형 | `컴포넌트-속성:값` | `btn-size:lg`, `btn-color:danger` |
+| 자식 요소 | 접두사 없는 `컴포넌트부분` | `card-header`, `list-item` |
+
+옵션 클래스는 컴포넌트 클래스와 **같은 요소**에 붙입니다(선택자가 `.m3-btn.btn-size\:lg` 형태).
 
 ## 커스터마이징 미리보기
 
-모든 컴포넌트는 `--btn-*`, `--field-*` 등 CSS 변수로 시각 속성이 노출됩니다. inline style이나 커스텀 클래스로 간단히 오버라이드할 수 있습니다.
+모든 컴포넌트는 `--btn-*`, `--field-*` 등 CSS 변수로 시각 속성이 노출됩니다. inline style 이나 커스텀 클래스로 간단히 오버라이드할 수 있습니다.
 
 ```html
 <!-- inline style로 버튼 높이 변경 -->
@@ -95,4 +97,4 @@ import '@newtil/components/css/component/m3/icon-essential.css';
 </style>
 ```
 
-자세한 내용은 [커스터마이징 가이드](./customization.md)를 참고하세요.
+변수를 건드리기 전에 타입 → 옵션 클래스를 먼저 확인하세요. 자세한 내용은 [커스터마이징 가이드](./customization.md)를 참고하세요.

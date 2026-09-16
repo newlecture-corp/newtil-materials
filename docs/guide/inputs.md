@@ -214,7 +214,7 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 
 | 변수 | 기본값 | 설명 |
 |------|--------|------|
-| `--field-background` | `var(--color-surface-muted)` | 배경 색상 |
+| `--field-background` | `var(--color-surface-2)` | 배경 색상 |
 | `--field-border` | `none` | 테두리 |
 | `--field-border-radius` | `0.25rem 0.25rem 0 0` | 모서리 둥글기 |
 | `--field-padding-x` | `1rem` | 좌우 여백 |
@@ -232,7 +232,7 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 | `--field-outline-width-focus` | `0.1875rem` | Outlined 포커스 시 두께 |
 | `--field-outline-color-focus` | `var(--color-primary)` | Outlined 포커스 시 색상 |
 | `--field-font-size` | `1rem` | 입력 텍스트 크기 |
-| `--field-color` | `var(--color-on-surface)` | 입력 텍스트 색상 |
+| `--field-color` | `var(--color-text)` | 입력 텍스트 색상 |
 | `--field-placeholder-color` | `var(--color-text-muted)` | 플레이스홀더 색상 |
 | `--field-caret-color` | `var(--color-primary)` | 캐럿 색상 |
 | `--field-label-size` | `1rem` | 라벨 크기 |
@@ -486,7 +486,7 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 | `--switch-track-width` | `3.25rem` | 트랙 너비 (52dp) |
 | `--switch-track-height` | `2rem` | 트랙 높이 (32dp) |
 | `--switch-track-radius` | `var(--radius-full)` | 트랙 모서리 |
-| `--switch-track-color` | `var(--color-surface-muted)` | 트랙 색상 (꺼짐) |
+| `--switch-track-color` | `var(--color-surface-2)` | 트랙 색상 (꺼짐) |
 | `--switch-track-border` | `0.125rem solid var(--color-border-strong)` | 트랙 테두리 (꺼짐) |
 | `--switch-track-color-checked` | `var(--color-primary)` | 트랙 색상 (켜짐) |
 | `--switch-track-border-checked` | `0.125rem solid var(--color-primary)` | 트랙 테두리 (켜짐) |
@@ -553,3 +553,54 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 | `--slider-handle-border-radius` | `var(--radius-full)` | 핸들 모서리 |
 | `--slider-handle-shadow` | `var(--shadow-sm)` | 핸들 그림자 |
 | `--slider-handle-border` | `none` | 핸들 테두리 |
+
+---
+
+## m3-form (폼 레이아웃, newtil 확장)
+
+M3 스펙에는 Form 컴포넌트가 없습니다. `m3-form` 은 폼의 공통 배치(헤더 / 메시지 / 필드 / 액션)를 표준화하기 위한 newtil 확장입니다.
+
+### 기본 사용법
+
+<Demo>
+<form class="m3-form" style="max-width: 22rem;">
+  <div class="form-header">
+    <h2 class="form-headline">로그인</h2>
+    <p class="form-description">계정 정보를 입력하세요.</p>
+  </div>
+  <div class="form-message form-message:error">
+    이메일 또는 비밀번호가 올바르지 않습니다.
+  </div>
+  <div class="form-fields">
+    <div class="m3-text-field field:outlined">
+      <input type="email" placeholder=" ">
+      <label>이메일</label>
+    </div>
+    <div class="m3-text-field field:outlined">
+      <input type="password" placeholder=" ">
+      <label>비밀번호</label>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="button" class="m3-btn btn:text">취소</button>
+    <button type="button" class="m3-btn">로그인</button>
+  </div>
+</form>
+</Demo>
+
+### 옵션 클래스
+
+| 클래스 | 설명 |
+|--------|------|
+| `form-header` | 헤더 영역 |
+| `form-headline` | 제목 |
+| `form-description` | 설명 문구 |
+| `form-fields` | 입력 필드 묶음 |
+| `form-actions` | 버튼 영역 |
+| `form-actions:start` / `form-actions:center` / `form-actions:end` | 버튼 정렬 |
+| `form-actions:between` | 버튼 양끝 배치 |
+| `form-actions:stretch` | 버튼을 가로로 늘림 |
+| `form-message` | 안내 메시지 |
+| `form-message:info` / `form-message:success` / `form-message:warning` / `form-message:error` | 메시지 종류 |
+
+시각 속성은 `--form-*` 변수로 노출됩니다. 변수 목록은 `css/component/m3/m3-form.css` 의 변수 선언 블록을 참고하세요.

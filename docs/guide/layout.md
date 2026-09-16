@@ -83,6 +83,35 @@
 - **Medium (600 ~ 839px)**: `layout-rail`(좌측 레일)만 표시. `layout-drawer`와 `layout-bar`는 숨김. 메인 콘텐츠에 레일 너비만큼 왼쪽 마진 적용.
 - **Expanded (>= 840px)**: `layout-drawer`(좌측 서랍)만 표시. `layout-rail`과 `layout-bar`는 숨김. 메인 콘텐츠에 서랍 너비만큼 왼쪽 마진 적용.
 
+### 배치 기본값과 고정 옵션 (0.4.0)
+
+내비게이션 컴포넌트 자체(`m3-top-app-bar`, `m3-nav-bar`, `m3-nav-rail`)는 0.4.0 부터 기본이 `position: static` 입니다. 배치는 페이지 셸이 결정한다는 원칙이며, `m3-layout` 안에서는 다음과 같이 나뉩니다.
+
+| 요소 | `m3-layout` 이 하는 일 | 필요한 opt-in |
+|------|------------------------|---------------|
+| `layout-drawer` (`m3-nav-drawer`) | 레이아웃이 좌측에 `position: fixed` 로 고정 | 없음 |
+| `layout-rail` (`m3-nav-rail`) | 레이아웃이 좌측에 `position: fixed` 로 고정 | 없음 (`rail:fixed` 불필요) |
+| `layout-header` (`m3-top-app-bar`) | 표시 여부만 제어 | 상단 고정이 필요하면 `bar:fixed` |
+| `layout-bar` (`m3-nav-bar`) | 표시 여부만 제어 | 하단 고정이 필요하면 `nav-bar:fixed` |
+
+`layout-main` 은 Compact 에서 `--layout-bar-height` 만큼 하단 패딩을 두므로, 하단 바에 `nav-bar:fixed` 를 붙이면 콘텐츠가 바 뒤에 가려지지 않습니다.
+
+```html
+<div class="m3-layout">
+  <nav class="m3-nav-drawer layout-drawer">...</nav>
+  <nav class="m3-nav-rail layout-rail">...</nav>
+  <div class="layout-main">
+    <header class="m3-top-app-bar layout-header bar:fixed">
+      <h1 class="bar-title">페이지 제목</h1>
+    </header>
+    <main class="layout-content">...</main>
+  </div>
+  <nav class="m3-nav-bar layout-bar nav-bar:fixed">...</nav>
+</div>
+```
+
+`m3-layout` 없이 컴포넌트만 단독으로 쓸 때의 고정 옵션은 [내비게이션](./navigation.md) 문서의 `bar:fixed` · `nav-bar:fixed` · `rail:fixed` 절을 참고하세요.
+
 ### 옵션: layout:fixed-drawer
 
 브레이크포인트에 관계없이 서랍을 항상 표시합니다.

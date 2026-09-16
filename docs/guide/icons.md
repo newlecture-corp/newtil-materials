@@ -2,6 +2,14 @@
 
 Material Symbols 폰트 기반의 아이콘 컴포넌트입니다. 두 가지 방법으로 아이콘을 사용할 수 있습니다.
 
+## 폰트 의존성
+
+`@newtil/materials/index.css` 는 Google Fonts 에서 Material Symbols 폰트(Outlined·Rounded·Sharp) 를 `@import` 합니다. 아이콘은 이 폰트의 글리프이므로 **런타임에 `fonts.googleapis.com` / `fonts.gstatic.com` 접근이 필요**합니다. 패키지 자체에는 폰트 파일이 포함되어 있지 않습니다.
+
+- 오프라인 환경이나 CSP(`style-src`, `font-src`)로 Google Fonts 가 막힌 환경에서는 아이콘 자리에 아이콘 이름 텍스트(예: `home`)가 그대로 보입니다.
+- 이런 환경에서는 Material Symbols 폰트를 직접 호스팅하고 `@font-face` 로 같은 패밀리 이름(`"Material Symbols Outlined"` 등)을 선언하면 됩니다. `--icon-family` 변수로 패밀리 이름을 바꿀 수도 있습니다.
+- 아이콘을 쓰지 않는 페이지도 `index.css` 를 가져오는 순간 폰트 요청이 발생합니다.
+
 ## 방법 1. icon:이름 클래스 (Essential 아이콘)
 
 미리 정의된 60개 핵심 아이콘을 클래스 이름으로 사용합니다.
@@ -150,7 +158,7 @@ Essential에 없는 아이콘은 `data-icon` 속성으로 사용합니다. Mater
 
 <!-- 상태 색상 -->
 <i class="m3-icon icon:check icon-color:success"></i>
-<i class="m3-icon icon:warning icon-color:warning" data-icon="warning"></i>
+<i class="m3-icon icon-color:warning" data-icon="warning"></i>
 <i class="m3-icon icon:delete icon-color:danger"></i>
 
 <!-- Surface / Text -->
@@ -167,7 +175,7 @@ Essential에 없는 아이콘은 `data-icon` 속성으로 사용합니다. Mater
 | `icon-color:tertiary` | 3차 색상 |
 | `icon-color:tertiary-hover` | 3차 색상 (hover) |
 | `icon-color:surface` | 표면 색상 |
-| `icon-color:on-surface` | 표면 위 색상 |
+| `icon-color:on-surface` | `icon-color:text` 와 동일 (`--color-text`) |
 | `icon-color:text` | 텍스트 색상 |
 | `icon-color:text-muted` | 흐린 텍스트 |
 | `icon-color:text-subtle` | 미묘한 텍스트 |
