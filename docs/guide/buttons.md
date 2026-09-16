@@ -134,6 +134,9 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 | `--btn-border-style` | `solid` | 테두리 스타일 |
 | `--btn-border-radius` | `var(--radius-full)` | 모서리 둥글기 |
 | `--btn-outline` | `none` | 포커스 링 |
+| `--btn-height-{xs,sm,md,lg,xl}` | `2rem`~`4rem` | 사이즈 단계별 높이. `btn-size:*` 옵션이 이 변수를 고른다 — 브랜드 단계는 여기서 바꾼다 |
+| `--btn-padding-{xs…xl}` | | 단계별 좌우 여백 |
+| `--btn-font-size-{xs…xl}` | | 단계별 글꼴 크기 |
 | `--btn-outline-offset` | `0` | 포커스 링 오프셋 |
 | `--btn-state-hover-opacity` | `0.08` | 호버 state layer 투명도 |
 | `--btn-state-focus-opacity` | `0.12` | 포커스 state layer 투명도 |

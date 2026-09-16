@@ -26,6 +26,22 @@
 
 	/* -- dimensions -- */
 	--btn-height: 2.5rem;               /* M3: 40dp */
+	/* 사이즈 단계 값 — btn-size:* 옵션이 이 변수를 고른다. 브랜드 단계는 여기서 바꾼다 (0.4.5) */
+	--btn-height-xs: 2rem;
+	--btn-padding-xs: 0 1rem;
+	--btn-font-size-xs: 0.75rem;
+	--btn-height-sm: 2.5rem;
+	--btn-padding-sm: 0 1.5rem;
+	--btn-font-size-sm: 0.875rem;
+	--btn-height-md: 3rem;
+	--btn-padding-md: 0 1.75rem;
+	--btn-font-size-md: 1rem;
+	--btn-height-lg: 3.5rem;
+	--btn-padding-lg: 0 2rem;
+	--btn-font-size-lg: 1.125rem;
+	--btn-height-xl: 4rem;
+	--btn-padding-xl: 0 2.5rem;
+	--btn-font-size-xl: 1.25rem;
 	--btn-padding: 0 1.5rem;            /* M3: 24dp horizontal */
 	--btn-gap: 0.5rem;                  /* M3: 8dp icon-label gap */
 	--btn-icon-size: 1.125rem;          /* M3: 18dp */
@@ -252,36 +268,36 @@
 /* M3 default = 40dp. Extended sizes are newtil additions. */
 
 .m3-btn.btn-size\:xs, .m3-btn.btn-size\:1 {
-	--btn-height: 2rem;       /* 32dp */
-	--btn-padding: 0 1rem;    /* 16dp */
-	--btn-font-size: 0.75rem; /* 12sp */
+	--btn-height: var(--btn-height-xs);
+	--btn-padding: var(--btn-padding-xs);
+	--btn-font-size: var(--btn-font-size-xs);
 	--btn-icon-size: 1rem;    /* 16dp */
 }
 
 .m3-btn.btn-size\:sm, .m3-btn.btn-size\:2 {
-	--btn-height: 2.5rem;     /* 40dp (M3 default) */
-	--btn-padding: 0 1.5rem;  /* 24dp */
-	--btn-font-size: 0.875rem; /* 14sp */
+	--btn-height: var(--btn-height-sm);
+	--btn-padding: var(--btn-padding-sm);
+	--btn-font-size: var(--btn-font-size-sm);
 }
 
 .m3-btn.btn-size\:md, .m3-btn.btn-size\:3 {
-	--btn-height: 3rem;       /* 48dp */
-	--btn-padding: 0 1.75rem; /* 28dp */
-	--btn-font-size: 1rem;    /* 16sp */
+	--btn-height: var(--btn-height-md);
+	--btn-padding: var(--btn-padding-md);
+	--btn-font-size: var(--btn-font-size-md);
 	--btn-font-weight: var(--font-weight-semibold);
 }
 
 .m3-btn.btn-size\:lg, .m3-btn.btn-size\:4 {
-	--btn-height: 3.5rem;     /* 56dp */
-	--btn-padding: 0 2rem;    /* 32dp */
-	--btn-font-size: 1.125rem; /* 18sp */
+	--btn-height: var(--btn-height-lg);
+	--btn-padding: var(--btn-padding-lg);
+	--btn-font-size: var(--btn-font-size-lg);
 	--btn-font-weight: var(--font-weight-semibold);
 }
 
 .m3-btn.btn-size\:xl, .m3-btn.btn-size\:5 {
-	--btn-height: 4rem;       /* 64dp */
-	--btn-padding: 0 2.5rem;  /* 40dp */
-	--btn-font-size: 1.25rem; /* 20sp */
+	--btn-height: var(--btn-height-xl);
+	--btn-padding: var(--btn-padding-xl);
+	--btn-font-size: var(--btn-font-size-xl);
 	--btn-font-weight: var(--font-weight-semibold);
 }
 

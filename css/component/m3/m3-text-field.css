@@ -38,6 +38,9 @@
 	/* input */
 	--field-input-padding-top: 1.5rem;
 	--field-input-padding-left: var(--field-padding-x);
+	--field-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%23737373' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+	--field-select-arrow-size: 1rem;
+	--field-select-padding-right: 2rem;
 
 	/* active indicator (bottom line — filled only) */
 	--field-indicator-height: 0.0625rem;
@@ -64,6 +67,7 @@
 	--field-label-size: 1rem;
 	--field-label-size-float: 0.75rem;
 	--field-label-color: var(--color-text-muted);
+	--field-label-weight: inherit;
 	--field-label-color-focus: var(--color-primary);
 	--field-label-left: var(--field-padding-x);
 	--field-label-background: transparent;
@@ -132,8 +136,11 @@
 }
 
 /* ================== Input ============================================ */
+/* select 도 같은 상자를 쓴다 (0.4.5). 떠 있는 레이블은 :placeholder-shown 에 기대므로 select 는 외부 레이블
+   모드(field-label:top 등)와 함께 쓴다. 기본 화살표는 지우고 --field-select-arrow 로 그린다. */
 .m3-text-field input,
-.m3-text-field textarea {
+.m3-text-field textarea,
+.m3-text-field select {
 	appearance: none;
 	outline: none;
 	background: var(--field-input-box-background);
@@ -166,8 +173,23 @@
 	opacity: 1;
 }
 
+/* select 화살표 */
+.m3-text-field select {
+	padding-right: var(--field-select-padding-right);
+	background-image: var(--field-select-arrow);
+	background-repeat: no-repeat;
+	background-position: right 0.625rem center;
+	background-size: var(--field-select-arrow-size);
+	cursor: pointer;
+}
+.m3-text-field select:disabled {
+	cursor: default;
+}
+
 /* ================== Label (floating) ================================= */
-.m3-text-field label {
+/* .field-label 클래스는 label 요소가 아닌 것(span 등)을 레이블로 쓸 때 — 외부 레이블 모드용 (0.4.5) */
+.m3-text-field label,
+.m3-text-field .field-label {
 	position: var(--field-label-position);
 	left: var(--field-label-left);
 	top: var(--field-label-top);
@@ -177,6 +199,7 @@
 	min-width: var(--field-label-min-width);
 	align-self: var(--field-label-align-self);
 	font-size: var(--field-label-size);
+	font-weight: var(--field-label-weight);
 	color: var(--field-label-color);
 	background-color: var(--field-label-background);
 	padding: var(--field-label-padding);
@@ -273,12 +296,14 @@
 }
 
 .m3-text-field.field-state\:disabled input,
-.m3-text-field.field-state\:disabled textarea {
+.m3-text-field.field-state\:disabled textarea,
+.m3-text-field.field-state\:disabled select {
 	--field-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 /* ================== Supporting Text ================================== */
 .m3-text-field .field-supporting {
+	order: 2;   /* label(0/1)·input(1/0) 뒤 — 외부 레이블 모드에서 label 과 input 사이로 끼어들지 않게 (0.4.5) */
 	font-size: var(--field-supporting-size);
 	color: var(--field-supporting-color);
 	padding: var(--field-supporting-padding);
@@ -401,6 +426,11 @@
 	--field-input-padding-top: var(--field-padding-top);
 	--field-padding-bottom: var(--field-padding-top);
 
+	/* 외부 레이블은 떠 있는 힌트가 아니라 본문 레이블 — 글자색·크기·굵기를 본문 기준으로 (0.4.5) */
+	--field-label-color: var(--color-text);
+	--field-label-size: 0.8125rem;
+	--field-label-weight: var(--font-weight-medium);
+
 	/* label static 포지셔닝 */
 	--field-label-position: static;
 	--field-label-top: auto;
@@ -471,11 +501,15 @@
 /* 외부 모드에서 input focus 시 border 강조 */
 .m3-text-field.field-label\:top input:focus,
 .m3-text-field.field-label\:top textarea:focus,
+.m3-text-field.field-label\:top select:focus,
 .m3-text-field.field-label\:bottom input:focus,
 .m3-text-field.field-label\:bottom textarea:focus,
+.m3-text-field.field-label\:bottom select:focus,
 .m3-text-field.field-label\:left input:focus,
 .m3-text-field.field-label\:left textarea:focus,
+.m3-text-field.field-label\:left select:focus,
 .m3-text-field.field-label\:right input:focus,
-.m3-text-field.field-label\:right textarea:focus {
+.m3-text-field.field-label\:right textarea:focus,
+.m3-text-field.field-label\:right select:focus {
 	--field-input-box-border: var(--field-outline-width-focus) solid var(--field-outline-color-focus);
 }

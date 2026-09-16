@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.5 (2026-09-17) — NCafe 적용에서 드러난 빈 자리
+
+### Added
+- 텍스트 필드가 `select` 를 그린다 — input 과 같은 상자, 기본 화살표 제거 후 `--field-select-arrow` 로. 외부 레이블 모드·`field-label:none` 과 함께 쓴다.
+- 버튼 사이즈 단계가 변수(`--btn-height-{xs…xl}`, `--btn-padding-*`, `--btn-font-size-*`)로. `btn-size:*` 옵션은 단계를 고르고 값은 브랜드가 정한다. 전엔 단계 값이 M3 상수로 박혀 있어 다른 값이 필요하면 위치 셀렉터로 우회해야 했다.
+- `field-label` 클래스 — `label` 요소가 아닌 것을 레이블로 쓸 때.
+
+### Fixed
+- `field-supporting` 이 외부 레이블 모드에서 레이블과 입력 사이로 끼어들던 것 — `order: 2`.
+- 외부 레이블 모드의 레이블이 떠 있는 힌트 색(muted)·크기(1rem)를 그대로 써서 본문 레이블로 안 보이던 것 — `--color-text`, `0.8125rem`, `medium`. `--field-label-weight` 변수 추가.
+
 ## 0.4.4 (2026-09-17)
 
 ### Added

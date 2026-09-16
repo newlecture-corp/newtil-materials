@@ -221,6 +221,10 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 | `--field-padding-top` | `0.5rem` | 상단 여백. 레이블이 상자 밖(`field-label:top/bottom/left/right/none`)이면 input 의 위·아래 패딩이 모두 이 값을 따른다 |
 | `--field-padding-bottom` | `0.5rem` | 하단 여백 (떠 있는 레이블 모드) |
 | `--field-input-padding-top` | `1.5rem` | 떠 있는 레이블이 차지하는 input 위쪽 공간 (떠 있는 레이블 모드) |
+| `--field-label-weight` | `inherit` | 레이블 굵기. 외부 레이블 모드는 `medium` |
+| `--field-select-arrow` | (SVG) | `select` 의 화살표 이미지 |
+| `--field-select-arrow-size` | `1rem` | 화살표 크기 |
+| `--field-select-padding-right` | `2rem` | 화살표 자리 오른쪽 여백 |
 | `--field-min-height` | `3.5rem` | 최소 높이 |
 | `--field-width` | `100%` | 너비 |
 | `--field-input-padding-top` | `1.5rem` | 입력 상단 여백 |
@@ -556,6 +560,38 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 | `--slider-handle-border` | `none` | 핸들 테두리 |
 
 ---
+
+## select · 도움말 · 레이블 요소
+
+### select
+
+`select` 도 `input`·`textarea` 와 같은 상자를 씁니다. 브라우저 기본 화살표는 지우고 `--field-select-arrow` 로 그립니다. 떠 있는 레이블은 `:placeholder-shown` 에 기대므로 `select` 는 **외부 레이블 모드**(`field-label:top` 등) 또는 `field-label:none` 과 함께 씁니다.
+
+<Demo>
+<div class="m3-text-field field:outlined field-label:top">
+  <label>카테고리</label>
+  <select>
+    <option>커피</option>
+    <option>티</option>
+    <option>디저트</option>
+  </select>
+</div>
+<div class="m3-text-field field:outlined field-label:none">
+  <select>
+    <option>전체 상태</option>
+    <option>판매 중</option>
+    <option>품절</option>
+  </select>
+</div>
+</Demo>
+
+### 도움말 위치
+
+`field-supporting` 은 레이블·입력 뒤에 옵니다(`order: 2`). 외부 레이블 모드에서도 입력 상자 아래에 놓입니다.
+
+### 레이블 요소
+
+레이블은 `label` 요소가 기본이지만, `label` 이 아닌 요소(`span` 등)를 쓸 때는 `field-label` 클래스를 붙이면 같은 취급을 받습니다. 외부 레이블 모드는 레이블을 떠 있는 힌트가 아니라 본문 레이블로 보고 글자색 `--color-text`, 크기 `0.8125rem`, 굵기 `medium` 을 기본으로 합니다.
 
 ## m3-form (폼 레이아웃, newtil 확장)
 
