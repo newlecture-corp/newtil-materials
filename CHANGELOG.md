@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.4 (2026-09-17)
+
+### Added
+- `card-padding:self` — 카드 자체에 `--card-padding-x/y` 여백. 슬롯(`card-header`·`card-content`·`card-actions`) 없이 안을 직접 채우는 카드용. 기본 상태에서는 여백이 슬롯에만 있고 카드 자체에는 없어서 변수를 바꿔도 닿지 않았다.
+- 문서: `--card-padding-x/y` 가 슬롯의 여백임을 명시.
+
 ## 0.4.3 (2026-09-17)
 
 ### Fixed

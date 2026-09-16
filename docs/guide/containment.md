@@ -124,6 +124,17 @@
 <div class="m3-card card-size:large">큰 카드</div>
 </Demo>
 
+### 슬롯 없이 쓰기
+
+`card-header` 같은 슬롯을 쓰지 않고 카드 안을 직접 채울 때는 `card-padding:self` 를 붙입니다. 기본 상태에서는 여백이 슬롯에 있어 카드 자체에는 여백이 없습니다.
+
+<Demo>
+<div class="m3-card card:outlined card-padding:self">
+  <h3>직접 채운 카드</h3>
+  <p>슬롯 없이 아무 요소나 넣는다. 여백은 --card-padding-x/y 를 따른다.</p>
+</div>
+</Demo>
+
 ### 변수 API
 
 | 변수명 | 기본값 | 설명 |
@@ -138,8 +149,8 @@
 | `--card-color` | `var(--color-text)` | 텍스트 색상 |
 | `--card-overflow` | `hidden` | 오버플로우 처리 |
 | `--card-flex-direction` | `column` | 레이아웃 방향 |
-| `--card-padding-x` | `1rem` | 좌우 내부 여백 |
-| `--card-padding-y` | `1rem` | 상하 내부 여백 |
+| `--card-padding-x` | `1rem` | 슬롯(`card-header`·`card-content`·`card-actions`)의 좌우 여백. 카드 자체는 여백이 없다 — 카드에 직접 주려면 `card-padding:self` |
+| `--card-padding-y` | `1rem` | 슬롯의 상하 여백 (위와 같음) |
 | `--card-header-gap` | `1rem` | 헤더 내 간격 |
 | `--card-headline-size` | `1.5rem` | 헤드라인 글자 크기 |
 | `--card-headline-weight` | `400` | 헤드라인 굵기 |
@@ -169,6 +180,7 @@
 | `card-layout:horizontal` | 수평 레이아웃 |
 | `card-size:compact` | 작은 사이즈 |
 | `card-size:large` | 큰 사이즈 |
+| `card-padding:self` | 카드 자체에 여백. 슬롯 없이 안을 직접 채울 때 (슬롯 여백은 0) |
 | `card-state:hovered` | 호버 상태 강제 |
 | `card-state:focused` | 포커스 상태 강제 |
 | `card-state:pressed` | 눌린 상태 강제 |
