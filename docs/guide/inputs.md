@@ -218,8 +218,9 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 | `--field-border` | `none` | 테두리 |
 | `--field-border-radius` | `0.25rem 0.25rem 0 0` | 모서리 둥글기 |
 | `--field-padding-x` | `1rem` | 좌우 여백 |
-| `--field-padding-top` | `0.5rem` | 상단 여백 |
-| `--field-padding-bottom` | `0.5rem` | 하단 여백 |
+| `--field-padding-top` | `0.5rem` | 상단 여백. 레이블이 상자 밖(`field-label:top/bottom/left/right/none`)이면 input 의 위·아래 패딩이 모두 이 값을 따른다 |
+| `--field-padding-bottom` | `0.5rem` | 하단 여백 (떠 있는 레이블 모드) |
+| `--field-input-padding-top` | `1.5rem` | 떠 있는 레이블이 차지하는 input 위쪽 공간 (떠 있는 레이블 모드) |
 | `--field-min-height` | `3.5rem` | 최소 높이 |
 | `--field-width` | `100%` | 너비 |
 | `--field-input-padding-top` | `1.5rem` | 입력 상단 여백 |

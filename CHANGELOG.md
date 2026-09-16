@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.3 (2026-09-17)
+
+### Fixed
+- `field-label:top/bottom/left/right`(레이블이 상자 밖) 에서 input 의 위 패딩이 떠 있는 레이블 자리(`--field-input-padding-top`)를, 아래 패딩은 `--field-padding-bottom` 을 따로 써서 `--field-input-box-min-height` 를 줄이면 글자가 아래로 처졌다. 이제 `field-label:none` 과 같은 규칙으로 위·아래가 모두 `--field-padding-top` 을 따른다.
+- `field:outlined` 와 외부 레이블 옵션을 함께 쓰면 상자가 `surface-2` 로 채워졌다. outlined 는 채우지 않으므로 투명으로 되돌린다.
+- 문서: 변수 표에 `--field-input-padding-top` 과 외부 레이블 모드의 패딩 규칙 설명.
+
 ## 0.4.2 (2026-09-16) — 문서
 
 - README 를 `@newtil/materials` 이름으로 재작성(컴포넌트 표 포함). 문서: 패키지명·import 경로·옛 토큰 이름 정정, 0.4.0 배치 옵션(`*:fixed`) 절 신설, 없는 옵션 제거, 아이콘 폰트 의존성 안내.

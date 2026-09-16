@@ -391,13 +391,15 @@
 	--field-min-height: auto;
 	--field-label-gap: 0.375rem;
 
-	/* input이 박스 역할 */
+	/* input이 박스 역할. 레이블이 상자 밖에 있으므로 떠 있는 레이블 자리(input-padding-top 1.5rem)는 없다 —
+	   위·아래를 같은 값(--field-padding-top)으로 둬 글자가 세로 중앙에 온다 (0.4.3: 전엔 위 0.5rem·아래는
+	   --field-padding-bottom 으로 따로 놀아 min-height 를 줄이면 글자가 아래로 처졌다) */
 	--field-input-box-background: var(--color-surface-2);
 	--field-input-box-border: var(--field-outline-width) solid var(--field-outline-color);
 	--field-input-box-border-radius: 0.375rem;
 	--field-input-box-min-height: 2.5rem;
-	--field-input-padding-top: 0.5rem;
-	--field-padding-bottom: 0.5rem;
+	--field-input-padding-top: var(--field-padding-top);
+	--field-padding-bottom: var(--field-padding-top);
 
 	/* label static 포지셔닝 */
 	--field-label-position: static;
@@ -413,6 +415,14 @@
 
 	/* active indicator 숨김 (input이 자체 border 가짐) */
 	--field-indicator-display: none;
+}
+
+/* outlined + 외부 레이블: outlined 는 상자를 채우지 않는다. 외부 레이블 블록이 준 surface-2 를 되돌린다 (0.4.3) */
+.m3-text-field.field\:outlined.field-label\:top,
+.m3-text-field.field\:outlined.field-label\:bottom,
+.m3-text-field.field\:outlined.field-label\:left,
+.m3-text-field.field\:outlined.field-label\:right {
+	--field-input-box-background: transparent;
 }
 
 /* 위 (기본 외부) */
