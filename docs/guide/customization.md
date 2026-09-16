@@ -118,15 +118,13 @@
 
 ### 섹션 스코프 (부모 요소)
 
-**같은 섹션에서 반복**되는 조정은 부모 컨테이너에서:
+**같은 섹션에서 반복**되는 조정은 부모 스코프의 셀렉터로 컴포넌트 자신에 씁니다.
 
-```html
-<div style="--btn-border-radius: 0.25rem;">
-  <button class="m3-btn">A</button>
-  <button class="m3-btn btn:outlined">B</button>
-  <button class="m3-btn btn:text">C</button>
-</div>
+```css
+.checkout .m3-btn { --btn-border-radius: 0.25rem; }
 ```
+
+부모 요소의 `style="--btn-border-radius: …"` 는 **동작하지 않습니다.** 컴포넌트가 `.m3-btn { --btn-border-radius: … }` 처럼 자기 요소에 변수 기본값을 선언하므로, 부모에서 내려오는 값은 그 선언에 가려집니다. 변수는 반드시 컴포넌트 요소 자신(인라인 `style`, 또는 `.scope .m3-btn { }` 처럼 그 요소를 가리키는 셀렉터)에 줘야 합니다.
 
 CSS 변수는 부모→자식으로 상속되므로 컨테이너에서 한 번 설정하면 내부 모든 컴포넌트에 적용.
 

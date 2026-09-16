@@ -92,9 +92,10 @@
 }
 
 /* ================== Leading / Trailing =============================== */
+/* bar-trailing 안의 맨 button/a 는 아이콘 버튼으로 그린다. m3-btn 같은 다른 컴포넌트는 제외 (0.4.6) */
 .m3-top-app-bar .bar-leading,
-.m3-top-app-bar .bar-trailing button,
-.m3-top-app-bar .bar-trailing a {
+.m3-top-app-bar .bar-trailing button:not([class*="m3-"]),
+.m3-top-app-bar .bar-trailing a:not([class*="m3-"]) {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -111,8 +112,8 @@
 }
 
 .m3-top-app-bar .bar-leading:hover,
-.m3-top-app-bar .bar-trailing button:hover,
-.m3-top-app-bar .bar-trailing a:hover {
+.m3-top-app-bar .bar-trailing button:not([class*="m3-"]):hover,
+.m3-top-app-bar .bar-trailing a:not([class*="m3-"]):hover {
 	background-image: linear-gradient(
 		color-mix(in srgb, var(--bar-icon-color) calc(var(--bar-state-hover-opacity) * 100%), transparent),
 		color-mix(in srgb, var(--bar-icon-color) calc(var(--bar-state-hover-opacity) * 100%), transparent)
