@@ -1,11 +1,17 @@
 <script setup>
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
+// 컴포넌트 CSS 를 문자열로 — 미리보기 Shadow DOM 안에 넣는다
+import componentCss from '../../../../dist/index.css?inline'
 
 const props = defineProps({
-  initialCode: { type: String, default: '' }
+  initialCode: { type: String, default: '' },
+  // 이 데모에만 필요한 추가 CSS (md 의 <style> 은 페이지 번들로 컴파일돼 shadow 안에 닿지 않는다)
+  css: { type: String, default: '' }
 })
 
 const slotRef = ref(null)
+const previewRef = ref(null)
+let shadow = null
 const editorRef = ref(null)
 const highlightRef = ref(null)
 const editing = ref(false)
@@ -23,12 +29,27 @@ onMounted(async () => {
   code.value = pretty
   originalCode.value = pretty
   liveHtml.value = pretty
+  // 미리보기는 Shadow DOM — vitepress 본문 스타일(.vp-doc a 의 밑줄·색, 제목·문단 여백)이 스며들지 않는다.
+  // 토큰(--color-*)은 상속되는 커스텀 프로퍼티라 shadow 경계를 넘어 들어온다.
+  shadow = previewRef.value.attachShadow({ mode: 'open' })
+  renderPreview()
 })
+
+const TALL = /m3-dialog|m3-bottom-sheet|m3-nav-drawer|m3-snackbar|m3-layout|m3-nav-bar|m3-nav-rail/
+const tall = computed(() => TALL.test(liveHtml.value))
+
+function renderPreview() {
+  if (!shadow) return
+  shadow.innerHTML = `<style>${componentCss}</style><style>${props.css}
+.demo-stage { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; min-height: inherit; }
+</style><div class="demo-stage">${liveHtml.value}</div>`
+}
 
 watch(code, (val) => {
   liveHtml.value = val
   nextTick(autoGrow)
 })
+watch(liveHtml, renderPreview)
 
 watch(editing, (on) => { if (on) nextTick(autoGrow) })
 
@@ -157,7 +178,7 @@ function toggleEdit() {
 
   <div class="demo-container">
     <!-- 라이브 프리뷰 -->
-    <div class="demo-preview" v-html="liveHtml"></div>
+    <div ref="previewRef" class="demo-preview" :class="{ 'demo-preview--tall': tall }"></div>
 
     <!-- 툴바 -->
     <div class="demo-toolbar">
@@ -203,10 +224,7 @@ function toggleEdit() {
 .demo-preview {
   padding: 1.5rem;
   background: var(--vp-c-bg);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
+  color: var(--vp-c-text-1);
   /* transform 이 있는 요소는 position: fixed 자손의 기준 상자가 된다.
      다이얼로그·바텀시트·스낵바·드로어처럼 fixed 로 그려지는 컴포넌트가 문서 화면 전체를 덮지 않고
      이 상자 안에서 미리보기로 보이게 한다. */
@@ -214,7 +232,7 @@ function toggleEdit() {
   transform: translateZ(0);
 }
 /* fixed 자손은 상자 높이에 기여하지 않으므로 그런 데모는 높이를 확보한다 */
-.demo-preview:has(dialog, .m3-bottom-sheet, .m3-nav-drawer, .m3-snackbar, .m3-layout, .m3-nav-bar, .m3-nav-rail) {
+.demo-preview--tall {
   min-height: 26rem;
 }
 

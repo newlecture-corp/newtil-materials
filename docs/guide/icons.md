@@ -51,13 +51,7 @@ Essential 60개에 없는 아이콘을 프로젝트에서 자주 쓴다면 `icon
 <i class="m3-icon icon:account icon-size:lg icon-filled:1"></i>
 ```
 
-<style>
-.icon\:rocket::before  { content: "rocket_launch"; }
-.icon\:cart::before    { content: "shopping_cart"; }
-.icon\:account::before { content: "account_circle"; }
-</style>
-
-<Demo>
+<Demo css=".icon\:rocket::before{content:'rocket_launch'} .icon\:cart::before{content:'shopping_cart'} .icon\:account::before{content:'account_circle'}">
 <i class="m3-icon icon:rocket"></i>
 <i class="m3-icon icon:cart icon-color:primary"></i>
 <i class="m3-icon icon:account icon-size:lg icon-filled:1"></i>
