@@ -1,11 +1,13 @@
 <script setup>
-import { ref, onMounted, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 
 const props = defineProps({
   initialCode: { type: String, default: '' }
 })
 
 const slotRef = ref(null)
+const editorRef = ref(null)
+const highlightRef = ref(null)
 const editing = ref(false)
 const code = ref('')
 const originalCode = ref('')
@@ -15,29 +17,128 @@ onMounted(async () => {
   await nextTick()
   // slot 내용이 있으면 slot에서, 없으면 prop에서
   let raw = ''
-  if (slotRef.value) {
-    raw = slotRef.value.innerHTML
-  }
-  if (!raw.trim() && props.initialCode) {
-    raw = props.initialCode
-  }
-  const cleaned = formatHtml(raw)
-  code.value = cleaned
-  originalCode.value = cleaned
-  liveHtml.value = cleaned
+  if (slotRef.value) raw = slotRef.value.innerHTML
+  if (!raw.trim() && props.initialCode) raw = props.initialCode
+  const pretty = prettyHtml(raw)
+  code.value = pretty
+  originalCode.value = pretty
+  liveHtml.value = pretty
 })
 
 watch(code, (val) => {
   liveHtml.value = val
+  nextTick(autoGrow)
 })
 
-function formatHtml(html) {
-  return html
-    .replace(/<!--[\s\S]*?-->/g, '')   // Vue 주석 제거
-    .replace(/^\s*\n/, '')              // 앞 빈 줄 제거
-    .replace(/\n\s*$/, '')              // 뒤 빈 줄 제거
-    .replace(/\n {4}/g, '\n')           // 4칸 들여쓰기 정리
-    .trim()
+watch(editing, (on) => { if (on) nextTick(autoGrow) })
+
+// ───── HTML 정렬 ─────
+// 요소 자식이 없거나 인라인 요소·텍스트만 있으면 한 줄, 아니면 자식마다 줄을 나눠 들여쓴다.
+const INLINE = new Set(['a', 'span', 'i', 'b', 'strong', 'em', 'code', 'img', 'br', 'small', 'sup', 'sub', 'label', 'kbd', 'abbr'])
+const VOID = new Set(['img', 'br', 'hr', 'input', 'meta', 'link', 'source', 'track', 'wbr'])
+
+function prettyHtml(html) {
+  if (typeof DOMParser === 'undefined') return html.trim()
+  const doc = new DOMParser().parseFromString(`<body>${html.replace(/<!--[\s\S]*?-->/g, '')}</body>`, 'text/html')
+  const out = []
+  for (const node of doc.body.childNodes) {
+    const s = serialize(node, 0)
+    if (s.trim()) out.push(s)
+  }
+  return out.join('\n')
+}
+
+function isInlineOnly(el) {
+  for (const c of el.childNodes) {
+    if (c.nodeType === 1 && !INLINE.has(c.tagName.toLowerCase())) return false
+    if (c.nodeType === 1 && !isInlineOnly(c)) return false
+  }
+  return true
+}
+
+function openTag(el) {
+  const attrs = [...el.attributes].map((a) => (a.value === '' ? a.name : `${a.name}="${a.value.replace(/"/g, '&quot;')}"`))
+  return `<${el.tagName.toLowerCase()}${attrs.length ? ' ' + attrs.join(' ') : ''}>`
+}
+
+function serialize(node, depth) {
+  const pad = '  '.repeat(depth)
+  if (node.nodeType === 3) {
+    const t = node.textContent.replace(/\s+/g, ' ').trim()
+    return t ? pad + t : ''
+  }
+  if (node.nodeType !== 1) return ''
+  const tag = node.tagName.toLowerCase()
+  if (VOID.has(tag)) return pad + openTag(node)
+  if (isInlineOnly(node)) {
+    const inner = [...node.childNodes].map((c) => {
+      if (c.nodeType === 3) return c.textContent.replace(/\s+/g, ' ')
+      if (c.nodeType === 1) return VOID.has(c.tagName.toLowerCase()) ? openTag(c) : `${openTag(c)}${serializeInline(c)}</${c.tagName.toLowerCase()}>`
+      return ''
+    }).join('').trim()
+    return `${pad}${openTag(node)}${inner}</${tag}>`
+  }
+  const kids = [...node.childNodes].map((c) => serialize(c, depth + 1)).filter((s) => s.trim())
+  return `${pad}${openTag(node)}\n${kids.join('\n')}\n${pad}</${tag}>`
+}
+
+function serializeInline(el) {
+  return [...el.childNodes].map((c) => {
+    if (c.nodeType === 3) return c.textContent.replace(/\s+/g, ' ')
+    if (c.nodeType === 1) return VOID.has(c.tagName.toLowerCase()) ? openTag(c) : `${openTag(c)}${serializeInline(c)}</${c.tagName.toLowerCase()}>`
+    return ''
+  }).join('')
+}
+
+// ───── 하이라이트 (의존성 없는 HTML 토크나이저) ─────
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+function highlightHtml(src) {
+  let out = ''
+  const re = /<!--[\s\S]*?-->|<\/?[a-zA-Z][^>]*>/g
+  let last = 0, m
+  while ((m = re.exec(src))) {
+    out += esc(src.slice(last, m.index))
+    const t = m[0]
+    if (t.startsWith('<!--')) out += `<span class="hl-comment">${esc(t)}</span>`
+    else out += highlightTag(t)
+    last = m.index + t.length
+  }
+  out += esc(src.slice(last))
+  return out + '\n'   // 마지막 줄 높이 확보 (textarea 와 pre 의 줄 수 일치)
+}
+
+function highlightTag(t) {
+  const m = t.match(/^(<\/?)([\w-]+)([\s\S]*?)(\/?>)$/)
+  if (!m) return esc(t)
+  const [, open, name, rest, close] = m
+  const attrs = rest.replace(/([\w:.-]+)(?:(=)("[^"]*"|'[^']*'|[^\s"'>]+))?/g, (_, n, eq, v) =>
+    `<span class="hl-attr">${esc(n)}</span>${eq ? `<span class="hl-punct">=</span><span class="hl-value">${esc(v)}</span>` : ''}`)
+  return `<span class="hl-punct">${esc(open)}</span><span class="hl-tag">${esc(name)}</span>${attrs}<span class="hl-punct">${esc(close)}</span>`
+}
+
+const highlighted = computed(() => highlightHtml(code.value))
+
+function autoGrow() {
+  const ta = editorRef.value
+  if (!ta) return
+  ta.style.height = 'auto'
+  ta.style.height = `${ta.scrollHeight}px`
+}
+
+function syncScroll() {
+  if (highlightRef.value && editorRef.value) {
+    highlightRef.value.scrollTop = editorRef.value.scrollTop
+    highlightRef.value.scrollLeft = editorRef.value.scrollLeft
+  }
+}
+
+function onTab(e) {
+  // Tab 으로 들여쓰기 (포커스 이동 대신)
+  const ta = e.target
+  const { selectionStart: s, selectionEnd: en } = ta
+  code.value = code.value.slice(0, s) + '  ' + code.value.slice(en)
+  nextTick(() => { ta.selectionStart = ta.selectionEnd = s + 2 })
 }
 
 function resetCode() {
@@ -68,18 +169,25 @@ function toggleEdit() {
       </button>
     </div>
 
-    <!-- 편집 모드: textarea -->
-    <textarea
-      v-if="editing"
-      v-model="code"
-      class="demo-editor"
-      spellcheck="false"
-    ></textarea>
+    <!-- 편집 모드: 하이라이트 pre 위에 투명 textarea 를 겹친다 -->
+    <div v-if="editing" class="demo-editor-wrap">
+      <pre ref="highlightRef" class="demo-code demo-editor-highlight" aria-hidden="true" v-html="highlighted"></pre>
+      <textarea
+        ref="editorRef"
+        v-model="code"
+        class="demo-code demo-editor"
+        spellcheck="false"
+        autocapitalize="off"
+        autocomplete="off"
+        @scroll="syncScroll"
+        @keydown.tab.prevent="onTab"
+      ></textarea>
+    </div>
 
     <!-- 보기 모드: 소스 코드 -->
     <details v-else class="demo-details">
       <summary class="demo-summary">소스 코드 보기</summary>
-      <pre class="demo-source"><code v-text="code"></code></pre>
+      <pre class="demo-code demo-source" v-html="highlighted"></pre>
     </details>
   </div>
 </template>
@@ -139,20 +247,49 @@ function toggleEdit() {
   color: var(--vp-c-text-3);
 }
 
-.demo-editor {
-  width: 100%;
-  min-height: 8rem;
+/* 편집 pre 와 textarea 는 글꼴·여백·줄바꿈 규칙이 완전히 같아야 글자가 겹친다 */
+.demo-code {
+  margin: 0;
   padding: 1rem;
-  border: none;
-  border-top: 1px solid var(--vp-c-border);
-  background: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-1);
+  box-sizing: border-box;
+  width: 100%;
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
   font-size: 0.8125rem;
   line-height: 1.6;
-  resize: vertical;
+  tab-size: 2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+}
+
+.demo-editor-wrap {
+  position: relative;
+  border-top: 1px solid var(--vp-c-border);
+}
+
+.demo-editor-highlight {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.demo-editor {
+  position: relative;
+  display: block;
+  min-height: 8rem;
+  border: none;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--vp-c-text-1);
+  resize: none;
   outline: none;
-  box-sizing: border-box;
+  overflow: hidden;
+}
+.demo-editor::selection {
+  background: var(--vp-c-brand-soft);
 }
 
 .demo-details {
@@ -173,16 +310,13 @@ function toggleEdit() {
 }
 
 .demo-source {
-  margin: 0;
-  padding: 1rem;
-  background: var(--vp-c-bg-alt);
   overflow-x: auto;
-  font-size: 0.8125rem;
-  line-height: 1.6;
 }
 
-.demo-source code {
-  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
-  color: var(--vp-c-text-1);
-}
+/* 하이라이트 색 — vitepress 테마 변수라 라이트·다크 자동 */
+.demo-code :deep(.hl-tag)     { color: var(--vp-c-brand-1); }
+.demo-code :deep(.hl-attr)    { color: var(--vp-c-purple-1); }
+.demo-code :deep(.hl-value)   { color: var(--vp-c-yellow-1); }
+.demo-code :deep(.hl-punct)   { color: var(--vp-c-text-3); }
+.demo-code :deep(.hl-comment) { color: var(--vp-c-text-3); font-style: italic; }
 </style>
