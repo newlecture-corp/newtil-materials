@@ -19,7 +19,7 @@
 	--chip-gap: 0.5rem;
 	--chip-border-radius: 0.5rem;
 	--chip-background: transparent;
-	--chip-color: var(--color-on-surface);
+	--chip-color: var(--color-text);
 	--chip-border: 0.0625rem solid var(--color-border);
 	--chip-cursor: pointer;
 
@@ -90,8 +90,8 @@
 
 .m3-chip:disabled,
 .m3-chip.chip-state\:disabled {
-	--chip-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-	--chip-border: 0.0625rem solid color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--chip-color: color-mix(in srgb, var(--color-text) 38%, transparent);
+	--chip-border: 0.0625rem solid color-mix(in srgb, var(--color-text) 12%, transparent);
 	--chip-cursor: not-allowed;
 }
 

@@ -40,7 +40,7 @@
 	--form-header-gap: 0.25rem;
 	--form-headline-size: 1.5rem;
 	--form-headline-weight: 600;
-	--form-headline-color: var(--color-on-surface);
+	--form-headline-color: var(--color-text);
 	--form-headline-line-height: 2rem;
 	--form-headline-margin: 0;
 	--form-description-size: 0.875rem;
@@ -62,7 +62,7 @@
 	--form-message-font-size: 0.875rem;
 	--form-message-line-height: 1.25rem;
 	--form-message-background: var(--color-surface-2);
-	--form-message-color: var(--color-on-surface);
+	--form-message-color: var(--color-text);
 }
 
 /* ================== Base ============================================= */

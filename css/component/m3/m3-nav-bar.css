@@ -21,7 +21,7 @@
 	--nav-bar-padding: 0 0.5rem;
 	--nav-bar-gap: 0;
 	--nav-bar-box-shadow: none;
-	--nav-bar-color: var(--color-on-surface);
+	--nav-bar-color: var(--color-text);
 
 	/* positioning — layout-neutral by default. Use `nav-bar:fixed` modifier
 	 * to opt into the canonical MD3 fixed-bottom-edge behavior. */

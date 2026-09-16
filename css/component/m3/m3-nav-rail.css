@@ -25,7 +25,7 @@
 	--rail-border-right: 0.0625rem solid var(--color-border-subtle);
 	--rail-padding: 0.75rem 0;
 	--rail-box-shadow: none;
-	--rail-color: var(--color-on-surface);
+	--rail-color: var(--color-text);
 
 	/* positioning — layout-neutral by default. Use `rail:fixed` modifier to
 	 * opt into the canonical MD3 fixed-left-edge behavior. */

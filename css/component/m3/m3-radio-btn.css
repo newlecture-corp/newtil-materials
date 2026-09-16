@@ -103,8 +103,8 @@
 .m3-radio input[type="radio"]:focus-visible::before { --radio-outline: var(--border-width-2) solid var(--color-focus-ring); --radio-outline-offset: 0.25rem; }
 
 .m3-radio input[type="radio"]:disabled { --radio-cursor: not-allowed; }
-.m3-radio input[type="radio"]:disabled::before { --radio-border-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent); --radio-box-shadow: none; }
-.m3-radio input[type="radio"]:disabled::after { --radio-dot-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent); }
+.m3-radio input[type="radio"]:disabled::before { --radio-border-color: color-mix(in srgb, var(--color-text) 38%, transparent); --radio-box-shadow: none; }
+.m3-radio input[type="radio"]:disabled::after { --radio-dot-color: color-mix(in srgb, var(--color-text) 38%, transparent); }
 
 /* Label */
 .m3-radio .m3-radio-label {

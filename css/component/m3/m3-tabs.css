@@ -120,7 +120,7 @@
 
 /* Disabled */
 .m3-tabs .tab-item:disabled {
-	--tab-item-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--tab-item-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	--tab-item-cursor: not-allowed;
 }
 

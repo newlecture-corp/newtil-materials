@@ -17,7 +17,7 @@
 	--dialog-box-shadow: var(--shadow-lg);
 
 	/* scrim (backdrop) */
-	--dialog-scrim-color: rgba(0, 0, 0, 0.32);
+	--dialog-scrim-color: var(--color-scrim);
 
 	/* z-index */
 	--dialog-z-index: var(--z-modal);

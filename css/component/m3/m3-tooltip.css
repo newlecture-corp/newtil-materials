@@ -19,8 +19,8 @@
 .m3-tooltip {
 	/* container */
 	--tooltip-background: var(--color-surface-inverse);
-	--tooltip-color: var(--color-on-surface-inverse);
-	--tooltip-border-radius: var(--radius-sm);
+	--tooltip-color: var(--color-text-inverse);
+	--tooltip-border-radius: var(--radius-2);
 	--tooltip-padding: 0.25rem 0.5rem;
 	--tooltip-font-size: 0.75rem;
 	--tooltip-line-height: 1rem;
@@ -32,8 +32,8 @@
 
 	/* rich variant */
 	--tooltip-rich-background: var(--color-surface-2);
-	--tooltip-rich-color: var(--color-on-surface);
-	--tooltip-rich-border-radius: var(--radius-md);
+	--tooltip-rich-color: var(--color-text);
+	--tooltip-rich-border-radius: var(--radius-3);
 	--tooltip-rich-padding: 0.75rem 1rem;
 	--tooltip-rich-max-width: 20rem;
 	--tooltip-rich-box-shadow: var(--shadow-md);
@@ -43,7 +43,7 @@
 	/* title (rich) */
 	--tooltip-title-font-size: 0.875rem;
 	--tooltip-title-font-weight: var(--font-weight-medium, 500);
-	--tooltip-title-color: var(--color-on-surface);
+	--tooltip-title-color: var(--color-text);
 	--tooltip-title-margin: 0 0 0.25rem;
 	--tooltip-title-line-height: 1.25rem;
 

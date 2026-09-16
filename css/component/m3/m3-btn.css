@@ -134,8 +134,8 @@
 /* Disabled: M3 spec — on-surface 12% bg, on-surface 38% text */
 .m3-btn:disabled,
 .m3-btn.btn-state\:disabled {
-	--btn-background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--btn-background-color: color-mix(in srgb, var(--color-text) 12%, transparent);
+	--btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	--btn-box-shadow: none;
 	--btn-border-width: 0;
 	--btn-border-color: transparent;
@@ -156,8 +156,8 @@
 
 .m3-btn.btn\:elevated:disabled,
 .m3-btn.btn\:elevated.btn-state\:disabled {
-	--btn-background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--btn-background-color: color-mix(in srgb, var(--color-text) 12%, transparent);
+	--btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	--btn-box-shadow: none;
 }
 
@@ -173,8 +173,8 @@
 
 .m3-btn.btn\:tonal:disabled,
 .m3-btn.btn\:tonal.btn-state\:disabled {
-	--btn-background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--btn-background-color: color-mix(in srgb, var(--color-text) 12%, transparent);
+	--btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 /* ================== Type: Outlined =================================== */
@@ -201,8 +201,8 @@
 .m3-btn.btn\:outlined:disabled,
 .m3-btn.btn\:outlined.btn-state\:disabled {
 	--btn-background-color: transparent;
-	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-	--btn-border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
+	--btn-border-color: color-mix(in srgb, var(--color-text) 12%, transparent);
 }
 
 /* ================== Type: Text ======================================= */
@@ -224,7 +224,7 @@
 .m3-btn.btn\:text:disabled,
 .m3-btn.btn\:text.btn-state\:disabled {
 	--btn-background-color: transparent;
-	--btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 /* ================== Color Variants =================================== */
@@ -239,9 +239,9 @@
 .m3-btn.btn-color\:tertiary  { --btn-accent: var(--color-tertiary);  --btn-on-accent: var(--color-on-tertiary); }
 
 /* Surface (배경 색 계열 — accent/on-accent 의미 반전) */
-.m3-btn.btn-color\:surface         { --btn-accent: var(--color-surface);         --btn-on-accent: var(--color-on-surface); }
-.m3-btn.btn-color\:surface-1  { --btn-accent: var(--color-surface-1);  --btn-on-accent: var(--color-on-surface); }
-.m3-btn.btn-color\:surface-inverse { --btn-accent: var(--color-surface-inverse); --btn-on-accent: var(--color-on-surface-inverse); }
+.m3-btn.btn-color\:surface         { --btn-accent: var(--color-surface);         --btn-on-accent: var(--color-text); }
+.m3-btn.btn-color\:surface-1  { --btn-accent: var(--color-surface-1);  --btn-on-accent: var(--color-text); }
+.m3-btn.btn-color\:surface-inverse { --btn-accent: var(--color-surface-inverse); --btn-on-accent: var(--color-text-inverse); }
 
 /* Status */
 .m3-btn.btn-color\:success { --btn-accent: var(--color-success); --btn-on-accent: var(--color-on-success); }

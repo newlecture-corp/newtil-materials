@@ -15,7 +15,7 @@
 .m3-snackbar {
 	/* container */
 	--snackbar-background: var(--color-surface-inverse);
-	--snackbar-color: var(--color-on-surface-inverse);
+	--snackbar-color: var(--color-text-inverse);
 	--snackbar-border-radius: 0.25rem;
 	--snackbar-padding: 0 0.5rem 0 1rem;
 	--snackbar-min-height: 3rem;

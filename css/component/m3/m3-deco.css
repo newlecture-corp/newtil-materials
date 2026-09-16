@@ -29,7 +29,7 @@
 	--deco-border-radius: 0;
 	--deco-background-color: transparent;
 	--deco-color: var(--color-primary);
-	--deco-font-size: var(--font-size-sm);
+	--deco-font-size: var(--font-size-body-sm);
 
 	/* active */
 	--deco-active-text-color: var(--color-on-primary);
@@ -179,7 +179,7 @@
 
 /* Surface / Text */
 .m3-deco.deco-color\:surface        { --deco-color: var(--color-surface); --icon-color: var(--color-surface); }
-.m3-deco.deco-color\:on-surface     { --deco-color: var(--color-on-surface); --icon-color: var(--color-on-surface); }
+.m3-deco.deco-color\:on-surface     { --deco-color: var(--color-text); --icon-color: var(--color-text); }
 .m3-deco.deco-color\:text           { --deco-color: var(--color-text); --icon-color: var(--color-text); }
 .m3-deco.deco-color\:text-muted     { --deco-color: var(--color-text-muted); --icon-color: var(--color-text-muted); }
 

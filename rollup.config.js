@@ -21,7 +21,8 @@ export default [
 		},
 		plugins: [
 			copy({
-				targets: [{ src: "index.d.ts", dest: "dist" }],
+				// index.d.ts 의 "./dist/index.css" 는 dist 안에서는 "./index.css" 여야 한다 (index.js 와 같은 보정)
+				targets: [{ src: "index.d.ts", dest: "dist", transform: (c) => c.toString().replace(/["']\.\/dist\//g, '"./') }],
 			}),
 			{
 				name: "copy-and-fix-index-js",
@@ -38,13 +39,23 @@ export default [
 		],
 		external: (id) => id.endsWith(".d.ts"),
 	},
-	// CSS bundle
+	// CSS bundle — rollup 은 입력마다 JS 청크를 하나 내놓는다. 이름을 dist/index.js 로 두면 위에서 만든
+	// 진입 파일을 빈 모듈로 덮어써 `import "@newtil/materials"` 가 CSS 를 안 불러온다(0.4.0 게시본 결함).
+	// 청크 이름을 따로 주고 쓰고 난 뒤 지운다.
 	{
 		input: "css/index.css",
 		output: {
 			dir: "dist",
+			entryFileNames: "_css-chunk.js",
 		},
 		plugins: [
+			{
+				name: "drop-css-chunk",
+				writeBundle() {
+					const chunk = path.join(process.cwd(), "dist", "_css-chunk.js");
+					if (fs.existsSync(chunk)) fs.unlinkSync(chunk);
+				},
+			},
 			postcss({
 				plugins: [
 					postcssImport({

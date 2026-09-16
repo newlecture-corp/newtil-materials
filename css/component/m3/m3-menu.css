@@ -28,12 +28,12 @@
 	--menu-max-width: 17.5rem;
 	--menu-z-index: var(--z-dropdown);
 	--menu-border: none;
-	--menu-color: var(--color-on-surface);
+	--menu-color: var(--color-text);
 
 	/* item */
 	--menu-item-height: 3rem;
 	--menu-item-padding: 0 0.75rem;
-	--menu-item-color: var(--color-on-surface);
+	--menu-item-color: var(--color-text);
 	--menu-item-font-size: 0.875rem;
 	--menu-item-gap: 0.75rem;
 	--menu-item-border-radius: 0;
@@ -41,7 +41,7 @@
 	--menu-item-cursor: pointer;
 
 	/* item icon */
-	--menu-item-icon-color: var(--color-on-surface);
+	--menu-item-icon-color: var(--color-text);
 	--menu-item-icon-size: 1.5rem;
 
 	/* divider */
@@ -52,7 +52,7 @@
 	/* state layer */
 	--menu-state-hover-opacity: 0.08;
 	--menu-state-focus-opacity: 0.12;
-	--menu-state-layer-color: var(--color-on-surface);
+	--menu-state-layer-color: var(--color-text);
 
 	/* disabled */
 	--menu-item-disabled-opacity: 0.38;
@@ -145,7 +145,7 @@
 
 /* ================== Disabled ========================================= */
 .m3-menu .menu-item.menu-item-disabled {
-	--menu-item-color: var(--color-on-surface);
+	--menu-item-color: var(--color-text);
 	--menu-item-cursor: default;
 	opacity: var(--menu-item-disabled-opacity);
 	pointer-events: none;

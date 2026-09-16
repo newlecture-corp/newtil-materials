@@ -24,7 +24,7 @@
 	--bar-padding: 0 0.5rem;
 	--bar-box-shadow: none;
 	--bar-border-bottom: none;
-	--bar-color: var(--color-on-surface);
+	--bar-color: var(--color-text);
 	/* Layout-neutral by default. Position decisions belong to the shell.
 	 * Use the `bar:fixed` modifier to opt into the canonical MD3 sticky-top
 	 * behavior. */
@@ -35,7 +35,7 @@
 	/* title */
 	--bar-title-size: 1.375rem;
 	--bar-title-weight: 400;
-	--bar-title-color: var(--color-on-surface);
+	--bar-title-color: var(--color-text);
 	--bar-title-padding: 0 0.5rem;
 	--bar-title-flex: 1;
 	--bar-title-overflow: hidden;
@@ -45,7 +45,7 @@
 
 	/* icons */
 	--bar-icon-size: 3rem;
-	--bar-icon-color: var(--color-on-surface);
+	--bar-icon-color: var(--color-text);
 	--bar-icon-radius: 50%;
 	--bar-icon-background: transparent;
 	--bar-icon-cursor: pointer;
@@ -149,5 +149,5 @@
 
 /* ================== Color Variants =================================== */
 .m3-top-app-bar.bar-color\:primary { --bar-background: var(--color-primary); --bar-color: var(--color-on-primary); --bar-title-color: var(--color-on-primary); --bar-icon-color: var(--color-on-primary); }
-.m3-top-app-bar.bar-color\:surface { --bar-background: var(--color-surface); --bar-color: var(--color-on-surface); }
+.m3-top-app-bar.bar-color\:surface { --bar-background: var(--color-surface); --bar-color: var(--color-text); }
 .m3-top-app-bar.bar-color\:surface-1 { --bar-background: var(--color-surface-1); }

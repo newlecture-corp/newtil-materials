@@ -113,7 +113,7 @@
 
 /* Surface / Text */
 .m3-icon.icon-color\:surface         { --icon-color: var(--color-surface); }
-.m3-icon.icon-color\:on-surface      { --icon-color: var(--color-on-surface); }
+.m3-icon.icon-color\:on-surface      { --icon-color: var(--color-text); }
 .m3-icon.icon-color\:text            { --icon-color: var(--color-text); }
 .m3-icon.icon-color\:text-muted      { --icon-color: var(--color-text-muted); }
 .m3-icon.icon-color\:text-subtle     { --icon-color: var(--color-text-subtle); }

@@ -39,9 +39,9 @@
 	--slider-state-layer-size: 2.5rem;
 
 	/* disabled */
-	--slider-disabled-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-	--slider-disabled-active-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-	--slider-disabled-handle-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--slider-disabled-track-color: color-mix(in srgb, var(--color-text) 12%, transparent);
+	--slider-disabled-active-color: color-mix(in srgb, var(--color-text) 38%, transparent);
+	--slider-disabled-handle-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	--slider-disabled-cursor: default;
 
 	/* transition */

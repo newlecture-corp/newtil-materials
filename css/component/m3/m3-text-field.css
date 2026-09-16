@@ -44,7 +44,7 @@
 	--field-indicator-color: var(--color-text-muted);
 	--field-indicator-height-focus: 0.1875rem;
 	--field-indicator-color-focus: var(--color-primary);
-	--field-indicator-color-hover: var(--color-on-surface);
+	--field-indicator-color-hover: var(--color-text);
 
 	/* outline (outlined only) */
 	--field-outline-width: 0.0625rem;
@@ -55,7 +55,7 @@
 	/* input text */
 	--field-font-size: 1rem;
 	--field-font-weight: 400;
-	--field-color: var(--color-on-surface);
+	--field-color: var(--color-text);
 	--field-line-height: 1.5rem;
 	--field-placeholder-color: var(--color-text-muted);
 	--field-caret-color: var(--color-primary);
@@ -234,7 +234,7 @@
 }
 
 .m3-text-field.field\:outlined:hover {
-	--field-outline-color: var(--color-on-surface);
+	--field-outline-color: var(--color-text);
 }
 
 .m3-text-field.field\:outlined:focus-within {
@@ -274,7 +274,7 @@
 
 .m3-text-field.field-state\:disabled input,
 .m3-text-field.field-state\:disabled textarea {
-	--field-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--field-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 /* ================== Supporting Text ================================== */

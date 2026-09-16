@@ -101,16 +101,16 @@
 .m3-checkbox input[type="checkbox"]:not(:disabled):active::before { --checkbox-state-opacity: 0.12; }
 
 .m3-checkbox input[type="checkbox"]:disabled {
-	--checkbox-border-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--checkbox-border-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	--checkbox-cursor: not-allowed;
 }
 
 .m3-checkbox input[type="checkbox"]:disabled::after {
-	--checkbox-check-background: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--checkbox-check-background: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 .m3-checkbox:has(input:disabled) {
-	--checkbox-label-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--checkbox-label-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	--checkbox-cursor: not-allowed;
 }
 
@@ -134,4 +134,4 @@
 .m3-checkbox.checkbox-state\:checked input[type="checkbox"]::after { --checkbox-check-opacity: 1; }
 .m3-checkbox.checkbox-state\:hovered input[type="checkbox"]::before { --checkbox-state-opacity: 0.08; }
 .m3-checkbox.checkbox-state\:focused input[type="checkbox"]::before { --checkbox-state-opacity: 0.12; }
-.m3-checkbox.checkbox-state\:disabled input[type="checkbox"] { --checkbox-border-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent); }
+.m3-checkbox.checkbox-state\:disabled input[type="checkbox"] { --checkbox-border-color: color-mix(in srgb, var(--color-text) 38%, transparent); }

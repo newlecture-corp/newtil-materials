@@ -18,7 +18,7 @@
 	--card-border-radius: 0.75rem;
 	--card-box-shadow: var(--shadow-sm);
 	--card-opacity: 1;
-	--card-color: var(--color-on-surface);
+	--card-color: var(--color-text);
 	--card-text-decoration: none;
 	--card-outline: none;
 	--card-outline-offset: 0;
@@ -36,7 +36,7 @@
 	--card-headline-size: 1.5rem;
 	--card-headline-weight: 400;
 	--card-headline-line-height: 1.75rem;
-	--card-headline-color: var(--color-on-surface);
+	--card-headline-color: var(--color-text);
 	--card-headline-margin: 0;
 	--card-subhead-size: 0.875rem;
 	--card-subhead-weight: 500;
@@ -66,7 +66,7 @@
 	--card-actions-padding: 0 var(--card-padding-x) var(--card-padding-y);
 
 	/* -- state layer (default: disabled — no interactive states) -- */
-	--card-state-layer-color: var(--color-on-surface);
+	--card-state-layer-color: var(--color-text);
 	--card-state-hover-opacity: 0;
 	--card-state-focus-opacity: 0;
 	--card-state-pressed-opacity: 0;
@@ -175,7 +175,7 @@
 
 .m3-card.card\:outlined:focus-visible,
 .m3-card.card\:outlined.card-state\:focused {
-	--card-border: var(--border-width-1) solid var(--color-on-surface);
+	--card-border: var(--border-width-1) solid var(--color-text);
 }
 
 .m3-card.card\:outlined.card-state\:disabled {

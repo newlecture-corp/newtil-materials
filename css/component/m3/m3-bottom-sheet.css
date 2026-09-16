@@ -31,7 +31,7 @@
 	--sheet-box-shadow: var(--shadow-lg);
 	--sheet-padding: 0;
 	--sheet-border: none;
-	--sheet-color: var(--color-on-surface);
+	--sheet-color: var(--color-text);
 
 	/* position */
 	--sheet-bottom: 0;
@@ -48,7 +48,7 @@
 	/* headline */
 	--sheet-headline-font-size: 1rem;
 	--sheet-headline-font-weight: var(--font-weight-medium, 500);
-	--sheet-headline-color: var(--color-on-surface);
+	--sheet-headline-color: var(--color-text);
 	--sheet-headline-line-height: 1.5rem;
 	--sheet-headline-margin: 0 0 0.5rem;
 
@@ -59,7 +59,7 @@
 	--sheet-content-line-height: 1.25rem;
 
 	/* scrim (modal) */
-	--sheet-scrim-color: rgba(0, 0, 0, 0.32);
+	--sheet-scrim-color: var(--color-scrim);
 	--sheet-scrim-z-index: var(--z-overlay);
 
 	/* transition */

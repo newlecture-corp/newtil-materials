@@ -103,7 +103,7 @@
 	width: var(--switch-state-size);
 	height: var(--switch-state-size);
 	border-radius: var(--radius-full);
-	background-color: var(--color-on-surface);
+	background-color: var(--color-text);
 	opacity: var(--switch-state-opacity);
 	transition: var(--switch-transition);
 }
@@ -155,17 +155,17 @@
 /* ================== Disabled ========================================= */
 
 .m3-switch input[type="checkbox"]:disabled {
-	--switch-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-	--switch-track-border: 0.125rem solid color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--switch-track-color: color-mix(in srgb, var(--color-text) 12%, transparent);
+	--switch-track-border: 0.125rem solid color-mix(in srgb, var(--color-text) 12%, transparent);
 	--switch-cursor: not-allowed;
 }
 
 .m3-switch input[type="checkbox"]:disabled::after {
-	--switch-handle-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--switch-handle-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 .m3-switch input[type="checkbox"]:disabled:checked {
-	--switch-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--switch-track-color: color-mix(in srgb, var(--color-text) 12%, transparent);
 	--switch-track-border: none;
 }
 
@@ -175,7 +175,7 @@
 
 .m3-switch:has(input:disabled) {
 	--switch-cursor: not-allowed;
-	--switch-label-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--switch-label-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 /* ================== Label ============================================ */
@@ -199,4 +199,4 @@
 .m3-switch.switch-state\:checked input[type="checkbox"]::after { --switch-handle-size: var(--switch-handle-size-checked); --switch-handle-color: var(--switch-handle-color-checked); left: calc(100% - var(--switch-handle-size-checked) - var(--switch-handle-offset)); }
 .m3-switch.switch-state\:hovered input[type="checkbox"]::before { --switch-state-opacity: 0.08; }
 .m3-switch.switch-state\:focused input[type="checkbox"]::before { --switch-state-opacity: 0.12; }
-.m3-switch.switch-state\:disabled input[type="checkbox"] { --switch-track-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent); --switch-cursor: not-allowed; }
+.m3-switch.switch-state\:disabled input[type="checkbox"] { --switch-track-color: color-mix(in srgb, var(--color-text) 12%, transparent); --switch-cursor: not-allowed; }

@@ -18,7 +18,7 @@
 
 	/* -- colors (standard default) -- */
 	--icon-btn-background: transparent;
-	--icon-btn-color: var(--color-on-surface);             /* M3: on-surface-variant */
+	--icon-btn-color: var(--color-text);             /* M3: on-surface-variant */
 
 	/* -- effects -- */
 	--icon-btn-box-shadow: none;
@@ -34,7 +34,7 @@
 	--icon-btn-outline-offset: 0;
 
 	/* -- state layer -- */
-	--icon-btn-state-layer-color: var(--color-on-surface);
+	--icon-btn-state-layer-color: var(--color-text);
 	--icon-btn-state-hover-opacity: 0.08;                  /* M3: 8% */
 	--icon-btn-state-focus-opacity: 0.12;                  /* M3: 12% */
 	--icon-btn-state-pressed-opacity: 0.12;                /* M3: 12% */
@@ -119,9 +119,9 @@
 .m3-icon-btn:disabled,
 .m3-icon-btn.icon-btn-state\:disabled {
 	--icon-btn-background: transparent;
-	--icon-btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+	--icon-btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	--icon-btn-box-shadow: none;
-	--icon-btn-border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+	--icon-btn-border-color: color-mix(in srgb, var(--color-text) 12%, transparent);
 	--icon-btn-outline: none;
 	cursor: not-allowed;
 	pointer-events: none;
@@ -135,8 +135,8 @@
 	--icon-btn-state-layer-color: var(--color-on-primary);
 
 	&:disabled, &.icon-btn-state\:disabled {
-		--icon-btn-background: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-		--icon-btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+		--icon-btn-background: color-mix(in srgb, var(--color-text) 12%, transparent);
+		--icon-btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	}
 }
 
@@ -148,8 +148,8 @@
 	--icon-btn-state-layer-color: var(--color-secondary);
 
 	&:disabled, &.icon-btn-state\:disabled {
-		--icon-btn-background: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
-		--icon-btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+		--icon-btn-background: color-mix(in srgb, var(--color-text) 12%, transparent);
+		--icon-btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
 	}
 }
 
@@ -157,15 +157,15 @@
 /* M3: transparent bg, outline border, on-surface-variant icon */
 .m3-icon-btn.icon-btn\:outlined {
 	--icon-btn-background: transparent;
-	--icon-btn-color: var(--color-on-surface);
+	--icon-btn-color: var(--color-text);
 	--icon-btn-border-width: 0.0625rem;                    /* M3: 1dp */
 	--icon-btn-border-color: var(--color-border);
-	--icon-btn-state-layer-color: var(--color-on-surface);
+	--icon-btn-state-layer-color: var(--color-text);
 
 	&:disabled, &.icon-btn-state\:disabled {
 		--icon-btn-background: transparent;
-		--icon-btn-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
-		--icon-btn-border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+		--icon-btn-color: color-mix(in srgb, var(--color-text) 38%, transparent);
+		--icon-btn-border-color: color-mix(in srgb, var(--color-text) 12%, transparent);
 	}
 }
 
@@ -173,8 +173,8 @@
 /* M3: standard unselected = on-surface-variant icon */
 .m3-icon-btn.icon-btn-toggle\:unselected {
 	--icon-btn-background: transparent;
-	--icon-btn-color: var(--color-on-surface);
-	--icon-btn-state-layer-color: var(--color-on-surface);
+	--icon-btn-color: var(--color-text);
+	--icon-btn-state-layer-color: var(--color-text);
 }
 
 /* ================== Toggle: Selected ================================= */
@@ -209,23 +209,23 @@
 /* Tonal toggle unselected: M3 surface-container-highest bg, on-surface-variant icon */
 .m3-icon-btn.icon-btn\:tonal.icon-btn-toggle\:unselected {
 	--icon-btn-background: var(--color-surface-2);
-	--icon-btn-color: var(--color-on-surface);
-	--icon-btn-state-layer-color: var(--color-on-surface);
+	--icon-btn-color: var(--color-text);
+	--icon-btn-state-layer-color: var(--color-text);
 }
 
 /* Outlined toggle selected: M3 inverse-surface bg, inverse-on-surface icon */
 .m3-icon-btn.icon-btn\:outlined.icon-btn-toggle\:selected {
 	--icon-btn-background: var(--color-surface-inverse);
-	--icon-btn-color: var(--color-on-surface-inverse);
+	--icon-btn-color: var(--color-text-inverse);
 	--icon-btn-border-width: 0;
-	--icon-btn-state-layer-color: var(--color-on-surface-inverse);
+	--icon-btn-state-layer-color: var(--color-text-inverse);
 }
 
 /* Outlined toggle unselected: M3 transparent bg, on-surface-variant icon */
 .m3-icon-btn.icon-btn\:outlined.icon-btn-toggle\:unselected {
 	--icon-btn-background: transparent;
-	--icon-btn-color: var(--color-on-surface);
+	--icon-btn-color: var(--color-text);
 	--icon-btn-border-width: 0.0625rem;
 	--icon-btn-border-color: var(--color-border);
-	--icon-btn-state-layer-color: var(--color-on-surface);
+	--icon-btn-state-layer-color: var(--color-text);
 }

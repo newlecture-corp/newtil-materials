@@ -39,7 +39,7 @@
 	--drawer-border-right: 0.0625rem solid var(--color-border-subtle);
 	--drawer-padding: 0.75rem 0;
 	--drawer-box-shadow: none;
-	--drawer-color: var(--color-on-surface);
+	--drawer-color: var(--color-text);
 	--drawer-z-index: var(--z-fixed);
 
 	/* header / headline */
@@ -57,7 +57,7 @@
 	--drawer-item-height: 3.5rem;                    /* 56dp */
 	--drawer-item-padding: 0 1rem;
 	--drawer-item-gap: 0.75rem;                      /* 12dp */
-	--drawer-item-color: var(--color-on-surface);
+	--drawer-item-color: var(--color-text);
 	--drawer-item-font-size: 0.875rem;
 	--drawer-item-font-weight: 500;
 	--drawer-item-line-height: 1.25rem;
@@ -84,7 +84,7 @@
 	--drawer-state-hover-opacity: 0.08;
 
 	/* modal */
-	--drawer-scrim-background: rgba(0, 0, 0, 0.32);
+	--drawer-scrim-background: var(--color-scrim);
 
 	/* transition */
 	--drawer-transition: transform var(--duration-normal) var(--ease-out);
