@@ -41,6 +41,8 @@
 	display: inline-flex;
 	align-items: stretch;
 	gap: var(--stepper-gap);
+	width: max-content;                                    /* grid/flex 칸에 놓여도 늘어나지 않는다 */
+	justify-self: start;
 	height: var(--stepper-height);
 	border: var(--stepper-border-width) solid var(--stepper-border-color);
 	border-radius: var(--stepper-border-radius);
