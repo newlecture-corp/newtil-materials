@@ -11,6 +11,7 @@ ncafe/frontend 를 원본 publishing 과 픽셀로 비교해 나온 것들. 페�
 - `m3-site` `site-aside:sm|md|lg`(12.5/16/21.25rem). 주문 요약처럼 금액이 들어가는 오른쪽 패널은 `lg`.
 
 ### Fixed
+- `m3-toolbar` `toolbar-start`/`toolbar-end` 가 항상 flex 라 "총 <strong>31</strong>개" 같은 글 한 줄의 글자 사이가 gap 만큼 벌어졌다. 자식 요소가 둘 이상일 때만 flex.
 - `m3-card` `.card-actions-end` 가 세로 가운데 정렬을 안 해 높이가 다른 버튼이 나란히 오면 중심이 어긋났다.
 
 ### Theme

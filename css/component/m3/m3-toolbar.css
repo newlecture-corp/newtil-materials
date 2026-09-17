@@ -50,8 +50,15 @@
 	font-weight: var(--font-weight-bold);
 }
 
+/* 자식 요소가 둘 이상일 때만 flex — 글 한 줄("총 <strong>31</strong>개")을 flex 로 두면 글자 사이가 gap 만큼 벌어진다 */
 .m3-toolbar .toolbar-start,
 .m3-toolbar .toolbar-end {
+	display: block;
+	margin: 0;
+}
+
+.m3-toolbar .toolbar-start:has(> * + *),
+.m3-toolbar .toolbar-end:has(> * + *) {
 	display: flex;
 	align-items: center;
 	gap: var(--toolbar-gap);
