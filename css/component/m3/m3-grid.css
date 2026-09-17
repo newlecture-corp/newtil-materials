@@ -1,0 +1,73 @@
+/* ====== Grid (newtil 확장) ===========================================
+ * 카드·항목을 반응형 격자로 놓는 콘텐츠 블록. "가구를 방에 놓는 틀" 이다.
+ * M3 스펙에는 없다. 안에 무엇이 들어가든(m3-card, m3-list 항목, 이미지) 격자만 책임진다.
+ *
+ * 사용법:
+ *   <ul class="m3-grid grid-cols:3">
+ *     <li class="m3-card card:outlined">…</li>
+ *     …
+ *   </ul>
+ *
+ * 옵션:  grid-cols:1|2|3|4|5|6   — 기본 열 수 (넓은 화면)
+ *        grid-cols:auto          — 최소 너비(--grid-min) 기준 자동 열 수
+ *        grid-gap:1|2|3|4|5      — 간격 단계 (space 토큰)
+ * 반응형: 기본으로 md(≤1024px) 에서 한 단계, sm(≤640px) 에서 1열로 줄어든다.
+ *        md:grid-cols:N / sm:grid-cols:N 으로 직접 정할 수 있다.
+ * 변수:  --grid-cols, --grid-gap, --grid-min
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-grid {
+	--grid-cols: 3;
+	--grid-cols-md: 2;
+	--grid-cols-sm: 1;
+	--grid-gap: var(--space-6);                            /* 20px */
+	--grid-min: 16rem;                                     /* grid-cols:auto 일 때 최소 열 너비 */
+}
+
+/* ================== Base ============================================= */
+.m3-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+	gap: var(--grid-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.m3-grid > * {
+	min-width: 0;
+}
+
+/* ================== Options ========================================== */
+.m3-grid.grid-cols\:1 { --grid-cols: 1; --grid-cols-md: 1; }
+.m3-grid.grid-cols\:2 { --grid-cols: 2; --grid-cols-md: 2; }
+.m3-grid.grid-cols\:3 { --grid-cols: 3; --grid-cols-md: 2; }
+.m3-grid.grid-cols\:4 { --grid-cols: 4; --grid-cols-md: 2; }
+.m3-grid.grid-cols\:5 { --grid-cols: 5; --grid-cols-md: 3; }
+.m3-grid.grid-cols\:6 { --grid-cols: 6; --grid-cols-md: 3; }
+.m3-grid.grid-cols\:auto { grid-template-columns: repeat(auto-fill, minmax(var(--grid-min), 1fr)); }
+
+.m3-grid.grid-gap\:1 { --grid-gap: var(--space-2); }
+.m3-grid.grid-gap\:2 { --grid-gap: var(--space-3); }
+.m3-grid.grid-gap\:3 { --grid-gap: var(--space-5); }
+.m3-grid.grid-gap\:4 { --grid-gap: var(--space-6); }
+.m3-grid.grid-gap\:5 { --grid-gap: var(--space-8); }
+
+/* ================== Responsive ======================================= */
+@media (max-width: 1024px) {
+	.m3-grid { grid-template-columns: repeat(var(--grid-cols-md), minmax(0, 1fr)); }
+	.m3-grid.grid-cols\:auto { grid-template-columns: repeat(auto-fill, minmax(var(--grid-min), 1fr)); }
+	.m3-grid.md\:grid-cols\:1 { --grid-cols-md: 1; }
+	.m3-grid.md\:grid-cols\:2 { --grid-cols-md: 2; }
+	.m3-grid.md\:grid-cols\:3 { --grid-cols-md: 3; }
+	.m3-grid.md\:grid-cols\:4 { --grid-cols-md: 4; }
+}
+
+@media (max-width: 640px) {
+	.m3-grid { grid-template-columns: repeat(var(--grid-cols-sm), minmax(0, 1fr)); }
+	.m3-grid.grid-cols\:auto { grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min), 100%), 1fr)); }
+	.m3-grid.sm\:grid-cols\:1 { --grid-cols-sm: 1; }
+	.m3-grid.sm\:grid-cols\:2 { --grid-cols-sm: 2; }
+	.m3-grid.sm\:grid-cols\:3 { --grid-cols-sm: 3; }
+}

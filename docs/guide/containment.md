@@ -437,3 +437,37 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 | `chip-color:success` | Success 색상 |
 | `chip-color:warning` | Warning 색상 |
 | `chip-close` | 닫기 버튼 (하위 요소) |
+
+## m3-grid (격자 배치, newtil 확장)
+
+카드·항목을 반응형 격자로 놓는 콘텐츠 블록입니다. 안에 무엇이 들어가든 격자만 책임집니다. 넓은 화면의 열 수를 옵션으로 정하면 1024px 이하에서 한 단계, 640px 이하에서 1열로 줄어듭니다.
+
+### 기본 사용법
+
+<Demo>
+<ul class="m3-grid grid-cols:3">
+  <li class="m3-card card:outlined card-padding:self">카드 1</li>
+  <li class="m3-card card:outlined card-padding:self">카드 2</li>
+  <li class="m3-card card:outlined card-padding:self">카드 3</li>
+  <li class="m3-card card:outlined card-padding:self">카드 4</li>
+  <li class="m3-card card:outlined card-padding:self">카드 5</li>
+  <li class="m3-card card:outlined card-padding:self">카드 6</li>
+</ul>
+</Demo>
+
+### 옵션
+
+| 클래스 | 설명 |
+|---|---|
+| `grid-cols:1`~`6` | 넓은 화면 열 수 |
+| `grid-cols:auto` | `--grid-min`(기본 16rem) 이상으로 들어가는 만큼 자동 |
+| `grid-gap:1`~`5` | 간격 단계 (space 토큰 2·3·5·6·8) |
+| `md:grid-cols:N` / `sm:grid-cols:N` | 1024px / 640px 이하 열 수 직접 지정 |
+
+### 변수 API
+
+| 변수 | 기본값 | 설명 |
+|---|---|---|
+| `--grid-cols` / `--grid-cols-md` / `--grid-cols-sm` | `3` / `2` / `1` | 화면 크기별 열 수 |
+| `--grid-gap` | `var(--space-6)` | 간격 |
+| `--grid-min` | `16rem` | `grid-cols:auto` 의 최소 열 너비 |

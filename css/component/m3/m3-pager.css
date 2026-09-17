@@ -1,0 +1,124 @@
+/* ====== Pager (newtil 확장) ==========================================
+ * M3 스펙에는 페이지네이션 컴포넌트가 없다. 목록 아래 "이전 · 1 2 3 · 다음" 을 표준화한다.
+ *
+ * 사용법:
+ *   <nav class="m3-pager" aria-label="페이지">
+ *     <a class="pager-item pager-prev" href="…" aria-disabled="true">이전</a>
+ *     <a class="pager-item" href="…" aria-current="page">1</a>
+ *     <a class="pager-item" href="…">2</a>
+ *     <span class="pager-ellipsis">…</span>
+ *     <a class="pager-item pager-next" href="…">다음</a>
+ *   </nav>
+ *
+ * 옵션:  pager:outlined (기본, 테두리 상자) | pager:text (테두리 없음)
+ *        pager-align:start | center (기본) | end
+ *        pager-size:sm (32px) | md (36px, 기본) | lg (40px)
+ * 상태:  aria-current="page" = 현재 페이지,  aria-disabled="true" = 비활성
+ * 변수:  --pager-* 로 크기·색·모서리 조정
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-pager {
+	--pager-gap: 0.375rem;
+	--pager-justify: center;
+	--pager-margin: 0;
+
+	/* item */
+	--pager-item-height: 2.25rem;                          /* 36px */
+	--pager-item-min-width: var(--pager-item-height);
+	--pager-item-padding: 0 0.75rem;
+	--pager-item-font-size: 0.875rem;
+	--pager-item-font-weight: var(--font-weight-medium);
+	--pager-item-border-radius: var(--radius-3);
+	--pager-item-border-width: 0.0625rem;
+	--pager-item-border-color: var(--color-border);
+	--pager-item-background: var(--color-surface);
+	--pager-item-color: var(--color-text);
+	--pager-item-hover-background: var(--color-surface-1);
+
+	/* current */
+	--pager-current-background: var(--color-text);
+	--pager-current-color: var(--color-surface);
+	--pager-current-border-color: var(--color-text);
+	--pager-current-font-weight: var(--font-weight-bold);
+
+	/* disabled */
+	--pager-disabled-color: var(--color-text-subtle);
+	--pager-disabled-opacity: 1;
+
+	--pager-transition: background-color var(--duration-fast) var(--ease-in-out), color var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Base ============================================= */
+.m3-pager {
+	display: flex;
+	align-items: center;
+	justify-content: var(--pager-justify);
+	gap: var(--pager-gap);
+	margin: var(--pager-margin);
+	flex-wrap: wrap;
+}
+
+.m3-pager .pager-item {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: var(--pager-item-min-width);
+	height: var(--pager-item-height);
+	padding: var(--pager-item-padding);
+	border: var(--pager-item-border-width) solid var(--pager-item-border-color);
+	border-radius: var(--pager-item-border-radius);
+	background: var(--pager-item-background);
+	color: var(--pager-item-color);
+	font-size: var(--pager-item-font-size);
+	font-weight: var(--pager-item-font-weight);
+	line-height: 1;
+	text-decoration: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	font-family: inherit;
+	transition: var(--pager-transition);
+}
+
+.m3-pager .pager-item:hover {
+	background: var(--pager-item-hover-background);
+}
+
+.m3-pager .pager-item[aria-current="page"] {
+	background: var(--pager-current-background);
+	border-color: var(--pager-current-border-color);
+	color: var(--pager-current-color);
+	font-weight: var(--pager-current-font-weight);
+	cursor: default;
+}
+
+.m3-pager .pager-item[aria-disabled="true"],
+.m3-pager .pager-item:disabled {
+	color: var(--pager-disabled-color);
+	opacity: var(--pager-disabled-opacity);
+	pointer-events: none;
+}
+
+.m3-pager .pager-ellipsis {
+	display: inline-flex;
+	align-items: center;
+	min-width: var(--pager-item-min-width);
+	justify-content: center;
+	color: var(--pager-disabled-color);
+	font-size: var(--pager-item-font-size);
+}
+
+/* ================== Options ========================================== */
+.m3-pager.pager\:text {
+	--pager-item-border-color: transparent;
+	--pager-item-background: transparent;
+	--pager-current-border-color: transparent;
+}
+
+.m3-pager.pager-align\:start  { --pager-justify: flex-start; }
+.m3-pager.pager-align\:center { --pager-justify: center; }
+.m3-pager.pager-align\:end    { --pager-justify: flex-end; }
+
+.m3-pager.pager-size\:sm { --pager-item-height: 2rem;    --pager-item-font-size: 0.8125rem; --pager-item-padding: 0 0.625rem; }
+.m3-pager.pager-size\:md { --pager-item-height: 2.25rem; --pager-item-font-size: 0.875rem;  --pager-item-padding: 0 0.75rem; }
+.m3-pager.pager-size\:lg { --pager-item-height: 2.5rem;  --pager-item-font-size: 0.875rem;  --pager-item-padding: 0 1rem; }

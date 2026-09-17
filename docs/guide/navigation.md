@@ -708,3 +708,47 @@
 | `list-divider` | 구분선 |
 | `list-divider:inset` | 인셋 구분선 |
 | `list-divider:full` | 전체 너비 구분선 |
+
+## m3-pager (페이지네이션, newtil 확장)
+
+M3 스펙에는 페이지네이션이 없습니다. 목록 아래 "이전 · 1 2 3 · 다음"을 표준화한 newtil 확장입니다. 현재 페이지는 `aria-current="page"`, 비활성은 `aria-disabled="true"` 로 표시합니다.
+
+### 기본 사용법
+
+<Demo>
+<nav class="m3-pager" aria-label="페이지">
+  <a class="pager-item pager-prev" href="#" aria-disabled="true">이전</a>
+  <a class="pager-item" href="#" aria-current="page">1</a>
+  <a class="pager-item" href="#">2</a>
+  <a class="pager-item" href="#">3</a>
+  <span class="pager-ellipsis">…</span>
+  <a class="pager-item" href="#">12</a>
+  <a class="pager-item pager-next" href="#">다음</a>
+</nav>
+</Demo>
+
+### 옵션
+
+| 클래스 | 설명 |
+|---|---|
+| `pager:text` | 테두리 없는 형태 |
+| `pager-align:start` / `center` / `end` | 정렬 (기본 center) |
+| `pager-size:sm` / `md` / `lg` | 항목 높이 32 / 36 / 40px (기본 md) |
+
+<Demo>
+<nav class="m3-pager pager:text pager-align:end pager-size:sm" aria-label="페이지">
+  <a class="pager-item" href="#">이전</a>
+  <a class="pager-item" href="#" aria-current="page">1</a>
+  <a class="pager-item" href="#">2</a>
+  <a class="pager-item" href="#">다음</a>
+</nav>
+</Demo>
+
+### 변수 API
+
+| 변수 | 기본값 | 설명 |
+|---|---|---|
+| `--pager-item-height` | `2.25rem` | 항목 높이 |
+| `--pager-item-border-radius` | `var(--radius-3)` | 모서리 |
+| `--pager-current-background` / `--pager-current-color` | `--color-text` / `--color-surface` | 현재 페이지 색 |
+| `--pager-gap` | `0.375rem` | 항목 간격 |

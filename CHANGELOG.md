@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.11 (2026-09-17) — 콘텐츠 블록(가구) 첫 묶음
+
+### Added
+- `m3-grid` — 카드·항목을 반응형 격자로 놓는 블록. `grid-cols:1~6|auto`, `grid-gap:1~5`, `md:`/`sm:` 접두로 화면별 열 수. 안에 무엇이 들어가든 격자만 책임진다.
+- `m3-pager` — 페이지네이션. `pager-item`(현재 `aria-current="page"`, 비활성 `aria-disabled`), `pager-ellipsis`. 옵션 `pager:text`, `pager-align:*`, `pager-size:sm|md|lg`.
+
+방(m3-layout)과 물품(m3-btn 등) 사이의 "가구" 층이 비어 있어 페이지가 매번 격자·페이저를 직접 짜던 것(시험 4·5 에서 에이전트들이 반복 보고). 사이드바 내비·테이블·브레드크럼·통계 카드가 다음 묶음.
+
 ## 0.4.10 (2026-09-17)
 
 ### Fixed
