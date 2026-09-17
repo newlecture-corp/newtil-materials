@@ -70,10 +70,8 @@
 /* ── 텍스트 필드(외부 레이블·테두리형): 40px, 8px 모서리, 카드와 같은 테두리색 ── */
 .m3-text-field.field\:outlined.field-label\:top,
 .m3-text-field.field\:outlined.field-label\:none {
-  --field-input-box-border-radius: var(--radius-3);
-  --field-input-box-min-height: 2.5rem;
-  --field-min-height: 2.5rem;
   --field-border-radius: var(--radius-3);
+  --field-input-box-border-radius: var(--radius-3);
   --field-background: var(--color-surface);
   --field-padding-top: 0;
   --field-outline-color: var(--color-border);
@@ -81,3 +79,6 @@
   --field-font-size: 0.875rem;
   --field-outline-color-focus: var(--color-primary);
 }
+/* 높이 40px — 외부 레이블 모드는 안쪽 상자가, 레이블 없는 모드는 컨테이너가 상자다 */
+.m3-text-field.field\:outlined.field-label\:top  { --field-input-box-min-height: 2.5rem; }
+.m3-text-field.field\:outlined.field-label\:none { --field-min-height: 2.5rem; }
