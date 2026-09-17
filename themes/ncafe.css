@@ -19,6 +19,7 @@
  *  목록   상품 카드 격자: <ul class="m3-grid grid-cols:3"> 안에 <li class="m3-card card:outlined card-size:compact">
  *         썸네일은 card-media:landscape (4:3).  카드 액션 줄의 하트는 icon-btn:outlined icon-btn-size:sm, 담기는 btn-size:xs — 둘 다 32px.
  *  글     상세 설명·영양 정보·유의 사항 같은 덩어리는 <section class="m3-section section:divided">. 표는 m3-table(항목–값이면 table:key-value). 경로는 m3-breadcrumb.
+ *  선택지 온도·사이즈·수령 방법처럼 라디오 묶음은 m3-form 안 <fieldset class="form-group form-group:inline"> (요약 패널처럼 좁으면 inline 없이).
  *  수량   <div class="m3-stepper"> (기본 34px). 상세 페이지의 큰 수량은 stepper-size:lg. 페이지가 −/＋ 를 아이콘 버튼으로 짜지 않는다.
  *  ─────────────────────────────────────────────────────────────────────── */
 

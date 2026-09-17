@@ -11,6 +11,7 @@ ncafe/frontend 를 원본 publishing 과 픽셀로 비교해 나온 것들. 페�
 - `m3-site` `site-aside:sm|md|lg`(12.5/16/21.25rem). 주문 요약처럼 금액이 들어가는 오른쪽 패널은 `lg`.
 - `m3-breadcrumb` — 현재 위치 경로. 구분 기호는 CSS(`breadcrumb-separator:slash|chevron|dot`), 마지막은 `aria-current="page"`.
 - `m3-table` — 데이터 표 + 항목–값 표(`table:key-value`, `th[scope=row]`). `table:striped|bordered|hover`, `table-size:sm|md|lg`, 셀 `table-align:center|end`.
+- `m3-form` `form-group`(레이블 + 선택지 묶음), `form-group:inline`(레이블 칸 옆 한 줄), `form-choice-extra`. 상세 페이지의 온도/사이즈, 장바구니의 수령 방법.
 - `m3-section` — 제목·설명·본문 묶음(`section-title`/`section-caption`/`section-body`). `section:divided|card`, `section-size:sm|md|lg`. 상세 페이지가 article 블록 3개를 페이지 CSS 로 짜던 것.
 
 ### Fixed

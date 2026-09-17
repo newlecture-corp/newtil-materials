@@ -38,6 +38,13 @@
 
 	/* header */
 	--form-header-gap: 0.25rem;
+
+	/* group (레이블 + 선택지 묶음, 0.4.14) */
+	--form-group-gap: var(--space-2);
+	--form-group-label-width: 5.5rem;                      /* form-group:inline 의 레이블 칸 */
+	--form-group-label-size: var(--font-size-body-sm);
+	--form-group-label-weight: var(--font-weight-semibold);
+	--form-group-choices-gap: var(--space-5);
 	--form-headline-size: 1.5rem;
 	--form-headline-weight: 600;
 	--form-headline-color: var(--color-text);
@@ -159,6 +166,62 @@
 .m3-form .form-message.form-message\:info {
 	--form-message-background: color-mix(in srgb, var(--color-primary) 10%, transparent);
 	--form-message-color: var(--color-primary);
+}
+
+/* ================== Group (레이블 + 선택지) ========================== */
+/* 라디오·체크박스·칩 여러 개를 레이블 하나 아래(또는 옆)에 묶는다. 상세 페이지의 "온도 / 사이즈", 설정 화면의 선택 묶음.
+ *   <fieldset class="form-group form-group:inline">
+ *     <legend class="form-group-label">온도</legend>
+ *     <div class="form-group-choices"> <label class="m3-radio">…</label> … </div>
+ *   </fieldset>
+ * 선택지 옆의 부가 설명(+500원)은 <small class="form-choice-extra">.  0.4.14 */
+.m3-form .form-group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--form-group-gap);
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+
+.m3-form .form-group-label {
+	padding: 0;
+	font-size: var(--form-group-label-size);
+	font-weight: var(--form-group-label-weight);
+	color: var(--color-text);
+}
+
+.m3-form .form-group-choices {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--form-group-choices-gap);
+}
+
+.m3-form .form-choice-extra {
+	font-size: var(--font-size-caption);
+	color: var(--color-text-muted);
+}
+
+/* 레이블 칸 + 선택지 한 줄 */
+.m3-form .form-group.form-group\:inline {
+	display: grid;
+	grid-template-columns: var(--form-group-label-width) minmax(0, 1fr);
+	align-items: center;
+	gap: var(--space-4);
+}
+
+/* fieldset 의 legend 는 grid 셀이 되지 못하므로(브라우저 특수 렌더링) float 로 흐름에 넣는다 */
+.m3-form .form-group.form-group\:inline > .form-group-label {
+	float: left;
+}
+
+@media (max-width: 640px) {
+	.m3-form .form-group.form-group\:inline {
+		grid-template-columns: minmax(0, 1fr);
+		gap: var(--form-group-gap);
+	}
 }
 
 /* ================== Layout Variants ================================== */

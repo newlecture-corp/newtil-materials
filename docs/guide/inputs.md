@@ -663,6 +663,44 @@ M3 스펙에는 Form 컴포넌트가 없습니다. `m3-form` 은 폼의 공통 �
 </form>
 </Demo>
 
+### 선택지 묶음 (form-group)
+
+라디오·체크박스·칩 여러 개를 레이블 하나 아래에 묶습니다. `form-group:inline` 은 레이블 칸 옆에 선택지가 한 줄로 옵니다(좁은 화면에선 위아래). 선택지 옆 부가 설명은 `form-choice-extra`.
+
+<Demo>
+<form class="m3-form">
+  <div class="form-fields">
+    <fieldset class="form-group form-group:inline">
+      <legend class="form-group-label">온도</legend>
+      <div class="form-group-choices">
+        <label class="m3-radio"><input type="radio" name="t" checked><span>HOT</span></label>
+        <label class="m3-radio"><input type="radio" name="t"><span>ICE</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="form-group form-group:inline">
+      <legend class="form-group-label">사이즈</legend>
+      <div class="form-group-choices">
+        <label class="m3-radio"><input type="radio" name="s" checked><span>Regular</span></label>
+        <label class="m3-radio"><input type="radio" name="s"><span>Large <small class="form-choice-extra">+500원</small></span></label>
+      </div>
+    </fieldset>
+    <fieldset class="form-group">
+      <legend class="form-group-label">수령 방법</legend>
+      <div class="form-group-choices">
+        <label class="m3-radio"><input type="radio" name="p" checked><span>매장 픽업</span></label>
+        <label class="m3-radio"><input type="radio" name="p"><span>테이크아웃</span></label>
+      </div>
+    </fieldset>
+  </div>
+</form>
+</Demo>
+
+| 클래스 | 설명 |
+|---|---|
+| `form-group` | 레이블(`form-group-label`) + 선택지 줄(`form-group-choices`) 세로 묶음 |
+| `form-group:inline` | 레이블 칸(`--form-group-label-width` 5.5rem) 옆에 선택지 한 줄 |
+| `form-choice-extra` | 선택지 옆 부가 설명(작고 옅게) |
+
 ### 옵션 클래스
 
 | 클래스 | 설명 |
