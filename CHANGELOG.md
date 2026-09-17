@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.13 (2026-09-17)
+
+### Fixed
+- Material Symbols 폰트 `@import` 가 dist 에서 tokens·reset 규칙 **뒤**에 놓여 있었다. `@import` 는 다른 규칙 뒤에 오면 브라우저·번들러 모두 버리므로 `<link>` 로 index.css 를 직접 싣는 경우를 빼면 폰트가 실리지 않아 아이콘·체크박스·라디오가 상자로 나왔다. 빌드에서 외부 `@import` 를 파일 맨 앞으로 옮긴다(`hoist-external-imports`).
+- 소스에서 외부 `@import` 를 맨 앞에 두면 postcss-import 가 뒤의 로컬 `@import` 를 해석하지 않아 dist 가 431 바이트로 비는 함정이 있어, 소스 순서는 그대로 두고 출력에서만 옮긴다.
+
+### Docs
+- Next.js(Turbopack) 는 CSS 안의 외부 `@import url()` 을 위치와 무관하게 버린다. 번들러로 쓸 때는 앱의 `<head>` 에 Material Symbols `<link>` 를 직접 추가해야 한다 — 시작하기·아이콘 문서에 안내.
+
 ## 0.4.12 (2026-09-17) — 콘텐츠 블록 둘째 묶음
 
 ### Added

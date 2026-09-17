@@ -7,6 +7,7 @@ Material Symbols 폰트 기반의 아이콘 컴포넌트입니다. 두 가지 �
 `@newtil/materials/index.css` 는 Google Fonts 에서 Material Symbols 폰트(Outlined·Rounded·Sharp) 를 `@import` 합니다. 아이콘은 이 폰트의 글리프이므로 **런타임에 `fonts.googleapis.com` / `fonts.gstatic.com` 접근이 필요**합니다. 패키지 자체에는 폰트 파일이 포함되어 있지 않습니다.
 
 - 오프라인 환경이나 CSP(`style-src`, `font-src`)로 Google Fonts 가 막힌 환경에서는 아이콘 자리에 아이콘 이름 텍스트(예: `home`)가 그대로 보입니다.
+- **번들러(Next.js Turbopack · Vite)로 `index.css` 를 import 하면 외부 `@import` 가 버려집니다.** 앱의 `<head>` 에 Google Fonts `<link>` 를 직접 추가하세요([시작하기](./getting-started.md) 참고).
 - 이런 환경에서는 Material Symbols 폰트를 직접 호스팅하고 `@font-face` 로 같은 패밀리 이름(`"Material Symbols Outlined"` 등)을 선언하면 됩니다. `--icon-family` 변수로 패밀리 이름을 바꿀 수도 있습니다.
 - 아이콘을 쓰지 않는 페이지도 `index.css` 를 가져오는 순간 폰트 요청이 발생합니다.
 

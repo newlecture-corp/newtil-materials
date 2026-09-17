@@ -49,6 +49,14 @@ import "@newtil/materials";
 Material Symbols 폰트는 패키지에 포함되지 않고 런타임에 `fonts.googleapis.com` 에서 받아옵니다. 오프라인 환경이나 CSP 로 Google Fonts 가 막힌 환경에서는 아이콘이 이름 텍스트로 보입니다. 자세한 내용은 [아이콘](./icons.md) 문서를 참고하세요.
 :::
 
+::: warning 번들러(Next.js · Vite)로 쓸 때는 폰트 `<link>` 를 직접 추가하세요
+Turbopack 등 번들러는 CSS 안의 외부 `@import url()` 을 버립니다(위치와 무관). `index.css` 를 `import` 해 쓰는 앱은 `<head>` 에 아래 한 줄을 넣어야 아이콘이 나옵니다. CDN `<link>` 로 `index.css` 를 직접 싣는 경우에는 필요 없습니다.
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+```
+:::
+
 ## 첫 번째 예제
 
 버튼과 아이콘을 조합한 간단한 예제입니다.

@@ -68,6 +68,20 @@ export default [
 					url({
 						url: (asset) => asset.url.replace(/\.\.\//g, ""),
 					}),
+					// 외부 URL @import(폰트)를 최종 CSS 맨 앞으로 끌어올린다.
+					// postcss-import 는 filter 로 남긴 외부 @import 를 "일반 규칙" 으로 취급하므로 소스에서 맨 앞에 두면
+					// 뒤따르는 로컬 @import 를 해석하지 않는다(dist 가 431 바이트로 비던 원인).
+					// 그래서 소스는 로컬 import 뒤에 두고, 합친 결과에서 앞으로 옮긴다. 브라우저·번들러는 다른 규칙 뒤의 @import 를 버린다.
+					{
+						postcssPlugin: "hoist-external-imports",
+						OnceExit(root) {
+							const external = [];
+							root.walkAtRules("import", (node) => {
+								if (/^url\(\s*["']?https?:/.test(node.params) || /^["']https?:/.test(node.params)) external.push(node.remove());
+							});
+							root.prepend(...external);
+						},
+					},
 				],
 				extract: "index.css",
 				minimize: {
