@@ -20,6 +20,19 @@
 </div>
 </Demo>
 
+아이콘 **버튼**에 붙일 때는 버튼 안에 넣습니다. 배지가 터치 영역이 아니라 아이콘 모서리에 붙습니다.
+
+<Demo>
+<button class="m3-icon-btn" aria-label="알림 2건">
+  <i class="m3-icon icon:notifications"></i>
+  <span class="m3-badge">2</span>
+</button>
+<button class="m3-icon-btn" aria-label="메일">
+  <i class="m3-icon icon:email"></i>
+  <span class="m3-badge badge:dot"></span>
+</button>
+</Demo>
+
 ### 점 배지
 
 <Demo>

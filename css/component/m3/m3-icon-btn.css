@@ -229,3 +229,17 @@
 	--icon-btn-border-color: var(--color-border);
 	--icon-btn-state-layer-color: var(--color-text);
 }
+
+/* ================== 배지와 함께 (0.4.8) ================================
+ * M3 에서 배지는 터치 영역(버튼)이 아니라 아이콘에 붙는다. 아이콘 버튼 안에 m3-badge 를 넣으면
+ * overflow 를 풀고 배지를 아이콘 모서리 기준으로 놓는다. 눌림 레이어는 배지가 없을 때만 원 안에 갇힌다.
+ *   <button class="m3-icon-btn"><i class="m3-icon icon:notifications"></i><span class="m3-badge">2</span></button>
+ */
+.m3-icon-btn:has(> .m3-badge) {
+	overflow: visible;
+}
+.m3-icon-btn > .m3-badge {
+	/* 버튼 중앙에서 아이콘 반지름만큼 오른쪽·위 = 아이콘의 오른쪽 위 모서리. 배지 자기 크기의 절반만큼 겹친다 */
+	--badge-top: calc(50% - var(--icon-btn-icon-size) / 2 - var(--badge-height) / 2);
+	--badge-right: calc(50% - var(--icon-btn-icon-size) / 2 - var(--badge-min-width) / 2);
+}
