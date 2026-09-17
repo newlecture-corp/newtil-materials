@@ -60,6 +60,8 @@
 	--card-media-height: auto;
 	--card-media-object-fit: cover;
 	--card-media-width: auto;
+	--card-media-ratio: auto;
+	--card-media-badge-offset: var(--space-3);
 
 	/* -- actions -- */
 	--card-actions-gap: 0.5rem;
@@ -225,6 +227,39 @@ a.m3-card {
 
 .m3-card .card-media:first-child {
 	border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+}
+
+/* ── 미디어 비율과 오버레이 (0.4.12) ──
+ * card-media:square | video | wide — 이미지 비율을 고정한다 (상품 카드처럼 이미지 크기가 제각각일 때)
+ * card-media 안의 .card-media-badge — 이미지 위 모서리에 놓이는 상태 표시(품절·NEW). m3-badge 를 그 자리에 넣는다. */
+.m3-card .card-media.card-media\:square,
+.m3-card .card-media.card-media\:video,
+.m3-card .card-media.card-media\:wide {
+	position: relative;
+	aspect-ratio: var(--card-media-ratio);
+}
+.m3-card .card-media.card-media\:square { --card-media-ratio: 1 / 1; }
+.m3-card .card-media.card-media\:video  { --card-media-ratio: 16 / 9; }
+.m3-card .card-media.card-media\:wide   { --card-media-ratio: 2 / 1; }
+
+.m3-card .card-media[class*="card-media:"] > img,
+.m3-card .card-media[class*="card-media:"] > video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: var(--card-media-object-fit);
+}
+
+.m3-card .card-media > .card-media-badge {
+	position: absolute;
+	top: var(--card-media-badge-offset);
+	left: var(--card-media-badge-offset);
+	z-index: 1;
+}
+.m3-card .card-media > .card-media-badge.card-media-badge\:end {
+	left: auto;
+	right: var(--card-media-badge-offset);
 }
 
 .m3-card .card-media:last-child {

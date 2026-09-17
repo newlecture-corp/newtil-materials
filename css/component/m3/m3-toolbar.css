@@ -1,0 +1,78 @@
+/* ====== Toolbar (newtil 확장) ========================================
+ * 목록 위·표 위에 놓이는 한 줄: 왼쪽 정보(건수·선택 상태) · 오른쪽 동작(정렬·필터·버튼).
+ * M3 스펙에는 없다. 필터 바(입력 여러 개가 한 줄)도 같은 블록으로 만든다.
+ *
+ * 사용법:
+ *   <div class="m3-toolbar">
+ *     <div class="toolbar-start">총 <strong>31</strong>개</div>
+ *     <div class="toolbar-end">
+ *       <div class="m3-text-field field:outlined field-label:none"><select>…</select></div>
+ *     </div>
+ *   </div>
+ *
+ *   필터 바:  <form class="m3-toolbar toolbar:fill"> … 입력들 … <button class="m3-btn btn:outlined">검색</button> </form>
+ *             toolbar:fill 은 자식 중 .toolbar-grow 가 남은 폭을 채운다.
+ *
+ * 옵션:  toolbar:fill  (자식이 한 줄에 나란히, .toolbar-grow 가 늘어남)
+ *        toolbar:card  (카드 상단 줄처럼 아래 테두리)
+ * 변수:  --toolbar-*
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-toolbar {
+	--toolbar-gap: var(--space-3);
+	--toolbar-margin: 0 0 var(--space-5);
+	--toolbar-padding: 0;
+	--toolbar-font-size: var(--font-size-body-sm);
+	--toolbar-color: var(--color-text-muted);
+	--toolbar-strong-color: var(--color-text);
+	--toolbar-border-bottom: none;
+	--toolbar-min-height: 2.5rem;
+}
+
+/* ================== Base ============================================= */
+.m3-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--toolbar-gap);
+	margin: var(--toolbar-margin);
+	padding: var(--toolbar-padding);
+	min-height: var(--toolbar-min-height);
+	font-size: var(--toolbar-font-size);
+	color: var(--toolbar-color);
+	border-bottom: var(--toolbar-border-bottom);
+	flex-wrap: wrap;
+}
+
+.m3-toolbar strong {
+	color: var(--toolbar-strong-color);
+	font-weight: var(--font-weight-bold);
+}
+
+.m3-toolbar .toolbar-start,
+.m3-toolbar .toolbar-end {
+	display: flex;
+	align-items: center;
+	gap: var(--toolbar-gap);
+}
+
+.m3-toolbar .toolbar-end {
+	margin-left: auto;
+}
+
+/* ================== Options ========================================== */
+.m3-toolbar.toolbar\:fill {
+	justify-content: flex-start;
+}
+
+.m3-toolbar.toolbar\:fill > .toolbar-grow {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.m3-toolbar.toolbar\:card {
+	--toolbar-margin: 0;
+	--toolbar-padding: var(--space-4) var(--space-5);
+	--toolbar-border-bottom: 0.0625rem solid var(--color-border);
+}

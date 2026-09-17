@@ -46,5 +46,7 @@
 @import "./component/m3/m3-form.css";
 
 /* newtil 확장 — 콘텐츠 블록(가구) */
+@import "./component/m3/m3-site.css";
+@import "./component/m3/m3-toolbar.css";
 @import "./component/m3/m3-grid.css";
 @import "./component/m3/m3-pager.css";

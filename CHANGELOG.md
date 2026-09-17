@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.12 (2026-09-17) — 콘텐츠 블록 둘째 묶음
+
+### Added
+- `m3-site` — 공개 사이트 셸(헤더 · 본문 · 푸터 세로 흐름, 가운데 컨테이너). 헤더 슬롯 `site-logo`/`site-nav`/`site-actions`, 본문 `site-body:aside|aside-end` 2단, 푸터 슬롯. `m3-layout`(드로어 앱 셸)과 다른 종류의 방.
+- `m3-toolbar` — 목록·표 위 한 줄(`toolbar-start`/`toolbar-end`). `toolbar:fill` 은 필터 바(`.toolbar-grow` 가 남은 폭), `toolbar:card` 는 카드 상단 줄.
+- `m3-card` 미디어: `card-media:square|video|wide` 비율 고정, `card-media-badge`(`:end`) 이미지 위 오버레이 배지.
+- spec.json 에 `slotOptions` — 슬롯 요소에 붙는 옵션(`card-media:square`, `site-body:aside`, `list-divider:inset`)을 규격에 싣는다. 전엔 루트 옵션만 잡혀 슬롯 옵션이 규격 밖이었다.
+
 ## 0.4.11 (2026-09-17) — 콘텐츠 블록(가구) 첫 묶음
 
 ### Added

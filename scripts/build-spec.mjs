@@ -57,11 +57,18 @@ for (const f of fs.readdirSync(CSS_DIR).filter((f) => f.startsWith("m3-") && f.e
 	const slots = new Set();
 	for (const m of strip(raw).matchAll(new RegExp(`\\.${C}(?:\\.[\\w\\\\:-]+)*\\s+\\.([a-z][a-z0-9-]*)`, "g")))
 		if (!m[1].startsWith("m3-") && !/^(sm|md|lg|xl)$/.test(m[1])) slots.add(m[1]);
+	// 슬롯 옵션: .m3-x .slot.slot-group\:value  → slotOptions[slot][group] = [value…]   (예: card-media:square, site-body:aside)
+	const slotOptions = {};
+	for (const m of strip(raw).matchAll(new RegExp(`\\.${C}(?:\\.[\\w\\\\:-]+)*\\s+\\.([a-z][a-z0-9-]*)\\.([a-z][a-z-]*)\\\\:([a-z0-9-]+)`, "g"))) {
+		if (/^(sm|md|lg|xl)$/.test(m[2])) continue;
+		((slotOptions[m[1]] ||= {})[m[2]] ||= new Set()).add(m[3]);
+	}
 	components.push({
 		name: cls.replace(/^m3-/, ""),
 		class: cls,
 		description,
 		slots: [...slots].sort(),
+		slotOptions: Object.fromEntries(Object.entries(slotOptions).map(([slot, g]) => [slot, Object.fromEntries(Object.entries(g).map(([k, v]) => [k, [...v].sort()]))])),
 		options: Object.fromEntries(Object.entries(options).map(([k, v]) => [k, [...v].sort()])),
 		flags: [...flags].sort(),
 		variables,
@@ -88,7 +95,7 @@ const spec = {
 	version: pkg.version,
 	generatedAt: new Date().toISOString().slice(0, 10),
 	conventions: {
-		option: "클래스 `그룹:값` — 예 `btn:outlined`, `btn-size:sm`. 값이 없는 옵션은 flags.",
+		option: "클래스 `그룹:값` — 예 `btn:outlined`, `btn-size:sm`. 값이 없는 옵션은 flags. slotOptions 는 슬롯 요소에 붙이는 옵션 (예 card-media 에 `card-media:square`).",
 		variable: "컴포넌트 요소 자신에 준다: 인라인 style 또는 `.scope .m3-x { --x-*: … }`. 부모 요소의 style 은 상속되지 않는다.",
 		order: "타입(class) → 옵션(options/flags) → 변수(variables). 변수는 옵션으로 안 될 때만.",
 		tokens: "색·간격·모서리·글꼴은 design-tokens 변수만. tokens.groups 에 없는 이름은 존재하지 않는다.",

@@ -1,0 +1,233 @@
+/* ====== Site (newtil 확장) ===========================================
+ * 공개 사이트의 "방": 상단 헤더 · 본문 · 푸터가 세로로 흐르고 본문은 가운데 컨테이너 안에 놓인다.
+ * m3-layout(드로어 앱 셸)과 다른 종류의 방이다. M3 스펙에는 없다.
+ *
+ * 사용법:
+ *   <div class="m3-site">
+ *     <header class="site-header">
+ *       <div class="site-container site-header-inner">
+ *         <a class="site-logo" href="/">NCafe</a>
+ *         <nav class="site-nav"><a href="…" aria-current="page">메뉴</a><a href="…">소개</a></nav>
+ *         <div class="site-actions"><button class="m3-btn btn:outlined">로그인</button></div>
+ *       </div>
+ *     </header>
+ *     <main class="site-main">
+ *       <div class="site-container">
+ *         <div class="site-body site-body:aside">      ← 옵션: 왼쪽 사이드 + 본문 2단
+ *           <aside class="site-aside">…</aside>
+ *           <div class="site-content">…</div>
+ *         </div>
+ *       </div>
+ *     </main>
+ *     <footer class="site-footer">
+ *       <div class="site-container site-footer-inner">
+ *         <p class="site-copyright">© 2026 NCafe</p>
+ *         <nav class="site-footer-links"><a href="…">소개</a></nav>
+ *       </div>
+ *     </footer>
+ *   </div>
+ *
+ * 옵션:  site-body:aside (왼쪽 사이드), site-body:aside-end (오른쪽 사이드)
+ *        site-width:narrow (48rem) | default (70rem) | wide (90rem)
+ * 변수:  --site-* 로 폭·여백·헤더 높이·색 조정
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-site {
+	--site-max-width: 70rem;
+	--site-gutter: var(--space-7);                         /* 24px */
+	--site-background: var(--color-surface-1);
+
+	/* header */
+	--site-header-height: 4rem;                            /* 64px */
+	--site-header-background: var(--color-surface);
+	--site-header-border: 0.0625rem solid var(--color-border);
+	--site-header-gap: var(--space-8);
+	--site-logo-size: var(--font-size-heading-sm);
+	--site-logo-weight: var(--font-weight-bold);
+	--site-logo-color: var(--color-primary);
+	--site-nav-gap: var(--space-6);
+	--site-nav-size: var(--font-size-body-sm);
+	--site-nav-color: var(--color-text-muted);
+	--site-nav-color-active: var(--color-text);
+	--site-nav-weight-active: var(--font-weight-semibold);
+	--site-actions-gap: var(--space-3);
+
+	/* main */
+	--site-main-padding-top: var(--space-9);
+	--site-main-padding-bottom: var(--space-11);
+
+	/* body (aside + content) */
+	--site-aside-width: 12.5rem;                           /* 200px */
+	--site-body-gap: var(--space-8);
+	--site-aside-gap: var(--space-5);
+
+	/* footer */
+	--site-footer-padding: var(--space-8) 0;
+	--site-footer-border: 0.0625rem solid var(--color-border);
+	--site-footer-size: var(--font-size-body-sm);
+	--site-footer-color: var(--color-text-muted);
+	--site-footer-links-gap: var(--space-5);
+}
+
+/* ================== Base ============================================= */
+.m3-site {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background: var(--site-background);
+	color: var(--color-text);
+}
+
+.m3-site .site-container {
+	width: 100%;
+	max-width: var(--site-max-width);
+	margin: 0 auto;
+	padding: 0 var(--site-gutter);
+	box-sizing: border-box;
+}
+
+/* ================== Header =========================================== */
+.m3-site .site-header {
+	background: var(--site-header-background);
+	border-bottom: var(--site-header-border);
+}
+
+.m3-site .site-header-inner {
+	display: flex;
+	align-items: center;
+	gap: var(--site-header-gap);
+	height: var(--site-header-height);
+}
+
+.m3-site .site-logo {
+	font-size: var(--site-logo-size);
+	font-weight: var(--site-logo-weight);
+	color: var(--site-logo-color);
+	text-decoration: none;
+	letter-spacing: -0.02em;
+}
+
+.m3-site .site-nav {
+	display: flex;
+	align-items: center;
+	gap: var(--site-nav-gap);
+}
+
+.m3-site .site-nav > a {
+	font-size: var(--site-nav-size);
+	color: var(--site-nav-color);
+	text-decoration: none;
+	transition: color var(--duration-fast) var(--ease-in-out);
+}
+
+.m3-site .site-nav > a:hover,
+.m3-site .site-nav > a[aria-current="page"] {
+	color: var(--site-nav-color-active);
+}
+
+.m3-site .site-nav > a[aria-current="page"] {
+	font-weight: var(--site-nav-weight-active);
+}
+
+.m3-site .site-actions {
+	display: flex;
+	align-items: center;
+	gap: var(--site-actions-gap);
+	margin-left: auto;
+}
+
+/* ================== Main ============================================= */
+.m3-site .site-main {
+	flex: 1;
+	padding-top: var(--site-main-padding-top);
+	padding-bottom: var(--site-main-padding-bottom);
+}
+
+.m3-site .site-body {
+	display: block;
+}
+
+.m3-site .site-body.site-body\:aside,
+.m3-site .site-body.site-body\:aside-end {
+	display: grid;
+	gap: var(--site-body-gap);
+	align-items: start;
+}
+
+.m3-site .site-body.site-body\:aside {
+	grid-template-columns: var(--site-aside-width) minmax(0, 1fr);
+}
+
+.m3-site .site-body.site-body\:aside-end {
+	grid-template-columns: minmax(0, 1fr) var(--site-aside-width);
+}
+
+.m3-site .site-body.site-body\:aside-end > .site-aside {
+	order: 2;
+}
+
+.m3-site .site-aside {
+	display: flex;
+	flex-direction: column;
+	gap: var(--site-aside-gap);
+}
+
+.m3-site .site-content {
+	min-width: 0;
+}
+
+/* ================== Footer =========================================== */
+.m3-site .site-footer {
+	border-top: var(--site-footer-border);
+	padding: var(--site-footer-padding);
+	font-size: var(--site-footer-size);
+	color: var(--site-footer-color);
+}
+
+.m3-site .site-footer-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--site-footer-links-gap);
+	flex-wrap: wrap;
+}
+
+.m3-site .site-copyright {
+	margin: 0;
+}
+
+.m3-site .site-footer-links {
+	display: flex;
+	gap: var(--site-footer-links-gap);
+}
+
+.m3-site .site-footer-links > a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.m3-site .site-footer-links > a:hover {
+	color: var(--color-text);
+}
+
+/* ================== Options ========================================== */
+.m3-site.site-width\:narrow  { --site-max-width: 48rem; }
+.m3-site.site-width\:default { --site-max-width: 70rem; }
+.m3-site.site-width\:wide    { --site-max-width: 90rem; }
+
+/* ================== Responsive ======================================= */
+@media (max-width: 840px) {
+	.m3-site .site-body.site-body\:aside,
+	.m3-site .site-body.site-body\:aside-end {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.m3-site .site-body.site-body\:aside-end > .site-aside {
+		order: 0;
+	}
+}
+
+@media (max-width: 640px) {
+	.m3-site { --site-gutter: var(--space-5); }
+	.m3-site .site-nav { display: none; }
+}

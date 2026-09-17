@@ -243,3 +243,52 @@
 | `divider:inset` | 좌측 인셋 |
 | `divider:middle-inset` | 좌우 인셋 |
 | `divider:vertical` | 세로 방향 |
+
+## m3-site (공개 사이트 셸, newtil 확장)
+
+`m3-layout` 이 드로어를 가진 **앱** 셸이라면, `m3-site` 는 상단 헤더 · 본문 · 푸터가 세로로 흐르고 본문이 가운데 컨테이너에 놓이는 **공개 사이트** 셸입니다. 헤더 안은 로고 · 가로 내비 · 오른쪽 동작 세 슬롯, 본문은 선택적으로 왼쪽(오른쪽) 사이드 2단.
+
+### 기본 사용법
+
+<Demo>
+<div class="m3-site" style="min-height: 22rem;">
+  <header class="site-header">
+    <div class="site-container site-header-inner">
+      <a class="site-logo" href="#">NCafe</a>
+      <nav class="site-nav"><a href="#" aria-current="page">메뉴</a><a href="#">소개</a><a href="#">장바구니</a></nav>
+      <div class="site-actions"><button class="m3-btn btn:outlined btn-size:xs">로그인</button><button class="m3-btn btn-size:xs">회원가입</button></div>
+    </div>
+  </header>
+  <main class="site-main">
+    <div class="site-container">
+      <div class="site-body site-body:aside">
+        <aside class="site-aside"><div class="m3-card card:outlined card-padding:self">사이드</div></aside>
+        <div class="site-content"><div class="m3-card card:outlined card-padding:self">본문</div></div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="site-container site-footer-inner">
+      <p class="site-copyright">© 2026 NCafe</p>
+      <nav class="site-footer-links"><a href="#">소개</a><a href="#">이용약관</a></nav>
+    </div>
+  </footer>
+</div>
+</Demo>
+
+### 옵션
+
+| 클래스 | 설명 |
+|---|---|
+| `site-body:aside` / `site-body:aside-end` | 본문을 사이드 + 내용 2단으로 (840px 이하에서 1단) |
+| `site-width:narrow` / `default` / `wide` | 컨테이너 최대 폭 48 / 70 / 90rem |
+
+### 변수 API
+
+| 변수 | 기본값 | 설명 |
+|---|---|---|
+| `--site-max-width` | `70rem` | 컨테이너 폭 |
+| `--site-gutter` | `var(--space-7)` | 좌우 여백 |
+| `--site-header-height` | `4rem` | 헤더 높이 |
+| `--site-aside-width` | `12.5rem` | 사이드 폭 |
+| `--site-logo-color` / `--site-nav-color-active` | `--color-primary` / `--color-text` | 로고·활성 내비 색 |

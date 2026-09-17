@@ -41,6 +41,22 @@
 </div>
 </Demo>
 
+### 미디어 비율과 오버레이 배지
+
+이미지 크기가 제각각인 상품 카드는 `card-media:square|video|wide` 로 비율을 고정합니다. 이미지 위 상태 표시는 `card-media` 안에 `card-media-badge` 로 둡니다(기본 왼쪽 위, `card-media-badge:end` 는 오른쪽 위).
+
+<Demo>
+<div class="m3-card card:outlined" style="width: 14rem;">
+  <div class="card-media card-media:square">
+    <img src="https://picsum.photos/seed/latte/400/300" alt="">
+    <span class="m3-badge badge:inline badge-color:neutral card-media-badge">품절</span>
+  </div>
+  <div class="card-content">
+    <h3 class="card-headline">카페라떼</h3>
+  </div>
+</div>
+</Demo>
+
 ### 카드 타입
 
 <Demo>
@@ -437,6 +453,29 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 | `chip-color:success` | Success 색상 |
 | `chip-color:warning` | Warning 색상 |
 | `chip-close` | 닫기 버튼 (하위 요소) |
+
+## m3-toolbar (목록 툴바, newtil 확장)
+
+목록·표 위의 한 줄. 왼쪽 정보(건수·선택 상태), 오른쪽 동작(정렬·필터). `toolbar:fill` 은 필터 바처럼 입력 여러 개를 한 줄에 놓을 때, `.toolbar-grow` 가 남은 폭을 채웁니다.
+
+<Demo>
+<div class="m3-toolbar">
+  <div class="toolbar-start">총 <strong>31</strong>개의 메뉴</div>
+  <div class="toolbar-end">
+    <div class="m3-text-field field:outlined field-label:none"><select><option>인기순</option><option>최신순</option></select></div>
+  </div>
+</div>
+<form class="m3-toolbar toolbar:fill">
+  <div class="m3-text-field field:outlined field-label:none"><select><option>전체 카테고리</option></select></div>
+  <div class="m3-text-field field:outlined field-label:none toolbar-grow"><input type="search" placeholder="메뉴 이름 검색"></div>
+  <button type="button" class="m3-btn btn:outlined">검색</button>
+</form>
+</Demo>
+
+| 클래스 | 설명 |
+|---|---|
+| `toolbar:fill` | 자식을 왼쪽부터 나란히, `.toolbar-grow` 가 늘어남 |
+| `toolbar:card` | 카드 상단 줄(안쪽 여백 + 아래 테두리) |
 
 ## m3-grid (격자 배치, newtil 확장)
 
