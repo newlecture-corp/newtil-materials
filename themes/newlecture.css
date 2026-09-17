@@ -60,11 +60,13 @@
 .m3-btn.btn\:outlined { --btn-background-color: var(--color-surface); }
 .m3-btn.btn\:outlined.btn-color\:danger { --btn-border-color: var(--color-danger-subtle); }
 
-/* ── 카드: 12px 모서리(앱 카드 0.75rem), 24px 여백 ── */
+/* ── 카드: 12px 모서리(앱 카드 0.75rem), 24px 여백, 제목은 본문보다 한 단계 큰 굵은 글씨 ── */
 .m3-card {
   --card-border-radius: var(--radius-4);
   --card-padding-x: 1.5rem;
   --card-padding-y: 1.5rem;
+  --card-headline-size: var(--font-size-body-lg);
+  --card-headline-weight: var(--font-weight-bold);
 }
 
 /* ── 텍스트 필드(외부 레이블·테두리형): 40px, 8px 모서리, 카드와 같은 테두리색 ── */
