@@ -99,7 +99,7 @@ const spec = {
 		variable: "컴포넌트 요소 자신에 준다: 인라인 style 또는 `.scope .m3-x { --x-*: … }`. 부모 요소의 style 은 상속되지 않는다.",
 		order: "타입(class) → 옵션(options/flags) → 변수(variables). 변수는 옵션으로 안 될 때만.",
 		tokens: "색·간격·모서리·글꼴은 design-tokens 변수만. tokens.groups 에 없는 이름은 존재하지 않는다.",
-		brand: "브랜드색은 primitive 램프(--_hue-*)를 덮는다. 진한 primary 면 라이트 --color-on-primary 를 흰색으로.",
+		brand: "브랜드색은 씨앗 하나 `--brand` (design-tokens 0.2.3). 램프와 on-primary 는 계산된다. 회색조는 --_hue-gray-* 를 hex 로.",
 	},
 	components,
 	tokens,

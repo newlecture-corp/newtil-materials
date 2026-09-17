@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.15 (2026-09-17) — 브랜드 씨앗
+
+- 의존 `@newtil/design-tokens ^0.2.3`. 번들 dist/index.css 에 씨앗 계산 램프가 들어간다.
+- `themes/ncafe.css`·`themes/newlecture.css`: 브랜드 램프 hex 8줄 → `--brand` 한 줄. 손으로 지정하던 `--color-on-primary` 삭제(자동).
+- spec.json conventions.brand 갱신.
+
 ## 0.4.14 (2026-09-17) — 콘텐츠 블록 셋째 묶음: 목록·장바구니 마감에서 드러난 빈 자리
 
 ncafe/frontend 를 원본 publishing 과 픽셀로 비교해 나온 것들. 페이지가 우회하던 자리를 부품으로 메운다.
@@ -19,7 +25,7 @@ ncafe/frontend 를 원본 publishing 과 픽셀로 비교해 나온 것들. 페�
 - `m3-card` `.card-actions-end` 가 세로 가운데 정렬을 안 해 높이가 다른 버튼이 나란히 오면 중심이 어긋났다.
 
 ### Theme
-- `themes/ncafe.css` 사용 규약에 방(m3-site 통일)·목록 카드·수량 항목 추가.
+- `themes/ncafe.css` 사용 규약에 방(m3-site 통일)·목록 카드·수량·선택지·글 덩어리 항목 추가.
 
 ## 0.4.13 (2026-09-17)
 
