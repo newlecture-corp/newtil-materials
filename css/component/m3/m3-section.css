@@ -77,7 +77,10 @@
 .m3-section .section-body > ul,
 .m3-section .section-body > ol {
 	padding-left: var(--space-6);
+	list-style-position: outside;
 }
+.m3-section .section-body > ul { list-style-type: disc; }     /* 앱 reset 이 목록 기호를 지워도 본문 목록은 기호가 있어야 한다 */
+.m3-section .section-body > ol { list-style-type: decimal; }
 
 /* ================== Options ========================================== */
 .m3-section.section\:divided {
