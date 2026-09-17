@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.7 (2026-09-17)
+
+### Added
+- `themes/` — 브랜드 테마 파일의 자리와 형식(`themes/README.md`). 사용 규약(머리 주석) + 브랜드 램프 + 컴포넌트 변수 세 부분. `themes/ncafe.css`(카페 갈색)·`themes/newlecture.css`(뉴렉처 인디고, newlecture-app 실제 값에서 추출) 두 예시. `@newtil/materials/themes/<name>.css` 로 import. 페이지 CSS 는 레이아웃만 갖고 컴포넌트 변수는 테마에서만 정한다는 규칙.
+
 ## 0.4.6 (2026-09-17)
 
 ### Added

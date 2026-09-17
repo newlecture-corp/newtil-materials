@@ -1,0 +1,83 @@
+/* ===== NCafe 브랜드 테마 =====
+ * newtil 컴포넌트 위에 얹는 "브랜드가 정한 값" 한 벌. 페이지는 이 파일을 링크만 하고 컴포넌트 변수를 직접 덮지 않는다.
+ * 형식 설명: themes/README.md
+ * 순서: design-tokens → materials → 이 파일 → 페이지 CSS(레이아웃만).
+ *
+ * ── 사용 규약 (마크업에서 고를 옵션) ─────────────────────────────────────
+ *  버튼   기본  : <button class="m3-btn">                     (filled, 40px)
+ *         보조  : <button class="m3-btn btn:outlined">
+ *         위험  : <button class="m3-btn btn:outlined btn-color:danger">
+ *         작게  : + btn-size:xs  (표 안·카드 안, 32px)
+ *         크게  : + btn-size:md  (히어로·폼 제출, 44px)
+ *         알약/각진 모서리 옵션(btn-shape)은 쓰지 않는다 — 모서리는 이 테마가 정한다.
+ *  카드   <div class="m3-card card:outlined card-padding:self">   (elevated·filled 안 씀)
+ *  입력   <div class="m3-text-field field:outlined field-label:top"> <label>…</label> <input> </div>
+ *         레이블 없는 필터/검색: field-label:none.  select 도 같은 래퍼 안에.
+ *  배지   <span class="m3-badge badge:inline badge-color:…">
+ *  ─────────────────────────────────────────────────────────────────────── */
+
+/* 브랜드 램프 — primary 가 이 값을 가리킨다 (라이트 500/600/700/100, 다크 400/300/200/900) */
+:root {
+  --_hue-green-100: #f2eae4;
+  --_hue-green-200: #d9c3b5;
+  --_hue-green-300: #b89e8a;
+  --_hue-green-400: #9a7a63;
+  --_hue-green-500: #5c3d2e;
+  --_hue-green-600: #462d21;
+  --_hue-green-700: #35211a;
+  --_hue-green-900: #2a1a13;
+
+  /* 따뜻한 회색 — 표면·글자·테두리 */
+  --_hue-gray-50:  #faf9f7;
+  --_hue-gray-100: #f7f5f2;
+  --_hue-gray-200: #e6e1da;
+  --_hue-gray-300: #d8d2cb;
+  --_hue-gray-400: #b0a79e;
+  --_hue-gray-500: #8a817a;
+  --_hue-gray-600: #7b736a;
+  --_hue-gray-700: #4a423c;
+  --_hue-gray-800: #2e2824;
+  --_hue-gray-900: #1f1b18;
+  --_hue-gray-950: #14110f;
+
+  --font-family-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Segoe UI", "Malgun Gothic", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+/* 진한 primary 위 글자는 흰색 (토큰 기본은 밝은 primary 전제) */
+:root, [data-theme="light"] { --color-on-primary: #ffffff; }
+
+/* ── 버튼: 8px 모서리, 단계별 높이 40/32/44 ── */
+.m3-btn {
+  --btn-border-radius: var(--radius-3);
+  --btn-font-weight: var(--font-weight-semibold);
+  --btn-gap: 0.375rem;
+  --btn-height-sm: 2.5rem;  --btn-padding-sm: 0 1rem;     --btn-font-size-sm: 0.875rem;
+  --btn-height-xs: 2rem;    --btn-padding-xs: 0 0.75rem;  --btn-font-size-xs: 0.8125rem;
+  --btn-height-md: 2.75rem; --btn-padding-md: 0 1.25rem;  --btn-font-size-md: 0.9375rem;
+  /* 옵션 없는 기본 = sm 단계 */
+  --btn-height: var(--btn-height-sm); --btn-padding: var(--btn-padding-sm); --btn-font-size: var(--btn-font-size-sm);
+}
+.m3-btn.btn\:outlined { --btn-background-color: var(--color-surface); }
+.m3-btn.btn\:outlined.btn-color\:danger { --btn-border-color: var(--color-danger-subtle); }
+
+/* ── 카드: 16px 모서리, 24px 여백 ── */
+.m3-card {
+  --card-border-radius: 1rem;
+  --card-padding-x: 1.5rem;
+  --card-padding-y: 1.5rem;
+}
+
+/* ── 텍스트 필드(외부 레이블·테두리형): 40px, 8px 모서리, 카드와 같은 테두리색 ── */
+.m3-text-field.field\:outlined.field-label\:top,
+.m3-text-field.field\:outlined.field-label\:none {
+  --field-input-box-border-radius: var(--radius-3);
+  --field-input-box-min-height: 2.5rem;
+  --field-min-height: 2.5rem;
+  --field-border-radius: var(--radius-3);
+  --field-background: var(--color-surface);
+  --field-padding-top: 0;
+  --field-outline-color: var(--color-border);
+  --field-label-weight: var(--font-weight-semibold);
+  --field-font-size: 0.875rem;
+  --field-outline-color-focus: var(--color-primary);
+}
