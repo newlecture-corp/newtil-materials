@@ -496,6 +496,8 @@
 	--field-input-padding-top: var(--field-padding-top);
 	--field-padding-bottom: var(--field-padding-top);
 	--field-justify-content: center;
+	/* 컨테이너가 상자다. 안쪽 input/select 는 높이를 갖지 않아야 컨테이너 min-height 에 테두리가 더해지지 않는다 (0.4.10) */
+	--field-input-box-min-height: auto;
 }
 
 /* 외부 모드에서 input focus 시 border 강조 */

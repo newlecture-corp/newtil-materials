@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.10 (2026-09-17)
+
+### Fixed
+- `field-label:none`(컨테이너가 상자인 모드)에서 안쪽 input/select 에도 `--field-input-box-min-height` 가 적용돼, 테마가 두 값을 같게 주면 컨테이너가 min-height + 테두리(2px)만큼 커졌다. 이 모드에서는 안쪽 min-height 를 `auto` 로 되돌린다.
+
 ## 0.4.9 (2026-09-17)
 
 ### Fixed
