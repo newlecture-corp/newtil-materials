@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.19 (2026-09-18)
+
+### Fixed
+- `m3-icon` 글리프가 상자 안에서 잘리던 문제. 부모 컴포넌트(`icon-btn-size:xs|sm`, `m3-tree`, `m3-stepper`, `m3-btn` 아이콘)가 `.m3-icon` 에 font-size 만 주면 `::before` 는 여전히 `--icon-size`(24px)로 글리프를 그려 작은 상자에서 잘렸다. 글리프 크기가 요소의 font-size 를 따르도록 바꿨다(`width/height: 1em`). `--icon-size` 와 `icon-size:N` 옵션은 그대로.
+
 ## 0.4.18 (2026-09-17)
 
 ### Added

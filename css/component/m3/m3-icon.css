@@ -29,8 +29,11 @@
 
 /* ================== Base Style ======================================= */
 .m3-icon {
-	width: var(--icon-size);
-	height: var(--icon-size);
+	/* 0.4.19: 글리프 크기는 요소의 font-size 를 따른다. 부모 컴포넌트가 .m3-icon 에 font-size 만 줘도(icon-btn·tree·stepper) 글리프가 같이 줄어든다.
+	   전엔 ::before 가 --icon-size(24px)를 따로 읽어 작은 상자 안에서 24px 글리프가 잘렸다. --icon-size 옵션은 그대로 동작한다. */
+	font-size: var(--icon-size);
+	width: 1em;
+	height: 1em;
 	overflow: hidden;
 	display: inline-flex;
 	align-items: center;
@@ -46,11 +49,12 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--icon-size);
-	height: var(--icon-size);
+	width: 1em;
+	height: 1em;
+	line-height: 1;
 	color: inherit;
 	font-family: var(--icon-family);
-	font-size: var(--icon-size);
+	font-size: inherit;
 	font-variation-settings:
 		"FILL" var(--icon-fill),
 		"wght" var(--icon-weight),
