@@ -67,3 +67,4 @@
 .m3-badge.badge-color\:danger { --badge-background: var(--color-danger); --badge-color: var(--color-on-danger); }
 .m3-badge.badge-color\:success { --badge-background: var(--color-success); --badge-color: var(--color-on-success); }
 .m3-badge.badge-color\:warning { --badge-background: var(--color-warning); --badge-color: var(--color-on-warning); }
+.m3-badge.badge-color\:neutral { --badge-background: var(--color-surface-3); --badge-color: var(--color-text); }   /* 중립 상태(비공개·마감·보관) (0.4.9) */

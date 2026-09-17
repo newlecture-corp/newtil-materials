@@ -27,6 +27,7 @@
 
 /* ================== Base Style ======================================= */
 .m3-divider {
+	display: block;   /* reset 이 m3-* 안의 hr 를 숨긴다 — <hr class="m3-divider"> 가 사용법이므로 되살린다 (0.4.9) */
 	width: var(--divider-width);
 	height: var(--divider-height);
 	margin: var(--divider-margin);

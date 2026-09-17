@@ -146,7 +146,7 @@
 }
 
 /* ===== 수평선 ===== */
-:where([class*=" m3-"], [class^="m3-"] hr),
+:where([class*=" m3-"] hr, [class^="m3-"] hr),
 :where(body.reset hr) {
 	display: none;
 }

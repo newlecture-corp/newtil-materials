@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.9 (2026-09-17)
+
+### Fixed
+- `<hr class="m3-divider">` 가 m3 컨테이너 안에서 보이지 않던 것 — reset 이 `m3-*` 안의 `hr` 를 숨기는데 divider 가 display 를 되살리지 않았다. 또 그 reset 셀렉터가 `[class*=" m3-"]`(hr 이 아닌 모든 요소)를 잡고 있던 오타를 `[class*=" m3-"] hr` 로 정정.
+
+### Added
+- `badge-color:neutral` — 중립 상태(비공개·모집 마감·보관) 배지. 전엔 색 옵션이 유채색 다섯뿐이라 warning·secondary 로 대체해야 했다.
+
 ## 0.4.8 (2026-09-17)
 
 ### Fixed

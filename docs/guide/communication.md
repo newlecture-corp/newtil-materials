@@ -57,6 +57,7 @@
 <span class="m3-badge badge-color:primary">1</span>
 <span class="m3-badge badge-color:secondary">2</span>
 <span class="m3-badge badge-color:danger">3</span>
+<span class="m3-badge badge-color:neutral">4</span>
 <span class="m3-badge badge-color:success">4</span>
 <span class="m3-badge badge-color:warning">5</span>
 </Demo>
@@ -87,6 +88,7 @@
 | `badge-color:secondary` | Secondary 색상 |
 | `badge-color:danger` | Danger 색상 |
 | `badge-color:success` | Success 색상 |
+| `badge-color:neutral` | 중립 (비공개·마감·보관) |
 | `badge-color:warning` | Warning 색상 |
 
 ---
