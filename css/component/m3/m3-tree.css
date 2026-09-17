@@ -1,0 +1,172 @@
+/* ====== Tree (newtil 확장) ===========================================
+ * 트리. 포함 관계가 있는 목록 — 파일 탐색기, 레이어 패널, 분류 체계, 조직도. M3 스펙에는 없다.
+ * 접기/펼치기는 항목의 aria-expanded 가 정하고, 선택은 aria-selected 가 정한다. 동작(클릭·키보드)은 앱이 맡는다.
+ *
+ * 사용법:
+ *   <ul class="m3-tree" role="tree">
+ *     <li class="tree-item" role="treeitem" aria-expanded="true" aria-selected="true">
+ *       <div class="tree-row">
+ *         <button type="button" class="tree-toggle" aria-label="접기"><i class="m3-icon icon:chevron_right"></i></button>
+ *         <i class="m3-icon icon:folder tree-icon"></i>
+ *         <span class="tree-label">공개 사이트</span>
+ *         <span class="tree-meta">m3-site</span>
+ *       </div>
+ *       <ul class="tree-children" role="group">
+ *         <li class="tree-item" role="treeitem">
+ *           <div class="tree-row">
+ *             <span class="tree-toggle"></span>        ← 자식이 없으면 빈 자리(정렬 유지)
+ *             <span class="tree-label">site-header</span>
+ *           </div>
+ *         </li>
+ *       </ul>
+ *     </li>
+ *   </ul>
+ *
+ * 상태:  aria-expanded="false" 자식 숨김 · aria-selected="true" 선택 · tree-row.tree-drop-into / tree-drop-before 끌어놓기 표시
+ * 옵션:  tree:lines (들여쓰기 안내선)   tree-size:sm | md (기본)
+ * 변수:  --tree-* 로 들여쓰기·줄 높이·색 조정
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-tree {
+	--tree-indent: 1rem;                                   /* 한 단계 들여쓰기 */
+	--tree-row-height: 1.75rem;                            /* 28px */
+	--tree-row-padding-x: var(--space-2);
+	--tree-row-gap: var(--space-1);
+	--tree-row-radius: var(--radius-2);
+	--tree-font-size: var(--font-size-body-sm);
+	--tree-color: var(--color-text);
+	--tree-meta-color: var(--color-text-subtle);
+	--tree-meta-size: var(--font-size-caption);
+	--tree-icon-size: 1rem;
+	--tree-toggle-size: 1.125rem;
+	--tree-toggle-color: var(--color-text-muted);
+	--tree-hover-background: var(--color-surface-2);
+	--tree-selected-background: var(--color-primary-subtle);
+	--tree-selected-color: var(--color-primary);
+	--tree-line-color: var(--color-border-subtle);
+	--tree-drop-color: var(--color-primary);
+	--tree-transition: background-color var(--duration-fast) var(--ease-in-out), transform var(--duration-fast) var(--ease-in-out);
+}
+
+/* ================== Base ============================================= */
+.m3-tree,
+.m3-tree .tree-children {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.m3-tree {
+	font-size: var(--tree-font-size);
+	color: var(--tree-color);
+}
+
+.m3-tree .tree-children {
+	padding-left: var(--tree-indent);
+}
+
+.m3-tree .tree-item[aria-expanded="false"] > .tree-children {
+	display: none;
+}
+
+/* 한 줄 */
+.m3-tree .tree-row {
+	display: flex;
+	align-items: center;
+	gap: var(--tree-row-gap);
+	min-height: var(--tree-row-height);
+	padding: 0 var(--tree-row-padding-x);
+	border-radius: var(--tree-row-radius);
+	cursor: pointer;
+	user-select: none;
+	transition: var(--tree-transition);
+}
+
+.m3-tree .tree-row:hover {
+	background: var(--tree-hover-background);
+}
+
+.m3-tree .tree-item[aria-selected="true"] > .tree-row {
+	background: var(--tree-selected-background);
+	color: var(--tree-selected-color);
+}
+
+/* 접기/펼치기 — 자식이 있으면 button, 없으면 빈 span (자리만) */
+.m3-tree .tree-toggle {
+	flex: 0 0 var(--tree-toggle-size);
+	width: var(--tree-toggle-size);
+	height: var(--tree-toggle-size);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--tree-toggle-color);
+	cursor: pointer;
+	border-radius: var(--radius-1);
+}
+
+.m3-tree .tree-toggle .m3-icon {
+	font-size: var(--tree-toggle-size);
+	width: var(--tree-toggle-size);
+	height: var(--tree-toggle-size);
+	transition: transform var(--duration-fast) var(--ease-in-out);
+}
+
+.m3-tree .tree-item[aria-expanded="true"] > .tree-row > .tree-toggle .m3-icon {
+	transform: rotate(90deg);
+}
+
+.m3-tree .tree-toggle:focus-visible {
+	outline: var(--border-width-2) solid var(--color-focus-ring);
+	outline-offset: 0;
+}
+
+.m3-tree .tree-icon {
+	flex: 0 0 auto;
+	font-size: var(--tree-icon-size);
+	width: var(--tree-icon-size);
+	height: var(--tree-icon-size);
+	color: var(--tree-toggle-color);
+}
+
+.m3-tree .tree-label {
+	flex: 0 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.m3-tree .tree-meta {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: var(--tree-meta-size);
+	color: var(--tree-meta-color);
+	font-family: var(--font-family-mono);
+}
+
+/* 끌어놓기 표시 */
+.m3-tree .tree-row.tree-drop-into {
+	box-shadow: inset 0 0 0 0.125rem var(--tree-drop-color);
+}
+
+.m3-tree .tree-row.tree-drop-before {
+	box-shadow: 0 -0.125rem 0 0 var(--tree-drop-color);
+}
+
+/* ================== Options ========================================== */
+.m3-tree.tree\:lines .tree-children {
+	position: relative;
+	margin-left: calc(var(--tree-toggle-size) / 2 + var(--tree-row-padding-x));
+	padding-left: calc(var(--tree-indent) - var(--tree-toggle-size) / 2 - var(--tree-row-padding-x));
+	border-left: var(--border-width-1) solid var(--tree-line-color);
+}
+
+.m3-tree.tree-size\:sm { --tree-row-height: 1.5rem; --tree-font-size: var(--font-size-caption); --tree-indent: 0.875rem; --tree-toggle-size: 1rem; --tree-icon-size: 0.875rem; }
+.m3-tree.tree-size\:md { --tree-row-height: 1.75rem; --tree-font-size: var(--font-size-body-sm); --tree-indent: 1rem; }

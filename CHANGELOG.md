@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.18 (2026-09-17)
+
+### Added
+- `m3-tree` — 포함 관계 목록(파일 탐색기·레이어 패널·분류 체계). `aria-expanded`/`aria-selected` 로 상태, `tree-toggle`·`tree-icon`·`tree-label`·`tree-meta` 슬롯, 끌어놓기 표시 `tree-drop-into|before`, `tree:lines`, `tree-size:sm|md`. newtil studio 의 레이어 패널이 첫 사용처.
+
 ## 0.4.17 (2026-09-17) — 기본값 손질: 아무것도 안 바꿔도 보기 좋게
 
 design-tokens 0.2.4(기본 씨앗 초록, 다크 surface 정정)와 함께. 기본값만으로 만든 화면(kitchen sink)을 놓고 본 것.

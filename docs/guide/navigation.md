@@ -776,3 +776,49 @@ M3 스펙에는 페이지네이션이 없습니다. 목록 아래 "이전 · 1 2
 | `breadcrumb-separator:slash` (기본) / `chevron` / `dot` | 구분 기호 `/` `›` `·` |
 | `breadcrumb-size:sm` / `md` (기본) | 글자·간격 |
 
+## m3-tree (트리, newtil 확장)
+
+포함 관계가 있는 목록. 파일 탐색기, 레이어 패널, 분류 체계. 접기/펼치기는 `aria-expanded`, 선택은 `aria-selected` 가 정하고 동작은 앱이 맡습니다.
+
+<Demo>
+<ul class="m3-tree" role="tree" style="max-width: 20rem">
+  <li class="tree-item" role="treeitem" aria-expanded="true">
+    <div class="tree-row">
+      <button type="button" class="tree-toggle" aria-label="접기"><i class="m3-icon icon:chevron_right"></i></button>
+      <i class="m3-icon icon:folder tree-icon"></i>
+      <span class="tree-label">공개 사이트</span>
+      <span class="tree-meta">m3-site</span>
+    </div>
+    <ul class="tree-children" role="group">
+      <li class="tree-item" role="treeitem" aria-expanded="false">
+        <div class="tree-row">
+          <button type="button" class="tree-toggle" aria-label="펼치기"><i class="m3-icon icon:chevron_right"></i></button>
+          <span class="tree-label">site-header</span>
+        </div>
+        <ul class="tree-children" role="group"><li class="tree-item" role="treeitem"><div class="tree-row"><span class="tree-toggle"></span><span class="tree-label">site-logo</span></div></li></ul>
+      </li>
+      <li class="tree-item" role="treeitem" aria-expanded="true" aria-selected="true">
+        <div class="tree-row">
+          <button type="button" class="tree-toggle" aria-label="접기"><i class="m3-icon icon:chevron_right"></i></button>
+          <span class="tree-label">site-main</span>
+        </div>
+        <ul class="tree-children" role="group">
+          <li class="tree-item" role="treeitem"><div class="tree-row"><span class="tree-toggle"></span><i class="m3-icon icon:folder tree-icon"></i><span class="tree-label">격자</span><span class="tree-meta">m3-grid</span></div></li>
+        </ul>
+      </li>
+      <li class="tree-item" role="treeitem"><div class="tree-row"><span class="tree-toggle"></span><span class="tree-label">site-footer</span></div></li>
+    </ul>
+  </li>
+</ul>
+</Demo>
+
+| 클래스 · 속성 | 설명 |
+|---|---|
+| `tree-item[aria-expanded="false"]` | 자식(`tree-children`) 숨김. 토글의 chevron 은 `true` 일 때 90° 돈다 |
+| `tree-item[aria-selected="true"]` | 선택 줄 강조 |
+| `tree-toggle` | 자식이 있으면 `<button>`, 없으면 빈 `<span>`(자리 유지) |
+| `tree-icon` / `tree-label` / `tree-meta` | 아이콘 · 이름 · 보조 글(모노스페이스) |
+| `tree-drop-into` / `tree-drop-before` (row 에) | 끌어놓기 표시 — 안으로 / 앞에 |
+| `tree:lines` | 들여쓰기 안내선 |
+| `tree-size:sm` / `md` (기본) | 줄 높이 24 / 28px |
+
