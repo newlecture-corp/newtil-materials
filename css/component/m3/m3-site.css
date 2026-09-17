@@ -29,6 +29,7 @@
  *
  * 옵션:  site-body:aside (왼쪽 사이드), site-body:aside-end (오른쪽 사이드)
  *        site-width:narrow (48rem) | default (70rem) | wide (90rem)
+ *        site-aside:sm (12.5rem, 기본 — 필터·카테고리 내비) | md (16rem) | lg (21.25rem — 주문 요약처럼 금액이 들어가는 패널)
  * 변수:  --site-* 로 폭·여백·헤더 높이·색 조정
  * ================================================================= */
 
@@ -215,6 +216,10 @@
 .m3-site.site-width\:narrow  { --site-max-width: 48rem; }
 .m3-site.site-width\:default { --site-max-width: 70rem; }
 .m3-site.site-width\:wide    { --site-max-width: 90rem; }
+
+.m3-site.site-aside\:sm { --site-aside-width: 12.5rem; }
+.m3-site.site-aside\:md { --site-aside-width: 16rem; }
+.m3-site.site-aside\:lg { --site-aside-width: 21.25rem; }
 
 /* ================== Responsive ======================================= */
 @media (max-width: 840px) {

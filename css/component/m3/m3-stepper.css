@@ -1,0 +1,146 @@
+/* ====== Stepper (newtil 확장) ========================================
+ * 수량 −/＋ 입력. 장바구니·상세 페이지의 "가구" 다. M3 스펙에는 없다.
+ * 한 테두리 안에 [빼기][숫자][더하기] 가 붙어 있는 모양이 기본이고, 값 바꾸는 동작은 앱이 맡는다.
+ *
+ * 사용법:
+ *   <div class="m3-stepper" role="group" aria-label="수량">
+ *     <button type="button" class="stepper-btn" aria-label="수량 감소"><i class="m3-icon icon:remove"></i></button>
+ *     <input class="stepper-input" type="number" value="1" min="1" aria-label="수량">
+ *     <button type="button" class="stepper-btn" aria-label="수량 증가"><i class="m3-icon icon:add"></i></button>
+ *   </div>
+ *
+ * 옵션:  stepper:outlined (기본, 한 테두리 안에 붙음) | stepper:separated (버튼이 각각 둥근 상자)
+ *        stepper-size:sm (28px) | md (34px, 기본) | lg (40px)
+ * 변수:  --stepper-* 로 높이·버튼 폭·입력 폭·테두리·글꼴 조정
+ * 숫자 입력의 브라우저 스핀 버튼은 숨긴다 — 남겨 두면 자리를 차지해 숫자가 왼쪽으로 쏠린다.
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-stepper {
+	--stepper-height: 2.125rem;                            /* 34px */
+	--stepper-btn-width: 2rem;                             /* 32px */
+	--stepper-input-width: 2.75rem;                        /* 44px */
+	--stepper-gap: 0;
+	--stepper-font-size: var(--font-size-body-sm);
+	--stepper-font-weight: var(--font-weight-semibold);
+	--stepper-icon-size: 1rem;
+	--stepper-border-width: 0.0625rem;
+	--stepper-border-color: var(--color-border);
+	--stepper-border-radius: var(--radius-2);
+	--stepper-background: var(--color-surface);
+	--stepper-btn-background: var(--color-surface);
+	--stepper-btn-hover-background: var(--color-surface-1);
+	--stepper-btn-color: var(--color-text);
+	--stepper-input-color: var(--color-text);
+	--stepper-divider: var(--stepper-border-width) solid var(--stepper-border-color);
+	--stepper-disabled-opacity: 0.38;
+}
+
+/* ================== Base ============================================= */
+.m3-stepper {
+	display: inline-flex;
+	align-items: stretch;
+	gap: var(--stepper-gap);
+	height: var(--stepper-height);
+	border: var(--stepper-border-width) solid var(--stepper-border-color);
+	border-radius: var(--stepper-border-radius);
+	background: var(--stepper-background);
+	overflow: hidden;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.m3-stepper .stepper-btn {
+	width: var(--stepper-btn-width);
+	flex: 0 0 var(--stepper-btn-width);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border: 0;
+	background: var(--stepper-btn-background);
+	color: var(--stepper-btn-color);
+	font: inherit;
+	font-size: var(--stepper-font-size);
+	line-height: 1;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: background-color var(--duration-fast) var(--ease-in-out);
+}
+
+.m3-stepper .stepper-btn:hover {
+	background: var(--stepper-btn-hover-background);
+}
+
+.m3-stepper .stepper-btn:focus-visible {
+	outline: var(--border-width-2) solid var(--color-focus-ring);
+	outline-offset: -0.125rem;
+}
+
+.m3-stepper .stepper-btn:disabled {
+	opacity: var(--stepper-disabled-opacity);
+	cursor: not-allowed;
+}
+
+.m3-stepper .stepper-btn .m3-icon {
+	font-size: var(--stepper-icon-size);
+	width: var(--stepper-icon-size);
+	height: var(--stepper-icon-size);
+}
+
+.m3-stepper .stepper-input {
+	width: var(--stepper-input-width);
+	flex: 0 0 var(--stepper-input-width);
+	min-width: 0;
+	padding: 0;
+	border: 0;
+	border-left: var(--stepper-divider);
+	border-right: var(--stepper-divider);
+	background: transparent;
+	color: var(--stepper-input-color);
+	font: inherit;
+	font-size: var(--stepper-font-size);
+	font-weight: var(--stepper-font-weight);
+	text-align: center;
+	box-sizing: border-box;
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+.m3-stepper .stepper-input::-webkit-outer-spin-button,
+.m3-stepper .stepper-input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.m3-stepper .stepper-input:focus {
+	outline: none;
+	background: var(--stepper-btn-hover-background);
+}
+
+/* ================== Options ========================================== */
+.m3-stepper.stepper\:outlined {
+	/* 기본값과 같다 — 이름을 부르기 위한 옵션 */
+}
+
+.m3-stepper.stepper\:separated {
+	--stepper-gap: var(--space-2);
+	--stepper-divider: none;
+	border: 0;
+	background: transparent;
+	overflow: visible;
+}
+
+.m3-stepper.stepper\:separated .stepper-btn {
+	border: var(--stepper-border-width) solid var(--stepper-border-color);
+	border-radius: var(--stepper-border-radius);
+}
+
+.m3-stepper.stepper\:separated .stepper-input {
+	border: var(--stepper-border-width) solid var(--stepper-border-color);
+	border-radius: var(--stepper-border-radius);
+}
+
+.m3-stepper.stepper-size\:sm { --stepper-height: 1.75rem;  --stepper-btn-width: 1.75rem; --stepper-input-width: 2.25rem; --stepper-font-size: var(--font-size-caption); --stepper-icon-size: 0.875rem; }
+.m3-stepper.stepper-size\:md { --stepper-height: 2.125rem; --stepper-btn-width: 2rem;    --stepper-input-width: 2.75rem; }
+.m3-stepper.stepper-size\:lg { --stepper-height: 2.5rem;   --stepper-btn-width: 2.5rem;  --stepper-input-width: 3rem;    --stepper-font-size: var(--font-size-body); --stepper-icon-size: 1.125rem; }

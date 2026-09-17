@@ -233,12 +233,14 @@ a.m3-card {
  * card-media:square | video | wide — 이미지 비율을 고정한다 (상품 카드처럼 이미지 크기가 제각각일 때)
  * card-media 안의 .card-media-badge — 이미지 위 모서리에 놓이는 상태 표시(품절·NEW). m3-badge 를 그 자리에 넣는다. */
 .m3-card .card-media.card-media\:square,
+.m3-card .card-media.card-media\:landscape,
 .m3-card .card-media.card-media\:video,
 .m3-card .card-media.card-media\:wide {
 	position: relative;
 	aspect-ratio: var(--card-media-ratio);
 }
-.m3-card .card-media.card-media\:square { --card-media-ratio: 1 / 1; }
+.m3-card .card-media.card-media\:square    { --card-media-ratio: 1 / 1; }
+.m3-card .card-media.card-media\:landscape { --card-media-ratio: 4 / 3; }               /* 상품 목록 썸네일 — 정사각보다 카드가 덜 껑충하다 (0.4.14) */
 .m3-card .card-media.card-media\:video  { --card-media-ratio: 16 / 9; }
 .m3-card .card-media.card-media\:wide   { --card-media-ratio: 2 / 1; }
 
@@ -362,6 +364,7 @@ a.m3-card {
 .m3-card .card-actions-end {
 	margin-left: auto;
 	display: flex;
+	align-items: center;                                   /* 아이콘 버튼(48px)과 텍스트 버튼(32px)이 나란히 와도 중심을 맞춘다 (0.4.14) */
 	gap: var(--card-actions-gap);
 }
 

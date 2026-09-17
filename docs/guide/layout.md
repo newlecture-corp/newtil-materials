@@ -282,6 +282,7 @@
 |---|---|
 | `site-body:aside` / `site-body:aside-end` | 본문을 사이드 + 내용 2단으로 (840px 이하에서 1단) |
 | `site-width:narrow` / `default` / `wide` | 컨테이너 최대 폭 48 / 70 / 90rem |
+| `site-aside:sm` / `md` / `lg` | 사이드 폭 12.5(기본, 필터·카테고리 내비) / 16 / 21.25rem(주문 요약처럼 금액이 들어가는 패널) |
 
 ### 변수 API
 

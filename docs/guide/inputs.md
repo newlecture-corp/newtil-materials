@@ -561,6 +561,44 @@ M3 기본은 floating label(필드 내부에서 애니메이션으로 이동)이
 
 ---
 
+## m3-stepper (수량 스테퍼, newtil 확장)
+
+장바구니·상품 상세의 수량 −/＋ 입력. 한 테두리 안에 빼기 · 숫자 · 더하기가 붙어 있고, 브라우저의 숫자 스핀 버튼은 숨깁니다(남기면 자리를 차지해 숫자가 왼쪽으로 쏠립니다). 값을 바꾸는 동작은 앱이 맡습니다.
+
+<Demo>
+<div class="m3-stepper" role="group" aria-label="수량">
+  <button type="button" class="stepper-btn" aria-label="수량 감소"><i class="m3-icon icon:remove"></i></button>
+  <input class="stepper-input" type="number" value="1" min="1" aria-label="수량">
+  <button type="button" class="stepper-btn" aria-label="수량 증가"><i class="m3-icon icon:add"></i></button>
+</div>
+<div class="m3-stepper stepper-size:lg" role="group" aria-label="수량">
+  <button type="button" class="stepper-btn" aria-label="수량 감소"><i class="m3-icon icon:remove"></i></button>
+  <input class="stepper-input" type="number" value="2" min="1" aria-label="수량">
+  <button type="button" class="stepper-btn" aria-label="수량 증가"><i class="m3-icon icon:add"></i></button>
+</div>
+<div class="m3-stepper stepper:separated" role="group" aria-label="수량">
+  <button type="button" class="stepper-btn" aria-label="수량 감소"><i class="m3-icon icon:remove"></i></button>
+  <input class="stepper-input" type="number" value="3" min="1" aria-label="수량">
+  <button type="button" class="stepper-btn" aria-label="수량 증가"><i class="m3-icon icon:add"></i></button>
+</div>
+</Demo>
+
+| 클래스 | 설명 |
+|---|---|
+| `stepper:outlined` (기본) / `stepper:separated` | 한 테두리 안에 붙음 / 버튼과 입력이 각각 둥근 상자 |
+| `stepper-size:sm` / `md` (기본) / `lg` | 높이 28 / 34 / 40px |
+
+### Variable API
+
+| 변수 | 기본값 | 설명 |
+|---|---|---|
+| `--stepper-height` | `2.125rem` | 전체 높이 |
+| `--stepper-btn-width` | `2rem` | −/＋ 버튼 폭 |
+| `--stepper-input-width` | `2.75rem` | 숫자 입력 폭 |
+| `--stepper-border-color` | `var(--color-border)` | 테두리·구분선 색 |
+| `--stepper-border-radius` | `var(--radius-2)` | 모서리 |
+| `--stepper-font-size` / `--stepper-font-weight` | `body-sm` / `semibold` | 숫자 글꼴 |
+
 ## select · 도움말 · 레이블 요소
 
 ### select

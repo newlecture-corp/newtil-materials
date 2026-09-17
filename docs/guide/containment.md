@@ -43,7 +43,7 @@
 
 ### 미디어 비율과 오버레이 배지
 
-이미지 크기가 제각각인 상품 카드는 `card-media:square|video|wide` 로 비율을 고정합니다. 이미지 위 상태 표시는 `card-media` 안에 `card-media-badge` 로 둡니다(기본 왼쪽 위, `card-media-badge:end` 는 오른쪽 위).
+이미지 크기가 제각각인 상품 카드는 `card-media:square|landscape|video|wide`(1:1 · 4:3 · 16:9 · 2:1) 로 비율을 고정합니다. 상품 목록 썸네일은 `landscape` 가 정사각보다 카드를 덜 껑충하게 만듭니다. 이미지 위 상태 표시는 `card-media` 안에 `card-media-badge` 로 둡니다(기본 왼쪽 위, `card-media-badge:end` 는 오른쪽 위).
 
 <Demo>
 <div class="m3-card card:outlined" style="width: 14rem;">

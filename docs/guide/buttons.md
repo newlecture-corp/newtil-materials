@@ -249,6 +249,25 @@ Material Design 3 스펙에 맞춘 버튼 컴포넌트입니다. 일반 버튼(`
 </button>
 </Demo>
 
+### 크기 변형 (newtil 확장)
+
+기본(`md`)만 M3 터치 영역 48px 을 지킵니다. `xs`·`sm` 은 보이는 크기가 곧 상자 크기라서 카드 액션·표 셀처럼 텍스트 버튼(`btn-size:sm` 32px) 옆에 나란히 놓을 때 씁니다.
+
+<Demo>
+<button class="m3-icon-btn icon-btn:outlined icon-btn-size:xs" aria-label="좋아요"><i class="m3-icon icon:favorite"></i></button>
+<button class="m3-icon-btn icon-btn:outlined icon-btn-size:sm" aria-label="좋아요"><i class="m3-icon icon:favorite"></i></button>
+<button class="m3-icon-btn icon-btn:outlined" aria-label="좋아요"><i class="m3-icon icon:favorite"></i></button>
+<button class="m3-icon-btn icon-btn:outlined icon-btn-size:lg" aria-label="좋아요"><i class="m3-icon icon:favorite"></i></button>
+<button class="m3-btn btn-size:sm">담기</button>
+</Demo>
+
+| 클래스 | 보이는 크기 | 터치 영역 |
+|---|---|---|
+| `icon-btn-size:xs` | 28px | 28px |
+| `icon-btn-size:sm` | 32px | 32px |
+| `icon-btn-size:md` (기본) | 40px | 48px |
+| `icon-btn-size:lg` | 48px | 48px |
+
 ### 4가지 타입
 
 <Demo>

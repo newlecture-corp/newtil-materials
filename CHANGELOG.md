@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.4.14 (2026-09-17) — 콘텐츠 블록 셋째 묶음: 목록·장바구니 마감에서 드러난 빈 자리
+
+ncafe/frontend 를 원본 publishing 과 픽셀로 비교해 나온 것들. 페이지가 우회하던 자리를 부품으로 메운다.
+
+### Added
+- `m3-stepper` — 수량 −/＋ 입력. `stepper:outlined`(기본)|`separated`, `stepper-size:sm|md|lg`(28/34/40px). 브라우저 숫자 스핀 버튼을 숨겨 숫자가 왼쪽으로 쏠리지 않는다.
+- `m3-icon-btn` 크기 옵션 `icon-btn-size:xs|sm|md|lg`(28/32/40/48px). `xs`·`sm` 은 터치 영역을 늘리지 않아 텍스트 버튼 `btn-size:xs`(32px) 옆에 나란히 놓을 수 있다. 전엔 48px 고정이라 카드 액션 줄의 하트가 담기 버튼보다 컸다.
+- `m3-card` `card-media:landscape`(4:3). 상품 목록 썸네일용 — 정사각(1:1)은 카드를 껑충하게 만든다.
+- `m3-site` `site-aside:sm|md|lg`(12.5/16/21.25rem). 주문 요약처럼 금액이 들어가는 오른쪽 패널은 `lg`.
+
+### Fixed
+- `m3-card` `.card-actions-end` 가 세로 가운데 정렬을 안 해 높이가 다른 버튼이 나란히 오면 중심이 어긋났다.
+
+### Theme
+- `themes/ncafe.css` 사용 규약에 방(m3-site 통일)·목록 카드·수량 항목 추가.
+
 ## 0.4.13 (2026-09-17)
 
 ### Fixed

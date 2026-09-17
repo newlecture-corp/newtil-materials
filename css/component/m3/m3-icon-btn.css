@@ -1,6 +1,8 @@
 /* ====== M3 Icon Button (Material Design 3 spec-aligned) ==============
  * Type :  standard (default) | filled | tonal | outlined
  * Toggle: icon-btn-toggle:selected | icon-btn-toggle:unselected
+ * Size :  icon-btn-size:xs (28px) | sm (32px) | md (40px, 기본, 터치 48px) | lg (48px)
+ *         xs·sm 은 터치 영역을 늘리지 않는다 — 카드 액션·표 셀·스테퍼처럼 텍스트 버튼 옆에 나란히 놓는 자리용.
  * State:  enabled (default) | hover | focus | active | disabled
  *
  * M3 spec: 48dp touch target, 40dp visible container
@@ -126,6 +128,13 @@
 	cursor: not-allowed;
 	pointer-events: none;
 }
+
+/* ================== Size ============================================= */
+/* md 만 M3 터치 영역(48px)을 지키고, 나머지는 보이는 크기가 곧 상자 크기다. 0.4.14 */
+.m3-icon-btn.icon-btn-size\:xs { --icon-btn-size: 1.75rem; --icon-btn-touch-size: 1.75rem; --icon-btn-icon-size: 1.125rem; }
+.m3-icon-btn.icon-btn-size\:sm { --icon-btn-size: 2rem;    --icon-btn-touch-size: 2rem;    --icon-btn-icon-size: 1.25rem; }
+.m3-icon-btn.icon-btn-size\:md { --icon-btn-size: 2.5rem;  --icon-btn-touch-size: 3rem;    --icon-btn-icon-size: 1.5rem; }
+.m3-icon-btn.icon-btn-size\:lg { --icon-btn-size: 3rem;    --icon-btn-touch-size: 3rem;    --icon-btn-icon-size: 1.75rem; }
 
 /* ================== Type: Filled ===================================== */
 /* M3: primary bg, on-primary icon */
