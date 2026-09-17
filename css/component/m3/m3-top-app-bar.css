@@ -1,4 +1,5 @@
 /* ====== M3 Top App Bar ===============================================
+ * 상단 앱 바. 앞 아이콘 · 제목 · 뒤 동작. 앱 셸(m3-layout)의 머리.
  * Type: center-aligned (default) | small | medium | large
  * M3 spec: 64dp height, surface bg, title-large text
  *

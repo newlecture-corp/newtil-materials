@@ -1,4 +1,5 @@
 /* ====== M3 Slider ====================================================
+ * 슬라이더. 범위 안에서 값 하나, 눈금 옵션.
  * M3 spec: Track 4dp height, handle 20dp, active track uses primary
  * Types: continuous (default), discrete (with tick marks)
  *

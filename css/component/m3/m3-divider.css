@@ -1,4 +1,5 @@
 /* ====== M3 Divider (Material Design 3 spec-aligned) ==================
+ * 구분선. 가로(기본) · 세로, 안쪽 여백(inset) 옵션.
  * Type :  full-width (default) | inset | middle-inset | vertical
  *
  * M3 spec: 1dp height, outline-variant color

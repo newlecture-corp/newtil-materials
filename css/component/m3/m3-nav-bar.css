@@ -1,4 +1,5 @@
 /* ====== M3 Navigation Bar (Bottom Navigation) =======================
+ * 하단 내비 바. 모바일에서 3~5개 목적지.
  * M3 spec: 80dp height, fixed bottom, 3-5 destinations, surface bg
  * 내부 아이템은 m3-deco 컴포넌트를 사용하여 icon+text 렌더링.
  *

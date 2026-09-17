@@ -1,4 +1,5 @@
 /* ====== M3 Switch (Toggle) ==========================================
+ * 스위치. 켜짐/꺼짐 토글, 레이블.
  * M3 spec: track 52×32dp, handle 16dp(off)/24dp(on)/28dp(pressed)
  * Variable API: --switch-* 변수로 커스텀 가능
  *

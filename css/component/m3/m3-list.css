@@ -1,4 +1,5 @@
 /* ====== M3 List =====================================================
+ * 목록. 항목(list-item)에 앞 아이콘·본문·뒤 요소 슬롯, 구분선, 크기 옵션.
  * M3 spec: one-line 56dp, two-line 72dp, three-line 88dp
  * 16dp horizontal padding, on-surface text
  *

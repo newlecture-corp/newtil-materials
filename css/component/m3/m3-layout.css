@@ -1,4 +1,5 @@
 /* ====== M3 Adaptive Page Layout =====================================
+ * 앱 셸(방). 드로어 · 상단 앱 바 · 본문이 화면 폭에 따라 드로어/레일/하단 내비로 바뀐다.
  * M3 adaptive guidelines: page shell that arranges Top App Bar,
  * Navigation, and Content area with automatic navigation switching.
  *

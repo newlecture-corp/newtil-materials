@@ -1,4 +1,5 @@
 /* ====== M3 Button (Material Design 3 spec-aligned) ================
+ * 버튼. filled(기본) · outlined · text · tonal · elevated, 크기 xs~xl, 색 옵션.
  * Size :  xs | sm (default) | md | lg | xl
  * Shape:  round (default) | square
  * Type :  filled (default) | elevated | tonal | outlined | text
@@ -181,10 +182,11 @@
 /* M3: secondary-container bg, on-secondary-container text.
  * Tonal은 "tonal" 자체의 색 의미가 있어 accent와 다름 */
 .m3-btn.btn\:tonal {
-	--btn-color: var(--color-secondary);                 /* ≈ on-secondary-container */
-	--btn-background-color: var(--color-secondary-subtle); /* ≈ secondary-container */
+	/* 0.4.17: primary 의 옅은 판. 전엔 secondary(파랑) 계열이라 초록 primary 옆에서 따로 놀았다. 색을 바꾸려면 btn-color:secondary */
+	--btn-color: var(--color-primary-active);
+	--btn-background-color: var(--color-primary-subtle);
 	--btn-elevation-hover: var(--shadow-sm);              /* M3: level1 on hover */
-	--btn-state-layer-color: var(--color-secondary);      /* ≈ on-secondary-container */
+	--btn-state-layer-color: var(--color-primary);
 }
 
 .m3-btn.btn\:tonal:disabled,

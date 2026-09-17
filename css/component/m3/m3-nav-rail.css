@@ -1,4 +1,5 @@
 /* ====== M3 Navigation Rail ==========================================
+ * 내비 레일. 태블릿 폭의 왼쪽 세로 아이콘 목록.
  * M3 spec: 80dp width, vertical, fixed left side, optional FAB at top
  * 내부 아이템은 m3-deco 컴포넌트를 사용하여 icon+text 렌더링.
  *

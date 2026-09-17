@@ -1,4 +1,5 @@
 /* ====== M3 Icon Button (Material Design 3 spec-aligned) ==============
+ * 아이콘만 있는 버튼. standard · filled · tonal · outlined, 크기 xs~lg, 토글.
  * Type :  standard (default) | filled | tonal | outlined
  * Toggle: icon-btn-toggle:selected | icon-btn-toggle:unselected
  * Size :  icon-btn-size:xs (28px) | sm (32px) | md (40px, 기본, 터치 48px) | lg (48px)

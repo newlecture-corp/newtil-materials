@@ -1,4 +1,5 @@
 /* ====== M3 Progress Indicator ========================================
+ * 진행 표시. 가로 막대 · 원형, 확정·불확정.
  * Type: linear (default) | circular
  * M3 spec: primary track color, 4dp height (linear), 48dp (circular)
  *

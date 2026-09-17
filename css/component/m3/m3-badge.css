@@ -1,4 +1,5 @@
 /* ====== M3 Badge ====================================================
+ * 알림 수·상태를 작은 원이나 알약에 담는다. 아이콘 모서리에 얹거나(기본) 글자 옆에 인라인으로.
  * M3 spec: small dot (6dp) or large with number (16dp height)
  * Position: top-right corner of parent (needs relative parent)
  *

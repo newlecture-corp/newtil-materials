@@ -1,4 +1,5 @@
 /* ====== Pager (newtil 확장) ==========================================
+ * 페이지네이션. 이전 · 1 2 3 · 다음. 현재는 aria-current, 비활성은 aria-disabled.
  * M3 스펙에는 페이지네이션 컴포넌트가 없다. 목록 아래 "이전 · 1 2 3 · 다음" 을 표준화한다.
  *
  * 사용법:
@@ -37,9 +38,9 @@
 	--pager-item-hover-background: var(--color-surface-1);
 
 	/* current */
-	--pager-current-background: var(--color-text);
-	--pager-current-color: var(--color-surface);
-	--pager-current-border-color: var(--color-text);
+	--pager-current-background: var(--color-primary);      /* 0.4.17: 글자색(검정) → primary. 다른 부품과 같은 강조색 */
+	--pager-current-color: var(--color-on-primary);
+	--pager-current-border-color: var(--color-primary);
 	--pager-current-font-weight: var(--font-weight-bold);
 
 	/* disabled */

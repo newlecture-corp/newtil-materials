@@ -1,4 +1,5 @@
 /* ====== M3 Bottom Sheet ==============================================
+ * 화면 아래에서 올라오는 시트. 모바일의 선택지·필터·상세 미리보기.
  * M3 spec: surface container, rounded top corners (28dp), drag handle
  * Types: standard (non-modal, default), modal (with scrim)
  * Hidden by default, shown with sheet-open.

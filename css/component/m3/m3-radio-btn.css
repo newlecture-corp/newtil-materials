@@ -1,4 +1,5 @@
 /* ====== M3 Radio Button =============================================
+ * 라디오. 레이블과 한 줄, 여러 개면 form-group 으로 묶는다.
  * M3 spec: 20dp outer ring, 10dp inner dot, primary when selected
  * Variable API: --radio-* 변수로 커스텀 가능
  * ================================================================= */

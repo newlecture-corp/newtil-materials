@@ -1,4 +1,5 @@
 /* ====== M3 Tooltip ===================================================
+ * 툴팁. 요소에 올리면 뜨는 짧은 설명.
  * M3 spec: Plain tooltip (inverse surface, small text)
  *          Rich tooltip (surface, larger with title/actions)
  *

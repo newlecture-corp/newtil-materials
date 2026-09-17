@@ -1,4 +1,5 @@
 /* ====== M3 Snackbar =================================================
+ * 스낵바. 화면 아래 짧은 알림과 동작 하나.
  * M3 spec: inverse-surface bg, inverse-on-surface text, 48dp min height
  * Position: bottom center, auto-dismiss
  *

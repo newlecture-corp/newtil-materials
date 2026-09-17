@@ -1,4 +1,5 @@
 /* ====== M3 Dialog ===================================================
+ * 다이얼로그. 제목 · 본문 · 액션 줄, 스크림 위에 가운데.
  * M3 spec: surface-container-high, 28dp radius, 24dp padding
  * Min 280dp, Max 560dp. Scrim overlay.
  * Variable API: --dialog-* 변수로 커스텀 가능

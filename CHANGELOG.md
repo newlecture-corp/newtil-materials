@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.17 (2026-09-17) — 기본값 손질: 아무것도 안 바꿔도 보기 좋게
+
+design-tokens 0.2.4(기본 씨앗 초록, 다크 surface 정정)와 함께. 기본값만으로 만든 화면(kitchen sink)을 놓고 본 것.
+
+### Changed
+- `m3-text-field` 보조 글(`field-supporting`)이 상자 안 밑줄 위에 끼어 있었다 → 상자 밖 아래. `field-label:none`(레이블 없는 필터·검색·select)은 높이 40px — 옆 버튼과 같다(전 56px).
+- `m3-btn` `btn:tonal` 이 secondary(파랑) 계열이라 초록 primary 옆에서 따로 놀았다 → primary 의 옅은 판.
+- `m3-card` 제목 기본 1.5rem/400 → 1.25rem/600. 한글 제목이 본문과 구분된다.
+- `m3-pager` 현재 페이지 배경 검정 → primary.
+- 컴포넌트 36개 소스 머리에 한국어 한 줄 요약. spec.json `description` 이 이 줄로 시작한다(전엔 `====== M3 Button ======` 제목 줄).
+
 ## 0.4.16 (2026-09-17)
 
 ### Fixed

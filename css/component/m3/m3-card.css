@@ -1,4 +1,5 @@
 /* ====== M3 Card (Material Design 3 spec-aligned) =====================
+ * 카드. 사진(card-media) · 머리(card-header) · 본문 · 액션 줄이 세로로 쌓인다. outlined · filled · elevated.
  * Type :  elevated (default) | filled | outlined
  * State:  enabled (default) | disabled | hover | focus | active | dragged
  *
@@ -33,8 +34,8 @@
 	--card-header-gap: 1rem;
 
 	/* -- header typography -- */
-	--card-headline-size: 1.5rem;
-	--card-headline-weight: 400;
+	--card-headline-size: 1.25rem;                         /* 0.4.17: 1.5rem/400 → 1.25rem/600. 한글 제목은 굵어야 본문과 구분된다 */
+	--card-headline-weight: var(--font-weight-semibold);
 	--card-headline-line-height: 1.75rem;
 	--card-headline-color: var(--color-text);
 	--card-headline-margin: 0;

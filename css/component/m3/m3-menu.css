@@ -1,4 +1,5 @@
 /* ====== M3 Menu =====================================================
+ * 드롭다운 메뉴. 버튼 아래 항목 목록, 구분선·아이콘.
  * M3 spec: surface container, 8dp rounded, elevation level2
  * Min 112dp, Max 280dp. Hidden by default, shown with menu-open.
  *

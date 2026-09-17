@@ -1,4 +1,5 @@
 /* ====== M3 Text Field (M3 spec-aligned + newtil extensions) ============
+ * 입력 필드. outlined · filled, 레이블 위치(top·left·none), 크기, 상태, select 포함.
  * Type:   filled (default) | outlined
  * Size:   xs | sm | md (M3 default = 56dp) | lg | xl            [newtil 확장]
  * Label:  (기본=M3 floating) | top | left | right | bottom | none [newtil 확장]
@@ -304,9 +305,18 @@
 /* ================== Supporting Text ================================== */
 .m3-text-field .field-supporting {
 	order: 2;   /* label(0/1)·input(1/0) 뒤 — 외부 레이블 모드에서 label 과 input 사이로 끼어들지 않게 (0.4.5) */
+	position: absolute;                                    /* 0.4.17: 컨테이너가 곧 상자이므로 보조 글은 상자 밖 아래에 */
+	top: 100%;
+	left: 0;
+	right: 0;
 	font-size: var(--field-supporting-size);
 	color: var(--field-supporting-color);
 	padding: var(--field-supporting-padding);
+	line-height: 1.3;
+}
+
+.m3-text-field:has(> .field-supporting) {
+	margin-bottom: calc(var(--field-supporting-size) * 1.3 + 0.25rem);   /* 아래 보조 글 자리 */
 }
 
 .m3-text-field.field-state\:error .field-supporting {
@@ -491,6 +501,7 @@
 
 /* 라벨 숨김 (검색바 등) — container는 박스 유지, input을 수직 중앙 정렬 */
 .m3-text-field.field-label\:none {
+	--field-min-height: 2.5rem;                            /* 0.4.17: 떠 있는 레이블 자리가 없으니 40px — 툴바·필터의 select 가 버튼과 같은 높이 */
 	--field-label-display: none;
 	--field-placeholder-opacity: 1;
 	--field-input-padding-top: var(--field-padding-top);

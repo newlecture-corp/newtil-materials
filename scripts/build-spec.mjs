@@ -35,7 +35,7 @@ for (const f of fs.readdirSync(CSS_DIR).filter((f) => f.startsWith("m3-") && f.e
 	// 머리 주석
 	const head = raw.match(/^\/\*([\s\S]*?)\*\//);
 	const description = head
-		? head[1].split("\n").map((l) => l.replace(/^\s*\*\s?/, "").replace(/^=+\s*|\s*=+$/g, "")).filter((l) => l.trim() && !/^=+$/.test(l.trim())).slice(0, 6).join("\n")
+		? head[1].split("\n").map((l) => l.replace(/^\s*\*\s?/, "")).filter((l) => l.trim() && !/^\s*=/.test(l)).map((l) => l.replace(/\s*=+\s*$/, "")).slice(0, 6).join("\n")   // 첫 줄(====== 제목 ======)은 뺀다 — 한국어 요약이 첫 줄
 		: "";
 	// 변수: 기본 블록 `.m3-x {` 안의 --x-*: 값; /* 주석 */
 	const variables = {};

@@ -1,4 +1,5 @@
 /* ====== M3 Navigation Drawer ========================================
+ * 내비 드로어. 왼쪽 세로 목록, 머리·구분선·항목.
  * M3 spec: 360dp width, surface bg, list-like items
  * Types: standard (inline, default), modal (overlay with scrim)
  *
