@@ -74,7 +74,7 @@
 }
 
 .m3-toolbar.toolbar\:fill > .toolbar-grow {
-	flex: 1 1 auto;
+	flex: 1 1 0%;                                          /* basis 0 — width:100% 인 텍스트 필드가 들어와도 옆 버튼을 줄 아래로 밀지 않는다 */
 	min-width: 0;
 }
 
