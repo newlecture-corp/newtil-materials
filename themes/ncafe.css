@@ -18,6 +18,7 @@
  *         왼쪽 필터/카테고리 사이드: site-body:aside (기본 폭).  오른쪽 주문 요약/합계 패널: site-body:aside-end + m3-site 에 site-aside:lg
  *  목록   상품 카드 격자: <ul class="m3-grid grid-cols:3"> 안에 <li class="m3-card card:outlined card-size:compact">
  *         썸네일은 card-media:landscape (4:3).  카드 액션 줄의 하트는 icon-btn:outlined icon-btn-size:sm, 담기는 btn-size:xs — 둘 다 32px.
+ *  글     상세 설명·영양 정보·유의 사항 같은 덩어리는 <section class="m3-section section:divided">. 표는 m3-table(항목–값이면 table:key-value). 경로는 m3-breadcrumb.
  *  수량   <div class="m3-stepper"> (기본 34px). 상세 페이지의 큰 수량은 stepper-size:lg. 페이지가 −/＋ 를 아이콘 버튼으로 짜지 않는다.
  *  ─────────────────────────────────────────────────────────────────────── */
 

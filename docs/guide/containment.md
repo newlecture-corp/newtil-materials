@@ -510,3 +510,58 @@ JavaScript를 사용하여 `<dialog>` 요소의 `open` 속성을 제어합니다
 | `--grid-cols` / `--grid-cols-md` / `--grid-cols-sm` | `3` / `2` / `1` | 화면 크기별 열 수 |
 | `--grid-gap` | `var(--space-6)` | 간격 |
 | `--grid-min` | `16rem` | `grid-cols:auto` 의 최소 열 너비 |
+
+## m3-table (표, newtil 확장)
+
+데이터 표와 항목–값 표를 한 클래스로. 항목–값은 `table:key-value` 와 `th scope="row"`.
+
+<Demo>
+<table class="m3-table">
+  <thead><tr><th>메뉴</th><th>카테고리</th><th class="table-align:end">가격</th></tr></thead>
+  <tbody>
+    <tr><td>아메리카노</td><td>커피</td><td class="table-align:end">3,500원</td></tr>
+    <tr><td>카페라떼</td><td>커피</td><td class="table-align:end">4,500원</td></tr>
+  </tbody>
+</table>
+<table class="m3-table table:key-value" style="--table-max-width: 40rem">
+  <tbody>
+    <tr><th scope="row">칼로리</th><td>180 kcal</td><th scope="row">나트륨</th><td>115 mg</td></tr>
+    <tr><th scope="row">당류</th><td>13 g</td><th scope="row">포화지방</th><td>4.5 g</td></tr>
+  </tbody>
+</table>
+</Demo>
+
+| 클래스 | 설명 |
+|---|---|
+| `table:key-value` | 행 머리(`th[scope=row]`)에 옅은 배경·고정 폭(`--table-key-width` 25%) |
+| `table:striped` / `table:bordered` / `table:hover` | 줄무늬 / 세로줄까지 / 행 hover 배경 |
+| `table-size:sm` / `md` (기본) / `lg` | 셀 여백·글자 |
+| `table-align:center` / `end` (셀에) | 셀 정렬 |
+
+## m3-section (제목·설명·본문 묶음, newtil 확장)
+
+상세 페이지의 "상세 설명 / 영양 정보 / 유의 사항", 소개 페이지의 절처럼 제목 아래 본문이 오는 덩어리. `section-body` 안의 문단·목록은 본문 글꼴과 행간을 받고, 표·격자 같은 다른 가구는 그대로 놓습니다.
+
+<Demo>
+<section class="m3-section section:divided">
+  <h2 class="section-title">상세 설명</h2>
+  <div class="section-body">
+    <p>브라질과 콜롬비아 원두를 블렌딩한 하우스 블렌드 에스프레소를 사용합니다.</p>
+    <p>HOT 은 머그로, ICE 는 얼음과 함께 투명 컵으로 제공됩니다.</p>
+  </div>
+</section>
+<section class="m3-section section:divided">
+  <h2 class="section-title">유의 사항</h2>
+  <p class="section-caption">2026년 9월 기준</p>
+  <div class="section-body">
+    <ul><li>우유가 포함된 제품입니다.</li><li>주문 후 30분 이내 픽업해 주세요.</li></ul>
+  </div>
+</section>
+</Demo>
+
+| 클래스 | 설명 |
+|---|---|
+| `section:divided` | 아래 구분선 |
+| `section:card` | 테두리 상자 + 안쪽 여백 |
+| `section-size:sm` / `md` (기본) / `lg` | 제목 크기와 위아래 여백 |
+

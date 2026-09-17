@@ -1,0 +1,97 @@
+/* ====== Table (newtil 확장) ==========================================
+ * 표. M3 에는 data table 스펙이 없어 newtil 이 정한다. 두 쓰임을 한 클래스로:
+ *   - 데이터 표 (thead + tbody, 관리자 목록)
+ *   - 항목–값 표 (th scope=row 가 항목, td 가 값 — 영양 정보·주문 정보)
+ *
+ * 사용법:
+ *   <table class="m3-table">
+ *     <thead><tr><th>이름</th><th>가격</th></tr></thead>
+ *     <tbody><tr><td>아메리카노</td><td>3,500원</td></tr></tbody>
+ *   </table>
+ *
+ *   항목–값:
+ *   <table class="m3-table table:key-value">
+ *     <tbody><tr><th scope="row">칼로리</th><td>180 kcal</td><th scope="row">나트륨</th><td>115 mg</td></tr></tbody>
+ *   </table>
+ *
+ * 옵션:  table:key-value (행 머리 th 에 옅은 배경·고정 폭)   table:striped (짝수 행 배경)
+ *        table:bordered (세로줄까지)   table-size:sm | md (기본) | lg
+ *        table-align:center 를 td 에 주면 가운데, td 의 text-align 유틸도 그대로 된다.
+ * 변수:  --table-* 로 여백·선·머리 배경 조정.  --table-max-width 로 폭 제한(기본 100%).
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-table {
+	--table-width: 100%;
+	--table-max-width: none;
+	--table-font-size: var(--font-size-body-sm);
+	--table-color: var(--color-text);
+	--table-cell-padding: var(--space-3) var(--space-4);
+	--table-border-width: var(--border-width-1);
+	--table-border-color: var(--color-border-subtle);
+	--table-head-background: var(--color-surface-2);
+	--table-head-color: var(--color-text-muted);
+	--table-head-weight: var(--font-weight-semibold);
+	--table-row-hover-background: transparent;
+	--table-stripe-background: var(--color-surface-1);
+	--table-key-width: 25%;
+}
+
+/* ================== Base ============================================= */
+.m3-table {
+	width: var(--table-width);
+	max-width: var(--table-max-width);
+	border-collapse: collapse;
+	font-size: var(--table-font-size);
+	color: var(--table-color);
+	text-align: left;
+}
+
+.m3-table th,
+.m3-table td {
+	padding: var(--table-cell-padding);
+	border-bottom: var(--table-border-width) solid var(--table-border-color);
+	vertical-align: middle;
+}
+
+.m3-table thead th {
+	background: var(--table-head-background);
+	color: var(--table-head-color);
+	font-weight: var(--table-head-weight);
+	white-space: nowrap;
+}
+
+.m3-table tbody tr:hover {
+	background: var(--table-row-hover-background);
+}
+
+.m3-table .table-align\:center { text-align: center; }
+.m3-table .table-align\:end    { text-align: right; }
+
+/* ================== Options ========================================== */
+/* 항목–값: 행 머리(th scope=row)가 항목 */
+.m3-table.table\:key-value th[scope="row"] {
+	width: var(--table-key-width);
+	background: var(--table-head-background);
+	color: var(--table-head-color);
+	font-weight: var(--table-head-weight);
+	white-space: nowrap;
+}
+
+.m3-table.table\:striped tbody tr:nth-child(even) {
+	background: var(--table-stripe-background);
+}
+
+.m3-table.table\:bordered {
+	border: var(--table-border-width) solid var(--table-border-color);
+}
+.m3-table.table\:bordered th,
+.m3-table.table\:bordered td {
+	border: var(--table-border-width) solid var(--table-border-color);
+}
+
+.m3-table.table\:hover { --table-row-hover-background: var(--color-surface-1); }
+
+.m3-table.table-size\:sm { --table-cell-padding: var(--space-2) var(--space-3); --table-font-size: var(--font-size-caption); }
+.m3-table.table-size\:md { --table-cell-padding: var(--space-3) var(--space-4); --table-font-size: var(--font-size-body-sm); }
+.m3-table.table-size\:lg { --table-cell-padding: var(--space-4) var(--space-5); --table-font-size: var(--font-size-body); }

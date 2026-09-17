@@ -9,6 +9,9 @@ ncafe/frontend 를 원본 publishing 과 픽셀로 비교해 나온 것들. 페�
 - `m3-icon-btn` 크기 옵션 `icon-btn-size:xs|sm|md|lg`(28/32/40/48px). `xs`·`sm` 은 터치 영역을 늘리지 않아 텍스트 버튼 `btn-size:xs`(32px) 옆에 나란히 놓을 수 있다. 전엔 48px 고정이라 카드 액션 줄의 하트가 담기 버튼보다 컸다.
 - `m3-card` `card-media:landscape`(4:3). 상품 목록 썸네일용 — 정사각(1:1)은 카드를 껑충하게 만든다.
 - `m3-site` `site-aside:sm|md|lg`(12.5/16/21.25rem). 주문 요약처럼 금액이 들어가는 오른쪽 패널은 `lg`.
+- `m3-breadcrumb` — 현재 위치 경로. 구분 기호는 CSS(`breadcrumb-separator:slash|chevron|dot`), 마지막은 `aria-current="page"`.
+- `m3-table` — 데이터 표 + 항목–값 표(`table:key-value`, `th[scope=row]`). `table:striped|bordered|hover`, `table-size:sm|md|lg`, 셀 `table-align:center|end`.
+- `m3-section` — 제목·설명·본문 묶음(`section-title`/`section-caption`/`section-body`). `section:divided|card`, `section-size:sm|md|lg`. 상세 페이지가 article 블록 3개를 페이지 CSS 로 짜던 것.
 
 ### Fixed
 - `m3-toolbar` `toolbar-start`/`toolbar-end` 가 항상 flex 라 "총 <strong>31</strong>개" 같은 글 한 줄의 글자 사이가 gap 만큼 벌어졌다. 자식 요소가 둘 이상일 때만 flex. `toolbar:fill` 의 `.toolbar-grow` 는 basis 0 — 텍스트 필드(width 100%)가 옆 버튼을 줄 아래로 밀던 것.

@@ -752,3 +752,27 @@ M3 스펙에는 페이지네이션이 없습니다. 목록 아래 "이전 · 1 2
 | `--pager-item-border-radius` | `var(--radius-3)` | 모서리 |
 | `--pager-current-background` / `--pager-current-color` | `--color-text` / `--color-surface` | 현재 페이지 색 |
 | `--pager-gap` | `0.375rem` | 항목 간격 |
+
+## m3-breadcrumb (현재 위치, newtil 확장)
+
+경로 링크를 나란히 놓고 구분 기호는 CSS 가 그립니다. 마지막 항목에 `aria-current="page"`.
+
+<Demo>
+<nav class="m3-breadcrumb" aria-label="현재 위치">
+  <a href="#">홈</a>
+  <a href="#">메뉴</a>
+  <a href="#">커피</a>
+  <span aria-current="page">카페라떼</span>
+</nav>
+<nav class="m3-breadcrumb breadcrumb-separator:chevron breadcrumb-size:sm" aria-label="현재 위치">
+  <a href="#">관리자</a>
+  <a href="#">메뉴 관리</a>
+  <span aria-current="page">새 메뉴</span>
+</nav>
+</Demo>
+
+| 클래스 | 설명 |
+|---|---|
+| `breadcrumb-separator:slash` (기본) / `chevron` / `dot` | 구분 기호 `/` `›` `·` |
+| `breadcrumb-size:sm` / `md` (기본) | 글자·간격 |
+

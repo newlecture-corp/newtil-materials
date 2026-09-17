@@ -1,0 +1,71 @@
+/* ====== Breadcrumb (newtil 확장) =====================================
+ * 현재 위치 경로: 홈 / 메뉴 / 커피 / 카페라떼. M3 스펙에는 없다.
+ * 구분 기호는 CSS 가 그린다 — 마크업에 "/" 를 넣지 않는다.
+ *
+ * 사용법:
+ *   <nav class="m3-breadcrumb" aria-label="현재 위치">
+ *     <a href="/">홈</a>
+ *     <a href="/menus">메뉴</a>
+ *     <a href="/menus?category=1">커피</a>
+ *     <span aria-current="page">카페라떼</span>
+ *   </nav>
+ *
+ * 옵션:  breadcrumb-separator:slash (기본, /) | chevron (›) | dot (·)
+ *        breadcrumb-size:sm | md (기본)
+ * 변수:  --breadcrumb-* 로 색·간격·구분 기호 조정
+ * ================================================================= */
+
+/* ================== Variables ======================================== */
+.m3-breadcrumb {
+	--breadcrumb-gap: var(--space-3);
+	--breadcrumb-margin: 0 0 var(--space-7);
+	--breadcrumb-font-size: var(--font-size-body-sm);
+	--breadcrumb-color: var(--color-text-muted);
+	--breadcrumb-color-hover: var(--color-text);
+	--breadcrumb-current-color: var(--color-text);
+	--breadcrumb-current-weight: var(--font-weight-semibold);
+	--breadcrumb-separator: "/";
+	--breadcrumb-separator-color: var(--color-text-subtle);
+}
+
+/* ================== Base ============================================= */
+.m3-breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--breadcrumb-gap);
+	margin: var(--breadcrumb-margin);
+	font-size: var(--breadcrumb-font-size);
+	color: var(--breadcrumb-color);
+}
+
+.m3-breadcrumb > a {
+	color: inherit;
+	text-decoration: none;
+	transition: color var(--duration-fast) var(--ease-in-out);
+}
+
+.m3-breadcrumb > a:hover {
+	color: var(--breadcrumb-color-hover);
+}
+
+.m3-breadcrumb > [aria-current="page"] {
+	color: var(--breadcrumb-current-color);
+	font-weight: var(--breadcrumb-current-weight);
+}
+
+/* 구분 기호 — 첫 항목을 뺀 모든 항목 앞에 */
+.m3-breadcrumb > * + *::before {
+	content: var(--breadcrumb-separator);
+	margin-right: var(--breadcrumb-gap);
+	color: var(--breadcrumb-separator-color);
+	font-weight: var(--font-weight-regular);
+}
+
+/* ================== Options ========================================== */
+.m3-breadcrumb.breadcrumb-separator\:slash   { --breadcrumb-separator: "/"; }
+.m3-breadcrumb.breadcrumb-separator\:chevron { --breadcrumb-separator: "›"; }
+.m3-breadcrumb.breadcrumb-separator\:dot     { --breadcrumb-separator: "·"; }
+
+.m3-breadcrumb.breadcrumb-size\:sm { --breadcrumb-font-size: var(--font-size-caption); --breadcrumb-gap: var(--space-2); }
+.m3-breadcrumb.breadcrumb-size\:md { --breadcrumb-font-size: var(--font-size-body-sm); --breadcrumb-gap: var(--space-3); }
