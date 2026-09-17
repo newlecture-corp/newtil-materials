@@ -59,6 +59,8 @@
 	--badge-position: static;
 	--badge-top: auto;
 	--badge-right: auto;
+	vertical-align: middle;                                /* 글자 옆에 붙을 때 세로 중앙 — 없으면 baseline 에 걸려 아래로 처진다 (0.4.16) */
+	/* 앞 글자와의 간격은 배지가 정하지 않는다 — 단독으로도 쓰이므로. 글자 뒤에 공백 한 칸을 두거나 부모에 gap 을 준다. */
 }
 
 /* Color variants */

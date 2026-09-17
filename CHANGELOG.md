@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.16 (2026-09-17)
+
+### Fixed
+- `m3-badge` `badge:inline` 이 글자 옆에서 baseline 에 걸려 아래로 처졌다. `vertical-align: middle` 을 기본으로 갖는다. 앞 글자와의 간격은 배지가 정하지 않는다(단독으로도 쓰이므로) — 글자 뒤 공백 한 칸 또는 부모 `gap`.
+
 ## 0.4.15 (2026-09-17) — 브랜드 씨앗
 
 - 의존 `@newtil/design-tokens ^0.2.3`. 번들 dist/index.css 에 씨앗 계산 램프가 들어간다.

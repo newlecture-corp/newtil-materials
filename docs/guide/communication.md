@@ -83,7 +83,7 @@
 | 클래스 | 설명 |
 |--------|------|
 | `badge:dot` | 점 배지 (숫자 없이 점만 표시) |
-| `badge:inline` | 인라인 배지 (absolute 대신 inline 배치) |
+| `badge:inline` | 인라인 배지 (absolute 대신 inline 배치). 글자 세로 중앙에 맞는다. 앞 글자와 띄우려면 공백 한 칸 또는 부모 `gap` |
 | `badge-color:primary` | Primary 색상 |
 | `badge-color:secondary` | Secondary 색상 |
 | `badge-color:danger` | Danger 색상 |
