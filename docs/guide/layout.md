@@ -210,6 +210,14 @@
 <hr class="m3-divider divider:middle-inset">
 </Demo>
 
+### 글자 있는 구분선 (newtil 확장)
+
+"또는", 날짜처럼 가운데 글자가 있는 구분선입니다. `<hr>` 대신 `<div>` 로 씁니다.
+
+<Demo>
+<div class="m3-divider divider:text"><span>또는</span></div>
+</Demo>
+
 ### Vertical
 
 세로 방향 구분선입니다.

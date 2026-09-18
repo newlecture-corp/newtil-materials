@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.20 (2026-09-18)
+
+### Added
+- `m3-divider` `divider:text` — 가운데 글자가 있는 구분선(로그인의 "또는"). `<div class="m3-divider divider:text"><span>또는</span></div>`. 변수 `--divider-text-color|size|gap`.
+
 ## 0.4.19 (2026-09-18)
 
 ### Fixed

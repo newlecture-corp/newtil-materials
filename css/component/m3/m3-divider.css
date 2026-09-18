@@ -1,6 +1,6 @@
 /* ====== M3 Divider (Material Design 3 spec-aligned) ==================
  * 구분선. 가로(기본) · 세로, 안쪽 여백(inset) 옵션.
- * Type :  full-width (default) | inset | middle-inset | vertical
+ * Type :  full-width (default) | inset | middle-inset | vertical | text (가운데 글자: <div class="m3-divider divider:text"><span>또는</span></div>)
  *
  * M3 spec: 1dp height, outline-variant color
  * Ref: https://m3.material.io/components/divider/specs
@@ -24,6 +24,11 @@
 
 	/* -- vertical mode -- */
 	--divider-height: auto;                                /* vertical 시 사용 */
+
+	/* -- text mode (0.4.20) -- */
+	--divider-text-color: var(--color-text-muted);
+	--divider-text-size: var(--font-size-caption);
+	--divider-text-gap: var(--space-3);
 }
 
 /* ================== Base Style ======================================= */
@@ -70,4 +75,23 @@
 
 	display: inline-block;
 	align-self: stretch;
+}
+
+/* ================== Option: Text ===================================== */
+/* 가운데 글자가 있는 구분선 — "또는", 날짜 구분. <div class="m3-divider divider:text"><span>또는</span></div>  (0.4.20) */
+.m3-divider.divider\:text {
+	display: flex;
+	align-items: center;
+	gap: var(--divider-text-gap);
+	border-top: 0;
+	color: var(--divider-text-color);
+	font-size: var(--divider-text-size);
+	line-height: 1;
+}
+
+.m3-divider.divider\:text::before,
+.m3-divider.divider\:text::after {
+	content: "";
+	flex: 1 1 auto;
+	border-top: var(--divider-thickness) solid var(--divider-color);
 }
