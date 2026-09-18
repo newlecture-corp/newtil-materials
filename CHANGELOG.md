@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.24 (2026-09-18) — 섹션 = 제목 + 콘텐츠 블록
+
+- `m3-section` 을 "제목이 있는 한 덩어리"의 공통 가구로: 콘텐츠 종류 옵션 `section:text`(기본) · `list` · `nav` · `form` · `table`. 콘텐츠 블록(p · ul/ol · table · form)을 `section-body` 없이 섹션에 바로 놓아도 본문 모양을 받는다. `nav` 는 기호 없는 가로 링크 목록(aria-current 강조). 표·폼은 m3-table·m3-form 을 안 입혀도 기본 모양이 있고, 입히면 그쪽이 우선.
+- 제목은 디자인상 안 보여도 HTML 에 둔다 — 가릴 때는 `display:none` 유틸리티를 제목에.
+
 ## 0.4.23 (2026-09-18) — m3-tree 이름 바꾸기 입력칸
 
 - `m3-tree` 에 `tree-input` 슬롯 — 라벨 자리에 놓는 이름 바꾸기 입력칸(줄 높이 안, primary 테두리). 더블클릭·Enter·Esc 동작은 앱이 맡는다.

@@ -1,18 +1,35 @@
 /* ====== Section (newtil 확장) ========================================
- * 제목 · 설명 · 본문으로 된 글 덩어리. 상세 설명·영양 정보·유의 사항 같은 절.
- * 제목 · 설명 · 본문으로 된 글 덩어리. 상세 페이지의 "상세 설명 / 영양 정보 / 유의 사항",
- * 소개 페이지의 절, 설정 화면의 묶음이 모두 이것이다. M3 스펙에는 없다.
+ * 제목 + 콘텐츠 블록을 묶는 절. 문장·목록·폼·표 어느 것이든 "제목이 있는 한 덩어리"가 섹션이다.
+ * 상세 페이지의 "상세 설명 / 영양 정보 / 유의 사항", 소개 페이지의 절, 설정 화면의 묶음, 메뉴 링크 묶음(nav)이 모두 이것이다.
+ * 제목은 디자인상 안 보여도 HTML 에는 둔다 — 가릴 때는 newtil-css 의 display:none 을 제목에 준다. M3 스펙에는 없다.
  *
- * 사용법:
- *   <section class="m3-section section:divided">
+ * 사용법 — 제목(section-title) + 콘텐츠 블록 하나. 블록은 section-body 로 감싸거나 바로 놓는다:
+ *   <section class="m3-section section:text">               문장 섹션
+ *     <h2 class="section-title">상세 설명</h2>
+ *     <p class="section-caption">2026년 9월 기준</p>        (선택) 제목 아래 설명
+ *     <div class="section-body"><p>…</p><p>…</p></div>
+ *   </section>
+ *   <section class="m3-section section:list">               목록 섹션 — ul/ol 을 바로 놓는다
+ *     <h2 class="section-title">유의 사항</h2>
+ *     <ul><li>…</li><li>…</li></ul>
+ *   </section>
+ *   <nav class="m3-section section:nav">                    링크 목록 — 태그를 nav 로, 기호 없이 가로로
+ *     <h2 class="section-title display:none">바로 가기</h2>
+ *     <ul><li><a href="#">홈</a></li><li><a href="#">메뉴</a></li></ul>
+ *   </nav>
+ *   <section class="m3-section section:form">               폼 섹션 — form 을 바로 놓는다 (필드는 m3-text-field 등)
+ *     <h2 class="section-title">배송지</h2>
+ *     <form>…</form>
+ *   </section>
+ *   <section class="m3-section section:table">              표 섹션 — table 을 바로 놓는다 (m3-table 을 입힐 수 있다)
  *     <h2 class="section-title">영양 정보</h2>
- *     <p class="section-caption">Regular 사이즈(355ml) 기준</p>
- *     <div class="section-body">… 문단 · 표 · 목록 …</div>
+ *     <table>…</table>
  *   </section>
  *
- *   section-body 안의 p · ul · ol 은 본문 글꼴·행간·색을 받는다. 다른 가구(m3-table, m3-grid)는 그대로 놓는다.
+ *   section-body 안의(또는 바로 놓인) p · ul · ol · table · form 은 본문 글꼴·행간·색을 받는다. 다른 가구(m3-table, m3-grid, m3-list)를 입히면 그쪽이 우선.
  *
- * 옵션:  section:divided (아래 구분선)   section:card (테두리 상자, 안쪽 여백)
+ * 옵션:  section:text (기본) | list | nav | form | table   (콘텐츠 블록 종류 — 간격·기호·폭)
+ *        section:divided (아래 구분선)   section:card (테두리 상자, 안쪽 여백)
  *        section-size:sm | md (기본) | lg   (제목 크기와 위아래 여백)
  * 변수:  --section-* 로 여백·제목·본문 조정
  * ================================================================= */
@@ -69,21 +86,78 @@
 	color: var(--section-body-color);
 }
 
+/* 콘텐츠 블록 — section-body 안이든 섹션에 바로 놓였든 같은 본문 모양 */
 .m3-section .section-body > p,
 .m3-section .section-body > ul,
-.m3-section .section-body > ol {
+.m3-section .section-body > ol,
+.m3-section > p,
+.m3-section > ul,
+.m3-section > ol,
+.m3-section > table,
+.m3-section > form {
 	margin: 0;
+	font-size: var(--section-body-size);
+	line-height: var(--section-body-line-height);
+	color: var(--section-body-color);
 }
 
 .m3-section .section-body > ul,
-.m3-section .section-body > ol {
+.m3-section .section-body > ol,
+.m3-section > ul,
+.m3-section > ol {
 	padding-left: var(--space-6);
 	list-style-position: outside;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
 }
-.m3-section .section-body > ul { list-style-type: disc; }     /* 앱 reset 이 목록 기호를 지워도 본문 목록은 기호가 있어야 한다 */
-.m3-section .section-body > ol { list-style-type: decimal; }
+.m3-section .section-body > ul, .m3-section > ul { list-style-type: disc; }     /* 앱 reset 이 목록 기호를 지워도 본문 목록은 기호가 있어야 한다 */
+.m3-section .section-body > ol, .m3-section > ol { list-style-type: decimal; }
+
+/* 표 — m3-table 을 안 입혔을 때의 기본 모양(가는 줄, 왼쪽 정렬). 입히면 m3-table 이 우선 */
+.m3-section > table:not(.m3-table) {
+	width: 100%;
+	border-collapse: collapse;
+}
+.m3-section > table:not(.m3-table) :is(th, td) {
+	padding: var(--space-2) var(--space-3);
+	border-bottom: var(--border-width-1) solid var(--color-border-subtle);
+	text-align: left;
+	vertical-align: top;
+}
+.m3-section > table:not(.m3-table) th { font-weight: var(--font-weight-semibold); color: var(--color-text); }
+
+/* 폼 — m3-form 을 안 입혔을 때 필드가 세로로 쌓인다 */
+.m3-section > form:not(.m3-form) {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+}
 
 /* ================== Options ========================================== */
+/* 콘텐츠 종류 — 구조는 같고 간격·기호만 다르다. text 가 기본이라 클래스가 없어도 문장 섹션이다 */
+.m3-section.section\:text { --section-gap: var(--space-4); }
+.m3-section.section\:list { --section-gap: var(--space-3); }
+.m3-section.section\:form { --section-gap: var(--space-5); }
+.m3-section.section\:table { --section-gap: var(--space-4); --section-body-color: var(--color-text); }
+
+/* 링크 목록(nav) — 기호 없이 가로로, 링크는 글자색·hover 에 primary */
+.m3-section.section\:nav > ul,
+.m3-section.section\:nav > ol,
+.m3-section.section\:nav .section-body > ul {
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--space-2) var(--space-5);
+	padding-left: 0;
+	list-style-type: none;
+}
+.m3-section.section\:nav a {
+	color: var(--color-text);
+	text-decoration: none;
+}
+.m3-section.section\:nav a:hover { color: var(--color-primary); }
+.m3-section.section\:nav a[aria-current="page"] { color: var(--color-primary); font-weight: var(--font-weight-semibold); }
+
 .m3-section.section\:divided {
 	--section-border: var(--border-width-1) solid var(--color-border-subtle);
 }
