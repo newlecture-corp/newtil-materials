@@ -29,7 +29,7 @@
 /* ================== Variables ======================================== */
 .m3-layout {
 	/* -- dimensions -- */
-	--layout-drawer-width: 22.5rem;                  /* 360dp */
+	--layout-drawer-width: 15rem;                    /* 240px — m3-nav-drawer 의 --drawer-width 와 같이 간다 (0.4.25) */
 	--layout-rail-width: 5rem;                       /* 80dp */
 	--layout-bar-height: 5rem;                       /* 80dp */
 	--layout-header-height: 4rem;                    /* 64dp */

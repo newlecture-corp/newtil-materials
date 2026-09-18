@@ -39,10 +39,10 @@
 /* ================== Variables ======================================== */
 .m3-nav-drawer {
 	/* container */
-	--drawer-width: 22.5rem;                         /* 360dp */
+	--drawer-width: 15rem;                           /* 240px — 데스크톱 관리자 화면 기준. M3 의 360dp 는 모바일 모달용이라 너무 넓다 (0.4.25) */
 	--drawer-background: var(--color-surface);
 	--drawer-border-right: 0.0625rem solid var(--color-border-subtle);
-	--drawer-padding: 0.75rem 0;
+	--drawer-padding: 0.5rem 0;
 	--drawer-box-shadow: none;
 	--drawer-color: var(--color-text);
 	--drawer-z-index: var(--z-fixed);
@@ -51,39 +51,39 @@
 	--drawer-headline-font-size: 0.875rem;
 	--drawer-headline-font-weight: 600;
 	--drawer-headline-color: var(--color-text-muted);
-	--drawer-headline-padding: 1rem 1.75rem 0.5rem;
+	--drawer-headline-padding: 0.75rem 1rem 0.5rem;
 	--drawer-headline-letter-spacing: 0.0625rem;
 
 	/* content */
 	--drawer-content-padding: 0 0.75rem;
-	--drawer-content-gap: 0.125rem;
+	--drawer-content-gap: 0.0625rem;
 
 	/* item */
-	--drawer-item-height: 3.5rem;                    /* 56dp */
-	--drawer-item-padding: 0 1rem;
-	--drawer-item-gap: 0.75rem;                      /* 12dp */
+	--drawer-item-height: 2.5rem;                    /* 40px — 본문 글자(14px)와 같은 리듬 */
+	--drawer-item-padding: 0 0.75rem;
+	--drawer-item-gap: 0.625rem;
 	--drawer-item-color: var(--color-text);
 	--drawer-item-font-size: 0.875rem;
 	--drawer-item-font-weight: 500;
 	--drawer-item-line-height: 1.25rem;
-	--drawer-item-border-radius: var(--radius-full);
+	--drawer-item-border-radius: var(--radius-2);    /* 알약이 아니라 살짝 둥근 모서리 — 넓은 알약 배경이 화면을 눌렀다 */
 	--drawer-item-background: transparent;
 	--drawer-item-cursor: pointer;
-	--drawer-item-icon-size: 1.5rem;
+	--drawer-item-icon-size: 1.25rem;
 	--drawer-item-icon-color: var(--color-text-muted);
 
 	/* item active */
 	--drawer-item-active-background: var(--color-primary-subtle);
 	--drawer-item-active-color: var(--color-primary);
 	--drawer-item-active-icon-color: var(--color-primary);
-	--drawer-item-active-font-weight: 700;
+	--drawer-item-active-font-weight: 600;
 
 	/* section header */
-	--drawer-section-header-font-size: 0.875rem;
+	--drawer-section-header-font-size: 0.6875rem;
 	--drawer-section-header-font-weight: 600;
 	--drawer-section-header-color: var(--color-text-muted);
-	--drawer-section-header-padding: 1.125rem 1rem 0.5rem;
-	--drawer-section-header-letter-spacing: 0.0625rem;
+	--drawer-section-header-padding: 1rem 0.75rem 0.25rem;
+	--drawer-section-header-letter-spacing: 0.04rem;
 
 	/* state layer */
 	--drawer-state-hover-opacity: 0.08;
