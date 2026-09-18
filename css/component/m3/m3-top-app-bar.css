@@ -33,9 +33,9 @@
 	--bar-top: auto;
 	--bar-z-index: auto;
 
-	/* title */
-	--bar-title-size: 1.375rem;
-	--bar-title-weight: 400;
+	/* title — M3 title-large(22dp)는 모바일 앱 바 값. 데스크톱 관리자 화면(본문 14px)에선 커서 1.125rem/500 (0.4.26) */
+	--bar-title-size: 1.125rem;
+	--bar-title-weight: 500;
 	--bar-title-color: var(--color-text);
 	--bar-title-padding: 0 0.5rem;
 	--bar-title-flex: 1;
@@ -51,8 +51,8 @@
 	--bar-icon-background: transparent;
 	--bar-icon-cursor: pointer;
 
-	/* trailing */
-	--bar-trailing-gap: 0;
+	/* trailing — 아이콘 버튼만 나란히 둘 땐 0 이어도 되지만 글자·m3-btn 이 섞이면 붙어 버린다 (0.4.26) */
+	--bar-trailing-gap: var(--space-3);
 
 	/* state layer */
 	--bar-state-hover-opacity: 0.08;
