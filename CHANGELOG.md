@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.25 (2026-09-18) — 내비 드로어 비활성 항목
+
+- `m3-nav-drawer`: `.drawer-item[aria-disabled="true"]` — 페이지가 아직 없는 항목을 링크 대신 span 으로 두고 흐리게. 링크 주소를 빌려 쓰면 현재 경로 판정에 여러 항목이 같이 켜진다.
+
 ## 0.4.24 (2026-09-18) — 섹션 = 제목 + 콘텐츠 블록
 
 - `m3-section` 을 "제목이 있는 한 덩어리"의 공통 가구로: 콘텐츠 종류 옵션 `section:text`(기본) · `list` · `nav` · `form` · `table`. 콘텐츠 블록(p · ul/ol · table · form)을 `section-body` 없이 섹션에 바로 놓아도 본문 모양을 받는다. `nav` 는 기호 없는 가로 링크 목록(aria-current 강조). 표·폼은 m3-table·m3-form 을 안 입혀도 기본 모양이 있고, 입히면 그쪽이 우선.

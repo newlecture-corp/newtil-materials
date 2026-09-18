@@ -17,6 +17,10 @@
  *         <i class="m3-icon icon:mail"></i>
  *         <span class="drawer-label">메일</span>
  *       </a>
+ *       <span class="drawer-item" aria-disabled="true">   ← 아직 갈 곳이 없는 항목: 링크 대신 span + aria-disabled (흐리게, 못 누름)
+ *         <i class="m3-icon icon:people"></i>
+ *         <span class="drawer-label">회원</span>
+ *       </span>
  *       <hr class="m3-divider">
  *       <span class="drawer-section-header">설정</span>
  *       <a href="#" class="drawer-item">
@@ -182,6 +186,13 @@
 	--drawer-item-color: var(--drawer-item-active-color);
 	--drawer-item-icon-color: var(--drawer-item-active-icon-color);
 	--drawer-item-font-weight: var(--drawer-item-active-font-weight);
+}
+
+/* 비활성 — 페이지가 아직 없는 항목. 링크가 아니라 span 으로 두고 aria-disabled 를 준다 (0.4.25) */
+.m3-nav-drawer .drawer-item[aria-disabled="true"] {
+	--drawer-item-cursor: not-allowed;
+	opacity: 0.45;
+	pointer-events: none;
 }
 
 /* ================== Section Header =================================== */
