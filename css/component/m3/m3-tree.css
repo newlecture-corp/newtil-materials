@@ -11,6 +11,7 @@
  *         <span class="tree-label">공개 사이트</span>
  *         <span class="tree-meta">m3-site</span>
  *       </div>
+ *       ↳ 이름 바꾸기: tree-label 자리에 <input class="tree-input" value="…"> 을 넣는다 (더블클릭 → 입력 → Enter/Esc 는 앱이 맡는다)
  *       <ul class="tree-children" role="group">
  *         <li class="tree-item" role="treeitem">
  *           <div class="tree-row">
@@ -23,6 +24,7 @@
  *   </ul>
  *
  * 상태:  aria-expanded="false" 자식 숨김 · aria-selected="true" 선택 · tree-row.tree-drop-into / tree-drop-before 끌어놓기 표시
+ * 슬롯:  tree-row · tree-toggle · tree-icon · tree-label · tree-meta · tree-children · tree-input(이름 바꾸는 입력칸)
  * 옵션:  tree:lines (들여쓰기 안내선)   tree-size:sm | md (기본)
  * 변수:  --tree-* 로 들여쓰기·줄 높이·색 조정
  * ================================================================= */
@@ -138,6 +140,22 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+/* 이름 바꾸기 입력칸 — 라벨 자리에 놓이며 줄 높이 안에 들어간다. 글자는 라벨과 같은 크기, 테두리는 primary. */
+.m3-tree .tree-input {
+	flex: 1 1 auto;
+	min-width: 0;
+	height: calc(var(--tree-row-height) - 0.375rem);
+	padding: 0 var(--space-2);
+	border: 1px solid var(--color-primary);
+	border-radius: var(--radius-1);
+	background: var(--color-surface);
+	color: var(--color-text);
+	font: inherit;
+	line-height: 1;
+	outline: none;
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 .m3-tree .tree-meta {
