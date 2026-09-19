@@ -272,3 +272,7 @@
 	.m3-deco.lg\:deco-pos\:top, .m3-deco.lg\:deco-pos\:bottom { --deco-flex-direction: column; --deco-gap: 0.25rem; }
 	.m3-deco.lg\:deco-pos\:left, .m3-deco.lg\:deco-pos\:right { --deco-flex-direction: row; --deco-gap: 0.5rem; }
 }
+
+/* data-icon 속성 → 글리프. icon-essential.css 의 전역 규칙과 같지만, 컴포넌트를 골라 가져올 때(base.css + component/*.css)
+ * 이 파일 혼자서도 아이콘이 나오도록 여기에도 둔다 (0.4.28 — newlecture-app 레일 아이콘이 사라졌던 원인). */
+.m3-deco[data-icon]::before { content: attr(data-icon); }

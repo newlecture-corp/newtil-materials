@@ -166,3 +166,7 @@
 	.m3-icon.lg\:icon-size\:lg { --icon-size: 2.5rem;  --icon-optical-size: 40; }
 	.m3-icon.lg\:icon-size\:xl { --icon-size: 3rem;    --icon-optical-size: 48; }
 }
+
+/* data-icon 속성 → 글리프. icon-essential.css 의 전역 규칙과 같지만, 컴포넌트를 골라 가져올 때(base.css + component/*.css)
+ * 이 파일 혼자서도 아이콘이 나오도록 여기에도 둔다 (0.4.28 — newlecture-app 레일 아이콘이 사라졌던 원인). */
+.m3-icon[data-icon]::before { content: attr(data-icon); }
