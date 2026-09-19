@@ -20,13 +20,24 @@ JS 번들러(Vite, Webpack 등)에서는 패키지를 그대로 가져오면 CSS
 import "@newtil/materials";
 ```
 
-CSS 파일만 필요하면 `index.css` 서브패스를 사용합니다. 이 두 경로만 공개되어 있고, 개별 컴포넌트 파일은 가져올 수 없습니다.
+CSS 파일만 필요하면 `index.css` 서브패스를 사용합니다. 쓰는 컴포넌트가 몇 개뿐이면 `base.css` + `component/<이름>.css` 로 골라 가져옵니다(0.4.27, 아래).
 
 ```css
 @import "@newtil/materials/index.css";
 ```
 
-`index.css` 하나에 design-tokens · reset · Material Symbols 폰트 `@import` · 모든 `m3-*` 컴포넌트가 들어 있습니다.
+`index.css` 하나에 design-tokens · reset · Material Symbols 폰트 `@import` · 모든 `m3-*` 컴포넌트가 들어 있습니다(142KB, gzip 25KB). CSS 는 tree-shaking 이 없으므로 안 쓰는 컴포넌트도 그대로 나갑니다.
+
+컴포넌트를 골라 쓰려면 바탕(`base.css`: 레이어 순서 · reset · 폰트)과 컴포넌트 파일을 가져옵니다. 이 경로엔 design-tokens 사본이 없으니 토큰을 먼저 부릅니다.
+
+```css
+@import "@newtil/design-tokens";
+@import "@newtil/materials/base.css";
+@import "@newtil/materials/component/m3-btn.css";
+@import "@newtil/materials/component/m3-nav-bar.css";
+```
+
+파일 이름은 `dist/component/` 의 목록(= `css/component/m3/` 의 파일명)과 같습니다. `icon:이름` 클래스를 쓰면 `component/icon-essential.css` 도 함께.
 
 ```html
 <!-- 버튼: filled 가 기본. 타입·크기·색은 옵션 클래스로 -->

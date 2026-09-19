@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.27 (2026-09-19) — 컴포넌트를 골라 쓰는 진입
+
+- `@newtil/materials/base.css`(레이어 순서 · scoped reset · Material Symbols 폰트, 4.5KB) + `@newtil/materials/component/<이름>.css`(38개, 컴포넌트 하나씩). `index.css` 는 37개 전부(142KB)를 싣는데 CSS 는 tree-shaking 이 없어서, 내비 다섯 개만 쓰는 newlecture-app 도 전부를 내보내고 있었다. 이제 바탕 + 쓰는 것만 가져갈 수 있다.
+  ```css
+  @import "@newtil/design-tokens";
+  @import "@newtil/materials/base.css";
+  @import "@newtil/materials/component/m3-nav-bar.css";
+  ```
+- `base.css` 와 `component/*.css` 에는 design-tokens 사본이 없다 — 로드 순서(tokens → materials → 테마 → css)대로 앱이 토큰을 먼저 부른다. `index.css` 는 CDN 한 줄 링크용이라 전처럼 사본을 품는다.
+- 소스 `css/index.css` 도 `base.css` 를 품도록 정리. 결과 CSS 는 같다(선택자 38/38).
+
 ## 0.4.26 (2026-09-19) — 상단 앱 바 기본값
 
 - `m3-top-app-bar`: `--bar-trailing-gap` 0 → `var(--space-3)`. trailing 에 사용자 이름·m3-btn 같은 글자 요소가 오면 서로 붙어 있었다(아이콘 버튼만 둘 때를 가정한 값).
