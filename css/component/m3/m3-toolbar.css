@@ -46,7 +46,7 @@
 	font-size: var(--toolbar-font-size);
 	color: var(--toolbar-color);
 	border: var(--toolbar-border);
-	border-bottom: var(--toolbar-border-bottom, var(--toolbar-border));
+	border-bottom: var(--toolbar-border-bottom);
 	border-radius: var(--toolbar-border-radius);
 	background: var(--toolbar-background);
 	flex-wrap: wrap;
@@ -91,5 +91,6 @@
 	--toolbar-padding: var(--space-4) var(--space-5);
 	--toolbar-background: var(--color-surface);
 	--toolbar-border: 0.0625rem solid var(--color-border);
+	--toolbar-border-bottom: var(--toolbar-border);
 	--toolbar-border-radius: var(--radius-3);
 }
