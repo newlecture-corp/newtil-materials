@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.28 (2026-09-19) — 폼의 절(fieldset)
+
+- `m3-form`: `<fieldset><legend>` 를 절로 그린다 — legend 는 절 제목(heading-sm/bold), 절 사이 구분선과 여백. 옵션 없이 구조로 판단하고, 선택지 묶음(`form-group`)인 fieldset 은 제외. 변수 `--form-section-gap|padding-top|border|title-size|title-weight|title-color`.
+- `m3-form`: `--form-max-width: 45rem` — 입력 줄이 넓은 화면 끝까지 늘어나던 것.
+- `m3-text-field`: `input[type=file]` 의 파일 선택 단추를 작은 outlined 단추로.
+- `m3-text-field`: 외부 라벨(`field-label:top` 등)이 입력 상자보다 4px 안쪽에 있던 것 — 떠 있는 라벨용 패딩이 새고 있었다.
+- 스튜디오로 ncafe 관리자 메뉴 등록 화면을 만들어 보며 드러난 세 가지.
+
 ## 0.4.27 (2026-09-19) — 컴포넌트를 골라 쓰는 진입
 
 - `@newtil/materials/base.css`(레이어 순서 · scoped reset · Material Symbols 폰트, 4.5KB) + `@newtil/materials/component/<이름>.css`(38개, 컴포넌트 하나씩). `index.css` 는 37개 전부(142KB)를 싣는데 CSS 는 tree-shaking 이 없어서, 내비 다섯 개만 쓰는 newlecture-app 도 전부를 내보내고 있었다. 이제 바탕 + 쓰는 것만 가져갈 수 있다.

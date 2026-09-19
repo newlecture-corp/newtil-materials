@@ -162,6 +162,25 @@
 	transition: var(--field-transition);
 }
 
+/* 파일 입력 — 브라우저 기본 "파일 선택" 단추 대신 작은 outlined 단추 (0.4.28) */
+.m3-text-field input[type="file"] {
+	cursor: pointer;
+	font-size: var(--font-size-body-sm);
+	color: var(--field-placeholder-color);
+}
+.m3-text-field input[type="file"]::file-selector-button {
+	margin: 0 var(--space-4) 0 0;
+	padding: 0.25rem 0.75rem;
+	font: inherit;
+	font-size: var(--font-size-body-sm);
+	font-weight: var(--font-weight-semibold);
+	color: var(--field-color);
+	background: var(--color-surface);
+	border: 0.0625rem solid var(--color-border);
+	border-radius: var(--radius-2);
+	cursor: pointer;
+}
+
 .m3-text-field input::placeholder,
 .m3-text-field textarea::placeholder {
 	color: var(--field-placeholder-color);
@@ -462,6 +481,7 @@
 .m3-text-field.field\:outlined.field-label\:bottom,
 .m3-text-field.field\:outlined.field-label\:left,
 .m3-text-field.field\:outlined.field-label\:right {
+	--field-label-padding: 0;                  /* 0 0.25rem 은 떠 있는 라벨이 테두리를 끊는 자리. 밖에 있는 라벨은 상자와 왼쪽 선을 맞춘다 (0.4.28) */
 	--field-input-box-background: transparent;
 }
 
