@@ -29,6 +29,9 @@
 	--toolbar-strong-color: var(--color-text);
 	--toolbar-border-bottom: none;
 	--toolbar-min-height: 2.5rem;
+	--toolbar-background: transparent;                    /* 흐름 안의 줄이라 기본은 바탕 없음. card 는 surface (0.4.28) */
+	--toolbar-border: none;
+	--toolbar-border-radius: 0;
 }
 
 /* ================== Base ============================================= */
@@ -42,7 +45,10 @@
 	min-height: var(--toolbar-min-height);
 	font-size: var(--toolbar-font-size);
 	color: var(--toolbar-color);
-	border-bottom: var(--toolbar-border-bottom);
+	border: var(--toolbar-border);
+	border-bottom: var(--toolbar-border-bottom, var(--toolbar-border));
+	border-radius: var(--toolbar-border-radius);
+	background: var(--toolbar-background);
 	flex-wrap: wrap;
 }
 
@@ -79,8 +85,11 @@
 	min-width: 0;
 }
 
+/* 카드형 — 바탕·테두리가 있는 한 덩어리. 떠 있는 도구바처럼 흐름 밖에 놓아도 뒤가 비치지 않는다 (0.4.28: 바탕·테두리 추가) */
 .m3-toolbar.toolbar\:card {
 	--toolbar-margin: 0;
 	--toolbar-padding: var(--space-4) var(--space-5);
-	--toolbar-border-bottom: 0.0625rem solid var(--color-border);
+	--toolbar-background: var(--color-surface);
+	--toolbar-border: 0.0625rem solid var(--color-border);
+	--toolbar-border-radius: var(--radius-3);
 }
