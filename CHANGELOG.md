@@ -8,6 +8,7 @@
 - `m3-text-field`: 외부 라벨(`field-label:top` 등)이 입력 상자보다 4px 안쪽에 있던 것 — 떠 있는 라벨용 패딩이 새고 있었다.
 - `m3-icon`·`m3-deco`: `[data-icon]::before { content: attr(data-icon) }` 를 각 파일 안에도 둔다. 0.4.27 의 컴포넌트 골라 가져오기에서 이 규칙이 `icon-essential.css` 에만 있어, 그 파일을 안 넣은 앱은 data-icon 아이콘이 사라졌다(newlecture-app 레일).
 - `m3-toolbar`: `--toolbar-background|border|border-radius` 변수. `toolbar:card` 가 surface 바탕 + 테두리 + radius-3 — 떠 있는 도구바로 쓰면 뒤가 비쳤다(스튜디오).
+- `m3-site` `site-header`·`m3-layout` `layout-header`: 영역 자체에 `min-height`(각 `--site-header-height`·`--layout-header-height`). 방의 영역은 가구를 놓기 전에도 자리를 가져야 한다 — 비어 있으면 높이 0 이었다.
 - 스튜디오로 ncafe 관리자 메뉴 등록 화면을 만들어 보며 드러난 세 가지.
 
 ## 0.4.27 (2026-09-19) — 컴포넌트를 골라 쓰는 진입

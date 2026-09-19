@@ -108,6 +108,7 @@
 /* ================== Header (layout-header) =========================== */
 .m3-layout .layout-header {
 	display: var(--layout-header-display);
+	min-height: var(--layout-header-height);               /* 영역 자체가 높이를 가진다 — 비어 있어도 (0.4.28) */
 }
 
 .m3-layout .layout-header .bar-leading {

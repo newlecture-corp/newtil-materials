@@ -91,6 +91,7 @@
 
 /* ================== Header =========================================== */
 .m3-site .site-header {
+	min-height: var(--site-header-height);                 /* 영역 자체가 높이를 가진다 — 비어 있어도 (0.4.28) */
 	background: var(--site-header-background);
 	border-bottom: var(--site-header-border);
 }
